@@ -9,27 +9,35 @@ const Results = () => {
   const results = [
     {
       id: 1,
-      type: 'Kanapa 3-osobowa',
-      description: 'Usuwanie plam po kawie i tłuszczu',
-      rating: 5
+      image: "before_after/1.jpg"
     },
     {
       id: 2,
-      type: 'Fotel skórzany',
-      description: 'Przywrócenie świeżości i elastyczności skóry',
-      rating: 5
+      image: "before_after/2.jpg"
     },
     {
       id: 3,
-      type: 'Dywan perski',
-      description: 'Delikatne czyszczenie z zachowaniem kolorów',
-      rating: 5
+      image: "before_after/3.jpg"
     },
     {
       id: 4,
-      type: 'Materac',
-      description: 'Usuwanie roztoczy i nieprzyjemnych zapachów',
-      rating: 5
+      image: "before_after/4.png"
+    },
+    {
+      id: 5,
+      image: "before_after/5.png"
+    },
+    {
+      id: 6,
+      image: "before_after/6.png"
+    },
+    {
+      id: 7,
+      image: "before_after/7.jpeg"
+    },
+    {
+      id: 8,
+      image: "before_after/8.png"
     }
   ];
 
@@ -73,22 +81,14 @@ const Results = () => {
               <div className="aspect-square gradient-hero p-8">
                 <div className="w-full h-full bg-white/20 rounded-xl flex items-center justify-center">
                   <div className="text-center text-foreground">
-                    <div className="text-4xl mb-2">✨</div>
-                    <p className="font-medium">{result.type}</p>
+                    <img
+                      src={result.image}
+                      alt="Profesjonalne pranie tapicerki"
+                      className="mx-auto object-contain rounded-2xl"
+                    />
                   </div>
                 </div>
               </div>
-              <CardContent className="p-4">
-                <div className="space-y-2">
-                  <h3 className="font-semibold text-foreground">{result.type}</h3>
-                  <p className="text-sm text-muted-foreground">{result.description}</p>
-                  <div className="flex items-center space-x-1">
-                    {[...Array(result.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
             </Card>
           ))}
         </div>

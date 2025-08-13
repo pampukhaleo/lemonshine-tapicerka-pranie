@@ -11,9 +11,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 rounded-full gradient-lemon flex items-center justify-center">
-                <span className="text-white font-bold text-lg">L</span>
-              </div>
+              <img src="lemonshine.png" alt="lemonshine logo" className="h-8 object-contain rounded-2xl"/>
               <span className="text-2xl font-heading font-bold">
                 Lemon<span className="text-lemon-400">shine</span>
               </span>
@@ -23,10 +21,10 @@ const Footer = () => {
               Przywracamy świeżość Twoim meblom z gwarancją najwyższej jakości.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-lemon-500 flex items-center justify-center hover:bg-lemon-600 transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61576970773440" target="_blank" className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-lemon-600 transition-colors">
                 <Facebook className="w-5 h-5 text-white" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-lemon-500 flex items-center justify-center hover:bg-lemon-600 transition-colors">
+              <a href="https://www.instagram.com/lemonshine_pl/" target="_blank" className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-lemon-600 transition-colors">
                 <Instagram className="w-5 h-5 text-white" />
               </a>
             </div>
@@ -102,7 +100,7 @@ const Footer = () => {
         {/* SEO Text */}
         <div className="space-y-6 mb-12">
           <h4 className="text-lg font-heading font-semibold">
-            Profesjonalne Pranie Tapicerki w Warszawie - Lemonshine
+            Profesjonalne Pranie Tapicerki w Opolu - Lemonshine
           </h4>
           <div className="text-muted-foreground text-sm leading-relaxed space-y-4">
             <p>
@@ -129,7 +127,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-muted-foreground">
           <div>
-            © 2024 Lemonshine. Wszystkie prawa zastrzeżone.
+            © 2025 Lemonshine. Wszystkie prawa zastrzeżone.
           </div>
           <div className="flex space-x-6">
             <a href="#" className="hover:text-lemon-400 transition-colors">Polityka prywatności</a>

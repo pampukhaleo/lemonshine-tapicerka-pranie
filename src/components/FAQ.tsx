@@ -7,37 +7,20 @@ import { MessageCircle } from 'lucide-react';
 const FAQ = () => {
   const faqs = [
     {
-      question: 'Ile czasu trwa pranie kanapy?',
-      answer: 'Standardowe pranie kanapy trwa około 2-3 godzin, w zależności od rozmiaru i stopnia zabrudzenia. Czas wysychania to około 4-6 godzin przy odpowiedniej wentylacji.'
+      question: 'Ile schnie tapicerka po praniu?',
+      answer: 'Czas schnięcia zależy głównie od rodzaju materiału i warunków w pomieszczeniu. Średnio trwa to od 4 do 12 godzin.\n' +
+        'Lepsza wentylacja, ogrzewanie lub wentylator mogą ten proces przyspieszyć.\n' +
+        'Dla bezpieczeństwa i czystości, zalecamy nie używać mebla do całkowitego wyschnięcia.'
     },
     {
-      question: 'Czy używane środki są bezpieczne dla dzieci i zwierząt?',
-      answer: 'Tak, używamy wyłącznie ekologicznych środków czyszczących, które są całkowicie bezpieczne dla dzieci, zwierząt domowych i alergików. Wszystkie produkty posiadają odpowiednie certyfikaty.'
+      question: 'Czy każdą tapicerkę można prać na mokro?',
+      answer: 'Większość tapicerek nadaje się do czyszczenia ekstrakcyjnego. Wyjątki to np. antyki, meble z egzotycznym wypełnieniem lub delikatną konstrukcją. Przed praniem sprawdzamy materiał i dobieramy bezpieczną metodę.'
     },
     {
-      question: 'Jak długo utrzymuje się efekt czyszczenia?',
-      answer: 'Przy normalnym użytkowaniu efekt profesjonalnego czyszczenia utrzymuje się 6-12 miesięcy. Rekomendujemy regularne odkurzanie i natychmiastowe usuwanie plam, aby przedłużyć świeżość tapicerki.'
+      question: 'Czy pranie tapicerki usuwa nieprzyjemny zapach?',
+      answer: 'Tak. W większości przypadków skutecznie eliminujemy nieprzyjemne zapachy, takie jak pot, jedzenie, zwierzęta czy codzienne użytkowanie. Używamy profesjonalnego neutralizatora, który nie maskuje, lecz usuwa źródło zapachu.\n' +
+        'Jedynie bardzo silne, długo utrzymujące się zapachy (np. dym papierosowy, mocz, pleśń) mogą wymagać kilku sesji lub nie dać się całkowicie usunąć.'
     },
-    {
-      question: 'Czy przyjezdżacie poza Warszawę?',
-      answer: 'Tak, obsługujemy Warszawę i okolice w promieniu 30 km. Za dojazd poza centrum Warszawy może być naliczana dodatkowa opłata, o której informujemy przed wizytą.'
-    },
-    {
-      question: 'Co jeśli plama nie zejdzie całkowicie?',
-      answer: 'Przed rozpoczęciem pracy oceniamy możliwość usunięcia plam. W przypadku starych lub głęboko wsiąkniętych plam informujemy o realnych oczekiwaniach. Oferujemy gwarancję satysfakcji - jeśli nie jesteście zadowoleni, powtarzamy usługę bezpłatnie.'
-    },
-    {
-      question: 'Jak przygotować mieszkanie przed przyjazdem ekipy?',
-      answer: 'Wystarczy odsunąć drobne przedmioty z tapicerki i zapewnić dostęp do gniazdka elektrycznego. Możecie pozostać w mieszkaniu podczas czyszczenia - nie używamy szkodliwych chemikaliów.'
-    },
-    {
-      question: 'Czy oferujecie gwarancję na wykonane usługi?',
-      answer: 'Tak, oferujemy 30-dniową gwarancję satysfakcji. Jeśli w tym czasie pojawią się te same plamy, powtórzymy czyszczenie bezpłatnie. Dodatkowo udzielamy porad dotyczących pielęgnacji tapicerki.'
-    },
-    {
-      question: 'Jakie formy płatności akceptujecie?',
-      answer: 'Akceptujemy płatności gotówką po wykonaniu usługi oraz przelewy bankowe. Dla firm wystawiamy faktury VAT. Płatność kartą jest możliwa na życzenie klienta.'
-    }
   ];
 
   return (

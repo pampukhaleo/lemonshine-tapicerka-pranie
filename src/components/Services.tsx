@@ -41,79 +41,79 @@ const Services = () => {
       name: 'Pranie 2-osobowej kanapy',
       subtitle: 'do 1,7 m.',
       price: '130 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/23.jpg'
     },
     {
       name: 'Pranie 3-osobowej kanapy',
       subtitle: '1,7-2.5 m.',
       price: '150 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/25.jpg'
     },
     {
       name: 'Pranie średniego naróżnika',
       subtitle: 'do 2,5×1,5 m.',
       price: '170 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/34.jpg'
     },
     {
       name: 'Pranie dużego narożnika',
       subtitle: 'od 2,5×1,5 m.',
       price: 'od 200 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/33.jpg'
     },
     {
       name: 'Pranie dużego fotela',
       subtitle: '',
       price: '60 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/28.jpg'
     },
     {
       name: 'Pranie elementu rozkładanego',
       subtitle: 'kanapy',
       price: '50 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/30.jpg'
     },
     {
       name: 'Pranie materaca',
       subtitle: 'z jednej strony',
       price: '130 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/35.jpg'
     },
     {
       name: 'Pranie osobnej poduszki',
       subtitle: 'od kanapy',
       price: '20 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/31.jpg'
     },
     {
       name: 'Pranie krzesła konferencyjnego',
       subtitle: '',
       price: '30 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/29.jpg'
     },
     {
       name: 'Pranie krzesła tapicerowanego',
       subtitle: 'siedzenie',
       price: '20 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/26.jpg'
     },
     {
       name: 'Pranie fotela małego',
       subtitle: 'bez oparć tapicerowanych',
       price: '50 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/27.jpg'
     },
     {
       name: 'Pranie krzesła biurowego',
       subtitle: '',
       price: '40 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/24.jpg'
     },
     {
       name: 'Pranie krzesła z oparciem',
       subtitle: '',
       price: '40 zł',
-      image: '/placeholder.svg'
+      image: 'furniture/22.jpg'
     }
   ];
 

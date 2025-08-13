@@ -100,50 +100,6 @@ const Blog = () => {
             </Card>
           ))}
         </div>
-
-        {/* Newsletter */}
-        <div className="mt-16 bg-white rounded-3xl p-8 md:p-12 shadow-xl">
-          <div className="text-center space-y-6">
-            <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
-              Bądź na bieżąco z poradami o tapicerce
-            </h3>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Zapisz się do naszego newslettera i otrzymuj praktyczne porady oraz promocje
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Twój adres email"
-                className="flex-1 px-4 py-3 rounded-lg border border-lemon-200 focus:border-mint-500 focus:outline-none"
-              />
-              <Button className="gradient-lemon text-white hover:opacity-90">
-                Zapisz się
-              </Button>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              Bez spamu, tylko wartościowe treści. Możesz się wypisać w każdej chwili.
-            </p>
-          </div>
-        </div>
-
-        {/* Popular Topics */}
-        <div className="mt-12">
-          <h3 className="text-xl font-heading font-semibold text-center text-foreground mb-6">
-            Popularne tematy
-          </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {['Czyszczenie kanap', 'Usuwanie plam', 'Pielęgnacja skóry', 'Alergeny w tapicerce', 'Impregnacja mebli', 'Czyszczenie dywanów'].map((topic, index) => (
-              <Button
-                key={index}
-                variant="outline"
-                size="sm"
-                className="border-mint-200 text-mint-600 hover:bg-mint-50"
-              >
-                {topic}
-              </Button>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
