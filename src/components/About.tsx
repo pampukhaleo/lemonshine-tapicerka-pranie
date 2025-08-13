@@ -1,29 +1,29 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Award, Users, Zap, Heart } from 'lucide-react';
+import { Shield, Users, DollarSign, Zap } from 'lucide-react';
 
 const About = () => {
   const features = [
     {
-      icon: Award,
-      title: 'Doświadczenie',
-      description: 'Ponad 5 lat na rynku usług czyszczenia tapicerki w Warszawie i okolicach.'
+      icon: Shield,
+      title: 'Gwarancja Jakości',
+      description: 'Zwrócimy do 100% kosztów, jeśli wynik prania będzie inny, niż zapowiedziany.'
     },
     {
       icon: Users,
-      title: 'Profesjonalny zespół',
-      description: 'Wykwalifikowani specjaliści z certyfikatami i bogatym doświadczeniem.'
+      title: 'Zrobimy wszystko za Ciebie',
+      description: 'Przyjeżdżamy na miejsce, wnosimy sprzęt, wykonujemy usługę i zostawiamy po sobie porządek.'
+    },
+    {
+      icon: DollarSign,
+      title: 'Konkurencyjne Ceny',
+      description: 'Profesjonalne pranie tapicerki w uczciwej cenie - bez kompromisów w jakości.'
     },
     {
       icon: Zap,
-      title: 'Nowoczesny sprzęt',
-      description: 'Używamy najnowocześniejszych urządzeń i ekologicznych środków czyszczących.'
-    },
-    {
-      icon: Heart,
-      title: 'Indywidualne podejście',
-      description: 'Każdy zlecenie traktujemy indywidualnie, dostosowując metody do typu tkaniny.'
+      title: 'Sprzęt Klasy Premium',
+      description: 'Korzystamy z zaawansowanego sprzętu i profesjonaljych środków czyszczących.'
     }
   ];
 
