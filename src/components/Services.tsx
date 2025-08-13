@@ -11,7 +11,7 @@ const Services = () => {
       title: 'Pranie kanap i foteli',
       description: 'Profesjonalne czyszczenie wszystkich rodzajów tapicerki meblowej',
       features: ['Usuwanie plam', 'Neutralizacja zapachów', 'Odkurzanie głębokie', 'Impregnacja'],
-      price: 'od 150 zł'
+      price: 'od 130 zł'
     },
     {
       icon: Home,
@@ -36,6 +36,81 @@ const Services = () => {
     }
   ];
 
+  const furnitureItems = [
+    {
+      name: 'Pranie 2-osobowej kanapy',
+      subtitle: 'do 1,7 m.',
+      price: '130 zł',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie 3-osobowej kanapy',
+      subtitle: '1,7-2.5 m.',
+      price: '150 zł',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie średniego naróżnika',
+      subtitle: 'do 2,5×1,5 m.',
+      price: '170 zł',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie dużego narożnika',
+      subtitle: 'od 2,5×1,5 m.',
+      price: 'od 200 zł',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie dużego fotela',
+      subtitle: '',
+      price: '60 zł',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie elementu rozkładanego',
+      subtitle: 'kanapy',
+      price: '50 zł',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie materaca',
+      subtitle: 'z jednej strony',
+      price: '130 zł',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie poduszki',
+      subtitle: 'od kanapy',
+      price: '20 zł',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie krzesła konferencyjnego',
+      subtitle: '',
+      price: '30 zł',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie krzesła tapicerowanego',
+      subtitle: 'siedzenie',
+      price: '20 zł',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie fotela małego',
+      subtitle: 'bez oparć tapicerowanych',
+      price: '50 zł',
+      image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie krzesła biurowego',
+      subtitle: '',
+      price: '40 zł',
+      image: '/placeholder.svg'
+    }
+  ];
+
   return (
     <section id="oferta" className="py-16 bg-background">
       <div className="container mx-auto px-4">
@@ -49,7 +124,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {services.map((service, index) => (
             <Card key={index} className="border-0 shadow-lg hover-lift bg-white">
               <CardHeader className="text-center">
@@ -89,24 +164,57 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Special Offer */}
-        <div className="mt-16 bg-gradient-to-r from-lemon-100 to-mint-100 rounded-3xl p-8 md:p-12">
-          <div className="text-center space-y-6">
-            <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+        {/* Wyjątkowa Oferta - Furniture Price List */}
+        <div className="bg-gradient-to-br from-lemon-50 to-mint-50 rounded-3xl p-8 md:p-12">
+          <div className="text-center space-y-4 mb-12">
+            <h3 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
               Wyjątkowa Oferta
             </h3>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Przy zamówieniu prania kanapy + dwóch foteli otrzymasz <strong>20% zniżki</strong> na całość! 
-              Dodatkowo dorzucamy bezpłatną impregnację.
+              Sprawdź nasze konkurencyjne ceny dla różnych rodzajów mebli tapicerowanych. 
+              Gwarantujemy profesjonalne podejście i najwyższą jakość usług.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <div className="text-3xl font-bold text-mint-500">
-                Oszczędź do 200 zł!
-              </div>
-              <Button size="lg" className="gradient-lemon text-white hover:opacity-90">
-                Skorzystaj z oferty
-              </Button>
-            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {furnitureItems.map((item, index) => (
+              <Card key={index} className="bg-white shadow-md hover-lift border-0 overflow-hidden">
+                <div className="aspect-square bg-gradient-to-br from-lemon-100 to-mint-100 p-4">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <CardContent className="p-4">
+                  <h4 className="font-heading font-semibold text-foreground text-sm mb-1">
+                    {item.name}
+                  </h4>
+                  {item.subtitle && (
+                    <p className="text-xs text-muted-foreground mb-3">
+                      {item.subtitle}
+                    </p>
+                  )}
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-bold text-mint-600">
+                      {item.price}
+                    </span>
+                    <Button size="sm" className="gradient-lemon text-white text-xs px-3 py-1">
+                      Zamów
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <p className="text-muted-foreground mb-4">
+              Potrzebujesz wyceny dla większego zlecenia?
+            </p>
+            <Button size="lg" className="gradient-fresh text-white hover:opacity-90">
+              Skontaktuj się z nami
+            </Button>
           </div>
         </div>
       </div>
