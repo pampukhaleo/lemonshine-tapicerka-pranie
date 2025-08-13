@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Sofa, Home, Car, Building } from 'lucide-react';
+import { Sofa, Home, Car, Building, MapPin, Percent } from 'lucide-react';
 
 const Services = () => {
   const services = [
@@ -80,7 +80,7 @@ const Services = () => {
       image: '/placeholder.svg'
     },
     {
-      name: 'Pranie poduszki',
+      name: 'Pranie osobnej poduszki',
       subtitle: 'od kanapy',
       price: '20 zł',
       image: '/placeholder.svg'
@@ -108,8 +108,36 @@ const Services = () => {
       subtitle: '',
       price: '40 zł',
       image: '/placeholder.svg'
+    },
+    {
+      name: 'Pranie krzesła z oparciem',
+      subtitle: '',
+      price: '40 zł',
+      image: '/placeholder.svg'
     }
   ];
+
+  const promotions = [
+    {
+      icon: MapPin,
+      title: 'Dojazd - gratis',
+      description: 'Nie bierzemy dodatkowej opłaty za dojazd. Działamy po całym Opole +20km',
+      highlight: 'GRATIS'
+    },
+    {
+      icon: Percent,
+      title: 'Zniżka na kompleksowe czyszczenie',
+      description: 'Dajemy 10% zniżki na zamówienia powyżej 300 zł',
+      highlight: '10% ZNIŻKI'
+    }
+  ];
+
+  const handleOrderClick = () => {
+    const orderSection = document.getElementById('zamow');
+    if (orderSection) {
+      orderSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="oferta" className="py-16 bg-background">
@@ -154,7 +182,7 @@ const Services = () => {
                     <div className="text-2xl font-bold text-mint-500 mb-2">
                       {service.price}
                     </div>
-                    <Button className="w-full gradient-lemon text-white hover:opacity-90">
+                    <Button onClick={handleOrderClick} className="w-full gradient-lemon text-white hover:opacity-90">
                       Zamów usługę
                     </Button>
                   </div>
@@ -165,7 +193,7 @@ const Services = () => {
         </div>
 
         {/* Wyjątkowa Oferta - Furniture Price List */}
-        <div className="bg-gradient-to-br from-lemon-50 to-mint-50 rounded-3xl p-8 md:p-12">
+        <div className="bg-gradient-to-br from-lemon-50 to-mint-50 rounded-3xl p-8 md:p-12 mb-20">
           <div className="text-center space-y-4 mb-12">
             <h3 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
               Wyjątkowa Oferta
@@ -199,7 +227,7 @@ const Services = () => {
                     <span className="text-lg font-bold text-mint-600">
                       {item.price}
                     </span>
-                    <Button size="sm" className="gradient-lemon text-white text-xs px-3 py-1">
+                    <Button onClick={handleOrderClick} size="sm" className="gradient-lemon text-white text-xs px-3 py-1">
                       Zamów
                     </Button>
                   </div>
@@ -212,8 +240,59 @@ const Services = () => {
             <p className="text-muted-foreground mb-4">
               Potrzebujesz wyceny dla większego zlecenia?
             </p>
-            <Button size="lg" className="gradient-fresh text-white hover:opacity-90">
+            <Button onClick={handleOrderClick} size="lg" className="gradient-fresh text-white hover:opacity-90">
               Skontaktuj się z nami
+            </Button>
+          </div>
+        </div>
+
+        {/* Promocje Section */}
+        <div className="bg-gradient-to-r from-mint-500 to-lemon-400 rounded-3xl p-8 md:p-12">
+          <div className="text-center space-y-4 mb-12">
+            <h3 className="text-3xl md:text-4xl font-heading font-bold text-white">
+              Promocje
+            </h3>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto">
+              Skorzystaj z naszych wyjątkowych ofert i oszczędź na profesjonalnym praniu tapicerki
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {promotions.map((promotion, index) => (
+              <Card key={index} className="bg-white shadow-xl border-0 overflow-hidden hover-lift">
+                <CardContent className="p-8">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-mint-400 to-lemon-400 flex items-center justify-center flex-shrink-0">
+                      <promotion.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between mb-3">
+                        <h4 className="text-xl font-heading font-bold text-foreground">
+                          {promotion.title}
+                        </h4>
+                        <span className="bg-gradient-to-r from-mint-500 to-lemon-400 text-white px-3 py-1 rounded-full text-sm font-bold">
+                          {promotion.highlight}
+                        </span>
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed mb-4">
+                        {promotion.description}
+                      </p>
+                      <Button onClick={handleOrderClick} className="gradient-lemon text-white hover:opacity-90">
+                        Skorzystaj z oferty
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <p className="text-white/90 mb-4">
+              Promocje można łączyć z innymi ofertami. Szczegóły podczas zamawiania.
+            </p>
+            <Button onClick={handleOrderClick} size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
+              Zamów teraz i oszczędź
             </Button>
           </div>
         </div>
