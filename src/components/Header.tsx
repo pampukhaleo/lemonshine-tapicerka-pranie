@@ -13,9 +13,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full gradient-lemon flex items-center justify-center">
-              <span className="text-white font-bold text-lg">L</span>
-            </div>
+            <img src="lemonshine.png" alt="lemonshine logo" className="h-8 mx-auto object-contain rounded-2xl"/>
             <span className="text-2xl font-heading font-bold text-foreground">
               Lemon<span className="text-mint-500">shine</span>
             </span>

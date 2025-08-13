@@ -5,7 +5,7 @@ import { CheckCircle, Sparkles, Clock, Shield } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="pt-24 pb-16 gradient-hero relative overflow-hidden">
+    <section className="pt-28 pb-16 gradient-hero relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-20 h-20 rounded-full bg-lemon-400 animate-float"></div>
@@ -15,40 +15,40 @@ const Hero = () => {
 
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
+          {/* Content */ }
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight">
-                Profesjonalne{' '}
-                <span className="text-mint-500">Pranie Tapicerki</span>{' '}
-                w Warszawie
+                Profesjonalne{ ' ' }
+                <span className="text-mint-500">Pranie Tapicerki meblowej</span>{ ' ' }
+                w Opolu
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Przywróć świeżość i czystość Twoim meblom! Specjalizujemy się w praniu kanap, foteli, dywanów i materacy. Bezpieczne metody, najlepsze efekty.
-              </p>
+                Usuwamy plamy, alergeny i nieprzyjemny zapach z kanap i materacy. Gwarancja widocznego efektu już po
+                pierwszym praniu. </p>
             </div>
 
-            {/* Features */}
+            {/* Features */ }
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-3">
-                <CheckCircle className="w-6 h-6 text-mint-500" />
+                <CheckCircle className="w-6 h-6 text-mint-500"/>
                 <span className="text-foreground font-medium">Bezpieczne środki</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Clock className="w-6 h-6 text-mint-500" />
+                <Clock className="w-6 h-6 text-mint-500"/>
                 <span className="text-foreground font-medium">Szybkie wysychanie</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Sparkles className="w-6 h-6 text-mint-500" />
+                <Sparkles className="w-6 h-6 text-mint-500"/>
                 <span className="text-foreground font-medium">Skuteczne odplamianie</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Shield className="w-6 h-6 text-mint-500" />
+                <Shield className="w-6 h-6 text-mint-500"/>
                 <span className="text-foreground font-medium">Gwarancja jakości</span>
               </div>
             </div>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons */ }
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="gradient-lemon text-white hover:opacity-90 hover-lift">
                 Zamów Pranie Tapicerki
@@ -58,7 +58,7 @@ const Hero = () => {
               </Button>
             </div>
 
-            {/* Trust Indicators */}
+            {/* Trust Indicators */ }
             <div className="flex flex-wrap items-center gap-6 pt-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-mint-500">500+</div>
@@ -75,17 +75,15 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Hero Image Placeholder - Will generate image */}
-          <div className="relative">
-            <div className="aspect-square rounded-3xl gradient-fresh p-8 hover-lift">
-              <div className="w-full h-full bg-white/20 rounded-2xl flex items-center justify-center">
-                <div className="text-center text-white">
-                  <Sparkles className="w-16 h-16 mx-auto mb-4 animate-pulse-slow" />
-                  <p className="text-lg font-medium">Profesjonalne pranie tapicerki</p>
-                  <p className="text-sm opacity-80">Najwyższa jakość usług</p>
-                </div>
-              </div>
-            </div>
+          {/* Hero Image Placeholder - Will generate image */ }
+          <div className="text-center text-white">
+            <img
+              src="lemonshine_big.png"
+              alt="Profesjonalne pranie tapicerki"
+              className="mx-auto mb-4 object-contain rounded-2xl"
+            />
+            <p className="text-lg font-medium text-black">Profesjonalne pranie tapicerki</p>
+            <p className="text-sm opacity-80 text-black">Najwyższa jakość usług</p>
           </div>
         </div>
       </div>

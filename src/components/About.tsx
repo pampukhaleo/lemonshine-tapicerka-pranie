@@ -67,17 +67,12 @@ const About = () => {
               </h3>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Lemonshine powstał z pasji do czystości i dbałości o dom. Wiemy, jak ważne są meble w naszym 
-                  codziennym życiu - to miejsca, gdzie spędzamy najcenniejsze chwile z rodziną.
-                </p>
-                <p>
-                  Dlatego oferujemy nie tylko czyszczenie, ale przywracanie świeżości i komfortu Waszym 
-                  ulubionym meblom. Każdy projekt traktujemy z należytą starannością i profesjonalizmem.
+                  W Lemonshine stawiamy na indywidualne podejście i dokładność. Nie jesteśmy korporacją - każde zlecenie traktujemy z pełnym zaangażowaniem. Korzystamy z profesjonalnych środków i sprzętu, dbając o komfort, bezpieczeństwo i zadowolenie klienta. Naszym celem jest świeżość, czystość i przyjemna atmosfera w domu naszych klientów.
                 </p>
               </div>
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 rounded-full gradient-lemon flex items-center justify-center">
-                  <span className="text-white font-bold">5+</span>
+                  <span className="text-white font-bold">2+</span>
                 </div>
                 <div>
                   <div className="font-semibold text-foreground">Lat doświadczenia</div>
@@ -86,13 +81,11 @@ const About = () => {
               </div>
             </div>
             <div className="aspect-square rounded-2xl gradient-hero p-8">
-              <div className="w-full h-full bg-white/20 rounded-xl flex items-center justify-center">
-                <div className="text-center text-foreground">
-                  <Heart className="w-16 h-16 mx-auto mb-4 text-mint-500 animate-pulse-slow" />
-                  <p className="text-lg font-medium">Z miłością do detali</p>
-                  <p className="text-sm opacity-80">Każdy projekt to dla nas wyzwanie</p>
-                </div>
-              </div>
+              <img
+                src="history.jpg"
+                alt="Profesjonalne pranie tapicerki"
+                className="mx-auto mb-4 object-contain rounded-2xl"
+              />
             </div>
           </div>
         </div>
