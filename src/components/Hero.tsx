@@ -1,9 +1,12 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Sparkles, Clock, Shield } from 'lucide-react';
 
 const Hero = () => {
+  const scrollToOrderForm = () => {
+    document.getElementById('order-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="pt-28 pb-16 gradient-hero relative overflow-hidden">
       {/* Background Elements */}
@@ -50,10 +53,10 @@ const Hero = () => {
 
             {/* CTA Buttons */ }
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="gradient-lemon text-white hover:opacity-90 hover-lift">
+              <Button size="lg" className="gradient-lemon text-white hover:opacity-90 hover-lift" onClick={scrollToOrderForm}>
                 Zamów Pranie Tapicerki
               </Button>
-              <Button size="lg" variant="outline" className="border-mint-500 text-mint-500 hover:bg-mint-50 hover-lift">
+              <Button size="lg" variant="outline" className="border-mint-500 text-mint-500 hover:bg-mint-50 hover-lift" onClick={scrollToOrderForm}>
                 Zobacz Cennik
               </Button>
             </div>

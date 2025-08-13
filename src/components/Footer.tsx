@@ -1,9 +1,12 @@
-
 import React from 'react';
 import { Separator } from '@/components/ui/separator';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from 'lucide-react';
 
 const Footer = () => {
+  const scrollToOrderForm = () => {
+    document.getElementById('order-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <footer id="kontakt" className="bg-foreground text-background">
       <div className="container mx-auto px-4 py-16">
@@ -36,12 +39,12 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-xl font-heading font-bold">Nasze Usługi</h3>
             <ul className="space-y-3 text-muted-foreground">
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Pranie kanap</a></li>
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Czyszczenie foteli</a></li>
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Pranie dywanów</a></li>
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Czyszczenie materacy</a></li>
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Tapicerka samochodowa</a></li>
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Usługi dla firm</a></li>
+              <li><button onClick={scrollToOrderForm} className="hover:text-lemon-400 transition-colors text-left">Pranie kanap</button></li>
+              <li><button onClick={scrollToOrderForm} className="hover:text-lemon-400 transition-colors text-left">Czyszczenie foteli</button></li>
+              <li><button onClick={scrollToOrderForm} className="hover:text-lemon-400 transition-colors text-left">Pranie dywanów</button></li>
+              <li><button onClick={scrollToOrderForm} className="hover:text-lemon-400 transition-colors text-left">Czyszczenie materacy</button></li>
+              <li><button onClick={scrollToOrderForm} className="hover:text-lemon-400 transition-colors text-left">Tapicerka samochodowa</button></li>
+              <li><button onClick={scrollToOrderForm} className="hover:text-lemon-400 transition-colors text-left">Usługi dla firm</button></li>
             </ul>
           </div>
 

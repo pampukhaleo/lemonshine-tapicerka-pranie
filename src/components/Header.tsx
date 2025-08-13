@@ -7,6 +7,10 @@ import { useState } from 'react';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToOrderForm = () => {
+    document.getElementById('order-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-lemon-200">
       <div className="container mx-auto px-4 py-4">
@@ -37,11 +41,11 @@ const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="border-mint-500 text-mint-500 hover:bg-mint-50">
+            <Button variant="outline" size="sm" className="border-mint-500 text-mint-500 hover:bg-mint-50" onClick={scrollToOrderForm}>
               <Phone className="w-4 h-4 mr-2" />
               +48 123 456 789
             </Button>
-            <Button className="gradient-lemon text-white hover:opacity-90">
+            <Button className="gradient-lemon text-white hover:opacity-90" onClick={scrollToOrderForm}>
               Zamów Nasze Usługi
             </Button>
           </div>
@@ -72,11 +76,11 @@ const Header = () => {
                 Kontakt
               </a>
               <div className="flex flex-col space-y-2 pt-4">
-                <Button variant="outline" size="sm" className="border-mint-500 text-mint-500 hover:bg-mint-50">
+                <Button variant="outline" size="sm" className="border-mint-500 text-mint-500 hover:bg-mint-50" onClick={scrollToOrderForm}>
                   <Phone className="w-4 h-4 mr-2" />
                   +48 123 456 789
                 </Button>
-                <Button className="gradient-lemon text-white hover:opacity-90">
+                <Button className="gradient-lemon text-white hover:opacity-90" onClick={scrollToOrderForm}>
                   Zamów Nasze Usługi
                 </Button>
               </div>

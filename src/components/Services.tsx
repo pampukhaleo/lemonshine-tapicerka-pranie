@@ -1,10 +1,13 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Sofa, Home, Car, Building } from 'lucide-react';
 
 const Services = () => {
+  const scrollToOrderForm = () => {
+    document.getElementById('order-form')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const services = [
     {
       icon: Sofa,
@@ -154,7 +157,7 @@ const Services = () => {
                     <div className="text-2xl font-bold text-mint-500 mb-2">
                       {service.price}
                     </div>
-                    <Button className="w-full gradient-lemon text-white hover:opacity-90">
+                    <Button className="w-full gradient-lemon text-white hover:opacity-90" onClick={scrollToOrderForm}>
                       Zamów usługę
                     </Button>
                   </div>
@@ -165,7 +168,7 @@ const Services = () => {
         </div>
 
         {/* Wyjątkowa Oferta - Furniture Price List */}
-        <div className="bg-gradient-to-br from-lemon-50 to-mint-50 rounded-3xl p-8 md:p-12">
+        <div className="bg-gradient-to-br from-lemon-50 to-mint-50 rounded-3xl p-8 md:p-12" id="cennik">
           <div className="text-center space-y-4 mb-12">
             <h3 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
               Wyjątkowa Oferta
@@ -199,7 +202,7 @@ const Services = () => {
                     <span className="text-lg font-bold text-mint-600">
                       {item.price}
                     </span>
-                    <Button size="sm" className="gradient-lemon text-white text-xs px-3 py-1">
+                    <Button size="sm" className="gradient-lemon text-white text-xs px-3 py-1" onClick={scrollToOrderForm}>
                       Zamów
                     </Button>
                   </div>
@@ -212,7 +215,7 @@ const Services = () => {
             <p className="text-muted-foreground mb-4">
               Potrzebujesz wyceny dla większego zlecenia?
             </p>
-            <Button size="lg" className="gradient-fresh text-white hover:opacity-90">
+            <Button size="lg" className="gradient-fresh text-white hover:opacity-90" onClick={scrollToOrderForm}>
               Skontaktuj się z nami
             </Button>
           </div>
