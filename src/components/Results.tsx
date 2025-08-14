@@ -5,6 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Star, ArrowRight } from 'lucide-react';
 
 const Results = () => {
+  const handleOrderClick = () => {
+    const orderSection = document.getElementById('zamow');
+    if (orderSection) {
+      orderSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   // Mock data for before/after results
   const results = [
     {
@@ -95,8 +102,8 @@ const Results = () => {
 
         {/* Call to Action */}
         <div className="text-center mb-16">
-          <Button size="lg" className="gradient-lemon text-white hover:opacity-90 hover-lift">
-            Zobacz więcej realizacji
+          <Button onClick={handleOrderClick} size="lg" className="gradient-lemon text-white hover:opacity-90 hover-lift">
+            Zamów pranie dla swojej tapicerki
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>

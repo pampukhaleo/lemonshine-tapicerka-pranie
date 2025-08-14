@@ -5,6 +5,13 @@ import { Button } from '@/components/ui/button';
 import { MessageCircle } from 'lucide-react';
 
 const FAQ = () => {
+  const handleOrderClick = () => {
+    const orderSection = document.getElementById('zamow');
+    if (orderSection) {
+      orderSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const faqs = [
     {
       question: 'Ile schnie tapicerka po praniu?',
@@ -60,7 +67,7 @@ const FAQ = () => {
               Skontaktuj się z nami bezpośrednio - chętnie udzielimy szczegółowych informacji
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="gradient-lemon text-white hover:opacity-90">
+              <Button onClick={handleOrderClick} size="lg" className="gradient-lemon text-white hover:opacity-90">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Zadaj pytanie
               </Button>

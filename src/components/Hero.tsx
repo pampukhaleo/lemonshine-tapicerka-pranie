@@ -4,6 +4,13 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle, Sparkles, Clock, Shield } from 'lucide-react';
 
 const Hero = () => {
+  const handleOrderClick = () => {
+    const orderSection = document.getElementById('zamow');
+    if (orderSection) {
+      orderSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="pt-28 pb-16 gradient-hero relative overflow-hidden">
       {/* Background Elements */}
@@ -15,20 +22,21 @@ const Hero = () => {
 
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */ }
+          {/* Content */}
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight">
-                Profesjonalne{ ' ' }
-                <span className="text-mint-500">Pranie Tapicerki meblowej</span>{ ' ' }
+                Profesjonalne{' '}
+                <span className="text-mint-500">Pranie Tapicerki meblowej</span>{' '}
                 w Opolu
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Usuwamy plamy, alergeny i nieprzyjemny zapach z kanap i materacy. Gwarancja widocznego efektu już po
-                pierwszym praniu. </p>
+                pierwszym praniu.
+              </p>
             </div>
 
-            {/* Features */ }
+            {/* Features */}
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-3">
                 <CheckCircle className="w-6 h-6 text-mint-500"/>
@@ -48,9 +56,9 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* CTA Buttons */ }
+            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="gradient-lemon text-white hover:opacity-90 hover-lift">
+              <Button onClick={handleOrderClick} size="lg" className="gradient-lemon text-white hover:opacity-90 hover-lift">
                 Zamów Pranie Tapicerki
               </Button>
               <Button size="lg" variant="outline" className="border-mint-500 text-mint-500 hover:bg-mint-50 hover-lift">
@@ -58,7 +66,7 @@ const Hero = () => {
               </Button>
             </div>
 
-            {/* Trust Indicators */ }
+            {/* Trust Indicators */}
             <div className="flex flex-wrap items-center gap-6 pt-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-mint-500">500+</div>
@@ -75,7 +83,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Hero Image Placeholder - Will generate image */ }
+          {/* Hero Image Placeholder - Will generate image */}
           <div className="text-center text-white">
             <img
               src="lemonshine_big.png"

@@ -7,6 +7,13 @@ import { useState } from 'react';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const handleOrderClick = () => {
+    const orderSection = document.getElementById('zamow');
+    if (orderSection) {
+      orderSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-lemon-200">
       <div className="container mx-auto px-4 py-4">
@@ -41,7 +48,7 @@ const Header = () => {
               <Phone className="w-4 h-4 mr-2" />
               +48 123 456 789
             </Button>
-            <Button className="gradient-lemon text-white hover:opacity-90">
+            <Button onClick={handleOrderClick} className="gradient-lemon text-white hover:opacity-90">
               Zamów Nasze Usługi
             </Button>
           </div>
@@ -76,7 +83,7 @@ const Header = () => {
                   <Phone className="w-4 h-4 mr-2" />
                   +48 123 456 789
                 </Button>
-                <Button className="gradient-lemon text-white hover:opacity-90">
+                <Button onClick={handleOrderClick} className="gradient-lemon text-white hover:opacity-90">
                   Zamów Nasze Usługi
                 </Button>
               </div>
