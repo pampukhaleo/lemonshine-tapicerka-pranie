@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, Menu, X } from 'lucide-react';
@@ -7,16 +8,10 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleOrderClick = () => {
-    // Ждем немного для полной загрузки DOM
-    setTimeout(() => {
-      const orderSection = document.getElementById('zamow');
-      console.log('Looking for element with id="zamow":', orderSection);
-      if (orderSection) {
-        orderSection.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        console.error('Element with id="zamow" not found');
-      }
-    }, 100);
+    const orderSection = document.getElementById('zamow');
+    if (orderSection) {
+      orderSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
