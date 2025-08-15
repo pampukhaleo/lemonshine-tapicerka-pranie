@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Sparkles, Clock, Shield } from 'lucide-react';
@@ -14,13 +13,13 @@ const Hero = () => {
   return (
     <section className="pt-28 pb-16 gradient-hero relative overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-20 pointer-events-none -z-10">
         <div className="absolute top-20 left-10 w-20 h-20 rounded-full bg-lemon-400 animate-float"></div>
         <div className="absolute top-40 right-20 w-16 h-16 rounded-full bg-mint-400 animate-float" style={{animationDelay: '1s'}}></div>
         <div className="absolute bottom-20 left-1/4 w-12 h-12 rounded-full bg-lemon-300 animate-float" style={{animationDelay: '2s'}}></div>
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="space-y-8">

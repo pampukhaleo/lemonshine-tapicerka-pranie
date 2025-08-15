@@ -52,7 +52,7 @@ const OrderForm = () => {
   };
 
   return (
-    <section id="zamow" className="py-16 gradient-hero">
+    <section id="zamow" className="py-16 gradient-hero scroll-mt-28">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center space-y-4 mb-12">
