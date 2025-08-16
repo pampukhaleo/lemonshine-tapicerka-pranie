@@ -36,9 +36,9 @@ const Header = () => {
             <Link to="/cennik" className="text-foreground hover:text-mint-500 transition-colors font-medium">
               Cennik
             </Link>
-            <a href="#blog" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+            <Link to="/blog" className="text-foreground hover:text-mint-500 transition-colors font-medium">
               Blog
-            </a>
+            </Link>
             <a href="#kontakt" className="text-foreground hover:text-mint-500 transition-colors font-medium">
               Kontakt
             </a>

@@ -71,15 +71,14 @@ const OrderForm = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form lang="pl" onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
-                  {/* Personal Information */}
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold text-foreground flex items-center">
                       <Mail className="w-5 h-5 mr-2 text-mint-500" />
                       Dane kontaktowe
                     </h3>
-                    
+
                     <div className="space-y-2">
                       <Label htmlFor="name">Imię i nazwisko *</Label>
                       <Input
@@ -202,16 +201,16 @@ const OrderForm = () => {
                     onCheckedChange={(checked) => handleInputChange('consent', checked as boolean)}
                   />
                   <Label htmlFor="consent" className="text-sm text-muted-foreground leading-relaxed">
-                    Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji zamówienia 
+                    Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji zamówienia
                     oraz kontaktu związanego z usługą prania tapicerki. *
                   </Label>
                 </div>
 
                 {/* Submit Button */}
                 <div className="text-center">
-                  <Button 
-                    type="submit" 
-                    size="lg" 
+                  <Button
+                    type="submit"
+                    size="lg"
                     className="gradient-lemon text-white hover:opacity-90 hover-lift px-12"
                   >
                     <Phone className="w-5 h-5 mr-2" />
