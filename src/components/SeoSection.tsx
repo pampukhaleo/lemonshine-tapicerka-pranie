@@ -4,7 +4,7 @@ import { Separator } from '@/components/ui/separator';
 
 const SeoSection = () => {
   return (
-    <section className="bg-foreground text-background py-16">
+    <section className="text-background py-16">
       <div className="container mx-auto px-4">
         <div className="space-y-6">
           <h4 className="text-lg font-heading font-semibold">
