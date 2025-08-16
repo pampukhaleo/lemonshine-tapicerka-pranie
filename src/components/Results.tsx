@@ -4,6 +4,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Star, ArrowRight } from 'lucide-react';
 import BeforeAfter from "@/components/BeforeAfter";
+import ReactBeforeSliderComponent from 'react-before-after-slider-component';
+import 'react-before-after-slider-component/dist/build.css';
 
 const Results = () => {
   const handleOrderClick = () => {
@@ -13,16 +15,15 @@ const Results = () => {
     }
   };
 
-  // Mock data for before/after results
   const results = [
-    { id: 1, before: "before_after/1.jpg", after: "before_after/1.jpg" },
-    { id: 2, before: "before_after/2.jpg", after: "before_after/2.jpg" },
-    { id: 3, before: "before_after/3.jpg", after: "before_after/3.jpg" },
-    { id: 4, before: "before_after/4.png", after: "before_after/4.png" },
-    { id: 5, before: "before_after/5.png", after: "before_after/5.png" },
-    { id: 6, before: "before_after/6.png", after: "before_after/6.png" },
-    { id: 7, before: "before_after/7.jpeg", after: "before_after/7.jpeg" },
-    { id: 8, before: "before_after/8.png", after: "before_after/8.png" },
+    { id: 1, before: "before_after/1.jpg", after: "before_after/2.jpg" },
+    { id: 2, before: "before_after/1.jpg", after: "before_after/2.jpg" },
+    { id: 3, before: "before_after/1.jpg", after: "before_after/2.jpg" },
+    { id: 4, before: "before_after/1.jpg", after: "before_after/2.jpg" },
+    { id: 5, before: "before_after/1.jpg", after: "before_after/2.jpg" },
+    { id: 6, before: "before_after/1.jpg", after: "before_after/2.jpg" },
+    { id: 6, before: "before_after/1.jpg", after: "before_after/2.jpg" },
+    { id: 8, before: "before_after/1.jpg", after: "before_after/2.jpg" },
   ];
 
   const testimonials = [
@@ -62,12 +63,12 @@ const Results = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           { results.map((r) => (
             <Card key={ r.id } className="border-0 shadow-lg hover-lift overflow-hidden bg-white p-0">
-              <BeforeAfter
-                before={ r.before }
-                after={ r.after }
-                altBefore="Przed czyszczeniem"
-                altAfter="Po czyszczeniu"
-                initial={ 50 }
+              <ReactBeforeSliderComponent
+                firstImage={ { imageUrl: r.before, alt: 'Przed czyszczeniem' } }
+                secondImage={ { imageUrl: r.after, alt: 'Po czyszczeniu' } }
+                currentPercentPosition={ 50 }       // стартовая позиция (0..100)
+                delimiterColor="#ffffff"          // цвет вертикальной линии (опц.)
+                className="w-full"                // тянем по ширине карточки
               />
             </Card>
           )) }
@@ -87,7 +88,7 @@ const Results = () => {
           <h3 className="text-2xl md:text-3xl font-heading font-bold text-center text-foreground">
             Opinie naszych klientów
           </h3>
-          
+
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="border-0 shadow-lg bg-white">
