@@ -16,7 +16,7 @@
     --popover: 50 100% 99%;
     --popover-foreground: 210 15% 15%;
 
-    /* Lemon Primary - Fresh Yellow */
+    /* Lemon Primary - Fresh Yellow (muted) */
     --primary: 54 100% 62%;
     --primary-foreground: 210 15% 15%;
 
@@ -40,17 +40,21 @@
 
     --radius: 0.75rem;
 
-    /* Custom Lemonshine Colors */
+    /* Custom Lemonshine Colors - Muted for softer appearance */
     --lemon-50: 55 100% 95%;
     --lemon-100: 54 100% 88%;
     --lemon-200: 53 100% 82%;
     --lemon-300: 52 100% 75%;
-    --lemon-400: 51 100% 68%;
-    --lemon-500: 54 100% 62%;
-    --lemon-600: 45 100% 55%;
+    --lemon-400: 51 75% 58%; /* Reduced saturation and lightness */
+    --lemon-500: 54 85% 52%; /* Reduced saturation and lightness */
+    --lemon-600: 45 85% 45%; /* Reduced saturation and lightness */
     --lemon-700: 42 100% 48%;
     --lemon-800: 38 100% 42%;
     --lemon-900: 35 100% 35%;
+
+    /* Soft Lemon Colors for secondary buttons */
+    --lemon-soft-400: 51 45% 68%;
+    --lemon-soft-600: 45 55% 55%;
 
     --mint-50: 120 60% 95%;
     --mint-100: 120 65% 88%;
@@ -63,8 +67,9 @@
     --mint-800: 120 100% 18%;
     --mint-900: 120 100% 12%;
 
-    /* Gradients */
+    /* Gradients - Updated with muted colors */
     --gradient-lemon: linear-gradient(135deg, hsl(var(--lemon-400)) 0%, hsl(var(--lemon-600)) 100%);
+    --gradient-lemon-soft: linear-gradient(135deg, hsl(var(--lemon-soft-400)) 0%, hsl(var(--lemon-soft-600)) 100%);
     --gradient-fresh: linear-gradient(135deg, hsl(var(--lemon-300)) 0%, hsl(var(--mint-400)) 100%);
     --gradient-hero: linear-gradient(135deg, hsl(var(--lemon-100)) 0%, hsl(var(--mint-100)) 50%, hsl(var(--lemon-200)) 100%);
   }
@@ -104,6 +109,10 @@
   /* Custom utility classes */
   .gradient-lemon {
     background: var(--gradient-lemon);
+  }
+
+  .gradient-lemon-soft {
+    background: var(--gradient-lemon-soft);
   }
 
   .gradient-fresh {

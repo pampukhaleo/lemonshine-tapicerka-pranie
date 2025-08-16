@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -182,7 +181,7 @@ const Services = () => {
                     <div className="text-2xl font-bold text-mint-500 mb-2">
                       {service.price}
                     </div>
-                    <Button onClick={handleOrderClick} className="w-full gradient-lemon text-white hover:opacity-90">
+                    <Button onClick={handleOrderClick} className="w-full gradient-lemon-soft text-white hover:opacity-90">
                       Zamów usługę
                     </Button>
                   </div>
@@ -227,7 +226,7 @@ const Services = () => {
                     <span className="text-lg font-bold text-mint-600">
                       {item.price}
                     </span>
-                    <Button onClick={handleOrderClick} size="sm" className="gradient-lemon text-white text-xs px-3 py-1">
+                    <Button onClick={handleOrderClick} size="sm" className="gradient-lemon-soft text-white text-xs px-3 py-1">
                       Zamów
                     </Button>
                   </div>
@@ -277,7 +276,7 @@ const Services = () => {
                       <p className="text-muted-foreground leading-relaxed mb-4">
                         {promotion.description}
                       </p>
-                      <Button onClick={handleOrderClick} className="gradient-lemon text-white hover:opacity-90">
+                      <Button onClick={handleOrderClick} className="gradient-lemon-soft text-white hover:opacity-90">
                         Skorzystaj z oferty
                       </Button>
                     </div>
