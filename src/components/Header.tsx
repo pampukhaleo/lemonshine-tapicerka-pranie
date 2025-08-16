@@ -30,18 +30,18 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#oferta" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+            <Link to="/#oferta" className="text-foreground hover:text-mint-500 transition-colors font-medium">
               Oferta
-            </a>
+            </Link>
             <Link to="/cennik" className="text-foreground hover:text-mint-500 transition-colors font-medium">
               Cennik
             </Link>
             <Link to="/blog" className="text-foreground hover:text-mint-500 transition-colors font-medium">
               Blog
             </Link>
-            <a href="#kontakt" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+            <Link to="/#zamow" className="text-foreground hover:text-mint-500 transition-colors font-medium">
               Kontakt
-            </a>
+            </Link>
           </nav>
 
           {/* CTA Buttons */}
@@ -68,18 +68,18 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pt-4 border-t border-lemon-200">
             <nav className="flex flex-col space-y-4">
-              <a href="#oferta" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+              <Link to="/#oferta" className="text-foreground hover:text-mint-500 transition-colors font-medium">
                 Oferta
-              </a>
+              </Link>
               <Link to="/cennik" className="text-foreground hover:text-mint-500 transition-colors font-medium">
                 Cennik
               </Link>
-              <a href="#blog" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+              <Link to="/blog" className="text-foreground hover:text-mint-500 transition-colors font-medium">
                 Blog
-              </a>
-              <a href="#kontakt" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+              </Link>
+              <Link to="/#zamow" className="text-foreground hover:text-mint-500 transition-colors font-medium">
                 Kontakt
-              </a>
+              </Link>
               <div className="flex flex-col space-y-2 pt-4">
                 <Button variant="outline" size="sm" className="border-mint-500 text-mint-500 hover:bg-mint-50">
                   <Phone className="w-4 h-4 mr-2" />
