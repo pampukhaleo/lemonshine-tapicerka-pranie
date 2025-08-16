@@ -51,19 +51,19 @@ const Results = () => {
   const testimonials = [
     {
       name: 'Anna Kowalska',
-      location: 'Warszawa, Mokotów',
+      location: 'Opole, Centrum',
       text: 'Niesamowity efekt! Kanapa wygląda jak nowa. Profesjonalna obsługa i terminowość na najwyższym poziomie.',
       rating: 5
     },
     {
       name: 'Piotr Nowak',
-      location: 'Warszawa, Wilanów',
+      location: 'Opole, Zakrzów',
       text: 'Polecam! Trudne plamy zniknęły bez śladu. Szybko, profesjonalnie i w dobrej cenie.',
       rating: 5
     },
     {
       name: 'Maria Wiśniewska',
-      location: 'Piaseczno',
+      location: 'Brzeg',
       text: 'Fantastyczny serwis! Dywan po czyszczeniu pachnie świeżością. Na pewno będę korzystać ponownie.',
       rating: 5
     }

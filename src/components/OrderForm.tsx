@@ -241,7 +241,7 @@ const OrderForm = () => {
             <div className="text-center p-4 bg-white/80 rounded-lg">
               <MapPin className="w-8 h-8 mx-auto mb-2 text-mint-500" />
               <div className="font-semibold">Obszar działania</div>
-              <div className="text-sm text-muted-foreground">Warszawa i okolice<br />(30 km)</div>
+              <div className="text-sm text-muted-foreground">Opole i okolice<br />(30 km)</div>
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-muted-foreground">
-              Profesjonalne pranie tapicerki w Warszawie i okolicach. 
+              Profesjonalne pranie tapicerki w Opolu i okolicach. 
               Przywracamy świeżość Twoim meblom z gwarancją najwyższej jakości.
             </p>
             <div className="flex space-x-4">
@@ -79,7 +79,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-lemon-400 mt-0.5" />
                 <div>
-                  <div className="font-medium text-background">Warszawa i okolice</div>
+                  <div className="font-medium text-background">Opole i okolice</div>
                   <div className="text-sm">Promień 30 km</div>
                 </div>
               </div>
@@ -104,20 +104,20 @@ const Footer = () => {
           </h4>
           <div className="text-muted-foreground text-sm leading-relaxed space-y-4">
             <p>
-              <strong>Pranie tapicerki Warszawa</strong> - Lemonshine to wiodąca firma specjalizująca się w 
-              profesjonalnym praniu tapicerki, kanap, foteli i dywanów w Warszawie i okolicach. Nasze usługi 
+              <strong>Pranie tapicerki Opole</strong> - Lemonshine to wiodąca firma specjalizująca się w 
+              profesjonalnym praniu tapicerki, kanap, foteli i dywanów w Opolu i okolicach. Nasze usługi 
               prania tapicerki obejmują wszystkie rodzaje materiałów - od delikatnych tkanin po skórę naturalną.
             </p>
             <p>
               <strong>Pranie kanapy</strong> wykonujemy przy użyciu najnowocześniejszego sprzętu i bezpiecznych 
               środków czyszczących. Specializujemy się w usuwaniu trudnych plam, neutralizacji zapachów oraz 
-              przywracaniu świeżości tapicerce. Pranie kanapy w Warszawie nigdy nie było tak skuteczne i bezpieczne.
+              przywracaniu świeżości tapicerce. Pranie kanapy w Opolu nigdy nie było tak skuteczne i bezpieczne.
             </p>
             <p>
               Oferujemy kompleksowe usługi czyszczenia tapicerki dla klientów indywidualnych oraz firm. 
               Nasze <strong>pranie tapicerki</strong> gwarantuje najwyższą jakość wykonania przy konkurencyjnych cenach. 
               Skontaktuj się z nami już dziś i przekonaj się, dlaczego jesteśmy liderem w branży 
-              <strong>prania kanap</strong> w Warszawie.
+              <strong>prania kanap</strong> w Opolu.
             </p>
           </div>
         </div>
@@ -127,7 +127,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-muted-foreground">
           <div>
-            © 2025 Lemonshine. Wszystkie prawa zastrzeżone.
+            © 2025 Lemonshine. Wszystkie prawa zastrzeże.
           </div>
           <div className="flex space-x-6">
             <a href="#" className="hover:text-lemon-400 transition-colors">Polityka prywatności</a>
