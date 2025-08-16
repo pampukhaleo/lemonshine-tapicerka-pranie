@@ -45,10 +45,10 @@ const Header = () => {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Button variant="outline" size="sm" className="border-mint-500 text-mint-500 hover:bg-mint-50">
-              <Phone className="w-4 h-4 mr-2" />
-              +48 123 456 789
+              <Phone className="w-4 h-4 mr-2"/>
+              <a href="tel:+48662117886">+48 662 117 886</a>
             </Button>
-            <Button onClick={handleOrderClick} className="gradient-lemon text-white hover:opacity-90">
+            <Button onClick={ handleOrderClick } className="gradient-lemon text-white hover:opacity-90">
               Zamów Nasze Usługi
             </Button>
           </div>

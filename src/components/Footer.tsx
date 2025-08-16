@@ -63,21 +63,21 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-lemon-400 mt-0.5" />
                 <div>
-                  <div className="font-medium text-background">+48 123 456 789</div>
+                  <a href="tel:+48662117886" className="font-medium text-background">+48 662 117 886</a>
                   <div className="text-sm">Poniedziałek - Piątek</div>
                 </div>
               </div>
-              
+
               <div className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-lemon-400 mt-0.5" />
                 <div>
-                  <div className="font-medium text-background">info@lemonshine.pl</div>
+                  <a href="mailto:kontakt.lemonshine@gmail.com" className="font-medium text-background">kontakt.lemonshine@gmail.com</a>
                   <div className="text-sm">Odpowiadamy w 24h</div>
                 </div>
               </div>
-              
+
               <div className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-lemon-400 mt-0.5" />
+              <MapPin className="w-5 h-5 text-lemon-400 mt-0.5" />
                 <div>
                   <div className="font-medium text-background">Opole i okolice</div>
                   <div className="text-sm">Promień 30 km</div>
