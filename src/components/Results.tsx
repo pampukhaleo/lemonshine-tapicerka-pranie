@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Star, ArrowRight } from 'lucide-react';
+import BeforeAfter from "@/components/BeforeAfter";
 
 const Results = () => {
   const handleOrderClick = () => {
@@ -14,38 +15,14 @@ const Results = () => {
 
   // Mock data for before/after results
   const results = [
-    {
-      id: 1,
-      image: "before_after/1.jpg"
-    },
-    {
-      id: 2,
-      image: "before_after/2.jpg"
-    },
-    {
-      id: 3,
-      image: "before_after/3.jpg"
-    },
-    {
-      id: 4,
-      image: "before_after/4.png"
-    },
-    {
-      id: 5,
-      image: "before_after/5.png"
-    },
-    {
-      id: 6,
-      image: "before_after/6.png"
-    },
-    {
-      id: 7,
-      image: "before_after/7.jpeg"
-    },
-    {
-      id: 8,
-      image: "before_after/8.png"
-    }
+    { id: 1, before: "before_after/1.jpg", after: "before_after/1.jpg" },
+    { id: 2, before: "before_after/2.jpg", after: "before_after/2.jpg" },
+    { id: 3, before: "before_after/3.jpg", after: "before_after/3.jpg" },
+    { id: 4, before: "before_after/4.png", after: "before_after/4.png" },
+    { id: 5, before: "before_after/5.png", after: "before_after/5.png" },
+    { id: 6, before: "before_after/6.png", after: "before_after/6.png" },
+    { id: 7, before: "before_after/7.jpeg", after: "before_after/7.jpeg" },
+    { id: 8, before: "before_after/8.png", after: "before_after/8.png" },
   ];
 
   const testimonials = [
@@ -83,32 +60,29 @@ const Results = () => {
 
         {/* Before/After Gallery */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {results.map((result) => (
-            <Card key={result.id} className="border-0 shadow-lg hover-lift overflow-hidden bg-white">
-              <div className="aspect-square gradient-hero p-8">
-                <div className="w-full h-full bg-white/20 rounded-xl flex items-center justify-center">
-                  <div className="text-center text-foreground">
-                    <img
-                      src={result.image}
-                      alt="Profesjonalne pranie tapicerki"
-                      className="mx-auto object-contain rounded-2xl"
-                    />
-                  </div>
-                </div>
-              </div>
+          { results.map((r) => (
+            <Card key={ r.id } className="border-0 shadow-lg hover-lift overflow-hidden bg-white p-0">
+              <BeforeAfter
+                before={ r.before }
+                after={ r.after }
+                altBefore="Przed czyszczeniem"
+                altAfter="Po czyszczeniu"
+                initial={ 50 }
+              />
             </Card>
-          ))}
+          )) }
         </div>
 
-        {/* Call to Action */}
+        {/* Call to Action */ }
         <div className="text-center mb-16">
-          <Button onClick={handleOrderClick} size="lg" className="gradient-lemon text-white hover:opacity-90 hover-lift">
+          <Button onClick={ handleOrderClick } size="lg"
+                  className="gradient-lemon text-white hover:opacity-90 hover-lift">
             Zamów pranie dla swojej tapicerki
-            <ArrowRight className="w-5 h-5 ml-2" />
+            <ArrowRight className="w-5 h-5 ml-2"/>
           </Button>
         </div>
 
-        {/* Testimonials */}
+        {/* Testimonials */ }
         <div className="space-y-8">
           <h3 className="text-2xl md:text-3xl font-heading font-bold text-center text-foreground">
             Opinie naszych klientów
