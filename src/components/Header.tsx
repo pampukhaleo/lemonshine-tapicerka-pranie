@@ -8,13 +8,6 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleOrderClick = () => {
-    const orderSection = document.getElementById('zamow');
-    if (orderSection) {
-      orderSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const handleLogoClick = () => {
     window.scrollTo({
       top: 0,
@@ -57,8 +50,8 @@ const Header = () => {
               <Phone className="w-4 h-4 mr-2"/>
               <a href="tel:+48662117886">+48 662 117 886</a>
             </Button>
-            <Button onClick={ handleOrderClick } className="gradient-lemon text-white hover:opacity-90">
-              Zamów Nasze Usługi
+            <Button asChild className="gradient-lemon text-white hover:opacity-90">
+              <Link to="/#zamow">Zamów Nasze Usługi</Link>
             </Button>
           </div>
 
@@ -92,8 +85,8 @@ const Header = () => {
                   <Phone className="w-4 h-4 mr-2" />
                   +48 123 456 789
                 </Button>
-                <Button onClick={handleOrderClick} className="gradient-lemon text-white hover:opacity-90">
-                  Zamów Nasze Usługi
+                <Button asChild className="gradient-lemon text-white hover:opacity-90">
+                  <Link to="/#zamow">Zamów Nasze Usługi</Link>
                 </Button>
               </div>
             </nav>

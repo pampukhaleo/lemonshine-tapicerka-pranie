@@ -6,8 +6,14 @@ const ScrollToTop = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Don't scroll if it's a hash link (internal page navigation)
-    if (!location.hash) {
+    if (location.hash) {
+      // Handle hash navigation (e.g., /#zamow)
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Regular page navigation - scroll to top
       window.scrollTo({
         top: 0,
         left: 0,

@@ -5,13 +5,9 @@ import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { pricingItems } from '@/data/pricing';
+import { Link } from 'react-router-dom';
 
 const Pricing = () => {
-  const handleOrderClick = () => {
-    // Navigate to home page and scroll to order section
-    window.location.href = '/#zamow';
-  };
-
   return (
     <div className="min-h-screen">
       <Header />
@@ -51,9 +47,9 @@ const Pricing = () => {
                       <span className="text-lg font-bold text-mint-600">
                         {item.price}
                       </span>
-                      <Button onClick={handleOrderClick} size="sm"
+                      <Button asChild size="sm"
                               className="gradient-lemon-soft text-white text-xs px-3 py-1">
-                        Zamów
+                        <Link to="/#zamow">Zamów</Link>
                       </Button>
                     </div>
                   </CardContent>
@@ -65,8 +61,8 @@ const Pricing = () => {
               <p className="text-muted-foreground mb-4">
                 Potrzebujesz wyceny dla czegoś innego?
               </p>
-              <Button onClick={handleOrderClick} size="lg" className="gradient-fresh text-white hover:opacity-90">
-                Skontaktuj się z nami
+              <Button asChild size="lg" className="gradient-lemon text-white hover:opacity-90">
+                <Link to="/#zamow">Skontaktuj się z nami</Link>
               </Button>
             </div>
           </div>
