@@ -34,34 +34,37 @@ const About = () => {
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
             Kilka słów o nas
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Jesteśmy liderem w dziedzinie profesjonalnego prania tapicerki. Nasze doświadczenie i pasja do czystości 
-            gwarantują najwyższą jakość usług.
+          <p className="text-xl text-muted-foreground mx-auto max-w-[48rem] text-balance leading-snug">
+            Jesteśmy liderem w dziedzinie profesjonalnego prania tapicerki. Nasze doświadczenie i pasja do czystości gwarantują najwyższą jakość usług.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
-            <Card key={index} className="border-0 shadow-lg hover-lift bg-white/80 backdrop-blur-sm">
-              <CardContent className="p-6 text-center space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-full gradient-fresh flex items-center justify-center">
-                  <feature.icon className="w-8 h-8 text-white" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          { features.map((feature, index) => (
+            <Card key={ index } className="h-full border-0 shadow-lg hover-lift bg-white/80 backdrop-blur-sm">
+              <CardContent className="h-full p-6">
+                <div className="flex h-full flex-col items-center text-center">
+                  <div className="w-16 h-16 mb-2 rounded-full gradient-fresh flex items-center justify-center shrink-0">
+                    <feature.icon className="w-8 h-8 text-white"/>
+                  </div>
+                  <h3 className="mt-2 text-xl font-heading font-semibold text-foreground leading-7 min-h-14 overflow-hidden"
+                  >
+                    { feature.title }
+                  </h3>
+                  <p className="mt-2 text-muted-foreground leading-6 min-h-[72px] overflow-hidden">
+                    { feature.description }
+                  </p>
+                  <div className="mt-auto"/>
                 </div>
-                <h3 className="text-xl font-heading font-semibold text-foreground">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {feature.description}
-                </p>
               </CardContent>
             </Card>
-          ))}
+          )) }
         </div>
 
-        {/* Story Section */}
+        {/* Story Section */ }
         <div className="mt-16 bg-white rounded-3xl p-8 md:p-12 shadow-xl">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
+          <div className="flex flex-col lg:flex-row lg:justify-between items-center gap-8 lg:gap-10">
+            <div className="space-y-6 max-w-[38rem]">
               <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
                 Nasza historia i misja
               </h3>
@@ -80,11 +83,11 @@ const About = () => {
                 </div>
               </div>
             </div>
-            <div className="aspect-square rounded-2xl gradient-hero p-8">
+            <div className="aspect-square rounded-2xl gradient-hero p-8 max-h-[440px] min-h-[380px]">
               <img
                 src="history.jpg"
                 alt="Profesjonalne pranie tapicerki"
-                className="mx-auto mb-4 object-contain rounded-2xl"
+                className="mx-auto h-full object-contain rounded-2xl"
               />
             </div>
           </div>

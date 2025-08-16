@@ -13,7 +13,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2">
               <img src="lemonshine.png" alt="lemonshine logo" className="h-8 object-contain rounded-2xl"/>
               <span className="text-2xl font-heading font-bold">
-                Lemon<span className="text-lemon-400">shine</span>
+                <span className="text-lemon-400">Lemon</span>shine
               </span>
             </div>
             <p className="text-muted-foreground">
@@ -115,9 +115,9 @@ const Footer = () => {
             </p>
             <p>
               Oferujemy kompleksowe usługi czyszczenia tapicerki dla klientów indywidualnych oraz firm. 
-              Nasze <strong>pranie tapicerki</strong> gwarantuje najwyższą jakość wykonania przy konkurencyjnych cenach. 
+              Nasze pranie tapicerki gwarantuje najwyższą jakość wykonania przy konkurencyjnych cenach.
               Skontaktuj się z nami już dziś i przekonaj się, dlaczego jesteśmy liderem w branży 
-              <strong>prania kanap</strong> w Opolu.
+              prania kanap w Opolu.
             </p>
           </div>
         </div>

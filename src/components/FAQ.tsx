@@ -72,7 +72,7 @@ const FAQ = () => {
                 Zadaj pytanie
               </Button>
               <Button size="lg" variant="outline" className="border-mint-500 text-mint-500 hover:bg-mint-50">
-                Zadzwoń: +48 123 456 789
+                Zadzwoń: <a href="tel:+48662117886">+48 662 117 886</a>
               </Button>
             </div>
           </div>

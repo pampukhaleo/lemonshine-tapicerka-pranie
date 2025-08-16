@@ -60,7 +60,7 @@ const OrderForm = () => {
               Zamów Pranie Tapicerki
             </h2>
             <p className="text-xl text-muted-foreground">
-              Wypełnij formularz, a skontaktujemy się z Tobą w ciągu 30 minut
+              Wypełnik formularz, a wktórce się z Tobą kontaktujemy
             </p>
           </div>
 
@@ -145,10 +145,9 @@ const OrderForm = () => {
                         <SelectContent>
                           <SelectItem value="kanapa">Pranie kanapy</SelectItem>
                           <SelectItem value="fotel">Pranie fotela</SelectItem>
-                          <SelectItem value="zestaw">Kanapa + fotele</SelectItem>
                           <SelectItem value="dywan">Pranie dywanu</SelectItem>
                           <SelectItem value="materac">Pranie materaca</SelectItem>
-                          <SelectItem value="samochod">Tapicerka samochodowa</SelectItem>
+                          <SelectItem value="zestaw">Czyszczenie kompleksowe</SelectItem>
                           <SelectItem value="inne">Inne</SelectItem>
                         </SelectContent>
                       </Select>
@@ -219,7 +218,7 @@ const OrderForm = () => {
                     Wyślij zamówienie
                   </Button>
                   <p className="text-sm text-muted-foreground mt-2">
-                    Skontaktujemy się z Tobą w ciągu 30 minut!
+                    Wktórce się z Tobą kontaktujemy!
                   </p>
                 </div>
               </form>
