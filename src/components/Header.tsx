@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,26 +15,34 @@ const Header = () => {
     }
   };
 
+  const handleLogoClick = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-lemon-200">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" onClick={handleLogoClick} className="flex items-center space-x-2">
             <img src="lemonshine.png" alt="lemonshine logo" className="h-8 mx-auto object-contain rounded-2xl"/>
             <span className="text-2xl font-heading font-bold text-foreground">
               Lemon<span className="text-mint-500">shine</span>
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#oferta" className="text-foreground hover:text-mint-500 transition-colors font-medium">
               Oferta
             </a>
-            <a href="/cennik" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+            <Link to="/cennik" className="text-foreground hover:text-mint-500 transition-colors font-medium">
               Cennik
-            </a>
+            </Link>
             <a href="#blog" className="text-foreground hover:text-mint-500 transition-colors font-medium">
               Blog
             </a>
@@ -69,9 +78,9 @@ const Header = () => {
               <a href="#oferta" className="text-foreground hover:text-mint-500 transition-colors font-medium">
                 Oferta
               </a>
-              <a href="/cennik" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+              <Link to="/cennik" className="text-foreground hover:text-mint-500 transition-colors font-medium">
                 Cennik
-              </a>
+              </Link>
               <a href="#blog" className="text-foreground hover:text-mint-500 transition-colors font-medium">
                 Blog
               </a>
