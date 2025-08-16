@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Sofa, Home, Car, Building, MapPin, Percent } from 'lucide-react';
+import { pricingItems } from '@/data/pricing';
 
 const Services = () => {
   const services = [
@@ -35,87 +36,6 @@ const Services = () => {
     }
   ];
 
-  const furnitureItems = [
-    {
-      name: 'Pranie 2-osobowej kanapy',
-      subtitle: 'do 1,7 m.',
-      price: '130 zł',
-      image: 'furniture/23.jpg'
-    },
-    {
-      name: 'Pranie 3-osobowej kanapy',
-      subtitle: '1,7-2.5 m.',
-      price: '150 zł',
-      image: 'furniture/25.jpg'
-    },
-    {
-      name: 'Pranie średniego naróżnika',
-      subtitle: 'do 2,5×1,5 m.',
-      price: '170 zł',
-      image: 'furniture/34.jpg'
-    },
-    {
-      name: 'Pranie dużego narożnika',
-      subtitle: 'od 2,5×1,5 m.',
-      price: 'od 200 zł',
-      image: 'furniture/33.jpg'
-    },
-    {
-      name: 'Pranie dużego fotela',
-      subtitle: '',
-      price: '60 zł',
-      image: 'furniture/28.jpg'
-    },
-    {
-      name: 'Pranie elementu rozkładanego',
-      subtitle: 'kanapy',
-      price: '50 zł',
-      image: 'furniture/30.jpg'
-    },
-    {
-      name: 'Pranie materaca',
-      subtitle: 'z jednej strony',
-      price: '130 zł',
-      image: 'furniture/35.jpg'
-    },
-    {
-      name: 'Pranie osobnej poduszki',
-      subtitle: 'od kanapy',
-      price: '20 zł',
-      image: 'furniture/31.jpg'
-    },
-    {
-      name: 'Pranie krzesła konferencyjnego',
-      subtitle: '',
-      price: '30 zł',
-      image: 'furniture/29.jpg'
-    },
-    {
-      name: 'Pranie krzesła tapicerowanego',
-      subtitle: 'siedzenie',
-      price: '20 zł',
-      image: 'furniture/26.jpg'
-    },
-    {
-      name: 'Pranie fotela małego',
-      subtitle: 'bez oparć tapicerowanych',
-      price: '50 zł',
-      image: 'furniture/27.jpg'
-    },
-    {
-      name: 'Pranie krzesła biurowego',
-      subtitle: '',
-      price: '40 zł',
-      image: 'furniture/24.jpg'
-    },
-    {
-      name: 'Pranie krzesła z oparciem',
-      subtitle: '',
-      price: '40 zł',
-      image: 'furniture/22.jpg'
-    }
-  ];
-
   const promotions = [
     {
       icon: MapPin,
@@ -137,6 +57,9 @@ const Services = () => {
       orderSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  // Get only popular items (first 4)
+  const popularItems = pricingItems.filter(item => item.popular).slice(0, 4);
 
   return (
     <section id="oferta" className="py-16 bg-background">
@@ -192,57 +115,60 @@ const Services = () => {
           )) }
         </div>
 
-
-        {/* Wyjątkowa Oferta - Furniture Price List */ }
+        {/* Updated Popular Items Section */}
         <div className="bg-gradient-to-br from-lemon-50 to-mint-50 rounded-3xl p-8 md:p-12 mb-20">
           <div className="text-center space-y-4 mb-12">
             <h3 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              Wyjątkowa Oferta
+              Najpopularniejsze Usługi
             </h3>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Sprawdź nasze konkurencyjne ceny dla różnych rodzajów mebli tapicerowanych.
-              Gwarantujemy profesjonalne podejście i najwyższą jakość usług.
+              Sprawdź nasze najczęściej wybierane usługi. Gwarantujemy profesjonalne podejście 
+              i najwyższą jakość usług.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            { furnitureItems.map((item, index) => (
-              <Card key={ index } className="bg-white shadow-md hover-lift border-0 overflow-hidden">
+            {popularItems.map((item, index) => (
+              <Card key={index} className="bg-white shadow-md hover-lift border-0 overflow-hidden">
                 <div className="aspect-square bg-gradient-to-br from-lemon-100 to-mint-100 p-4">
                   <img
-                    src={ item.image }
-                    alt={ item.name }
+                    src={item.image}
+                    alt={item.name}
                     className="w-full h-full object-contain"
                   />
                 </div>
                 <CardContent className="p-4">
                   <h4 className="font-heading font-semibold text-foreground text-sm mb-1">
-                    { item.name }
+                    {item.name}
                   </h4>
-                  { item.subtitle && (
+                  {item.subtitle && (
                     <p className="text-xs text-muted-foreground mb-3">
-                      { item.subtitle }
+                      {item.subtitle}
                     </p>
-                  ) }
+                  )}
                   <div className="flex items-center justify-between">
                     <span className="text-lg font-bold text-mint-600">
-                      { item.price }
+                      {item.price}
                     </span>
-                    <Button onClick={ handleOrderClick } size="sm"
+                    <Button onClick={handleOrderClick} size="sm"
                             className="gradient-lemon-soft text-white text-xs px-3 py-1">
                       Zamów
                     </Button>
                   </div>
                 </CardContent>
               </Card>
-            )) }
+            ))}
           </div>
 
           <div className="text-center mt-8">
             <p className="text-muted-foreground mb-4">
-              Potrzebujesz wyceny dla czegoś innego?
+              Szukasz innych usług?
             </p>
-            <Button onClick={ handleOrderClick } size="lg" className="gradient-fresh text-white hover:opacity-90">
+            <Button asChild size="lg" className="gradient-fresh text-white hover:opacity-90 mr-4">
+              <a href="/cennik">Zobacz pełny cennik</a>
+            </Button>
+            <Button onClick={handleOrderClick} size="lg" variant="outline" 
+                    className="border-mint-500 text-mint-500 hover:bg-mint-50">
               Skontaktuj się z nami
             </Button>
           </div>
@@ -298,7 +224,6 @@ const Services = () => {
               </Card>
             )) }
           </div>
-
 
           <div className="text-center mt-8">
             <p className="text-white/90 mb-4">
