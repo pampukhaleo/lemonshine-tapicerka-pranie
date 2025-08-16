@@ -6,6 +6,7 @@ import { Calendar, ArrowRight, User, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '@/data/blog';
 import Header from '@/components/Header';
+import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
 
 const BlogIndex = () => {
@@ -77,6 +78,7 @@ const BlogIndex = () => {
           </div>
         </div>
       </main>
+      <SeoSection />
       <Footer />
     </div>
   );

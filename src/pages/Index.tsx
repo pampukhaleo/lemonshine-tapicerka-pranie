@@ -8,6 +8,7 @@ import OrderForm from '@/components/OrderForm';
 import Results from '@/components/Results';
 import Blog from '@/components/Blog';
 import FAQ from '@/components/FAQ';
+import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -23,6 +24,7 @@ const Index = () => {
         <Blog />
         <FAQ />
       </main>
+      <SeoSection />
       <Footer />
     </div>
   );

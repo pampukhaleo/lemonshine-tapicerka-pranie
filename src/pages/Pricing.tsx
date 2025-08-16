@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
+import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
 import { pricingItems } from '@/data/pricing';
 import { Link } from 'react-router-dom';
@@ -68,6 +69,7 @@ const Pricing = () => {
           </div>
         </section>
       </main>
+      <SeoSection />
       <Footer />
     </div>
   );
