@@ -40,6 +40,11 @@ const BlogPost = () => {
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight">
                   {post.title}
                 </h1>
+                {post.subtitle && (
+                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    {post.subtitle}
+                  </p>
+                )}
                 
                 <div className="flex flex-wrap items-center justify-center gap-6 text-muted-foreground">
                   <div className="flex items-center space-x-2">
@@ -68,12 +73,41 @@ const BlogPost = () => {
               </div>
 
               {/* Article content */}
-              <div className="space-y-6">
-                {post.content.map((paragraph, index) => (
-                  <p key={index} className="text-lg leading-relaxed text-foreground">
-                    {paragraph}
-                  </p>
-                ))}
+              <div className="space-y-8">
+                {post.content.map((block, index) => {
+                  if (block.type === 'paragraph') {
+                    return (
+                      <p key={index} className="text-lg leading-relaxed text-foreground">
+                        {block.content}
+                      </p>
+                    );
+                  }
+                  
+                  if (block.type === 'image') {
+                    return (
+                      <div key={index} className="w-full my-8">
+                        <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg">
+                          <img
+                            src={block.content}
+                            alt={block.alt || 'Artykuł o czyszczeniu tapicerki'}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.src = '/placeholder.svg';
+                            }}
+                          />
+                        </div>
+                        {block.caption && (
+                          <p className="text-sm text-muted-foreground text-center mt-3 italic">
+                            {block.caption}
+                          </p>
+                        )}
+                      </div>
+                    );
+                  }
+                  
+                  return null;
+                })}
               </div>
 
               {/* Article footer */}
