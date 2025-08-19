@@ -17,7 +17,7 @@ const SeoSection = () => {
               prania tapicerki obejmują wszystkie rodzaje materiałów - od delikatnych tkanin po skórę naturalną.
             </p>
             <p>
-              <strong>Pranie kanapy</strong> wykonujemy przy użyciu najnowocześniejszego sprzętu i bezpiecznych 
+              Pranie kanapy wykonujemy przy użyciu najnowocześniejszego sprzętu i bezpiecznych
               środków czyszczących. Specializujemy się w usuwaniu trudnych plam, neutralizacji zapachów oraz 
               przywracaniu świeżości tapicerce. Pranie kanapy w Opolu nigdy nie było tak skuteczne i bezpieczne.
             </p>

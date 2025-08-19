@@ -2,6 +2,7 @@
 import React from 'react';
 import { Separator } from '@/components/ui/separator';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -30,29 +31,16 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Services */}
-          <div className="space-y-6">
-            <h3 className="text-xl font-heading font-bold">Nasze Usługi</h3>
-            <ul className="space-y-3 text-muted-foreground">
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Pranie kanap</a></li>
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Czyszczenie foteli</a></li>
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Pranie dywanów</a></li>
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Czyszczenie materacy</a></li>
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Tapicerka samochodowa</a></li>
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Usługi dla firm</a></li>
-            </ul>
-          </div>
-
           {/* Quick Links */}
           <div className="space-y-6">
             <h3 className="text-xl font-heading font-bold">Szybkie Linki</h3>
             <ul className="space-y-3 text-muted-foreground">
               <li><a href="#oferta" className="hover:text-lemon-400 transition-colors">Oferta</a></li>
-              <li><a href="#cennik" className="hover:text-lemon-400 transition-colors">Cennik</a></li>
-              <li><a href="#blog" className="hover:text-lemon-400 transition-colors">Blog</a></li>
+              <li><Link to="/cennik" className="hover:text-lemon-400 transition-colors">Cennik</Link></li>
+              <li><Link to="/blog" className="hover:text-lemon-400 transition-colors">Blog</Link></li>
               <li><a href="#" className="hover:text-lemon-400 transition-colors">O nas</a></li>
               <li><a href="#" className="hover:text-lemon-400 transition-colors">Realizacje</a></li>
-              <li><a href="#" className="hover:text-lemon-400 transition-colors">Kontakt</a></li>
+              <li><Link to="/#zamow" className="hover:text-lemon-400 transition-colors">Kontakt</Link></li>
             </ul>
           </div>
 

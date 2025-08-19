@@ -29,7 +29,7 @@ const Services = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {popularItems.map((item, index) => (
-            <div key={index} className="bg-white rounded-2xl shadow-soft p-6 hover-lift group">
+            <div key={index}   className="bg-white rounded-2xl shadow-lg p-6  duration-300 hover:-translate-y-2">
               <div className="mb-6">
                 <img
                   src={item.image}
@@ -50,7 +50,7 @@ const Services = () => {
               </div>
               <Button 
                 onClick={handleOrderClick}
-                className="w-full gradient-lemon text-white hover:opacity-90"
+                className="w-full bg-mint-600 hover:bg-mint-700 text-white hover:opacity-90"
               >
                 Zamów
                 <ArrowRight className="w-4 h-4 ml-2" />

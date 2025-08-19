@@ -70,7 +70,10 @@ const About = () => {
               </h3>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  W Lemonshine stawiamy na indywidualne podejście i dokładność. Nie jesteśmy korporacją - każde zlecenie traktujemy z pełnym zaangażowaniem. Korzystamy z profesjonalnych środków i sprzętu, dbając o komfort, bezpieczeństwo i zadowolenie klienta. Naszym celem jest świeżość, czystość i przyjemna atmosfera w domu naszych klientów.
+                  W Lemonshine stawiamy na indywidualne podejście i dokładność. Nie jesteśmy korporacją - każde zlecenie
+                  traktujemy z pełnym zaangażowaniem. Korzystamy z profesjonalnych środków i sprzętu, dbając o komfort,
+                  bezpieczeństwo i zadowolenie klienta. Naszym celem jest świeżość, czystość i przyjemna atmosfera w
+                  domu naszych klientów.
                 </p>
               </div>
               <div className="flex items-center space-x-4">
@@ -83,13 +86,11 @@ const About = () => {
                 </div>
               </div>
             </div>
-            <div className="aspect-square rounded-2xl gradient-hero p-8 max-h-[440px] min-h-[380px]">
-              <img
-                src="history.jpg"
-                alt="Profesjonalne pranie tapicerki"
-                className="mx-auto h-full object-contain rounded-2xl"
-              />
-            </div>
+            <img
+              src="history.jpg"
+              alt="Profesjonalne pranie tapicerki"
+              className="mx-auto h-full object-contain rounded-2xl max-h-[440px] min-h-[380px]"
+            />
           </div>
         </div>
       </div>

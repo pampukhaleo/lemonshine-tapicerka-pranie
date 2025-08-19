@@ -37,8 +37,8 @@ export const pricingItems: PricingItem[] = [
     popular: false
   },
   {
-    name: 'Pranie dużego fotela',
-    subtitle: '',
+    name: 'Pranie fotela',
+    subtitle: 'dużego',
     price: '60 zł',
     image: 'furniture/28.jpg',
     popular: false
@@ -65,8 +65,8 @@ export const pricingItems: PricingItem[] = [
     popular: false
   },
   {
-    name: 'Pranie krzesła konferencyjnego',
-    subtitle: '',
+    name: 'Pranie krzesła',
+    subtitle: 'konferencyjnego',
     price: '30 zł',
     image: 'furniture/29.jpg',
     popular: false
@@ -87,7 +87,7 @@ export const pricingItems: PricingItem[] = [
   },
   {
     name: 'Pranie krzesła biurowego',
-    subtitle: '',
+    subtitle: 'obrotowego',
     price: '40 zł',
     image: 'furniture/24.jpg',
     popular: false

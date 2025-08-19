@@ -28,7 +28,7 @@ const Pricing = () => {
             <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {pricingItems.map((item, index) => (
                 <Card key={index} className="bg-white shadow-md hover-lift border-0 overflow-hidden">
-                  <div className="aspect-square bg-gradient-to-br from-lemon-100 to-mint-100 p-4">
+                  <div>
                     <img
                       src={item.image}
                       alt={item.name}

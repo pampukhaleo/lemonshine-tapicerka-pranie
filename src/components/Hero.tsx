@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Sparkles, Clock, Shield } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const handleOrderClick = () => {
@@ -25,8 +26,8 @@ const Hero = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight">
-                Profesjonalne{' '}
-                <span className="text-mint-500">Pranie Tapicerki meblowej</span>{' '}
+                Profesjonalne{ ' ' }
+                <span className="text-mint-500">Pranie Tapicerki meblowej</span>{ ' ' }
                 w Opolu
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
@@ -35,7 +36,7 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Features */}
+            {/* Features */ }
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-3">
                 <CheckCircle className="w-6 h-6 text-mint-500"/>
@@ -55,17 +56,27 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons */ }
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button onClick={handleOrderClick} size="lg" className="gradient-lemon text-white hover:opacity-90 hover-lift">
+              <Button
+                onClick={ handleOrderClick }
+                size="lg"
+                className="w-full sm:flex-1 bg-mint-600 text-white hover:bg-mint-700 hover-lift"
+              >
                 Zamów Pranie Tapicerki
               </Button>
-              <Button size="lg" variant="outline" className="border-mint-500 text-mint-500 hover:bg-mint-50 hover-lift">
-                Zobacz Cennik
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:flex-1 border-mint-500 text-mint-500 hover:bg-mint-50 hover-lift"
+              >
+                <Link to="/cennik">Zobacz Cennik</Link>
               </Button>
             </div>
 
-            {/* Trust Indicators */}
+
+            {/* Trust Indicators */ }
             <div className="flex flex-wrap items-center gap-6 pt-4">
               <div className="text-center">
                 <div className="text-2xl font-bold text-mint-500">500+</div>
@@ -82,7 +93,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Hero Image Placeholder - Will generate image */}
+          {/* Hero Image Placeholder - Will generate image */ }
           <div className="text-center text-white">
             <img
               src="lemonshine_big.png"
