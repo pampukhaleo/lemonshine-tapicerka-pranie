@@ -36,7 +36,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        content: '/before_after/10.jpg',
+        content: 'blogPic/cup.jpg',
         alt: 'Porównanie efektów domowego i profesjonalnego czyszczenia tapicerki',
         caption: 'Różnica między domowym a profesjonalnym czyszczeniem'
       },
