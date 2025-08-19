@@ -1,8 +1,11 @@
 export interface ContentBlock {
-  type: 'paragraph' | 'image';
+  type: 'paragraph' | 'image' | 'heading' | 'list';
   content: string;
   alt?: string; // for images
   caption?: string; // for images
+  level?: number; // for headings (1-6)
+  listType?: 'ordered' | 'unordered'; // for lists
+  items?: string[]; // for lists
 }
 
 export interface BlogPost {
@@ -66,6 +69,83 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 2,
+    slug: 'plama-wraca-po-praniu-kanapy',
+    title: 'Plama wraca po praniu kanapy? Najczęstsze przyczyny',
+    excerpt: 'Dlaczego plamy powracają po samodzielnym czyszczeniu tapicerki? Poznaj główne przyczyny tego zjawiska i sposoby zapobiegania.',
+    author: 'Ekspert Lemonshine',
+    date: '2024-01-18',
+    category: 'Problemy',
+    readTime: '8 min',
+    content: [
+      {
+        type: 'paragraph',
+        content: 'Wielu klientów po samodzielnym praniu tapicerki zauważa, że plamy, które wydawały się usunięte, po kilku dniach znowu „wychodzą" na powierzchnię. To zjawisko jest dość częste i ma kilka przyczyn, o których warto wiedzieć, aby uniknąć rozczarowania.'
+      },
+      {
+        type: 'heading',
+        content: '1. Resztki brudu i detergentu w głębi materiału',
+        level: 2
+      },
+      {
+        type: 'paragraph',
+        content: 'Najczęstsza przyczyna powracających plam to niedokładne wypłukanie kanapy. Kiedy podczas prania środek czyszczący wnika w gąbkę i nie zostaje całkowicie odessany, pozostaje w głębi tkaniny. Gdy tapicerka wysycha, brud i resztki chemii są „podciągane" z powrotem na powierzchnię, tworząc szarą obwódkę lub ciemniejsze przebarwienie.'
+      },
+      {
+        type: 'heading',
+        content: '2. Zbyt duża ilość wody',
+        level: 2
+      },
+      {
+        type: 'paragraph',
+        content: 'Przy samodzielnym praniu często stosuje się zbyt dużo wody, co powoduje przemoczenie gąbki i pianki w środku kanapy. Woda transportuje zanieczyszczenia w głąb, a w trakcie schnięcia brud migruje z powrotem ku górze. Efekt? Plama znika tylko na chwilę, by po kilku dniach znowu się pojawić.'
+      },
+      {
+        type: 'heading',
+        content: '3. Tłuste i trudne plamy',
+        level: 2
+      },
+      {
+        type: 'paragraph',
+        content: 'Niektóre zabrudzenia - szczególnie tłuste, olejowe czy po kawie - wymagają specjalistycznej chemii i metod neutralizacji. Jeśli użyje się wyłącznie domowych środków, plama może zostać rozbita, ale nie całkowicie usunięta. Po wyschnięciu resztki zanieczyszczenia są znowu widoczne.'
+      },
+      {
+        type: 'heading',
+        content: '4. Nieodpowiednia chemia czyszcząca',
+        level: 2
+      },
+      {
+        type: 'paragraph',
+        content: 'Uniwersalne środki dostępne w marketach często zostawiają osad, który działa jak magnes na nowe zabrudzenia. Kanapa po takim praniu nie tylko szybciej się brudzi, ale też może pokazać „stare" plamy, które nie zostały dokładnie wyczyszczone.'
+      },
+      {
+        type: 'heading',
+        content: '5. Zbyt wolne schnięcie tapicerki',
+        level: 2
+      },
+      {
+        type: 'paragraph',
+        content: 'Jeśli kanapa schnie kilka dni w wilgotnym pomieszczeniu, zanieczyszczenia mają więcej czasu, aby przemieścić się ku powierzchni. Dodatkowo wilgoć sprzyja rozwojowi nieprzyjemnego zapachu, a nawet pleśni.'
+      },
+      {
+        type: 'heading',
+        content: 'Jak zapobiec powracaniu plam?',
+        level: 2
+      },
+      {
+        type: 'list',
+        content: 'Sposoby zapobiegania powracaniu plam',
+        listType: 'unordered',
+        items: [
+          'Stosować profesjonalne metody ekstrakcyjne – odsysanie brudu i chemii w tym samym czasie',
+          'Nie używać nadmiernej ilości wody – pranie powinno być kontrolowane i precyzyjne',
+          'Dobierać odpowiednie środki do rodzaju plamy – inne działają na tłuszcz, inne na barwniki czy kawę',
+          'Zapewnić szybkie schnięcie – np. poprzez wietrzenie pomieszczenia, użycie osuszacza lub nawiewu'
+        ]
+      }
+    ]
+  },
+  {
+    id: 3,
     slug: 'jak-dbac-o-tapicerke-skorzana',
     title: 'Jak dbać o tapicerkę skórzaną? Praktyczny poradnik',
     excerpt: 'Skórzane meble wymagają szczególnej opieki. Dowiedz się, jak przedłużyć ich żywotność.',
@@ -97,7 +177,7 @@ export const blogPosts: BlogPost[] = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     slug: 'top-5-najczestszych-plam-na-tapicerce',
     title: 'Top 5 najczęstszych plam na tapicerce i sposoby ich usuwania',
     excerpt: 'Kawa, wino, tłuszcz - każda plama ma swój sposób usuwania. Poznaj sprawdzone metody.',
@@ -137,7 +217,7 @@ export const blogPosts: BlogPost[] = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     slug: 'dlaczego-warto-regularnie-czyscic-tapicerke',
     title: 'Dlaczego warto regularnie czyścić tapicerkę?',
     excerpt: 'Regularne czyszczenie to nie tylko estetyka, ale przede wszystkim zdrowie całej rodziny.',
@@ -173,7 +253,7 @@ export const blogPosts: BlogPost[] = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     slug: 'jak-przygotowac-meble-do-profesjonalnego-czyszczenia',
     title: 'Jak przygotować meble do profesjonalnego czyszczenia?',
     excerpt: 'Kilka prostych kroków, które pomogą osiągnąć najlepszy efekt czyszczenia tapicerki.',

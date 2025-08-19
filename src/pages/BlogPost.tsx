@@ -83,6 +83,37 @@ const BlogPost = () => {
                     );
                   }
                   
+                  if (block.type === 'heading') {
+                    const HeadingTag = `h${block.level || 2}` as keyof JSX.IntrinsicElements;
+                    return (
+                      <HeadingTag 
+                        key={index} 
+                        className="text-2xl md:text-3xl font-heading font-bold text-foreground mt-12 mb-6 first:mt-8"
+                      >
+                        {block.content}
+                      </HeadingTag>
+                    );
+                  }
+                  
+                  if (block.type === 'list') {
+                    const ListTag = block.listType === 'ordered' ? 'ol' : 'ul';
+                    return (
+                      <div key={index} className="my-6">
+                        <ListTag className={`space-y-3 text-lg leading-relaxed text-foreground ${
+                          block.listType === 'ordered' 
+                            ? 'list-decimal list-inside' 
+                            : 'list-disc list-inside'
+                        }`}>
+                          {block.items?.map((item, itemIndex) => (
+                            <li key={itemIndex} className="leading-relaxed">
+                              {item}
+                            </li>
+                          ))}
+                        </ListTag>
+                      </div>
+                    );
+                  }
+                  
                   if (block.type === 'image') {
                     return (
                       <div key={index} className="w-full my-8">
