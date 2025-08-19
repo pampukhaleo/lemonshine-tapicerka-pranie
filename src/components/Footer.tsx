@@ -106,7 +106,7 @@ const Footer = () => {
             © 2025 Lemonshine. Wszystkie prawa zastrzeże.
           </div>
           <div className="flex space-x-6">
-            <a href="#" className="hover:text-lemon-400 transition-colors">Polityka prywatności</a>
+            <Link to="/polityka-prywatnosci" className="hover:text-lemon-400 transition-colors">Polityka prywatności</Link>
             <a href="#" className="hover:text-lemon-400 transition-colors">Regulamin</a>
             <a href="#" className="hover:text-lemon-400 transition-colors">Cookies</a>
           </div>
