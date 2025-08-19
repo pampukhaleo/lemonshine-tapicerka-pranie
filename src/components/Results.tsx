@@ -2,7 +2,6 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Star, ArrowRight } from 'lucide-react';
-import BeforeAfter from "@/components/BeforeAfter";
 import ReactBeforeSliderComponent from 'react-before-after-slider-component';
 import 'react-before-after-slider-component/dist/build.css';
 
@@ -15,14 +14,12 @@ const Results = () => {
   };
 
   const results = [
-    { id: 1, before: "before_after/1.jpg", after: "before_after/2.jpg" },
-    { id: 2, before: "before_after/1.jpg", after: "before_after/2.jpg" },
-    { id: 3, before: "before_after/1.jpg", after: "before_after/2.jpg" },
-    { id: 4, before: "before_after/1.jpg", after: "before_after/2.jpg" },
-    { id: 5, before: "before_after/1.jpg", after: "before_after/2.jpg" },
-    { id: 6, before: "before_after/1.jpg", after: "before_after/2.jpg" },
-    { id: 6, before: "before_after/1.jpg", after: "before_after/2.jpg" },
-    { id: 8, before: "before_after/1.jpg", after: "before_after/2.jpg" },
+    { id: 1, before: "before_after/9.jpg", after: "before_after/10.jpg" },
+    { id: 2, before: "before_after/11.jpg", after: "before_after/12.jpg" },
+    { id: 3, before: "before_after/13.jpg", after: "before_after/14.jpg" },
+    { id: 4, before: "before_after/15.jpg", after: "before_after/16.jpg" },
+    { id: 5, before: "before_after/17.jpg", after: "before_after/18.jpg" },
+    { id: 6, before: "before_after/19.jpg", after: "before_after/20.jpg" },
   ];
 
   const testimonials = [

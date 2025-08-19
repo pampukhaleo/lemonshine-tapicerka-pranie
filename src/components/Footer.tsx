@@ -36,6 +36,16 @@ const Footer = () => {
             </div>
           </div>
 
+          {/* Social media */}
+          <div className="space-y-6">
+            <h3 className="text-xl font-heading font-bold">Znajdziesz nas na:</h3>
+            <ul className="space-y-3 text-muted-foreground">
+              <li><a href="https://www.facebook.com/profile.php?id=61576970773440" className="hover:text-lemon-400 transition-colors">Facebook</a></li>
+              <li><a href="https://www.instagram.com/lemonshine_pl/" className="hover:text-lemon-400 transition-colors">Instagram</a></li>
+              <li><a href="https://www.tiktok.com/@lemonshine_pl" className="hover:text-lemon-400 transition-colors">TikTok</a></li>
+            </ul>
+          </div>
+
           {/* Quick Links */}
           <div className="space-y-6">
             <h3 className="text-xl font-heading font-bold">Szybkie Linki</h3>
