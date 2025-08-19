@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -48,7 +47,7 @@ const Results = () => {
   ];
 
   return (
-    <section className="py-16 bg-background">
+    <section id="realizacje" className="py-16 bg-background scroll-mt-28">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">

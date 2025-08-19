@@ -27,9 +27,9 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {popularItems.map((item, index) => (
-            <div key={index}   className="bg-white rounded-2xl shadow-lg p-6  duration-300 hover:-translate-y-2">
+            <div key={index} className="bg-white rounded-2xl shadow-lg p-6  duration-300 hover:-translate-y-2">
               <div className="mb-6">
                 <img
                   src={item.image}
@@ -57,6 +57,13 @@ const Services = () => {
               </Button>
             </div>
           ))}
+        </div>
+
+        {/* Minimum Order Notice */}
+        <div className="bg-lemon-100 border border-lemon-300 rounded-2xl p-6 mb-12 text-center">
+          <p className="text-lg font-bold text-foreground">
+            Minimalna kwota zamówienia wynosi 150 zł
+          </p>
         </div>
 
         <div className="text-center">
