@@ -96,7 +96,7 @@ const Hero = () => {
           {/* Hero Image Placeholder - Will generate image */ }
           <div className="text-center text-white">
             <img
-              src="lemonshine_big.png"
+              src="heroImg.webp"
               alt="Profesjonalne pranie tapicerki"
               className="mx-auto mb-4 object-contain rounded-2xl"
             />
