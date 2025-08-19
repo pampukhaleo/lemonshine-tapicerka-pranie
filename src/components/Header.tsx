@@ -22,7 +22,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" onClick={handleLogoClick} className="flex items-center space-x-2">
-            <img src="lemonshine.png" alt="lemonshine logo" className="h-8 mx-auto object-contain rounded-2xl"/>
+            <img src={`${import.meta.env.BASE_URL}lemonshine.png`} alt="lemonshine logo" className="h-8 mx-auto object-contain rounded-2xl"/>
             <span className="text-2xl font-heading font-bold text-foreground">
               Lemon<span className="text-mint-500">shine</span>
             </span>
