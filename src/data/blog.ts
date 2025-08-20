@@ -170,7 +170,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        content: 'before_after/12.jpg',
+        content: 'blogPic/lemonshine_1.webp',
         alt: 'Usuwanie plamy z kawy z tapicerki - przed i po',
         caption: 'Efekt profesjonalnego usuwania plamy z kawy'
       },
@@ -185,7 +185,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        content: 'before_after/15.jpg',
+        content: 'blogPic/lemonshine_2.webp',
         alt: 'Usuwanie plamy z krwi z tapicerki',
         caption: 'Profesjonalne czyszczenie plam z krwi wymaga specjalnych środków'
       },
@@ -227,7 +227,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        content: 'before_after/18.jpg',
+        content: 'blogPic/lemonshine_3.webp',
         alt: 'Usuwanie różnych rodzajów plam z tapicerki',
         caption: 'Różne rodzaje plam wymagają specjalistycznego podejścia'
       }

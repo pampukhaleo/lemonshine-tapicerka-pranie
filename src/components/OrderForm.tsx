@@ -86,7 +86,7 @@ const OrderForm = () => {
                         value={formData.name}
                         onChange={(e) => handleInputChange('name', e.target.value)}
                         required
-                        className="border-lemon-200 focus:border-mint-500"
+                        className="border-lemon-200"
                       />
                     </div>
 
@@ -99,7 +99,7 @@ const OrderForm = () => {
                         onChange={(e) => handleInputChange('phone', e.target.value)}
                         required
                         placeholder="+48 123 456 789"
-                        className="border-lemon-200 focus:border-mint-500"
+                        className="border-lemon-200"
                       />
                     </div>
 
@@ -111,7 +111,7 @@ const OrderForm = () => {
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
                         placeholder="twoj@email.pl"
-                        className="border-lemon-200 focus:border-mint-500"
+                        className="border-lemon-200"
                       />
                     </div>
 
@@ -123,7 +123,7 @@ const OrderForm = () => {
                         onChange={(e) => handleInputChange('address', e.target.value)}
                         required
                         placeholder="Ulica, numer, kod pocztowy, miasto"
-                        className="border-lemon-200 focus:border-mint-500"
+                        className="border-lemon-200"
                       />
                     </div>
                   </div>
@@ -138,7 +138,7 @@ const OrderForm = () => {
                     <div className="space-y-2">
                       <Label htmlFor="service">Rodzaj usługi *</Label>
                       <Select onValueChange={(value) => handleInputChange('service', value)}>
-                        <SelectTrigger className="border-lemon-200 focus:border-mint-500">
+                        <SelectTrigger className="border-lemon-200">
                           <SelectValue placeholder="Wybierz usługę" />
                         </SelectTrigger>
                         <SelectContent>
@@ -160,14 +160,14 @@ const OrderForm = () => {
                           type="date"
                           value={formData.date}
                           onChange={(e) => handleInputChange('date', e.target.value)}
-                          className="border-lemon-200 focus:border-mint-500"
+                          className="border-lemon-200"
                         />
                       </div>
 
                       <div className="space-y-2">
                         <Label htmlFor="time">Preferowana godzina</Label>
                         <Select onValueChange={(value) => handleInputChange('time', value)}>
-                          <SelectTrigger className="border-lemon-200 focus:border-mint-500">
+                          <SelectTrigger className="border-lemon-200">
                             <SelectValue placeholder="Wybierz" />
                           </SelectTrigger>
                           <SelectContent>
@@ -187,7 +187,7 @@ const OrderForm = () => {
                         value={formData.description}
                         onChange={(e) => handleInputChange('description', e.target.value)}
                         placeholder="Opisz rodzaj plam, materiał tapicerki, dodatkowe uwagi..."
-                        className="border-lemon-200 focus:border-mint-500"
+                        className="border-lemon-200"
                       />
                     </div>
                   </div>
