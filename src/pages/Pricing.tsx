@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -48,8 +47,7 @@ const Pricing = () => {
                       <span className="text-lg font-bold text-mint-600">
                         {item.price}
                       </span>
-                      <Button asChild size="sm"
-                              className="gradient-lemon-soft text-white text-xs px-3 py-1">
+                      <Button asChild size="sm" className="text-xs px-3 py-1">
                         <Link to="/#zamow">Zamów</Link>
                       </Button>
                     </div>
@@ -62,7 +60,7 @@ const Pricing = () => {
               <p className="text-muted-foreground mb-4">
                 Potrzebujesz wyceny dla czegoś innego?
               </p>
-              <Button asChild size="lg" className="gradient-lemon text-white hover:opacity-90">
+              <Button asChild size="lg" className="hover:opacity-90">
                 <Link to="/#zamow">Skontaktuj się z nami</Link>
               </Button>
             </div>

@@ -16,8 +16,8 @@
     --popover: 50 100% 99%;
     --popover-foreground: 210 15% 15%;
 
-    /* Lemon Primary - Fresh Yellow (muted) */
-    --primary: 54 100% 62%;
+    /* Updated Primary - #FFDE59 */
+    --primary: 48 100% 67%;
     --primary-foreground: 210 15% 15%;
 
     /* Fresh Green Secondary */
@@ -81,7 +81,7 @@
     --card-foreground: 50 100% 98%;
     --popover: 210 15% 10%;
     --popover-foreground: 50 100% 98%;
-    --primary: 54 100% 62%;
+    --primary: 48 100% 67%;
     --primary-foreground: 210 15% 15%;
     --secondary: 120 85% 45%;
     --secondary-foreground: 50 100% 98%;

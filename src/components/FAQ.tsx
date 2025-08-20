@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
@@ -67,7 +66,7 @@ const FAQ = () => {
               Skontaktuj się z nami bezpośrednio - chętnie udzielimy szczegółowych informacji
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button onClick={handleOrderClick} size="lg" className="gradient-lemon text-white hover:opacity-90">
+              <Button onClick={handleOrderClick} size="lg" className="hover:opacity-90">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Zadaj pytanie
               </Button>

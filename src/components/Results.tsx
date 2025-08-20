@@ -73,7 +73,7 @@ const Results = () => {
         {/* Call to Action */ }
         <div className="text-center mb-16">
           <Button onClick={ handleOrderClick } size="lg"
-                  className="gradient-lemon text-white hover:opacity-90 hover-lift">
+                  className="hover:opacity-90 hover-lift">
             Zamów pranie dla swojej tapicerki
             <ArrowRight className="w-5 h-5 ml-2"/>
           </Button>

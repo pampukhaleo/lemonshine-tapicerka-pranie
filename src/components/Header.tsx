@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, Menu, X } from 'lucide-react';
@@ -50,7 +49,7 @@ const Header = () => {
               <Phone className="w-4 h-4 mr-2"/>
               <a href="tel:+48662117886">+48 662 117 886</a>
             </Button>
-            <Button asChild className="gradient-lemon text-white hover:opacity-90">
+            <Button asChild className="hover:opacity-90">
               <Link to="/#zamow">Zamów Nasze Usługi</Link>
             </Button>
           </div>
@@ -85,7 +84,7 @@ const Header = () => {
                   <Phone className="w-4 h-4 mr-2" />
                   +48 123 456 789
                 </Button>
-                <Button asChild className="gradient-lemon text-white hover:opacity-90">
+                <Button asChild className="hover:opacity-90">
                   <Link to="/#zamow">Zamów Nasze Usługi</Link>
                 </Button>
               </div>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -147,7 +146,7 @@ const BlogPost = () => {
                   <div className="text-sm text-muted-foreground">
                     Autor: <span className="font-medium text-foreground">{post.author}</span>
                   </div>
-                  <Button asChild className="gradient-lemon text-white hover:opacity-90">
+                  <Button asChild className="hover:opacity-90">
                     <Link to="/#zamow">
                       Zamów Pranie Tapicerki
                     </Link>

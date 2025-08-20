@@ -211,7 +211,7 @@ const OrderForm = () => {
                   <Button
                     type="submit"
                     size="lg"
-                    className="gradient-lemon text-white hover:opacity-90 hover-lift px-12"
+                    className="hover:opacity-90 hover-lift px-12"
                   >
                     <Phone className="w-5 h-5 mr-2" />
                     Wyślij zamówienie

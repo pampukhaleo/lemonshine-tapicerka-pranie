@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Sparkles, Clock, Shield } from 'lucide-react';
@@ -61,7 +62,7 @@ const Hero = () => {
               <Button
                 onClick={ handleOrderClick }
                 size="lg"
-                className="w-full sm:flex-1 bg-mint-600 text-white hover:bg-mint-700 hover-lift"
+                className="w-full sm:flex-1 hover-lift"
               >
                 Zamów Pranie Tapicerki
               </Button>
@@ -93,8 +94,8 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Hero Image Placeholder - Will generate image */ }
-          <div className="text-center text-white">
+          {/* Hero Image - Hidden on mobile */ }
+          <div className="hidden md:block text-center text-white">
             <img
               src="heroImg.webp"
               alt="Profesjonalne pranie tapicerki"

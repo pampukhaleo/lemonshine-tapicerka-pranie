@@ -50,7 +50,7 @@ const Services = () => {
               </div>
               <Button 
                 onClick={handleOrderClick}
-                className="w-full bg-mint-600 hover:bg-mint-700 text-white hover:opacity-90"
+                className="w-full hover:opacity-90"
               >
                 Zamów
                 <ArrowRight className="w-4 h-4 ml-2" />
