@@ -10,6 +10,7 @@ import Blog from '@/components/Blog';
 import FAQ from '@/components/FAQ';
 import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
+import Equipment from "@/components/Equipment.tsx";
 
 const Index = () => {
   return (
@@ -21,6 +22,7 @@ const Index = () => {
         <Services />
         <OrderForm />
         <Results />
+        <Equipment />
         <Blog />
         <FAQ />
       </main>

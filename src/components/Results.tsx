@@ -3,7 +3,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Star, ArrowRight } from 'lucide-react';
 import ReactBeforeSliderComponent from 'react-before-after-slider-component';
-import Equipment from './Equipment';
 import 'react-before-after-slider-component/dist/build.css';
 
 const Results = () => {
@@ -107,9 +106,6 @@ const Results = () => {
             ))}
           </div>
         </div>
-
-        {/* Equipment Section with Parallax */}
-        <Equipment />
 
         {/* Stats */}
         <div className="mt-16 bg-gradient-to-r from-lemon-100 to-mint-100 rounded-3xl p-8">

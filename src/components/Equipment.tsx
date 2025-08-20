@@ -8,7 +8,7 @@ const Equipment = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat"
         style={{
-          backgroundImage: 'url(/lovable-uploads/4fbbfb78-218e-4a51-b560-77568a2dff7e.png)',
+          backgroundImage: 'url(IMG_6664.JPG)',
         }}
       >
         {/* Dark overlay for better text readability */}
