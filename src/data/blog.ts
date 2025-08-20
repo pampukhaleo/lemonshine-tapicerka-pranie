@@ -144,4 +144,93 @@ export const blogPosts: BlogPost[] = [
       }
     ]
   },
+  {
+    id: 3,
+    slug: 'rodzaje-plam-na-tapicerce-jak-sobie-z-nimi-poradzic',
+    title: 'Rodzaje plam na tapicerce. Jak sobie z nimi poradzić?',
+    subtitle: 'Przewodnik po najczęstszych plamach i skutecznych metodach ich usuwania.',
+    excerpt: 'Plamy na tapicerce to codzienność w domach z dziećmi i zwierzętami. Dowiedz się, z którymi plamami poradzisz się sam, a kiedy lepiej wezwać profesjonalistów.',
+    author: 'Ekspert Lemonshine',
+    date: '2025-08-20',
+    category: 'Porady',
+    readTime: '9 min',
+    content: [
+      {
+        type: 'paragraph',
+        content: 'Plamy na tapicerce - to codzienność, szczególnie w domach z dziećmi, zwierzętami albo wśród miłośników kawy i słodyczy. W tym artykule dowiesz się, z jakimi plamami da się poradzić domowymi sposobami, a kiedy lepiej nie ryzykować i wezwać profesjonalną pomoc.'
+      },
+      {
+        type: 'heading',
+        content: 'Plama z kawy',
+        level: 2
+      },
+      {
+        type: 'paragraph',
+        content: 'Plamy z kawy należą do jednych z najczęstszych i najbardziej uporczywych zabrudzeń na tapicerce. Zawierają taniny, które wnikają głęboko w strukturę tkaniny i mogą powodować trwałe przebarwienia. Czas reakcji jest tutaj kluczowy – im szybciej zareagujemy, tym większa szansa na całkowite usunięcie śladu. Najlepiej unikać gorącej wody – może ona utrwalić plamę. W warunkach domowych warto użyć chłodnej wody z dodatkiem łagodnego detergentu, ale przy zaschniętych lub wielowarstwowych zabrudzeniach pomoc specjalisty może okazać się niezbędna.'
+      },
+      {
+        type: 'image',
+        content: 'before_after/12.jpg',
+        alt: 'Usuwanie plamy z kawy z tapicerki - przed i po',
+        caption: 'Efekt profesjonalnego usuwania plamy z kawy'
+      },
+      {
+        type: 'heading',
+        content: 'Plama z krwi',
+        level: 2
+      },
+      {
+        type: 'paragraph',
+        content: 'Krew to białko – a białka pod wpływem ciepła się ścinają. Dlatego najważniejszą zasadą przy tego typu plamach jest unikanie ciepłej lub gorącej wody, która tylko pogłębi problem. Świeżą plamę najlepiej delikatnie osuszyć papierowym ręcznikiem, a następnie przemyć zimną wodą z odrobiną mydła. Starsze plamy z krwi są trudne do usunięcia bez odpowiednich enzymatycznych środków czyszczących, które rozkładają białko i pomagają w usunięciu tego typu plam.'
+      },
+      {
+        type: 'image',
+        content: 'before_after/15.jpg',
+        alt: 'Usuwanie plamy z krwi z tapicerki',
+        caption: 'Profesjonalne czyszczenie plam z krwi wymaga specjalnych środków'
+      },
+      {
+        type: 'heading',
+        content: 'Plama z moczu',
+        level: 2
+      },
+      {
+        type: 'paragraph',
+        content: 'Plamy z moczu – szczególnie zwierzęcego – są problematyczne nie tylko ze względu na wygląd, ale przede wszystkim na zapach. Mocz wnika w głąb struktury tapicerki i przy nieprawidłowym czyszczeniu może powodować powracający zapach amoniaku. Domowe sposoby często jedynie maskują problem. Profesjonalne środki z enzymami nie tylko rozkładają plamę, ale neutralizują zapachy. Warto działać szybko, zanim płyn zdąży wyschnąć i wniknąć głębiej. Polecamy jak najszybciej zwrócić się do specjalisty, gdy plama z moczu pojawi się na tapicerce.'
+      },
+      {
+        type: 'heading',
+        content: 'Plama z czekolady',
+        level: 2
+      },
+      {
+        type: 'paragraph',
+        content: 'Czekolada łączy w sobie tłuszcz, cukier i barwniki, co czyni ją wyjątkowo złożonym przeciwnikiem. Pocieranie na sucho może tylko pogorszyć sytuację – cząsteczki tłuszczu wnikają wtedy głębiej. Jeśli plama jest świeża, najlepiej delikatnie usunąć jej nadmiar łyżeczką, a następnie przemyć tkaninę zimną wodą. Starsze ślady wymagają działania środkiem tłuszczowym oraz środkiem do rozpuszczania cukru. W przypadku jasnych materiałów może być konieczne zastosowanie środka o właściwościach oksydacyjnych.'
+      },
+      {
+        type: 'heading',
+        content: 'Plama z czerwonego wina',
+        level: 2
+      },
+      {
+        type: 'paragraph',
+        content: 'Plamy z czerwonego wina to jedne z najbardziej uporczywych. Zawierają silne barwniki pochodzenia naturalnego (antocyjany), które głęboko wnikają w strukturę materiału. Jeśli nie zareagujemy natychmiast, mogą pozostać na tapicerce na stałe. Trik z zasypaniem plamy solą działa jedynie wtedy, gdy reagujemy natychmiast — sól absorbuje część cieczy, ale nie usuwa barwnika. W praktyce domowe metody rzadko dają zadowalające efekty. Wino często wymaga użycia kwaśnych środków do usuwania barwników. Plamy z czerwonego wina na jasnej tapicerce to jeden z najczęstszych powodów zgłoszeń do profesjonalnych firm czyszczących.'
+      },
+      {
+        type: 'heading',
+        content: 'Plama z atramentu, długopisu, markera',
+        level: 2
+      },
+      {
+        type: 'paragraph',
+        content: 'Plamy po tuszu i długopisach to najczęstszy problem w domach z dziećmi. Tusz zawiera bardzo intensywne pigmenty i alkohole, które natychmiast barwią materiał. Przypadkowe narysowanie linii na kanapie może stać się permanentnym problemem, jeśli nie zareagujemy odpowiednio. Zwykła woda nic nie zdziała — potrzeba rozpuszczalników lub specjalnych preparatów do barwników. Zmywacz do paznokci (aceton) może pomóc, ale nie zalecamy go stosować, gdzyż istnieje duże ryzyko uszkodzenia materiału.'
+      },
+      {
+        type: 'image',
+        content: 'before_after/18.jpg',
+        alt: 'Usuwanie różnych rodzajów plam z tapicerki',
+        caption: 'Różne rodzaje plam wymagają specjalistycznego podejścia'
+      }
+    ]
+  }
 ];
