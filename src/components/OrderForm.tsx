@@ -229,7 +229,9 @@ const OrderForm = () => {
             <div className="text-center p-4 bg-white/80 rounded-lg">
               <Phone className="w-8 h-8 mx-auto mb-2 text-mint-500" />
               <div className="font-semibold">Telefon</div>
-              <div className="text-sm text-muted-foreground">+48 123 456 789</div>
+              <div className="text-sm text-muted-foreground">
+                <a href="tel:+48662117886" className="font-medium">+48 662 117 886</a>
+              </div>
             </div>
             <div className="text-center p-4 bg-white/80 rounded-lg">
               <Clock className="w-8 h-8 mx-auto mb-2 text-mint-500" />

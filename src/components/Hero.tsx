@@ -57,6 +57,22 @@ const Hero = () => {
               </div>
             </div>
 
+            {/* Trust Indicators */ }
+            <div className="flex flex-wrap justify-center items-center gap-6 pt-4">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-mint-500">500+</div>
+                <div className="text-sm text-muted-foreground">Zadowolonych klientów</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-mint-500">5★</div>
+                <div className="text-sm text-muted-foreground">Średnia ocen</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-mint-500">100%</div>
+                <div className="text-sm text-muted-foreground">Gwarancja satysfakcji</div>
+              </div>
+            </div>
+
             {/* CTA Buttons */ }
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -74,23 +90,6 @@ const Hero = () => {
               >
                 <Link to="/cennik">Zobacz Cennik</Link>
               </Button>
-            </div>
-
-
-            {/* Trust Indicators */ }
-            <div className="flex flex-wrap items-center gap-6 pt-4">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-mint-500">500+</div>
-                <div className="text-sm text-muted-foreground">Zadowolonych klientów</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-mint-500">5★</div>
-                <div className="text-sm text-muted-foreground">Średnia ocen</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-mint-500">100%</div>
-                <div className="text-sm text-muted-foreground">Gwarancja satysfakcji</div>
-              </div>
             </div>
           </div>
 

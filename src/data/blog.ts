@@ -53,7 +53,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        content: '/before_after/11.jpg',
+        content: 'blogPic/divan.jpg',
         alt: 'Mokra tapicerka po domowym czyszczeniu',
         caption: 'Tapicerka po domowym czyszczeniu może być mokra przez długi czas'
       },
