@@ -22,7 +22,7 @@ const BlogIndex = () => {
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Praktyczne porady, ciekawostki i wszystko co powinieneś wiedzieć o pielęgnacji tapicerki
             </p>
-            <Button asChild variant="outline" className="border-mint-500 text-mint-500 hover:bg-mint-50">
+            <Button asChild variant="outline" className="border-mint-600 text-mint-600 hover:bg-mint-60">
               <Link to="/">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Wróć do strony głównej
@@ -65,7 +65,7 @@ const BlogIndex = () => {
                       <User className="w-3 h-3" />
                       <span>{article.author}</span>
                     </div>
-                    <Button asChild variant="ghost" size="sm" className="text-mint-500 hover:text-mint-600 p-0">
+                    <Button asChild variant="ghost" size="sm" className="text-mint-600 hover:text-mint-700 p-0">
                       <Link to={`/blog/${article.slug}`}>
                         Czytaj więcej
                         <ArrowRight className="w-4 h-4 ml-1" />

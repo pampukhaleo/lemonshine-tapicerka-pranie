@@ -67,7 +67,7 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-lemon-400 mt-0.5" />
                 <div>
                   <a href="tel:+48662117886" className="font-medium text-background">+48 662 117 886</a>
-                  <div className="text-sm">Poniedziałek - Piątek</div>
+                  <div className="text-sm">Poniedziałek - Niedziela</div>
                 </div>
               </div>
 
@@ -82,7 +82,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
               <MapPin className="w-5 h-5 text-lemon-400 mt-0.5" />
                 <div>
-                  <div className="font-medium text-background">Opole i okolice</div>
+                  <div className="font-medium text-background">Wrocław i Opole</div>
                   <div className="text-sm">Promień 30 km</div>
                 </div>
               </div>
@@ -90,8 +90,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Clock className="w-5 h-5 text-lemon-400 mt-0.5" />
                 <div>
-                  <div className="font-medium text-background">Pn-Pt: 8:00-20:00</div>
-                  <div className="text-sm">Sb: 9:00-16:00</div>
+                  <div className="font-medium text-background">Pn-Nd: 8:00-16:00</div>
                 </div>
               </div>
             </div>

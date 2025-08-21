@@ -46,7 +46,7 @@ const FAQ = () => {
             <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="border border-lemon-200 rounded-lg px-6">
-                  <AccordionTrigger className="text-left font-semibold text-foreground hover:text-mint-500">
+                  <AccordionTrigger className="text-left font-semibold text-foreground hover:text-mint-600">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground pb-4">
@@ -70,7 +70,7 @@ const FAQ = () => {
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Zadaj pytanie
               </Button>
-              <Button size="lg" variant="outline" className="border-mint-500 text-mint-500 hover:bg-mint-50">
+              <Button size="lg" variant="outline" className="border-mint-600 text-mint-600 hover:bg-mint-50">
                 Zadzwoń: <a href="tel:+48662117886">+48 662 117 886</a>
               </Button>
             </div>

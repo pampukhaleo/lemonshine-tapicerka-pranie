@@ -59,7 +59,7 @@ const Blog = () => {
                   <User className="w-3 h-3"/>
                   <span>{ article.author }</span>
                 </div>
-                <Button asChild variant="ghost" size="sm" className="text-mint-500 hover:text-mint-600">
+                <Button asChild variant="ghost" size="sm" className="text-mint-600 hover:text-mint-700">
                   <Link to={ `/blog/${ article.slug }` }>
                     Czytaj więcej
                     <ArrowRight className="w-4 h-4 ml-1"/>
@@ -73,7 +73,7 @@ const Blog = () => {
 
         <div className="text-center mt-12">
           <Button asChild size="lg" variant="outline"
-                  className="border-mint-500 text-mint-500 hover:bg-mint-50 hover-lift">
+                  className="border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift">
             <Link to="/blog">
               Zobacz wszystkie artykuły
             </Link>

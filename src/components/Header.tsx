@@ -23,29 +23,29 @@ const Header = () => {
           <Link to="/" onClick={handleLogoClick} className="flex items-center space-x-2">
             <img src={`${import.meta.env.BASE_URL}lemonshine.png`} alt="lemonshine logo" className="h-8 mx-auto object-contain rounded-2xl"/>
             <span className="text-2xl font-heading font-bold text-foreground">
-              Lemon<span className="text-mint-500">shine</span>
+              Lemon<span className="text-mint-600">shine</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/#oferta" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+            <Link to="/#oferta" className="text-foreground hover:text-mint-600 transition-colors font-medium">
               Oferta
             </Link>
-            <Link to="/cennik" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+            <Link to="/cennik" className="text-foreground hover:text-mint-600 transition-colors font-medium">
               Cennik
             </Link>
-            <Link to="/blog" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+            <Link to="/blog" className="text-foreground hover:text-mint-600 transition-colors font-medium">
               Blog
             </Link>
-            <Link to="/#zamow" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+            <Link to="/#zamow" className="text-foreground hover:text-mint-600 transition-colors font-medium">
               Kontakt
             </Link>
           </nav>
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="border-mint-500 text-mint-500 hover:bg-mint-50">
+            <Button variant="outline" size="sm" className="border-mint-600 text-mint-600 hover:bg-mint-50">
               <Phone className="w-4 h-4 mr-2"/>
               <a href="tel:+48662117886">+48 662 117 886</a>
             </Button>
@@ -67,20 +67,20 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pt-4 border-t border-lemon-200">
             <nav className="flex flex-col space-y-4">
-              <Link to="/#oferta" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+              <Link to="/#oferta" className="text-foreground hover:text-mint-600 transition-colors font-medium">
                 Oferta
               </Link>
-              <Link to="/cennik" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+              <Link to="/cennik" className="text-foreground hover:text-mint-600 transition-colors font-medium">
                 Cennik
               </Link>
-              <Link to="/blog" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+              <Link to="/blog" className="text-foreground hover:text-mint-600 transition-colors font-medium">
                 Blog
               </Link>
-              <Link to="/#zamow" className="text-foreground hover:text-mint-500 transition-colors font-medium">
+              <Link to="/#zamow" className="text-foreground hover:text-mint-600 transition-colors font-medium">
                 Kontakt
               </Link>
               <div className="flex flex-col space-y-2 pt-4">
-                <Button variant="outline" size="sm" className="border-mint-500 text-mint-500 hover:bg-mint-50">
+                <Button variant="outline" size="sm" className="border-mint-600 text-mint-600 hover:bg-mint-50">
                   <Phone className="w-4 h-4 mr-2" />
                   +48 123 456 789
                 </Button>

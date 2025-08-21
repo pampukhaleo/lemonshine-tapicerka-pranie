@@ -75,7 +75,7 @@ const OrderForm = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold text-foreground flex items-center">
-                      <Mail className="w-5 h-5 mr-2 text-mint-500" />
+                      <Mail className="w-5 h-5 mr-2 text-mint-600" />
                       Dane kontaktowe
                     </h3>
 
@@ -131,7 +131,7 @@ const OrderForm = () => {
                   {/* Service Details */}
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold text-foreground flex items-center">
-                      <MapPin className="w-5 h-5 mr-2 text-mint-500" />
+                      <MapPin className="w-5 h-5 mr-2 text-mint-600" />
                       Szczegóły usługi
                     </h3>
 
@@ -227,21 +227,21 @@ const OrderForm = () => {
           {/* Contact Info */}
           <div className="mt-8 grid md:grid-cols-3 gap-4">
             <div className="text-center p-4 bg-white/80 rounded-lg">
-              <Phone className="w-8 h-8 mx-auto mb-2 text-mint-500" />
+              <Phone className="w-8 h-8 mx-auto mb-2 text-mint-600" />
               <div className="font-semibold">Telefon</div>
               <div className="text-sm text-muted-foreground">
                 <a href="tel:+48662117886" className="font-medium">+48 662 117 886</a>
               </div>
             </div>
             <div className="text-center p-4 bg-white/80 rounded-lg">
-              <Clock className="w-8 h-8 mx-auto mb-2 text-mint-500" />
+              <Clock className="w-8 h-8 mx-auto mb-2 text-mint-600" />
               <div className="font-semibold">Godziny pracy</div>
-              <div className="text-sm text-muted-foreground">Pn-Pt: 8:00-20:00<br />Sb: 9:00-16:00</div>
+              <div className="text-sm text-muted-foreground">Pn-Nd: 8:00-16:00</div>
             </div>
             <div className="text-center p-4 bg-white/80 rounded-lg">
-              <MapPin className="w-8 h-8 mx-auto mb-2 text-mint-500" />
+              <MapPin className="w-8 h-8 mx-auto mb-2 text-mint-600" />
               <div className="font-semibold">Obszar działania</div>
-              <div className="text-sm text-muted-foreground">Opole i okolice<br />(30 km)</div>
+              <div className="text-sm text-muted-foreground">Wrocław i Opole<br />(30 km)</div>
             </div>
           </div>
         </div>

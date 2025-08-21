@@ -23,7 +23,7 @@ const BlogPost = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             {/* Back button */}
-            <Button asChild variant="outline" className="mb-8 border-mint-500 text-mint-500 hover:bg-mint-50">
+            <Button asChild variant="outline" className="mb-8 border-mint-600 text-mint-600 hover:bg-mint-50">
               <Link to="/blog">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Wróć do bloga

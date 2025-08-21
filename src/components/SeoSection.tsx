@@ -12,10 +12,7 @@ const SeoSection = () => {
           </h4>
           <div className="text-muted-foreground text-sm leading-relaxed space-y-4">
             <p>
-              <strong>Pranie tapicerki Opole</strong> - Lemonshine to wiodąca firma specjalizująca się w 
-              profesjonalnym praniu tapicerki, kanap, foteli i dywanów w Opolu i okolicach. Nasze usługi 
-              prania tapicerki obejmują wszystkie rodzaje materiałów - od delikatnych tkanin po skórę naturalną.
-            </p>
+              Pranie tapicerki meblowej i materacy - Lemonshine to wiodąca firma specjalizująca się w profesjonalnym praniu tapicerki, kanap, foteli i dywanów w Opolu i okolicach. Nasze usługi prania tapicerki obejmują wszystkie rodzaje materiałów - od delikatnych tkanin po skórę naturalną.</p>
             <p>
               Pranie kanapy wykonujemy przy użyciu najnowocześniejszego sprzętu i bezpiecznych
               środków czyszczących. Specializujemy się w usuwaniu trudnych plam, neutralizacji zapachów oraz 

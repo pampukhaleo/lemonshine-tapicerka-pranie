@@ -28,7 +28,7 @@ const Hero = () => {
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight">
                 Profesjonalne{ ' ' }
-                <span className="text-mint-500">Pranie Tapicerki meblowej</span>{ ' ' }
+                <span className="text-mint-600">Pranie Tapicerki meblowej</span>{ ' ' }
                 w Opolu
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
@@ -40,19 +40,19 @@ const Hero = () => {
             {/* Features */ }
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-3">
-                <CheckCircle className="w-6 h-6 text-mint-500"/>
+                <CheckCircle className="w-6 h-6 text-mint-600"/>
                 <span className="text-foreground font-medium">Bezpieczne środki</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Clock className="w-6 h-6 text-mint-500"/>
+                <Clock className="w-6 h-6 text-mint-600"/>
                 <span className="text-foreground font-medium">Szybkie wysychanie</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Sparkles className="w-6 h-6 text-mint-500"/>
+                <Sparkles className="w-6 h-6 text-mint-600"/>
                 <span className="text-foreground font-medium">Skuteczne odplamianie</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Shield className="w-6 h-6 text-mint-500"/>
+                <Shield className="w-6 h-6 text-mint-600"/>
                 <span className="text-foreground font-medium">Gwarancja jakości</span>
               </div>
             </div>
@@ -60,15 +60,15 @@ const Hero = () => {
             {/* Trust Indicators */ }
             <div className="flex flex-wrap justify-center items-center gap-6 pt-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-mint-500">500+</div>
+                <div className="text-2xl font-bold text-mint-600">500+</div>
                 <div className="text-sm text-muted-foreground">Zadowolonych klientów</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-mint-500">5★</div>
+                <div className="text-2xl font-bold text-mint-600">5★</div>
                 <div className="text-sm text-muted-foreground">Średnia ocen</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-mint-500">100%</div>
+                <div className="text-2xl font-bold text-mint-600">100%</div>
                 <div className="text-sm text-muted-foreground">Gwarancja satysfakcji</div>
               </div>
             </div>
@@ -86,7 +86,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full sm:flex-1 border-mint-500 text-mint-500 hover:bg-mint-50 hover-lift"
+                className="w-full sm:flex-1 border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift"
               >
                 <Link to="/cennik">Zobacz Cennik</Link>
               </Button>
@@ -100,7 +100,7 @@ const Hero = () => {
               alt="Profesjonalne pranie tapicerki"
               className="mx-auto mb-4 object-contain rounded-2xl"
             />
-            <p className="text-lg font-medium text-black">Profesjonalne pranie tapicerki</p>
+            <p className="text-lg font-medium text-black">Profesjonalne Pranie Tapicerki meblowej i materacy</p>
             <p className="text-sm opacity-80 text-black">Najwyższa jakość usług</p>
           </div>
         </div>

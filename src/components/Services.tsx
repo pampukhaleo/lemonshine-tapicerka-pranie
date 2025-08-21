@@ -52,7 +52,7 @@ const Services = () => {
 
               {/* НИЗ карточки: цена + кнопка */ }
               <div className="mt-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div className="text-2xl font-bold text-mint-500 leading-none">
+                <div className="text-2xl font-bold text-mint-600 leading-none">
                   { item.price }
                 </div>
 
@@ -70,7 +70,7 @@ const Services = () => {
 
 
         {/* Minimum Order Notice */ }
-        <div className="border border-lemon-500 rounded-2xl p-6 mb-12 text-center">
+        <div className="border border-lemon-600 rounded-2xl p-6 mb-12 text-center">
           <p className="text-lg font-bold text-foreground">
             Minimalna kwota zamówienia wynosi 150 zł
           </p>
@@ -78,7 +78,7 @@ const Services = () => {
 
         <div className="text-center">
           <Link to="/cennik">
-            <Button variant="outline" size="lg" className="border-mint-500 text-mint-500 hover:bg-mint-50">
+            <Button variant="outline" size="lg" className="border-mint-600 text-mint-600 hover:bg-mint-50">
               Zobacz pełny cennik
               <ArrowRight className="w-4 h-4 ml-2"/>
             </Button>
