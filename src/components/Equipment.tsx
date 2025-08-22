@@ -28,11 +28,19 @@ const Equipment = () => {
 
           {/* Brand logos */}
           <div className="flex justify-center items-center gap-8 mt-12">
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
-              <span className="text-white font-bold text-xl tracking-wider">KÄRCHER</span>
+            <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+              <img 
+                src="karcher-logo.png" 
+                alt="Kärcher"
+                className="h-12 w-auto object-contain"
+              />
             </div>
-            <div className="bg-white/20 backdrop-blur-sm rounded-lg px-6 py-3">
-              <span className="text-white font-bold text-xl tracking-wider">CHEMSPEC</span>
+            <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+              <img 
+                src="chemspec-logo.png" 
+                alt="ChemSpec"
+                className="h-12 w-auto object-contain"
+              />
             </div>
           </div>
         </div>
