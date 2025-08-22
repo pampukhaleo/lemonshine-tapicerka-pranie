@@ -4,11 +4,11 @@ import { Separator } from '@/components/ui/separator';
 
 const SeoSection = () => {
   return (
-    <section className="text-background py-16">
+    <section className="py-16">
       <div className="container mx-auto px-4">
         <div className="space-y-6">
           <h4 className="text-lg font-heading font-semibold">
-            Profesjonalne Pranie Tapicerki w Opolu - Lemonshine
+            Profesjonalne pranie tapicerki we Wrocławiu i Opole - Lemonshine
           </h4>
           <div className="text-muted-foreground text-sm leading-relaxed space-y-4">
             <p>

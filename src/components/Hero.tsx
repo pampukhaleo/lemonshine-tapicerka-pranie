@@ -28,8 +28,8 @@ const Hero = () => {
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground leading-tight">
                 Profesjonalne{ ' ' }
-                <span className="text-mint-600">Pranie Tapicerki meblowej</span>{ ' ' }
-                w Opolu
+                <span className="text-mint-600">Pranie Tapicerki</span>{ ' ' }
+                meblowej i materacy
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 Usuwamy plamy, alergeny i nieprzyjemny zapach z kanap i materacy. Gwarancja widocznego efektu już po
@@ -100,8 +100,6 @@ const Hero = () => {
               alt="Profesjonalne pranie tapicerki"
               className="mx-auto mb-4 object-contain rounded-2xl"
             />
-            <p className="text-lg font-medium text-black">Profesjonalne Pranie Tapicerki meblowej i materacy</p>
-            <p className="text-sm opacity-80 text-black">Najwyższa jakość usług</p>
           </div>
         </div>
       </div>

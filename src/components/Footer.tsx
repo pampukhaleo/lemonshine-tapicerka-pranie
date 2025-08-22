@@ -18,7 +18,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-muted-foreground">
-              Profesjonalne pranie tapicerki w Opolu i okolicach. 
+              Profesjonalne pranie tapicerki we Wrocławiu i Opole.
               Przywracamy świeżość Twoim meblom z gwarancją najwyższej jakości.
             </p>
             <div className="flex space-x-4">
