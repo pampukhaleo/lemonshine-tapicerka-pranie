@@ -25,14 +25,7 @@ const Blog = () => {
               key={ article.id }
               className="border-0 shadow-lg hover-lift bg-white overflow-hidden h-full flex flex-col"
             >
-              <div className="aspect-video gradient-hero p-6">
-                <div className="w-full h-full bg-white/20 rounded-lg flex items-center justify-center">
-                  <div className="text-center text-foreground">
-                    <div className="text-3xl mb-2">📝</div>
-                    <div className="text-sm font-medium">{ article.category }</div>
-                  </div>
-                </div>
-              </div>
+              <img src={ article.mainPicture } alt={ article.title }/>
 
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between text-sm text-muted-foreground mb-2 leading-5 min-h-5">

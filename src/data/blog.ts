@@ -19,6 +19,7 @@ export interface BlogPost {
   category: string;
   readTime: string;
   content: ContentBlock[];
+  mainPicture: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -32,6 +33,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-01-20',
     category: 'Porady',
     readTime: '6 min',
+    mainPicture: 'Czy_warto_samemu_prac_tapicerke_meblowa.jpg',
     content: [
       {
         type: 'paragraph',
@@ -76,6 +78,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-01-18',
     category: 'Problemy',
     readTime: '8 min',
+    mainPicture: 'Plama_wraca_po_praniu_kanapy_Najczestsze_przyczyny.jpg',
     content: [
       {
         type: 'paragraph',
@@ -154,6 +157,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-08-20',
     category: 'Porady',
     readTime: '9 min',
+    mainPicture: 'Rodzaje_plam.jpg',
     content: [
       {
         type: 'paragraph',
