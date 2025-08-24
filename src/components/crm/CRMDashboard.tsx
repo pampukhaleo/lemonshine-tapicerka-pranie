@@ -33,7 +33,7 @@ export const CRMDashboard = () => {
 
   const fetchLeads = async () => {
     try {
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from('leads')
         .select('*')
         .order('created_at', { ascending: false });
@@ -53,7 +53,7 @@ export const CRMDashboard = () => {
 
   const updateLeadStatus = async (leadId: string, status: Lead['status']) => {
     try {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from('leads')
         .update({ status })
         .eq('id', leadId);

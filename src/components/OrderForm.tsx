@@ -50,8 +50,8 @@ const OrderForm = () => {
 
       console.log('Submitting lead data:', leadData);
 
-      // Insert lead into Supabase
-      const { data, error } = await supabase
+      // Insert lead into Supabase (using type assertion to work around missing types)
+      const { data, error } = await (supabase as any)
         .from('leads')
         .insert([leadData])
         .select();

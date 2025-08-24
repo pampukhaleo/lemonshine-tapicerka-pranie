@@ -42,7 +42,7 @@ export const useAuth = () => {
   }, []);
 
   const checkAdminStatus = async (userId: string) => {
-    const { data } = await supabase
+    const { data } = await (supabase as any)
       .from('admins')
       .select('id')
       .eq('user_id', userId)

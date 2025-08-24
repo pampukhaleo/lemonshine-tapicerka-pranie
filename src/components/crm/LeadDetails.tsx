@@ -57,7 +57,7 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
     if (!lead) return;
 
     try {
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from('lead_notes')
         .select('*')
         .eq('lead_id', lead.id)
@@ -79,7 +79,7 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
 
     setAddingNote(true);
     try {
-      const { error } = await supabase
+      const { error } = await (supabase as any)
         .from('lead_notes')
         .insert([{
           lead_id: lead.id,
