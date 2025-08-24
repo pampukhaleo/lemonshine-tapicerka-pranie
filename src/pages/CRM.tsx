@@ -1,0 +1,50 @@
+
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '@/hooks/useAuth';
+import { CRMLogin } from '@/components/crm/CRMLogin';
+import { CRMDashboard } from '@/components/crm/CRMDashboard';
+import { Button } from '@/components/ui/button';
+import { LogOut } from 'lucide-react';
+
+const CRM = () => {
+  const { user, loading, isAdmin, signOut } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-mint-600"></div>
+      </div>
+    );
+  }
+
+  if (!user || !isAdmin) {
+    return <CRMLogin />;
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <header className="bg-white shadow">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-6">
+            <h1 className="text-3xl font-bold text-gray-900">
+              LemonShine CRM
+            </h1>
+            <Button
+              variant="outline"
+              onClick={() => signOut()}
+              className="flex items-center"
+            >
+              <LogOut className="w-4 h-4 mr-2" />
+              Wyloguj się
+            </Button>
+          </div>
+        </div>
+      </header>
+      <main>
+        <CRMDashboard />
+      </main>
+    </div>
+  );
+};
+
+export default CRM;

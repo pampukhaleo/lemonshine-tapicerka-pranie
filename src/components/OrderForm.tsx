@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -8,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
 
 const OrderForm = () => {
   const [formData, setFormData] = useState({
@@ -22,29 +24,66 @@ const OrderForm = () => {
     consent: false
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.consent) {
       toast.error('Musisz wyrazić zgodę na przetwarzanie danych osobowych');
       return;
     }
     
-    // Here would be integration with Telegram bot
-    console.log('Form submitted:', formData);
-    toast.success('Dziękujemy! Skontaktujemy się z Tobą w ciągu 30 minut.');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      phone: '',
-      email: '',
-      address: '',
-      service: '',
-      date: '',
-      time: '',
-      description: '',
-      consent: false
-    });
+    setIsSubmitting(true);
+
+    try {
+      // Prepare data for database
+      const leadData = {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email || null,
+        address: formData.address,
+        service: formData.service,
+        preferred_date: formData.date || null,
+        preferred_time: formData.time || null,
+        description: formData.description || null,
+      };
+
+      console.log('Submitting lead data:', leadData);
+
+      // Insert lead into Supabase
+      const { data, error } = await supabase
+        .from('leads')
+        .insert([leadData])
+        .select();
+
+      if (error) {
+        console.error('Database error:', error);
+        toast.error('Wystąpił błąd podczas zapisywania. Spróbuj ponownie.');
+        return;
+      }
+
+      console.log('Lead created successfully:', data);
+      toast.success('Dziękujemy! Skontaktujemy się z Tobą w ciągu 30 minut.');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        address: '',
+        service: '',
+        date: '',
+        time: '',
+        description: '',
+        consent: false
+      });
+
+    } catch (error) {
+      console.error('Submission error:', error);
+      toast.error('Wystąpił błąd podczas wysyłania formularza.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string | boolean) => {
@@ -137,7 +176,7 @@ const OrderForm = () => {
 
                     <div className="space-y-2">
                       <Label htmlFor="service">Rodzaj usługi *</Label>
-                      <Select onValueChange={(value) => handleInputChange('service', value)}>
+                      <Select onValueChange={(value) => handleInputChange('service', value)} value={formData.service}>
                         <SelectTrigger className="border-lemon-200">
                           <SelectValue placeholder="Wybierz usługę" />
                         </SelectTrigger>
@@ -166,7 +205,7 @@ const OrderForm = () => {
 
                       <div className="space-y-2">
                         <Label htmlFor="time">Preferowana godzina</Label>
-                        <Select onValueChange={(value) => handleInputChange('time', value)}>
+                        <Select onValueChange={(value) => handleInputChange('time', value)} value={formData.time}>
                           <SelectTrigger className="border-lemon-200">
                             <SelectValue placeholder="Wybierz" />
                           </SelectTrigger>
@@ -212,9 +251,10 @@ const OrderForm = () => {
                     type="submit"
                     size="lg"
                     className="hover:opacity-90 hover-lift px-12"
+                    disabled={isSubmitting}
                   >
                     <Phone className="w-5 h-5 mr-2" />
-                    Wyślij zamówienie
+                    {isSubmitting ? 'Wysyłanie...' : 'Wyślij zamówienie'}
                   </Button>
                   <p className="text-sm text-muted-foreground mt-2">
                     Wktórce się z Tobą kontaktujemy!

@@ -1,40 +1,31 @@
 
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Helmet } from 'react-helmet-async';
+import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { HelmetProvider } from 'react-helmet-async';
-import ScrollToTop from "@/components/ScrollToTop";
-import Index from "./pages/Index";
-import BlogIndex from "./pages/BlogIndex";
-import BlogPost from "./pages/BlogPost";
-import Pricing from "./pages/Pricing";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import NotFound from "./pages/NotFound";
+import { navItems } from "./nav-items";
+import "./App.css";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <HelmetProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/blog" element={<BlogIndex />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/cennik" element={<Pricing />} />
-            <Route path="/polityka-prywatnosci" element={<PrivacyPolicy />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </HelmetProvider>
+    <TooltipProvider>
+      <Toaster />
+      <Helmet>
+        <title>LemonShine - Profesjonalne Pranie Tapicerki we Wrocławiu</title>
+        <meta name="description" content="Profesjonalne pranie tapicerki meblowej we Wrocławiu. Usuwamy plamy, odświeżamy kolory. Najlepsze efekty prania kanap, foteli i dywanów." />
+        <link rel="canonical" href="https://lemonshine.pl" />
+      </Helmet>
+      <BrowserRouter>
+        <Routes>
+          {navItems.map(({ to, page }) => (
+            <Route key={to} path={to} element={page} />
+          ))}
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
   </QueryClientProvider>
 );
 
