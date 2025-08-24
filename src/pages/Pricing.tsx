@@ -1,15 +1,23 @@
+
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 import { pricingItems } from '@/data/pricing';
 import { Link } from 'react-router-dom';
 
 const Pricing = () => {
   return (
     <div className="min-h-screen">
+      <SEOHead 
+        title="Cennik Prania Tapicerki - Opole, Wrocław"
+        description="Sprawdź nasze konkurencyjne ceny prania tapicerki meblowej. Czyszczenie kanap, foteli, narożników i materacy w Opolu i Wrocławiu."
+        keywords="cennik prania tapicerki, ceny czyszczenia kanap, pranie tapicerki opole ceny, pranie tapicerki wrocław ceny"
+        canonical="https://lemonshine.pl/cennik"
+      />
       <Header />
       <main className="pt-20">
         <section className="py-16 bg-background">

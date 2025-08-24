@@ -3,10 +3,16 @@ import React from 'react';
 import Header from '@/components/Header';
 import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen">
+      <SEOHead 
+        title="Polityka Prywatności"
+        description="Polityka prywatności LemonShine - informacje o przetwarzaniu danych osobowych podczas korzystania z naszych usług prania tapicerki."
+        canonical="https://lemonshine.pl/polityka-prywatnosci"
+      />
       <Header />
       <main className="pt-20">
         <section className="py-16 bg-background">

@@ -11,10 +11,14 @@ import FAQ from '@/components/FAQ';
 import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
 import Equipment from "@/components/Equipment.tsx";
+import SEOHead from '@/components/SEOHead';
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <SEOHead 
+        canonical="https://lemonshine.pl/"
+      />
       <Header />
       <main>
         <Hero />
