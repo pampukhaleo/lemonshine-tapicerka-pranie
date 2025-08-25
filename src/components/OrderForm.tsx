@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -50,11 +49,10 @@ const OrderForm = () => {
 
       console.log('Submitting lead data:', leadData);
 
-      // Insert lead into Supabase (using type assertion to work around missing types)
-      const { data, error } = await (supabase as any)
+      // Insert lead into Supabase without selecting data back
+      const { error } = await supabase
         .from('leads')
-        .insert([leadData])
-        .select();
+        .insert(leadData);
 
       if (error) {
         console.error('Database error:', error);
@@ -62,7 +60,7 @@ const OrderForm = () => {
         return;
       }
 
-      console.log('Lead created successfully:', data);
+      console.log('Lead created successfully');
       toast.success('Dziękujemy! Skontaktujemy się z Tobą w ciągu 30 minut.');
       
       // Reset form
