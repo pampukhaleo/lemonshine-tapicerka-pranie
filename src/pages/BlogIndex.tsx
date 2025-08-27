@@ -33,15 +33,8 @@ const BlogIndex = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((article) => (
               <Card key={article.id} className="border-0 shadow-lg hover-lift bg-white overflow-hidden">
-                <div className="aspect-video gradient-hero p-6">
-                  <div className="w-full h-full bg-white/20 rounded-lg flex items-center justify-center">
-                    <div className="text-center text-foreground">
-                      <div className="text-3xl mb-2">📝</div>
-                      <div className="text-sm font-medium">{article.category}</div>
-                    </div>
-                  </div>
-                </div>
-                
+                <img src={ `${ import.meta.env.BASE_URL }${ article.mainPicture }` } alt={ article.title }/>
+
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between text-sm text-muted-foreground mb-2">
                     <div className="flex items-center space-x-1">

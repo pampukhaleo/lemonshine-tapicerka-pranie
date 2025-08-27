@@ -34,117 +34,112 @@ const BlogPost = () => {
             <article className="prose prose-lg max-w-none">
               <div className="text-center space-y-4 mb-12">
                 <div className="inline-block px-3 py-1 bg-mint-100 text-mint-700 text-sm rounded-full font-medium">
-                  {post.category}
+                  { post.category }
                 </div>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-foreground leading-tight">
-                  {post.title}
+                  { post.title }
                 </h1>
-                {post.subtitle && (
+                { post.subtitle && (
                   <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                    {post.subtitle}
+                    { post.subtitle }
                   </p>
-                )}
-                
+                ) }
+
                 <div className="flex flex-wrap items-center justify-center gap-6 text-muted-foreground">
                   <div className="flex items-center space-x-2">
-                    <User className="w-4 h-4" />
-                    <span>{post.author}</span>
+                    <User className="w-4 h-4"/>
+                    <span>{ post.author }</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Calendar className="w-4 h-4" />
-                    <span>{new Date(post.date).toLocaleDateString('pl-PL')}</span>
+                    <Calendar className="w-4 h-4"/>
+                    <span>{ new Date(post.date).toLocaleDateString('pl-PL') }</span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <Clock className="w-4 h-4" />
-                    <span>{post.readTime}</span>
+                    <Clock className="w-4 h-4"/>
+                    <span>{ post.readTime }</span>
                   </div>
                 </div>
               </div>
 
-              {/* Article hero image */}
-              <div className="aspect-video gradient-hero p-8 rounded-2xl mb-12">
-                <div className="w-full h-full bg-white/20 rounded-lg flex items-center justify-center">
-                  <div className="text-center text-foreground">
-                    <div className="text-6xl mb-4">📝</div>
-                    <div className="text-xl font-medium">{post.category}</div>
-                  </div>
-                </div>
+              {/* Article hero image */ }
+              <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg mb-5">
+                <img src={ `${ import.meta.env.BASE_URL }${ post.mainPicture }` } alt={ post.title }/>
               </div>
 
-              {/* Article content */}
+              {/* Article content */ }
               <div className="space-y-8">
-                {post.content.map((block, index) => {
+                { post.content.map((block, index) => {
                   if (block.type === 'paragraph') {
                     return (
-                      <p key={index} className="text-lg leading-relaxed text-foreground">
-                        {block.content}
+                      <p key={ index } className="text-lg leading-relaxed text-foreground">
+                        { block.content }
                       </p>
                     );
                   }
-                  
+
                   if (block.type === 'heading') {
-                    const HeadingTag = `h${block.level || 2}` as keyof JSX.IntrinsicElements;
+                    const HeadingTag = `h${ block.level || 2 }` as keyof JSX.IntrinsicElements;
                     return (
-                      <HeadingTag 
-                        key={index} 
+                      <HeadingTag
+                        key={ index }
                         className="text-2xl md:text-3xl font-heading font-bold text-foreground mt-12 mb-6 first:mt-8"
                       >
-                        {block.content}
+                        { block.content }
                       </HeadingTag>
                     );
                   }
-                  
+
                   if (block.type === 'list') {
                     const ListTag = block.listType === 'ordered' ? 'ol' : 'ul';
                     return (
-                      <div key={index} className="my-6">
-                        <ListTag className={`space-y-3 text-lg leading-relaxed text-foreground ${
-                          block.listType === 'ordered' 
-                            ? 'list-decimal list-inside' 
+                      <div key={ index } className="my-6">
+                        <ListTag className={ `space-y-3 text-lg leading-relaxed text-foreground ${
+                          block.listType === 'ordered'
+                            ? 'list-decimal list-inside'
                             : 'list-disc list-inside'
-                        }`}>
-                          {block.items?.map((item, itemIndex) => (
-                            <li key={itemIndex} className="leading-relaxed">
-                              {item}
+                        }` }>
+                          { block.items?.map((item, itemIndex) => (
+                            <li key={ itemIndex } className="leading-relaxed">
+                              { item }
                             </li>
-                          ))}
+                          )) }
                         </ListTag>
                       </div>
                     );
                   }
-                  
+
                   if (block.type === 'image') {
                     return (
-                      <div key={index} className="w-full my-8">
+                      <div key={ index } className="w-full my-8">
                         <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg">
                           <img
-                            src={`${import.meta.env.BASE_URL}${block.content}`}
-                            alt={block.alt || 'Artykuł o czyszczeniu tapicerki'}
+                            src={ `${ import.meta.env.BASE_URL }${ block.content }` }
+                            alt={ block.alt || 'Artykuł o czyszczeniu tapicerki' }
                             className="w-full h-full object-cover"
-                            onError={(e) => {
+                            onError={ (e) => {
                               const target = e.target as HTMLImageElement;
                               target.src = '/placeholder.svg';
-                            }}
+                            } }
                           />
                         </div>
-                        {block.caption && (
+                        { block.caption && (
                           <p className="text-sm text-muted-foreground text-center mt-3 italic">
-                            {block.caption}
+                            { block.caption }
                           </p>
-                        )}
+                        ) }
                       </div>
                     );
                   }
-                  
+
                   return null;
-                })}
+                }) }
               </div>
 
-              {/* Article footer */}
+              {/* Article footer */ }
               <div className="border-t border-gray-200 pt-8 mt-12">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="text-sm text-muted-foreground">
-                    Autor: <span className="font-medium text-foreground">{post.author}</span>
+                    Autor: <span className="font-medium text-foreground">{ post.author }</span>
                   </div>
                   <Button asChild className="hover:opacity-90">
                     <Link to="/#zamow">
@@ -157,8 +152,8 @@ const BlogPost = () => {
           </div>
         </div>
       </main>
-      <SeoSection />
-      <Footer />
+      <SeoSection/>
+      <Footer/>
     </div>
   );
 };
