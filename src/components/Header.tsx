@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, Menu, X } from 'lucide-react';
@@ -45,9 +46,11 @@ const Header = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="border-mint-600 text-mint-600 hover:bg-mint-50">
-              <Phone className="w-4 h-4 mr-2"/>
-              <a href="tel:+48662117886">+48 662 117 886</a>
+            <Button variant="outline" size="sm" className="border-mint-600 text-mint-600 hover:bg-mint-50" asChild>
+              <a href="tel:+48662117886">
+                <Phone className="w-4 h-4 mr-2"/>
+                +48 662 117 886
+              </a>
             </Button>
             <Button asChild className="hover:opacity-90">
               <Link to="/#zamow">Zamów Nasze Usługi</Link>
@@ -80,9 +83,11 @@ const Header = () => {
                 Kontakt
               </Link>
               <div className="flex flex-col space-y-2 pt-4">
-                <Button variant="outline" size="sm" className="border-mint-600 text-mint-600 hover:bg-mint-50">
-                  <Phone className="w-4 h-4 mr-2" />
-                  +48 123 456 789
+                <Button variant="outline" size="sm" className="border-mint-600 text-mint-600 hover:bg-mint-50" asChild>
+                  <a href="tel:+48662117886">
+                    <Phone className="w-4 h-4 mr-2" />
+                    +48 662 117 886
+                  </a>
                 </Button>
                 <Button asChild className="hover:opacity-90">
                   <Link to="/#zamow">Zamów Nasze Usługi</Link>

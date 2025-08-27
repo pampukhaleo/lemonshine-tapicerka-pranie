@@ -68,7 +68,6 @@ const Services = () => {
           )) }
         </div>
 
-
         {/* Minimum Order Notice */ }
         <div className="border border-lemon-600 rounded-2xl p-6 mb-12 text-center">
           <p className="text-lg font-bold text-foreground">
@@ -77,12 +76,12 @@ const Services = () => {
         </div>
 
         <div className="text-center">
-          <Link to="/cennik">
-            <Button variant="outline" size="lg" className="border-mint-600 text-mint-600 hover:bg-mint-50">
+          <Button variant="outline" size="lg" className="border-mint-600 text-mint-600 hover:bg-mint-50" asChild>
+            <Link to="/cennik">
               Zobacz pełny cennik
               <ArrowRight className="w-4 h-4 ml-2"/>
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
