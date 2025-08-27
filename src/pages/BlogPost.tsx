@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
 import NotFound from './NotFound';
+import SEOHead from '@/components/SEOHead';
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -16,8 +17,65 @@ const BlogPost = () => {
     return <NotFound />;
   }
 
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": `https://lemonshine.pl/${post.mainPicture}`,
+    "author": {
+      "@type": "Person",
+      "name": post.author
+    },
+    "datePublished": new Date(post.date).toISOString(),
+    "mainEntityOfPage": `https://lemonshine.pl/blog/${post.slug}`,
+    "articleSection": post.category,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lemonshine",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://lemonshine.pl/lemonshine.png"
+      }
+    }
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Strona główna",
+        "item": "https://lemonshine.pl/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://lemonshine.pl/blog"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": `https://lemonshine.pl/blog/${post.slug}`
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen">
+      <SEOHead 
+        title={post.title}
+        description={post.excerpt}
+        keywords={`${post.title}, pranie tapicerki, czyszczenie kanap, ${post.category.toLowerCase()}`}
+        canonical={`https://lemonshine.pl/blog/${post.slug}`}
+        ogImage={`https://lemonshine.pl/${post.mainPicture}`}
+        ogType="article"
+        jsonLd={[blogPostingJsonLd, breadcrumbJsonLd]}
+      />
       <Header />
       <main className="pt-28 pb-16">
         <div className="container mx-auto px-4">

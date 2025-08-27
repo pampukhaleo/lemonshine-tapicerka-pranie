@@ -5,6 +5,7 @@ import { CRMLogin } from '@/components/crm/CRMLogin';
 import { CRMDashboard } from '@/components/crm/CRMDashboard';
 import { Button } from '@/components/ui/button';
 import { LogOut } from 'lucide-react';
+import SEOHead from '@/components/SEOHead';
 
 const CRM = () => {
   const { user, loading, isAdmin, signOut } = useAuth();
@@ -23,6 +24,11 @@ const CRM = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEOHead 
+        title="CRM System"
+        description="System zarządzania klientami"
+        robots="noindex,nofollow"
+      />
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">

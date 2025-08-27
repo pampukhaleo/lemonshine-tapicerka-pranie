@@ -8,10 +8,38 @@ import { blogPosts } from '@/data/blog';
 import Header from '@/components/Header';
 import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
 
 const BlogIndex = () => {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Strona główna",
+        "item": "https://lemonshine.pl/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog o praniu tapicerki",
+        "item": "https://lemonshine.pl/blog"
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen">
+      <SEOHead 
+        title="Blog o praniu tapicerki – porady i artykuły"
+        description="Praktyczne porady o pielęgnacji tapicerki, usuwaniu plam i czyszczeniu mebli. Dowiedz się więcej o profesjonalnym praniu kanap i foteli."
+        keywords="blog pranie tapicerki, porady czyszczenie kanap, jak usunąć plamy z tapicerki, pielęgnacja mebli tapicerowanych"
+        canonical="https://lemonshine.pl/blog"
+        ogType="website"
+        jsonLd={breadcrumbJsonLd}
+      />
       <Header />
       <main className="pt-28 pb-16">
         <div className="container mx-auto px-4">

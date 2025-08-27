@@ -10,6 +10,28 @@ import { pricingItems } from '@/data/pricing';
 import { Link } from 'react-router-dom';
 
 const Pricing = () => {
+  const offerCatalogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    "name": "Cennik usług prania tapicerki - Lemonshine",
+    "itemListElement": pricingItems.map((item, index) => ({
+      "@type": "Offer",
+      "position": index + 1,
+      "itemOffered": {
+        "@type": "Service",
+        "name": item.name,
+        "description": item.subtitle || `Profesjonalne pranie: ${item.name}`
+      },
+      "priceCurrency": "PLN",
+      "price": item.price.replace(/[^\d]/g, '') || "0",
+      "priceSpecification": {
+        "@type": "PriceSpecification",
+        "price": item.price.replace(/[^\d]/g, '') || "0",
+        "priceCurrency": "PLN"
+      }
+    }))
+  };
+
   return (
     <div className="min-h-screen">
       <SEOHead 
@@ -17,6 +39,7 @@ const Pricing = () => {
         description="Sprawdź nasze konkurencyjne ceny prania tapicerki meblowej. Czyszczenie kanap, foteli, narożników i materacy w Opolu i Wrocławiu."
         keywords="cennik prania tapicerki, ceny czyszczenia kanap, pranie tapicerki opole ceny, pranie tapicerki wrocław ceny"
         canonical="https://lemonshine.pl/cennik"
+        jsonLd={offerCatalogJsonLd}
       />
       <Header />
       <main className="pt-20">
