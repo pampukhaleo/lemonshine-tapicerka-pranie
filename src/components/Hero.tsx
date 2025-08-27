@@ -97,7 +97,7 @@ const Hero = () => {
           {/* Hero Image - Hidden on mobile */ }
           <div className="hidden md:block text-center text-white">
             <img
-              src="heroImg.webp"
+              src={`${import.meta.env.BASE_URL}/heroImg.webp`}
               alt="Profesjonalne pranie tapicerki"
               className="mx-auto mb-4 object-contain rounded-2xl"
             />

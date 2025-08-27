@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <img src={`${import.meta.env.BASE_URL}lemonshine.png`} alt="lemonshine logo" className="h-8 object-contain rounded-2xl"/>
+              <img src={`${import.meta.env.BASE_URL}/lemonshine.png`} alt="lemonshine logo" className="h-8 object-contain rounded-2xl"/>
               <span className="text-2xl font-heading font-bold">
                 <span className="text-lemon-400">Lemon</span>shine
               </span>

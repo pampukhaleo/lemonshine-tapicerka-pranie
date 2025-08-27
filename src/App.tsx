@@ -18,7 +18,7 @@ const App = () => (
         <meta name="description" content="Profesjonalne pranie tapicerki meblowej we Wrocławiu. Usuwamy plamy, odświeżamy kolory. Najlepsze efekty prania kanap, foteli i dywanów." />
         <link rel="canonical" href="https://lemonshine.pl" />
       </Helmet>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <ScrollToTop />
         <Routes>
           {navItems.map(({ to, page }) => (

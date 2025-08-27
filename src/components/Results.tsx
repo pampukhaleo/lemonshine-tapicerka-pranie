@@ -60,8 +60,8 @@ const Results = () => {
           { results.map((r) => (
             <Card key={ r.id } className="border-0 shadow-lg hover-lift overflow-hidden bg-white p-0">
               <ReactBeforeSliderComponent
-                firstImage={ { imageUrl: r.before, alt: 'Przed czyszczeniem' } }
-                secondImage={ { imageUrl: r.after, alt: 'Po czyszczeniu' } }
+                firstImage={ { imageUrl: import.meta.env.BASE_URL + "/" + r.before, alt: 'Przed czyszczeniem' } }
+                secondImage={ { imageUrl: import.meta.env.BASE_URL + "/" + r.after, alt: 'Po czyszczeniu' } }
                 currentPercentPosition={ 50 }       // стартовая позиция (0..100)
                 delimiterColor="#ffffff"          // цвет вертикальной линии (опц.)
                 className="w-full"                // тянем по ширине карточки

@@ -63,7 +63,7 @@ const BlogPost = () => {
 
               {/* Article hero image */ }
               <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg mb-5">
-                <img src={ `${ import.meta.env.BASE_URL }${ post.mainPicture }` } alt={ post.title }/>
+                <img src={ `${ import.meta.env.BASE_URL }/${ post.mainPicture }` } alt={ post.title }/>
               </div>
 
               {/* Article content */ }
