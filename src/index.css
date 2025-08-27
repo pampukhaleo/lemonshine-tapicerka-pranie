@@ -7,36 +7,36 @@
 
 @layer base {
   :root {
-    --background: 50 100% 98%;
-    --foreground: 210 15% 15%;
+    --background: 75 60% 97%;
+    --foreground: 150 35% 15%;
 
-    --card: 50 100% 99%;
-    --card-foreground: 210 15% 15%;
+    --card: 75 60% 98%;
+    --card-foreground: 150 35% 15%;
 
-    --popover: 50 100% 99%;
-    --popover-foreground: 210 15% 15%;
+    --popover: 75 60% 98%;
+    --popover-foreground: 150 35% 15%;
 
-    /* Updated Primary - #FFDE59 */
-    --primary: 48 100% 67%;
-    --primary-foreground: 210 15% 15%;
+    /* New Primary Green - #1e3d2f */
+    --primary: 150 35% 18%;
+    --primary-foreground: 75 60% 97%;
 
     /* Fresh Green Secondary */
     --secondary: 120 85% 45%;
-    --secondary-foreground: 50 100% 98%;
+    --secondary-foreground: 75 60% 97%;
 
-    --muted: 50 40% 95%;
-    --muted-foreground: 210 15% 45%;
+    --muted: 75 30% 92%;
+    --muted-foreground: 150 20% 45%;
 
     /* Lemon Accent */
     --accent: 58 100% 85%;
-    --accent-foreground: 210 15% 15%;
+    --accent-foreground: 150 35% 15%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 50 100% 98%;
+    --destructive-foreground: 75 60% 97%;
 
-    --border: 50 30% 88%;
-    --input: 50 30% 88%;
-    --ring: 54 100% 62%;
+    --border: 75 20% 85%;
+    --input: 75 20% 85%;
+    --ring: 150 35% 18%;
 
     --radius: 0.75rem;
 
@@ -56,22 +56,22 @@
     --lemon-soft-400: 51 45% 68%;
     --lemon-soft-600: 45 55% 55%;
 
-    --mint-50: 120 60% 95%;
-    --mint-100: 120 65% 88%;
-    --mint-200: 120 70% 82%;
-    --mint-300: 120 75% 75%;
-    --mint-400: 120 80% 65%;
-    --mint-500: 120 85% 45%;
-    --mint-600: 120 90% 35%;
-    --mint-700: 120 95% 25%;
-    --mint-800: 120 100% 18%;
-    --mint-900: 120 100% 12%;
+    --mint-50: 150 40% 95%;
+    --mint-100: 150 45% 88%;
+    --mint-200: 150 50% 78%;
+    --mint-300: 150 40% 65%;
+    --mint-400: 150 35% 50%;
+    --mint-500: 150 35% 35%;
+    --mint-600: 150 35% 25%;
+    --mint-700: 150 35% 20%;
+    --mint-800: 150 35% 15%;
+    --mint-900: 150 35% 10%;
 
-    /* Gradients - Updated with muted colors */
+    /* Gradients - Updated with new green to yellow gradient */
     --gradient-lemon: linear-gradient(135deg, hsl(var(--lemon-400)) 0%, hsl(var(--lemon-600)) 100%);
     --gradient-lemon-soft: linear-gradient(135deg, hsl(var(--lemon-soft-400)) 0%, hsl(var(--lemon-soft-600)) 100%);
-    --gradient-fresh: linear-gradient(135deg, hsl(var(--lemon-300)) 0%, hsl(var(--mint-400)) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(var(--lemon-100)) 0%, hsl(var(--mint-100)) 50%, hsl(var(--lemon-200)) 100%);
+    --gradient-fresh: linear-gradient(135deg, hsl(120, 91%, 35%) 0%, hsl(51, 100%, 61%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(120, 91%, 35%) 0%, hsl(51, 100%, 61%) 100%);
   }
 
   .dark {
