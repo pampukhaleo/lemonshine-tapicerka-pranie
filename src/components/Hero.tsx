@@ -26,12 +26,12 @@ const Hero = () => {
           {/* Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-background">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-foreground">
                 Profesjonalne{ ' ' }
                 <span className="text-mint-600">Pranie Tapicerki</span>{ ' ' }
                 meblowej i materacy
               </h1>
-              <p className="text-xl leading-relaxed text-background">
+              <p className="text-xl leading-relaxed text-muted-foreground">
                 Usuwamy plamy, alergeny i nieprzyjemny zapach z kanap i materacy. Gwarancja widocznego efektu już po
                 pierwszym praniu.
               </p>
@@ -40,36 +40,36 @@ const Hero = () => {
             {/* Features */ }
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-3">
-                <CheckCircle className="w-6 h-6 text-background"/>
-                <span className="text-background font-medium">Bezpieczne środki</span>
+                <CheckCircle className="w-6 h-6 text-mint-600"/>
+                <span className="text-foreground font-medium">Bezpieczne środki</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Clock className="w-6 h-6 text-background"/>
-                <span className="text-background font-medium">Szybkie wysychanie</span>
+                <Clock className="w-6 h-6 text-mint-600"/>
+                <span className="text-foreground font-medium">Szybkie wysychanie</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Sparkles className="w-6 h-6 text-background"/>
-                <span className="text-background font-medium">Skuteczne odplamianie</span>
+                <Sparkles className="w-6 h-6 text-mint-600"/>
+                <span className="text-foreground font-medium">Skuteczne odplamianie</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Shield className="w-6 h-6 text-background"/>
-                <span className="text-background font-medium">Gwarancja jakości</span>
+                <Shield className="w-6 h-6 text-mint-600"/>
+                <span className="text-foreground font-medium">Gwarancja jakości</span>
               </div>
             </div>
 
             {/* Trust Indicators */ }
             <div className="flex flex-wrap justify-center items-center gap-6 pt-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-background">500+</div>
-                <div className="text-sm text-background">Zadowolonych klientów</div>
+                <div className="text-2xl font-bold text-mint-600">500+</div>
+                <div className="text-sm text-muted-foreground">Zadowolonych klientów</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-background">5★</div>
-                <div className="text-sm text-background">Średnia ocen</div>
+                <div className="text-2xl font-bold text-mint-600">5★</div>
+                <div className="text-sm text-muted-foreground">Średnia ocen</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-background">100%</div>
-                <div className="text-sm text-background">Gwarancja satysfakcji</div>
+                <div className="text-2xl font-bold text-mint-600">100%</div>
+                <div className="text-sm text-muted-foreground">Gwarancja satysfakcji</div>
               </div>
             </div>
 
