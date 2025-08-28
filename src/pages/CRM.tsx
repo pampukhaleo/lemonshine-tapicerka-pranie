@@ -9,8 +9,21 @@ import SEOHead from '@/components/SEOHead';
 
 const CRM = () => {
   const { user, loading, isAdmin, signOut } = useAuth();
+  const [localTimeout, setLocalTimeout] = useState(false);
 
-  if (loading) {
+  useEffect(() => {
+    // Local watchdog - if loading takes too long, show login with message
+    const timeoutId = setTimeout(() => {
+      if (loading) {
+        console.warn('CRM page loading timeout - showing login');
+        setLocalTimeout(true);
+      }
+    }, 5000);
+
+    return () => clearTimeout(timeoutId);
+  }, [loading]);
+
+  if (loading && !localTimeout) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-mint-600"></div>
@@ -18,8 +31,8 @@ const CRM = () => {
     );
   }
 
-  if (!user || !isAdmin) {
-    return <CRMLogin />;
+  if (!user || !isAdmin || localTimeout) {
+    return <CRMLogin connectionProblem={localTimeout} />;
   }
 
   return (
