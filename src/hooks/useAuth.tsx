@@ -49,7 +49,10 @@ export const useAuth = () => {
           setUser(session?.user ?? null);
           
           if (session?.user) {
-            await checkAdminStatus(session.user.id);
+            // Defer admin check to prevent UI blocking
+            setTimeout(() => {
+              checkAdminStatus(session.user.id);
+            }, 0);
           } else {
             setIsAdmin(false);
           }

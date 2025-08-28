@@ -31,8 +31,15 @@ const CRM = () => {
     );
   }
 
-  if (!user || !isAdmin || localTimeout) {
-    return <CRMLogin connectionProblem={localTimeout} />;
+  // Reset timeout when user is authenticated and is admin
+  useEffect(() => {
+    if (user && isAdmin) {
+      setLocalTimeout(false);
+    }
+  }, [user, isAdmin]);
+
+  if (!user || !isAdmin) {
+    return <CRMLogin connectionProblem={localTimeout && !user} />;
   }
 
   return (
