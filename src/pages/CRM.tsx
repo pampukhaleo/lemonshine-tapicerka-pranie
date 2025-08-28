@@ -23,6 +23,13 @@ const CRM = () => {
     return () => clearTimeout(timeoutId);
   }, [loading]);
 
+  // Reset timeout when user is authenticated and is admin
+  useEffect(() => {
+    if (user && isAdmin) {
+      setLocalTimeout(false);
+    }
+  }, [user, isAdmin]);
+
   if (loading && !localTimeout) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -30,13 +37,6 @@ const CRM = () => {
       </div>
     );
   }
-
-  // Reset timeout when user is authenticated and is admin
-  useEffect(() => {
-    if (user && isAdmin) {
-      setLocalTimeout(false);
-    }
-  }, [user, isAdmin]);
 
   if (!user || !isAdmin) {
     return <CRMLogin connectionProblem={localTimeout && !user} />;
