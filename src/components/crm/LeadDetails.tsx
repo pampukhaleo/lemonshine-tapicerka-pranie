@@ -9,7 +9,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import { toast } from 'sonner';
-import { Phone, Mail, MapPin, Calendar, MessageSquare, Plus } from 'lucide-react';
+import { Phone, Mail, MapPin, Calendar, MessageSquare, Plus, Edit } from 'lucide-react';
+import { LeadEditDialog } from './LeadEditDialog';
 
 interface Lead {
   id: string;
@@ -21,6 +22,7 @@ interface Lead {
   preferred_date?: string;
   preferred_time?: string;
   description?: string;
+  price?: number;
   status: 'new' | 'contacted' | 'in_progress' | 'completed' | 'cancelled';
   created_at: string;
   updated_at: string;
@@ -46,6 +48,7 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
   const [notes, setNotes] = useState<Note[]>([]);
   const [newNote, setNewNote] = useState('');
   const [addingNote, setAddingNote] = useState(false);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
 
   useEffect(() => {
     if (lead) {
@@ -150,7 +153,17 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
         <CardHeader>
           <div className="flex justify-between items-start">
             <CardTitle className="text-xl">{lead.name}</CardTitle>
-            {getStatusBadge(lead.status)}
+            <div className="flex items-center space-x-2">
+              {getStatusBadge(lead.status)}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setEditDialogOpen(true)}
+              >
+                <Edit className="w-4 h-4 mr-2" />
+                Edytuj
+              </Button>
+            </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -177,6 +190,13 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
 
           <div className="border-t pt-4 space-y-2">
             <div><strong>Usługa:</strong> {getServiceLabel(lead.service)}</div>
+            
+            {lead.price && (
+              <div><strong>Cena:</strong> {lead.price.toLocaleString('pl-PL', {
+                style: 'currency',
+                currency: 'PLN'
+              })}</div>
+            )}
             
             {lead.preferred_date && (
               <div className="flex items-center space-x-2">
@@ -269,6 +289,13 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
           </div>
         </CardContent>
       </Card>
+
+      <LeadEditDialog
+        lead={lead}
+        open={editDialogOpen}
+        onOpenChange={setEditDialogOpen}
+        onLeadUpdated={onRefresh}
+      />
     </div>
   );
 };

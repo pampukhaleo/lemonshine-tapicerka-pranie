@@ -2,7 +2,6 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
 
@@ -16,6 +15,7 @@ interface Lead {
   preferred_date?: string;
   preferred_time?: string;
   description?: string;
+  price?: number;
   status: 'new' | 'contacted' | 'in_progress' | 'completed' | 'cancelled';
   created_at: string;
   updated_at: string;
@@ -94,6 +94,12 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
                 <div className="space-y-1 text-sm">
                   <div><strong>Telefon:</strong> {lead.phone}</div>
                   <div><strong>Usługa:</strong> {getServiceLabel(lead.service)}</div>
+                  {lead.price && (
+                    <div><strong>Cena:</strong> {lead.price.toLocaleString('pl-PL', {
+                      style: 'currency',
+                      currency: 'PLN'
+                    })}</div>
+                  )}
                   {lead.preferred_date && (
                     <div><strong>Data:</strong> {format(new Date(lead.preferred_date), 'dd.MM.yyyy', { locale: pl })}</div>
                   )}

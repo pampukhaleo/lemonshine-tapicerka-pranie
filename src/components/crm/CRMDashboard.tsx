@@ -3,7 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { LeadsTable } from './LeadsTable';
 import { LeadDetails } from './LeadDetails';
+import { Statistics } from './Statistics';
+import { CalendarView } from './CalendarView';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Users, Clock, CheckCircle, XCircle } from 'lucide-react';
 
@@ -17,6 +20,7 @@ interface Lead {
   preferred_date?: string;
   preferred_time?: string;
   description?: string;
+  price?: number;
   status: 'new' | 'contacted' | 'in_progress' | 'completed' | 'cancelled';
   created_at: string;
   updated_at: string;
@@ -97,78 +101,96 @@ export const CRMDashboard = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Nowe</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{statusCounts.new}</div>
-          </CardContent>
-        </Card>
+      <Tabs defaultValue="dashboard" className="space-y-6">
+        <TabsList>
+          <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+          <TabsTrigger value="statistics">Statystyki</TabsTrigger>
+          <TabsTrigger value="calendar">Kalendarz</TabsTrigger>
+        </TabsList>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Skontaktowane</CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{statusCounts.contacted}</div>
-          </CardContent>
-        </Card>
+        <TabsContent value="dashboard" className="space-y-6">
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">Nowe</CardTitle>
+                <Users className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{statusCounts.new}</div>
+              </CardContent>
+            </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">W trakcie</CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{statusCounts.in_progress}</div>
-          </CardContent>
-        </Card>
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">Skontaktowane</CardTitle>
+                <Clock className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{statusCounts.contacted}</div>
+              </CardContent>
+            </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Zakończone</CardTitle>
-            <CheckCircle className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{statusCounts.completed}</div>
-          </CardContent>
-        </Card>
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">W trakcie</CardTitle>
+                <Clock className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{statusCounts.in_progress}</div>
+              </CardContent>
+            </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Anulowane</CardTitle>
-            <XCircle className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{statusCounts.cancelled}</div>
-          </CardContent>
-        </Card>
-      </div>
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">Zakończone</CardTitle>
+                <CheckCircle className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{statusCounts.completed}</div>
+              </CardContent>
+            </Card>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Leads Table */}
-        <div className="lg:col-span-2">
-          <LeadsTable
-            leads={leads}
-            onSelectLead={setSelectedLead}
-            selectedLeadId={selectedLead?.id}
-          />
-        </div>
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">Anulowane</CardTitle>
+                <XCircle className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">{statusCounts.cancelled}</div>
+              </CardContent>
+            </Card>
+          </div>
 
-        {/* Lead Details */}
-        <div className="lg:col-span-1">
-          <LeadDetails
-            lead={selectedLead}
-            onUpdateStatus={updateLeadStatus}
-            onRefresh={fetchLeads}
-          />
-        </div>
-      </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Leads Table */}
+            <div className="lg:col-span-2">
+              <LeadsTable
+                leads={leads}
+                onSelectLead={setSelectedLead}
+                selectedLeadId={selectedLead?.id}
+              />
+            </div>
+
+            {/* Lead Details */}
+            <div className="lg:col-span-1">
+              <LeadDetails
+                lead={selectedLead}
+                onUpdateStatus={updateLeadStatus}
+                onRefresh={fetchLeads}
+              />
+            </div>
+          </div>
+        </TabsContent>
+
+        <TabsContent value="statistics">
+          <Statistics />
+        </TabsContent>
+
+        <TabsContent value="calendar">
+          <CalendarView />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
