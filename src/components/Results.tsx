@@ -20,8 +20,8 @@ const Results = () => {
     { id: 4, before: "before_after/15.jpg", after: "before_after/16.jpg" },
     { id: 5, before: "before_after/18.jpg", after: "before_after/17.jpg" },
     { id: 6, before: "before_after/19.jpg", after: "before_after/20.jpg" },
-    { id: 6, before: "before_after/21.jpg", after: "before_after/22.jpg" },
-    { id: 6, before: "before_after/24.jpg", after: "before_after/23.jpg" },
+    { id: 7, before: "before_after/21.jpg", after: "before_after/22.jpg" },
+    { id: 8, before: "before_after/24.jpg", after: "before_after/23.jpg" },
   ];
 
   const testimonials = [
