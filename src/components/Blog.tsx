@@ -25,7 +25,7 @@ const Blog = () => {
               key={ article.id }
               className="border-0 shadow-lg hover-lift bg-white overflow-hidden h-full flex flex-col"
             >
-              <img src={`${import.meta.env.BASE_URL}/${article.mainPicture}`} alt={ article.title }/>
+              <img src={`${import.meta.env.BASE_URL}/${article.mainPicture}`} alt={ article.title } loading="lazy" decoding="async" />
 
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between text-sm text-muted-foreground mb-2 leading-5 min-h-5">

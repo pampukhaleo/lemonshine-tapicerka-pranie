@@ -35,7 +35,7 @@ const staticPages = [
   { url: '/', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '1.0' },
   { url: '/cennik', lastmod: getCurrentDate(), changefreq: 'monthly', priority: '0.8' },
   { url: '/blog', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '0.9' },
-  { url: '/polityka-prywatnosci', lastmod: '2024-08-27', changefreq: 'yearly', priority: '0.3' }
+  { url: '/polityka-prywatnosci', lastmod: getCurrentDate(), changefreq: 'yearly', priority: '0.3' }
 ];
 
 // Generate sitemap XML

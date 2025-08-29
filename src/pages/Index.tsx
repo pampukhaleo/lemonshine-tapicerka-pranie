@@ -14,6 +14,7 @@ import Equipment from "@/components/Equipment.tsx";
 import SEOHead from '@/components/SEOHead';
 
 const Index = () => {
+  // FAQ JSON-LD
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -53,11 +54,64 @@ const Index = () => {
     ]
   };
 
+  // LocalBusiness JSON-LD
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Lemonshine",
+    "description": "Profesjonalne pranie tapicerki meblowej w Opolu i Wrocławiu",
+    "url": "https://lemonshine.pl",
+    "telephone": "+48662117886",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Opole",
+      "addressRegion": "Opolskie", 
+      "addressCountry": "PL"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "50.6751",
+      "longitude": "17.9213"
+    },
+    "openingHours": [
+      "Mo-Fr 08:00-20:00",
+      "Sa 09:00-16:00"
+    ],
+    "serviceArea": {
+      "@type": "Place",
+      "name": ["Opole", "Wrocław", "Brzeg", "Nysa", "Kłodzko", "Kędzierzyn-Koźle"]
+    },
+    "priceRange": "150-500 PLN",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Usługi prania tapicerki",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Pranie tapicerki meblowej",
+            "description": "Profesjonalne czyszczenie kanap, foteli i narożników"
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "500"
+    },
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lemonshine.pl/lemonshine.png"
+    }
+  };
+
   return (
     <div className="min-h-screen">
       <SEOHead 
         canonical="https://lemonshine.pl/"
-        jsonLd={faqJsonLd}
+        jsonLd={[faqJsonLd, localBusinessJsonLd]}
       />
       <Header />
       <main>

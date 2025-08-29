@@ -7,6 +7,7 @@ interface SEOHeadProps {
   keywords?: string;
   canonical?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   robots?: string;
   ogType?: "website" | "article";
   siteName?: string;
@@ -20,6 +21,7 @@ const SEOHead = ({
   keywords = "pranie tapicerki, pranie tapicerki meblowej, czyszczenie kanapy, pranie kanapy, czyszczenie materaca, czyszczenie tapicerki meblowej, pranie tapicerki opole, pranie tapicerki wrocław, pranie narożnika",
   canonical,
   ogImage = "https://lemonshine.pl/lemonshine.png",
+  ogImageAlt = "Lemonshine - Profesjonalne pranie tapicerki",
   robots = "index,follow",
   ogType = "website",
   siteName = "Lemonshine",
@@ -44,6 +46,7 @@ const SEOHead = ({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={absoluteOgImage} />
+      <meta property="og:image:alt" content={ogImageAlt} />
       <meta property="og:locale" content="pl_PL" />
       <meta property="og:url" content={absoluteCanonical} />
       

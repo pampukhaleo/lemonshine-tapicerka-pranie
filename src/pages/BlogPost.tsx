@@ -28,6 +28,7 @@ const BlogPost = () => {
       "name": post.author
     },
     "datePublished": new Date(post.date).toISOString(),
+    "dateModified": new Date(post.date).toISOString(),
     "mainEntityOfPage": `https://lemonshine.pl/blog/${post.slug}`,
     "articleSection": post.category,
     "publisher": {
