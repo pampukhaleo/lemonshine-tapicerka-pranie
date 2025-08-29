@@ -25,12 +25,19 @@ const blogPosts = slugMatches.map((slugMatch, index) => ({
   date: dateMatches[index] ? dateMatches[index][1] : '2024-01-01'
 }));
 
+// Get current date in YYYY-MM-DD format
+const getCurrentDate = () => {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  return today.toISOString().split('T')[0];
+};
+
 // Define static pages
 const staticPages = [
-  { url: '/', lastmod: '2024-08-27', changefreq: 'weekly', priority: '1.0' },
-  { url: '/cennik', lastmod: '2024-08-27', changefreq: 'monthly', priority: '0.8' },
-  { url: '/blog', lastmod: '2024-08-27', changefreq: 'weekly', priority: '0.9' },
-  { url: '/polityka-prywatnosci', lastmod: '2024-08-27', changefreq: 'yearly', priority: '0.3' }
+  { url: '/', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '1.0' },
+  { url: '/cennik', lastmod: getCurrentDate(), changefreq: 'monthly', priority: '0.8' },
+  { url: '/blog', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '0.9' },
+  { url: '/polityka-prywatnosci', lastmod: getCurrentDate(), changefreq: 'yearly', priority: '0.3' }
 ];
 
 // Generate sitemap XML
@@ -51,9 +58,13 @@ staticPages.forEach(page => {
 
 // Add blog posts
 blogPosts.forEach(post => {
+  const postDate = new Date(post.date);
+  const today = new Date();
+  const lastmod = postDate > today ? today.toISOString().split('T')[0] : post.date;
+  
   sitemap += `  <url>
     <loc>https://lemonshine.pl/blog/${post.slug}</loc>
-    <lastmod>${post.date}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -39,6 +39,8 @@ const Services = () => {
                   src={import.meta.env.BASE_URL+ "/" + item.image }
                   alt={ item.name }
                   className="w-full h-48 object-cover rounded-xl mb-4"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <h3 className="text-xl font-semibold text-foreground mb-2">
                   { item.name }

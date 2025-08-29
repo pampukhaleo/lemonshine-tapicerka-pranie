@@ -7,6 +7,7 @@ interface SEOHeadProps {
   keywords?: string;
   canonical?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   robots?: string;
   ogType?: "website" | "article";
   siteName?: string;
@@ -20,6 +21,7 @@ const SEOHead = ({
   keywords = "pranie tapicerki, pranie tapicerki meblowej, czyszczenie kanapy, pranie kanapy, czyszczenie materaca, czyszczenie tapicerki meblowej, pranie tapicerki opole, pranie tapicerki wrocław, pranie narożnika",
   canonical,
   ogImage = "https://lemonshine.pl/lemonshine.png",
+  ogImageAlt = "Lemonshine - Profesjonalne pranie tapicerki",
   robots = "index,follow",
   ogType = "website",
   siteName = "Lemonshine",
@@ -27,8 +29,9 @@ const SEOHead = ({
   twitterCard = "summary_large_image"
 }: SEOHeadProps) => {
   const fullTitle = title.includes('Lemonshine') ? title : `${title} | Lemonshine`;
-  const absoluteCanonical = canonical?.startsWith('http') ? canonical : `https://lemonshine.pl${canonical || ''}`;
-  const absoluteOgImage = ogImage?.startsWith('http') ? ogImage : `https://lemonshine.pl/${ogImage}`;
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://lemonshine.pl/';
+  const absoluteCanonical = canonical?.startsWith('http') ? canonical : `https://lemonshine.pl${canonical || currentUrl.replace('https://lemonshine.pl', '') || '/'}`;
+  const absoluteOgImage = ogImage?.startsWith('http') ? ogImage : `https://lemonshine.pl/${ogImage.replace(/^\/+/, '')}`;
   
   return (
     <Helmet>
@@ -36,14 +39,23 @@ const SEOHead = ({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="robots" content={robots} />
-      {canonical && <link rel="canonical" href={absoluteCanonical} />}
+      <link rel="canonical" href={absoluteCanonical} />
       
       <meta property="og:site_name" content={siteName} />
       <meta property="og:type" content={ogType} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={absoluteOgImage} />
-      {canonical && <meta property="og:url" content={absoluteCanonical} />}
+      <meta property="og:image:alt" content={ogImageAlt} />
+      <meta property="og:locale" content="pl_PL" />
+      <meta property="og:url" content={absoluteCanonical} />
+      
+      {ogType === "article" && (
+        <>
+          <meta property="article:author" content="Lemonshine" />
+          <meta property="article:section" content="Czyszczenie" />
+        </>
+      )}
       
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={fullTitle} />

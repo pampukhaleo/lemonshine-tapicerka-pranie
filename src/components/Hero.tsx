@@ -98,8 +98,13 @@ const Hero = () => {
           <div className="hidden md:block text-center text-white">
             <img
               src={`${import.meta.env.BASE_URL}/heroImg.webp`}
-              alt="Profesjonalne pranie tapicerki"
+              alt="Profesjonalne pranie tapicerki - nowoczesny sprzęt i bezpieczne środki"
               className="mx-auto mb-4 object-contain rounded-2xl"
+              loading="eager"
+              fetchPriority="high"
+              width="600"
+              height="400"
+              decoding="sync"
             />
           </div>
         </div>
