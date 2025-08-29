@@ -175,7 +175,6 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
           <div className="flex justify-between items-start">
             <CardTitle className="text-xl">{lead.name}</CardTitle>
             <div className="flex items-center space-x-2">
-              {getStatusBadge(lead.status)}
               <Button
                 variant="outline"
                 size="sm"
@@ -214,6 +213,7 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
+          {getStatusBadge(lead.status)}
           <div className="flex items-center space-x-2">
             <Phone className="w-4 h-4 text-muted-foreground" />
             <a href={`tel:${lead.phone}`} className="text-blue-600 hover:underline">
