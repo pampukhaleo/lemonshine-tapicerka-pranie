@@ -171,7 +171,7 @@ const BlogPost = () => {
                       <div key={ index } className="w-full my-8">
                         <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg">
                           <img
-                            src={ `${ import.meta.env.BASE_URL }${ block.content }` }
+                            src={ `${ import.meta.env.BASE_URL }/${ block.content }` }
                             alt={ block.alt || 'Artykuł o czyszczeniu tapicerki' }
                             className="w-full h-full object-cover"
                             onError={ (e) => {

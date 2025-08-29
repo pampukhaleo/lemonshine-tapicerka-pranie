@@ -11,35 +11,35 @@ export const pricingItems: PricingItem[] = [
   {
     name: 'Pranie 2-osobowej kanapy',
     subtitle: 'do 1,7 m.',
-    price: '130 zł',
+    price: '200 zł',
     image: 'furniture/23.jpg',
     popular: true
   },
   {
     name: 'Pranie 3-osobowej kanapy',
     subtitle: '1,7-2.5 m.',
-    price: '150 zł',
+    price: '230 zł',
     image: 'furniture/25.jpg',
     popular: true
   },
   {
     name: 'Pranie średniego naróżnika',
     subtitle: 'do 2,5×1,5 m.',
-    price: '170 zł',
+    price: '250 zł',
     image: 'furniture/34.jpg',
     popular: true
   },
   {
     name: 'Pranie dużego narożnika',
     subtitle: 'od 2,5×1,5 m.',
-    price: 'od 200 zł',
+    price: 'od 300 zł',
     image: 'furniture/33.jpg',
     popular: false
   },
   {
     name: 'Pranie fotela',
     subtitle: 'dużego',
-    price: '60 zł',
+    price: '80 zł',
     image: 'furniture/28.jpg',
     popular: false
   },
@@ -53,7 +53,7 @@ export const pricingItems: PricingItem[] = [
   {
     name: 'Pranie materaca',
     subtitle: 'z jednej strony',
-    price: '130 zł',
+    price: 'od 250 zł',
     image: 'furniture/35.jpg',
     popular: true
   },
