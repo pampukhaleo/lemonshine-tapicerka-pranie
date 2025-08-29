@@ -66,7 +66,7 @@ const OrderForm = () => {
 
       // Send Telegram notification (don't block user if it fails)
       try {
-        await supabase.functions.invoke('notify-telegram', {
+        await supabase.functions.invoke('notify-telegram-gleb', {
           body: {
             leadId: createdLead.id,
             name: formData.name,
