@@ -39,7 +39,7 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
       cancelled: { label: 'Anulowane', variant: 'destructive' as const }
     };
 
-    const config = statusConfig[status];
+    const config = statusConfig[status] || statusConfig.new;
     return (
       <Badge variant={config.variant}>
         {config.label}
@@ -83,11 +83,18 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
                   <div>
                     <h3 className="font-semibold text-lg">{lead.name}</h3>
                     <p className="text-sm text-muted-foreground">
-                      {lead.preferred_date ? (
-                        `Preferowana data: ${format(new Date(lead.preferred_date), 'dd.MM.yyyy', { locale: pl })}`
-                      ) : (
-                        `Utworzone: ${format(new Date(lead.created_at), 'dd.MM.yyyy HH:mm', { locale: pl })}`
-                      )}
+                      {(() => {
+                        try {
+                          if (lead.preferred_date) {
+                            return `Preferowana data: ${format(new Date(lead.preferred_date), 'dd.MM.yyyy', { locale: pl })}`;
+                          } else if (lead.created_at) {
+                            return `Utworzone: ${format(new Date(lead.created_at), 'dd.MM.yyyy HH:mm', { locale: pl })}`;
+                          }
+                        } catch (error) {
+                          console.error('Date formatting error:', error);
+                        }
+                        return '–';
+                      })()}
                     </p>
                   </div>
                   {getStatusBadge(lead.status)}
@@ -96,7 +103,7 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
                 <div className="space-y-1 text-sm">
                   <div><strong>Telefon:</strong> {lead.phone}</div>
                   <div><strong>Usługa:</strong> {getServiceLabel(lead.service)}</div>
-                  {lead.price && (
+                  {typeof lead.price === 'number' && (
                     <div><strong>Cena:</strong> {lead.price.toLocaleString('pl-PL', {
                       style: 'currency',
                       currency: 'PLN'

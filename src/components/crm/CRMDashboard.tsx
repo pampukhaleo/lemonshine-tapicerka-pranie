@@ -55,7 +55,13 @@ export const CRMDashboard = () => {
         return;
       }
 
-      setLeads(data || []);
+      // Normalize statuses to prevent errors
+      const normalizedData = (data || []).map((lead: any) => ({
+        ...lead,
+        status: ['new', 'completed', 'cancelled'].includes(lead.status) ? lead.status : 'new'
+      }));
+
+      setLeads(normalizedData);
     } catch (error) {
       console.error('Error:', error);
     } finally {
