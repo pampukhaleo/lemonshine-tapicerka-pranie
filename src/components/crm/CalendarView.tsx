@@ -19,7 +19,7 @@ interface Lead {
   preferred_time?: string;
   description?: string;
   price?: number;
-  status: 'new' | 'contacted' | 'in_progress' | 'completed' | 'cancelled';
+  status: 'new' | 'completed' | 'cancelled';
   created_at: string;
   updated_at: string;
 }
@@ -97,8 +97,6 @@ export const CalendarView: React.FC = () => {
   const getStatusBadge = (status: Lead['status']) => {
     const statusConfig = {
       new: { label: 'Nowe', variant: 'default' as const },
-      contacted: { label: 'Skontaktowane', variant: 'secondary' as const },
-      in_progress: { label: 'W trakcie', variant: 'default' as const },
       completed: { label: 'Zakończone', variant: 'default' as const },
       cancelled: { label: 'Anulowane', variant: 'destructive' as const }
     };
@@ -152,8 +150,6 @@ export const CalendarView: React.FC = () => {
               modifiers={getDateModifiers()}
               modifiersClassNames={{
                 new: "bg-blue-100 text-blue-900",
-                contacted: "bg-yellow-100 text-yellow-900",
-                in_progress: "bg-orange-100 text-orange-900",
                 completed: "bg-green-100 text-green-900",
                 cancelled: "bg-red-100 text-red-900"
               }}
@@ -162,18 +158,10 @@ export const CalendarView: React.FC = () => {
             
             <div className="mt-4 space-y-2">
               <h4 className="font-medium">Legenda:</h4>
-              <div className="grid grid-cols-2 gap-2 text-sm">
+              <div className="grid grid-cols-1 gap-2 text-sm">
                 <div className="flex items-center">
                   <div className="w-3 h-3 bg-blue-100 rounded mr-2"></div>
                   Nowe
-                </div>
-                <div className="flex items-center">
-                  <div className="w-3 h-3 bg-yellow-100 rounded mr-2"></div>
-                  Skontaktowane
-                </div>
-                <div className="flex items-center">
-                  <div className="w-3 h-3 bg-orange-100 rounded mr-2"></div>
-                  W trakcie
                 </div>
                 <div className="flex items-center">
                   <div className="w-3 h-3 bg-green-100 rounded mr-2"></div>

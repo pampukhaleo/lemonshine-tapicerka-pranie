@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -47,9 +46,9 @@ export const Statistics: React.FC = () => {
 
       const { data, error } = await (supabase as any)
         .from('leads')
-        .select('status, price, created_at, preferred_date')
-        .gte('created_at', startDate.toISOString())
-        .lte('created_at', endDate.toISOString());
+        .select('status, price, preferred_date')
+        .gte('preferred_date', format(startDate, 'yyyy-MM-dd'))
+        .lte('preferred_date', format(endDate, 'yyyy-MM-dd'));
 
       if (error) {
         console.error('Error fetching stats:', error);
@@ -83,38 +82,47 @@ export const Statistics: React.FC = () => {
       // Get current week from Monday to Sunday
       const today = new Date();
       const monday = startOfWeek(today, { weekStartsOn: 1 }); // Start from Monday
+      const sunday = addDays(monday, 6); // End on Sunday
       
-      const weekDays = [];
-      for (let i = 0; i < 7; i++) {
-        const day = addDays(monday, i);
-        weekDays.push(day);
+      // Fetch all completed leads for the week in one query
+      const { data, error } = await (supabase as any)
+        .from('leads')
+        .select('price, preferred_date')
+        .eq('status', 'completed')
+        .gte('preferred_date', format(monday, 'yyyy-MM-dd'))
+        .lte('preferred_date', format(sunday, 'yyyy-MM-dd'));
+
+      if (error) {
+        console.error('Error fetching weekly data:', error);
+        return;
       }
 
-      const weeklyEarnings: DailyEarnings[] = [];
+      // Group earnings by day
+      const earningsByDay: { [key: string]: number } = {};
+      
+      // Initialize all days of the week with 0
+      for (let i = 0; i < 7; i++) {
+        const day = addDays(monday, i);
+        const dayKey = format(day, 'yyyy-MM-dd');
+        earningsByDay[dayKey] = 0;
+      }
 
-      for (const day of weekDays) {
-        const startOfDayDate = startOfDay(day);
-        const endOfDayDate = endOfDay(day);
-
-        const { data, error } = await (supabase as any)
-          .from('leads')
-          .select('price, preferred_date')
-          .eq('status', 'completed')
-          .gte('preferred_date', startOfDayDate.toISOString().split('T')[0])
-          .lte('preferred_date', endOfDayDate.toISOString().split('T')[0]);
-
-        if (error) {
-          console.error('Error fetching weekly data:', error);
-          continue;
+      // Sum up earnings for each day
+      (data || []).forEach((lead: any) => {
+        if (lead.preferred_date && lead.price) {
+          const dayKey = lead.preferred_date;
+          earningsByDay[dayKey] = (earningsByDay[dayKey] || 0) + parseFloat(lead.price);
         }
+      });
 
-        const dayEarnings = (data || []).reduce((sum: number, lead: any) => {
-          return sum + (lead.price ? parseFloat(lead.price) : 0);
-        }, 0);
-
+      // Convert to chart format
+      const weeklyEarnings: DailyEarnings[] = [];
+      for (let i = 0; i < 7; i++) {
+        const day = addDays(monday, i);
+        const dayKey = format(day, 'yyyy-MM-dd');
         weeklyEarnings.push({
           day: format(day, 'EEE', { locale: pl }),
-          earnings: dayEarnings
+          earnings: earningsByDay[dayKey] || 0
         });
       }
 

@@ -123,12 +123,7 @@ export type Database = {
       }
     }
     Enums: {
-      lead_status:
-        | "new"
-        | "contacted"
-        | "in_progress"
-        | "completed"
-        | "cancelled"
+      lead_status: "new" | "completed" | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -256,13 +251,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      lead_status: [
-        "new",
-        "contacted",
-        "in_progress",
-        "completed",
-        "cancelled",
-      ],
+      lead_status: ["new", "completed", "cancelled"],
     },
   },
 } as const

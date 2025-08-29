@@ -26,7 +26,7 @@ interface Lead {
   preferred_time?: string;
   description?: string;
   price?: number;
-  status: 'new' | 'contacted' | 'in_progress' | 'completed' | 'cancelled';
+  status: 'new' | 'completed' | 'cancelled';
   created_at: string;
   updated_at: string;
 }
@@ -60,6 +60,11 @@ export const LeadEditDialog: React.FC<LeadEditDialogProps> = ({
 
   React.useEffect(() => {
     if (lead) {
+      // Normalize status if it's not one of the allowed values
+      const normalizedStatus = ['new', 'completed', 'cancelled'].includes(lead.status) 
+        ? lead.status 
+        : 'new';
+
       setFormData({
         name: lead.name || '',
         phone: lead.phone || '',
@@ -70,7 +75,7 @@ export const LeadEditDialog: React.FC<LeadEditDialogProps> = ({
         preferred_time: lead.preferred_time || '',
         description: lead.description || '',
         price: lead.price ? lead.price.toString() : '',
-        status: lead.status || 'new'
+        status: normalizedStatus
       });
     }
   }, [lead]);
@@ -256,8 +261,6 @@ export const LeadEditDialog: React.FC<LeadEditDialogProps> = ({
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="new">Nowe</SelectItem>
-                <SelectItem value="contacted">Skontaktowane</SelectItem>
-                <SelectItem value="in_progress">W trakcie</SelectItem>
                 <SelectItem value="completed">Zakończone</SelectItem>
                 <SelectItem value="cancelled">Anulowane</SelectItem>
               </SelectContent>
