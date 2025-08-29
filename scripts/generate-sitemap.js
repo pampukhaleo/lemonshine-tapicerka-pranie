@@ -27,7 +27,9 @@ const blogPosts = slugMatches.map((slugMatch, index) => ({
 
 // Get current date in YYYY-MM-DD format
 const getCurrentDate = () => {
-  return new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  return today.toISOString().split('T')[0];
 };
 
 // Define static pages
@@ -56,9 +58,13 @@ staticPages.forEach(page => {
 
 // Add blog posts
 blogPosts.forEach(post => {
+  const postDate = new Date(post.date);
+  const today = new Date();
+  const lastmod = postDate > today ? today.toISOString().split('T')[0] : post.date;
+  
   sitemap += `  <url>
     <loc>https://lemonshine.pl/blog/${post.slug}</loc>
-    <lastmod>${post.date}</lastmod>
+    <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

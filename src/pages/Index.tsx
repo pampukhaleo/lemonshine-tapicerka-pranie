@@ -61,21 +61,29 @@ const Index = () => {
     "name": "Lemonshine",
     "description": "Profesjonalne pranie tapicerki meblowej w Opolu i Wrocławiu",
     "url": "https://lemonshine.pl",
-    "telephone": "+48662117886",
+    "telephone": "+48 662 117 886",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Opole",
-      "addressRegion": "Opolskie", 
+      "addressLocality": "Wrocław",
+      "addressRegion": "Dolnośląskie", 
       "addressCountry": "PL"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "50.6751",
-      "longitude": "17.9213"
+      "latitude": "51.1079",
+      "longitude": "17.0385"
     },
-    "openingHours": [
-      "Mo-Fr 08:00-20:00",
-      "Sa 09:00-16:00"
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+      ],
+      "opens": "08:00",
+      "closes": "16:00"
+    },
+    "sameAs": [
+      "https://www.facebook.com/lemonshine.opole",
+      "https://www.instagram.com/lemonshine_opole/"
     ],
     "serviceArea": {
       "@type": "Place",
@@ -93,13 +101,29 @@ const Index = () => {
             "name": "Pranie tapicerki meblowej",
             "description": "Profesjonalne czyszczenie kanap, foteli i narożników"
           }
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Czyszczenie materacy",
+            "description": "Dokładne czyszczenie i dezynfekcja materacy"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "Pranie dywanów",
+            "description": "Skuteczne usuwanie plam z dywanów i wykładzin"
+          }
         }
       ]
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "5",
-      "reviewCount": "500"
+      "ratingValue": "4.9",
+      "reviewCount": "127"
     },
     "logo": {
       "@type": "ImageObject",

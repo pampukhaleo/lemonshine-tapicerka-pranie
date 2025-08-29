@@ -72,8 +72,9 @@ const BlogPost = () => {
         title={post.title}
         description={post.excerpt}
         keywords={`${post.title}, pranie tapicerki, czyszczenie kanap, ${post.category.toLowerCase()}`}
-        canonical={`https://lemonshine.pl/blog/${post.slug}`}
-        ogImage={`https://lemonshine.pl/${post.mainPicture}`}
+        canonical={`/blog/${post.slug}`}
+        ogImage={post.mainPicture}
+        ogImageAlt={`${post.title} - Lemonshine`}
         ogType="article"
         jsonLd={[blogPostingJsonLd, breadcrumbJsonLd]}
       />

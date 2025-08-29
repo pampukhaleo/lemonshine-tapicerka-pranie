@@ -39,7 +39,7 @@ const SEOHead = ({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="robots" content={robots} />
-      {canonical && <link rel="canonical" href={absoluteCanonical} />}
+      <link rel="canonical" href={absoluteCanonical} />
       
       <meta property="og:site_name" content={siteName} />
       <meta property="og:type" content={ogType} />
@@ -49,6 +49,13 @@ const SEOHead = ({
       <meta property="og:image:alt" content={ogImageAlt} />
       <meta property="og:locale" content="pl_PL" />
       <meta property="og:url" content={absoluteCanonical} />
+      
+      {ogType === "article" && (
+        <>
+          <meta property="article:author" content="Lemonshine" />
+          <meta property="article:section" content="Czyszczenie" />
+        </>
+      )}
       
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={fullTitle} />
