@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { supabase } from '@/integrations/supabase/client';
-import { format, startOfMonth, endOfMonth, subMonths } from 'date-fns';
+import { format, startOfMonth, endOfMonth, subMonths, startOfWeek, addDays, startOfDay, endOfDay } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import { TrendingUp, DollarSign, CheckCircle, Users } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 interface MonthlyStats {
   month: string;
@@ -15,8 +16,14 @@ interface MonthlyStats {
   averagePrice: number;
 }
 
+interface DailyEarnings {
+  day: string;
+  earnings: number;
+}
+
 export const Statistics: React.FC = () => {
   const [stats, setStats] = useState<MonthlyStats | null>(null);
+  const [weeklyData, setWeeklyData] = useState<DailyEarnings[]>([]);
   const [selectedMonth, setSelectedMonth] = useState(format(new Date(), 'yyyy-MM'));
   const [loading, setLoading] = useState(true);
 
@@ -40,7 +47,7 @@ export const Statistics: React.FC = () => {
 
       const { data, error } = await (supabase as any)
         .from('leads')
-        .select('status, price, created_at')
+        .select('status, price, created_at, preferred_date')
         .gte('created_at', startDate.toISOString())
         .lte('created_at', endDate.toISOString());
 
@@ -71,8 +78,55 @@ export const Statistics: React.FC = () => {
     }
   };
 
+  const fetchWeeklyEarnings = async () => {
+    try {
+      // Get current week from Monday to Sunday
+      const today = new Date();
+      const monday = startOfWeek(today, { weekStartsOn: 1 }); // Start from Monday
+      
+      const weekDays = [];
+      for (let i = 0; i < 7; i++) {
+        const day = addDays(monday, i);
+        weekDays.push(day);
+      }
+
+      const weeklyEarnings: DailyEarnings[] = [];
+
+      for (const day of weekDays) {
+        const startOfDayDate = startOfDay(day);
+        const endOfDayDate = endOfDay(day);
+
+        const { data, error } = await (supabase as any)
+          .from('leads')
+          .select('price, preferred_date')
+          .eq('status', 'completed')
+          .gte('preferred_date', startOfDayDate.toISOString().split('T')[0])
+          .lte('preferred_date', endOfDayDate.toISOString().split('T')[0]);
+
+        if (error) {
+          console.error('Error fetching weekly data:', error);
+          continue;
+        }
+
+        const dayEarnings = (data || []).reduce((sum: number, lead: any) => {
+          return sum + (lead.price ? parseFloat(lead.price) : 0);
+        }, 0);
+
+        weeklyEarnings.push({
+          day: format(day, 'EEE', { locale: pl }),
+          earnings: dayEarnings
+        });
+      }
+
+      setWeeklyData(weeklyEarnings);
+    } catch (error) {
+      console.error('Error fetching weekly earnings:', error);
+    }
+  };
+
   useEffect(() => {
     fetchStats(selectedMonth);
+    fetchWeeklyEarnings();
   }, [selectedMonth]);
 
   if (loading) {
@@ -100,6 +154,34 @@ export const Statistics: React.FC = () => {
           </SelectContent>
         </Select>
       </div>
+
+      {/* Weekly Earnings Chart */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Zarobki w tym tygodniu (Pn-Nd)</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={weeklyData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="day" />
+                <YAxis />
+                <Tooltip 
+                  formatter={(value: number) => [
+                    value.toLocaleString('pl-PL', {
+                      style: 'currency',
+                      currency: 'PLN'
+                    }),
+                    'Zarobek'
+                  ]}
+                />
+                <Bar dataKey="earnings" fill="#10B981" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </CardContent>
+      </Card>
 
       {stats && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

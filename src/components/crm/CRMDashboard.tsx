@@ -7,8 +7,9 @@ import { Statistics } from './Statistics';
 import { CalendarView } from './CalendarView';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Users, Clock, CheckCircle, XCircle } from 'lucide-react';
+import { Users, CheckCircle, XCircle } from 'lucide-react';
 
 interface Lead {
   id: string;
@@ -21,25 +22,32 @@ interface Lead {
   preferred_time?: string;
   description?: string;
   price?: number;
-  status: 'new' | 'contacted' | 'in_progress' | 'completed' | 'cancelled';
+  status: 'new' | 'completed' | 'cancelled';
   created_at: string;
   updated_at: string;
 }
 
 export const CRMDashboard = () => {
   const [leads, setLeads] = useState<Lead[]>([]);
+  const [filteredLeads, setFilteredLeads] = useState<Lead[]>([]);
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [loading, setLoading] = useState(true);
+  const [statusFilter, setStatusFilter] = useState<'all' | Lead['status']>('all');
 
   useEffect(() => {
     fetchLeads();
   }, []);
+
+  useEffect(() => {
+    filterLeads();
+  }, [leads, statusFilter]);
 
   const fetchLeads = async () => {
     try {
       const { data, error } = await (supabase as any)
         .from('leads')
         .select('*')
+        .order('preferred_date', { ascending: false, nullsFirst: false })
         .order('created_at', { ascending: false });
 
       if (error) {
@@ -52,6 +60,14 @@ export const CRMDashboard = () => {
       console.error('Error:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const filterLeads = () => {
+    if (statusFilter === 'all') {
+      setFilteredLeads(leads);
+    } else {
+      setFilteredLeads(leads.filter(lead => lead.status === statusFilter));
     }
   };
 
@@ -79,11 +95,36 @@ export const CRMDashboard = () => {
     }
   };
 
+  const deleteLead = async (leadId: string) => {
+    try {
+      const { error } = await (supabase as any)
+        .from('leads')
+        .delete()
+        .eq('id', leadId);
+
+      if (error) {
+        console.error('Error deleting lead:', error);
+        return false;
+      }
+
+      // Refresh leads
+      await fetchLeads();
+      
+      // Clear selected lead if it was deleted
+      if (selectedLead?.id === leadId) {
+        setSelectedLead(null);
+      }
+
+      return true;
+    } catch (error) {
+      console.error('Error:', error);
+      return false;
+    }
+  };
+
   const getStatusCounts = () => {
     return {
       new: leads.filter(l => l.status === 'new').length,
-      contacted: leads.filter(l => l.status === 'contacted').length,
-      in_progress: leads.filter(l => l.status === 'in_progress').length,
       completed: leads.filter(l => l.status === 'completed').length,
       cancelled: leads.filter(l => l.status === 'cancelled').length,
     };
@@ -110,7 +151,7 @@ export const CRMDashboard = () => {
 
         <TabsContent value="dashboard" className="space-y-6">
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Nowe</CardTitle>
@@ -118,26 +159,6 @@ export const CRMDashboard = () => {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{statusCounts.new}</div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Skontaktowane</CardTitle>
-                <Clock className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{statusCounts.contacted}</div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">W trakcie</CardTitle>
-                <Clock className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{statusCounts.in_progress}</div>
               </CardContent>
             </Card>
 
@@ -162,11 +183,27 @@ export const CRMDashboard = () => {
             </Card>
           </div>
 
+          {/* Status Filter */}
+          <div className="flex justify-between items-center">
+            <h2 className="text-2xl font-bold">Zgłoszenia</h2>
+            <Select value={statusFilter} onValueChange={(value: typeof statusFilter) => setStatusFilter(value)}>
+              <SelectTrigger className="w-48">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Wszystkie ({leads.length})</SelectItem>
+                <SelectItem value="new">Nowe ({statusCounts.new})</SelectItem>
+                <SelectItem value="completed">Zakończone ({statusCounts.completed})</SelectItem>
+                <SelectItem value="cancelled">Anulowane ({statusCounts.cancelled})</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Leads Table */}
             <div className="lg:col-span-2">
               <LeadsTable
-                leads={leads}
+                leads={filteredLeads}
                 onSelectLead={setSelectedLead}
                 selectedLeadId={selectedLead?.id}
               />
@@ -177,6 +214,7 @@ export const CRMDashboard = () => {
               <LeadDetails
                 lead={selectedLead}
                 onUpdateStatus={updateLeadStatus}
+                onDeleteLead={deleteLead}
                 onRefresh={fetchLeads}
               />
             </div>

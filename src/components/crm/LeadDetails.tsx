@@ -5,11 +5,12 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog';
 import { supabase } from '@/integrations/supabase/client';
 import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import { toast } from 'sonner';
-import { Phone, Mail, MapPin, Calendar, MessageSquare, Plus, Edit } from 'lucide-react';
+import { Phone, Mail, MapPin, Calendar, MessageSquare, Plus, Edit, Trash2 } from 'lucide-react';
 import { LeadEditDialog } from './LeadEditDialog';
 
 interface Lead {
@@ -23,7 +24,7 @@ interface Lead {
   preferred_time?: string;
   description?: string;
   price?: number;
-  status: 'new' | 'contacted' | 'in_progress' | 'completed' | 'cancelled';
+  status: 'new' | 'completed' | 'cancelled';
   created_at: string;
   updated_at: string;
 }
@@ -37,18 +38,21 @@ interface Note {
 interface LeadDetailsProps {
   lead: Lead | null;
   onUpdateStatus: (leadId: string, status: Lead['status']) => void;
+  onDeleteLead: (leadId: string) => Promise<boolean>;
   onRefresh: () => void;
 }
 
 export const LeadDetails: React.FC<LeadDetailsProps> = ({
   lead,
   onUpdateStatus,
+  onDeleteLead,
   onRefresh
 }) => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [newNote, setNewNote] = useState('');
   const [addingNote, setAddingNote] = useState(false);
   const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     if (lead) {
@@ -107,6 +111,25 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
     }
   };
 
+  const handleDeleteLead = async () => {
+    if (!lead) return;
+    
+    setDeleting(true);
+    try {
+      const success = await onDeleteLead(lead.id);
+      if (success) {
+        toast.success('Zgłoszenie zostało usunięte');
+      } else {
+        toast.error('Błąd podczas usuwania zgłoszenia');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Błąd podczas usuwania zgłoszenia');
+    } finally {
+      setDeleting(false);
+    }
+  };
+
   const getServiceLabel = (service: string) => {
     const serviceLabels = {
       kanapa: 'Pranie kanapy',
@@ -122,8 +145,6 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
   const getStatusBadge = (status: Lead['status']) => {
     const statusConfig = {
       new: { label: 'Nowe', variant: 'default' as const },
-      contacted: { label: 'Skontaktowane', variant: 'secondary' as const },
-      in_progress: { label: 'W trakcie', variant: 'default' as const },
       completed: { label: 'Zakończone', variant: 'default' as const },
       cancelled: { label: 'Anulowane', variant: 'destructive' as const }
     };
@@ -163,6 +184,32 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
                 <Edit className="w-4 h-4 mr-2" />
                 Edytuj
               </Button>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    disabled={deleting}
+                  >
+                    <Trash2 className="w-4 h-4 mr-2" />
+                    Usuń
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Czy na pewno chcesz usunąć to zgłoszenie?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      Ta akcja nie może zostać cofnięta. Zgłoszenie zostanie trwale usunięte wraz ze wszystkimi notatkami.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Anuluj</AlertDialogCancel>
+                    <AlertDialogAction onClick={handleDeleteLead} className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
+                      {deleting ? 'Usuwanie...' : 'Usuń'}
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             </div>
           </div>
         </CardHeader>
@@ -235,8 +282,6 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="new">Nowe</SelectItem>
-              <SelectItem value="contacted">Skontaktowane</SelectItem>
-              <SelectItem value="in_progress">W trakcie</SelectItem>
               <SelectItem value="completed">Zakończone</SelectItem>
               <SelectItem value="cancelled">Anulowane</SelectItem>
             </SelectContent>

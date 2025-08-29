@@ -16,7 +16,7 @@ interface Lead {
   preferred_time?: string;
   description?: string;
   price?: number;
-  status: 'new' | 'contacted' | 'in_progress' | 'completed' | 'cancelled';
+  status: 'new' | 'completed' | 'cancelled';
   created_at: string;
   updated_at: string;
 }
@@ -35,8 +35,6 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
   const getStatusBadge = (status: Lead['status']) => {
     const statusConfig = {
       new: { label: 'Nowe', variant: 'default' as const },
-      contacted: { label: 'Skontaktowane', variant: 'secondary' as const },
-      in_progress: { label: 'W trakcie', variant: 'default' as const },
       completed: { label: 'Zakończone', variant: 'default' as const },
       cancelled: { label: 'Anulowane', variant: 'destructive' as const }
     };
@@ -64,7 +62,7 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Wszystkie zgłoszenia ({leads.length})</CardTitle>
+        <CardTitle>Zgłoszenia ({leads.length})</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-2">
@@ -85,7 +83,11 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
                   <div>
                     <h3 className="font-semibold text-lg">{lead.name}</h3>
                     <p className="text-sm text-muted-foreground">
-                      {format(new Date(lead.created_at), 'dd.MM.yyyy HH:mm', { locale: pl })}
+                      {lead.preferred_date ? (
+                        `Preferowana data: ${format(new Date(lead.preferred_date), 'dd.MM.yyyy', { locale: pl })}`
+                      ) : (
+                        `Utworzone: ${format(new Date(lead.created_at), 'dd.MM.yyyy HH:mm', { locale: pl })}`
+                      )}
                     </p>
                   </div>
                   {getStatusBadge(lead.status)}
@@ -99,9 +101,6 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
                       style: 'currency',
                       currency: 'PLN'
                     })}</div>
-                  )}
-                  {lead.preferred_date && (
-                    <div><strong>Data:</strong> {format(new Date(lead.preferred_date), 'dd.MM.yyyy', { locale: pl })}</div>
                   )}
                 </div>
               </div>
