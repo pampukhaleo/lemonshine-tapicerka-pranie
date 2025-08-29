@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <img src={`${import.meta.env.BASE_URL}/104933_LemonShine_Flat_HP_R_01_1.png`} alt="lemonshine logo" className="h-8 object-contain rounded-2xl"/>
+              <img src="104933_LemonShine_Flat_HP_R_01_1.png" alt="lemonshine logo" className="h-8 object-contain rounded-2xl"/>
             </div>
             <p className="text-muted-foreground">
               Profesjonalne pranie tapicerki we Wrocławiu i Opole.

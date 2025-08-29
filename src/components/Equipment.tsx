@@ -8,7 +8,7 @@ const Equipment = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat"
         style={{
-          backgroundImage: `url(${import.meta.env.BASE_URL}/IMG_6664.JPG)`,
+          backgroundImage: `url(IMG_6664.JPG)`,
         }}
       >
         {/* Dark overlay for better text readability */}
@@ -29,12 +29,12 @@ const Equipment = () => {
           {/* Brand logos */}
           <div className="flex justify-center items-center gap-8 mt-12">
             <img
-              src={`${import.meta.env.BASE_URL}/karcher_logo.png`}
+              src="karcher_logo.png"
               alt="Kärcher"
               className="h-[150px] w-auto object-contain"
             />
             <img
-              src={`${import.meta.env.BASE_URL}/chemspec_logo.png`}
+              src="chemspec_logo.png"
               alt="ChemSpec"
               className="h-[150px] w-auto"
             />

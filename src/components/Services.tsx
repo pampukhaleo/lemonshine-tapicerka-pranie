@@ -36,7 +36,7 @@ const Services = () => {
               {/* Верх карточки */ }
               <div className="mb-6">
                 <img
-                  src={import.meta.env.BASE_URL+ "/" + item.image }
+                  src={ item.image }
                   alt={ item.name }
                   className="w-full h-48 object-cover rounded-xl mb-4"
                   loading="lazy"

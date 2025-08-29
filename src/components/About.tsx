@@ -86,7 +86,7 @@ const About = () => {
               </div>
             </div>
             <img
-              src={`${import.meta.env.BASE_URL}/history.jpg`}
+              src="history.jpg"
               alt="Profesjonalne pranie tapicerki - doświadczenie i jakość"
               className="mx-auto h-full object-contain rounded-2xl max-h-[440px] min-h-[380px]"
               loading="lazy"
