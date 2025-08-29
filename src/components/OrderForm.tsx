@@ -49,10 +49,12 @@ const OrderForm = () => {
 
       console.log('Submitting lead data:', leadData);
 
-      // Insert lead into Supabase without selecting data back
-      const { error } = await supabase
+      // Insert lead into Supabase and get the created lead back
+      const { data: createdLead, error } = await supabase
         .from('leads')
-        .insert(leadData);
+        .insert(leadData)
+        .select()
+        .single();
 
       if (error) {
         console.error('Database error:', error);
@@ -60,7 +62,29 @@ const OrderForm = () => {
         return;
       }
 
-      console.log('Lead created successfully');
+      console.log('Lead created successfully:', createdLead);
+
+      // Send Telegram notification (don't block user if it fails)
+      try {
+        await supabase.functions.invoke('notify-telegram', {
+          body: {
+            leadId: createdLead.id,
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
+            address: formData.address,
+            service: formData.service,
+            preferred_date: formData.date,
+            preferred_time: formData.time,
+            description: formData.description,
+            source: 'website'
+          }
+        });
+        console.log('Telegram notification sent successfully');
+      } catch (telegramError) {
+        console.error('Failed to send Telegram notification:', telegramError);
+        // Don't show error to user, just log it
+      }
       toast.success('Dziękujemy! Skontaktujemy się z Tobą w ciągu 30 minut.');
       
       // Reset form
