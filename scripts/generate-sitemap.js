@@ -25,11 +25,16 @@ const blogPosts = slugMatches.map((slugMatch, index) => ({
   date: dateMatches[index] ? dateMatches[index][1] : '2024-01-01'
 }));
 
+// Get current date in YYYY-MM-DD format
+const getCurrentDate = () => {
+  return new Date().toISOString().split('T')[0];
+};
+
 // Define static pages
 const staticPages = [
-  { url: '/', lastmod: '2024-08-27', changefreq: 'weekly', priority: '1.0' },
-  { url: '/cennik', lastmod: '2024-08-27', changefreq: 'monthly', priority: '0.8' },
-  { url: '/blog', lastmod: '2024-08-27', changefreq: 'weekly', priority: '0.9' },
+  { url: '/', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '1.0' },
+  { url: '/cennik', lastmod: getCurrentDate(), changefreq: 'monthly', priority: '0.8' },
+  { url: '/blog', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '0.9' },
   { url: '/polityka-prywatnosci', lastmod: '2024-08-27', changefreq: 'yearly', priority: '0.3' }
 ];
 

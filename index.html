@@ -42,24 +42,76 @@
       "@type": "LocalBusiness",
       "name": "Lemonshine",
       "image": "https://lemonshine.pl/lemonshine.png",
-      "description": "Profesjonalne pranie tapicerki meblowej w Opolu i Wrocławiu",
+      "logo": "https://lemonshine.pl/lemonshine.png",
+      "description": "Profesjonalne pranie tapicerki meblowej w Opolu i Wrocławiu. Czyszczenie kanap, foteli, narożników i materacy.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Opole",
+        "addressRegion": "Opolskie",
         "addressCountry": "PL"
       },
-      "telephone": "+48123456789",
+      "telephone": "+48 531 292 755",
       "email": "kontakt.lemonshine@gmail.com",
       "url": "https://lemonshine.pl",
-      "serviceArea": ["Opole", "Wrocław"],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Opole"
+        },
+        {
+          "@type": "City", 
+          "name": "Wrocław"
+        }
+      ],
       "priceRange": "150-500 PLN",
-      "openingHours": "Mo-Fr 08:00-20:00, Sa 09:00-16:00",
-      "services": [
-        "Pranie tapicerki meblowej",
-        "Czyszczenie kanap",
-        "Pranie narożnika",
-        "Czyszczenie materaca"
-      ]
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "16:00"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Usługi prania tapicerki",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Pranie tapicerki meblowej"
+            }
+          },
+          {
+            "@type": "Offer", 
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Czyszczenie kanap"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service", 
+              "name": "Pranie narożnika"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Czyszczenie materaca"
+            }
+          }
+        ]
+      }
     }
     </script>
   </head>

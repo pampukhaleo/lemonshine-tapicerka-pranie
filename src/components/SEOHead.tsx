@@ -27,8 +27,9 @@ const SEOHead = ({
   twitterCard = "summary_large_image"
 }: SEOHeadProps) => {
   const fullTitle = title.includes('Lemonshine') ? title : `${title} | Lemonshine`;
-  const absoluteCanonical = canonical?.startsWith('http') ? canonical : `https://lemonshine.pl${canonical || ''}`;
-  const absoluteOgImage = ogImage?.startsWith('http') ? ogImage : `https://lemonshine.pl/${ogImage}`;
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://lemonshine.pl/';
+  const absoluteCanonical = canonical?.startsWith('http') ? canonical : `https://lemonshine.pl${canonical || currentUrl.replace('https://lemonshine.pl', '') || '/'}`;
+  const absoluteOgImage = ogImage?.startsWith('http') ? ogImage : `https://lemonshine.pl/${ogImage.replace(/^\/+/, '')}`;
   
   return (
     <Helmet>
@@ -43,7 +44,8 @@ const SEOHead = ({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={absoluteOgImage} />
-      {canonical && <meta property="og:url" content={absoluteCanonical} />}
+      <meta property="og:locale" content="pl_PL" />
+      <meta property="og:url" content={absoluteCanonical} />
       
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={fullTitle} />
