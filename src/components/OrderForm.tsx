@@ -65,26 +65,34 @@ const OrderForm = () => {
       console.log('Lead created successfully:', createdLead);
 
       // Send Telegram notification (don't block user if it fails)
-      try {
-        await supabase.functions.invoke('notify-telegram-gleb', {
-          body: {
-            leadId: createdLead.id,
-            name: formData.name,
-            phone: formData.phone,
-            email: formData.email,
-            address: formData.address,
-            service: formData.service,
-            preferred_date: formData.date,
-            preferred_time: formData.time,
-            description: formData.description,
-            source: 'website'
+      const sendNotification = async (retryCount = 0) => {
+        try {
+          await supabase.functions.invoke('send-lead-gleb', {
+            body: {
+              leadId: createdLead.id,
+              name: formData.name,
+              phone: formData.phone,
+              email: formData.email,
+              address: formData.address,
+              service: formData.service,
+              preferred_date: formData.date,
+              preferred_time: formData.time,
+              description: formData.description,
+              source: 'website'
+            }
+          });
+          console.log('Telegram notification sent successfully');
+        } catch (telegramError) {
+          console.error(`Failed to send Telegram notification (attempt ${retryCount + 1}):`, telegramError);
+          
+          // Retry once after 2 seconds if first attempt fails
+          if (retryCount < 1) {
+            setTimeout(() => sendNotification(retryCount + 1), 2000);
           }
-        });
-        console.log('Telegram notification sent successfully');
-      } catch (telegramError) {
-        console.error('Failed to send Telegram notification:', telegramError);
-        // Don't show error to user, just log it
-      }
+        }
+      };
+      
+      sendNotification();
       toast.success('Dziękujemy! Skontaktujemy się z Tobą w ciągu 30 minut.');
       
       // Reset form

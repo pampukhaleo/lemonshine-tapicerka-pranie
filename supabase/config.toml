@@ -3,5 +3,5 @@ project_id = "cdqolplrdwwxdbnlgize"
 [functions.notify-telegram]
 verify_jwt = false
 
-[functions.notify-telegram-gleb]
+[functions.send-lead-gleb]
 verify_jwt = false
