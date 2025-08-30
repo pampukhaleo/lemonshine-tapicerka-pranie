@@ -123,7 +123,7 @@ const BlogPost = () => {
 
               {/* Article hero image */ }
               <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg mb-5">
-                <img src={ post.mainPicture } alt={ post.title }/>
+                <img src={`/${ post.mainPicture }`} alt={ post.title }/>
               </div>
 
               {/* Article content */ }
@@ -173,7 +173,7 @@ const BlogPost = () => {
                       <div key={ index } className="w-full my-8">
                         <div className="aspect-video w-full rounded-2xl overflow-hidden shadow-lg">
                           <img
-                            src={ block.content }
+                            src={`/${ block.content }`}
                             alt={ block.alt || 'Artykuł o czyszczeniu tapicerki' }
                             className="w-full h-full object-cover"
                             onError={ (e) => {
