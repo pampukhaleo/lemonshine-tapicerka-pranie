@@ -3,13 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { LeadsTable } from './LeadsTable';
 import { LeadDetails } from './LeadDetails';
+import { LeadCreateDialog } from './LeadCreateDialog';
 import { Statistics } from './Statistics';
 import { CalendarView } from './CalendarView';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Users, CheckCircle, XCircle } from 'lucide-react';
+import { Users, CheckCircle, XCircle, Plus } from 'lucide-react';
 
 interface Lead {
   id: string;
@@ -33,6 +35,7 @@ export const CRMDashboard = () => {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [loading, setLoading] = useState(true);
   const [statusFilter, setStatusFilter] = useState<'all' | Lead['status']>('all');
+  const [showCreateDialog, setShowCreateDialog] = useState(false);
 
   useEffect(() => {
     fetchLeads();
@@ -128,6 +131,11 @@ export const CRMDashboard = () => {
     }
   };
 
+  const handleLeadCreated = async (newLead: Lead) => {
+    await fetchLeads();
+    setSelectedLead(newLead);
+  };
+
   const getStatusCounts = () => {
     return {
       new: leads.filter(l => l.status === 'new').length,
@@ -189,20 +197,29 @@ export const CRMDashboard = () => {
             </Card>
           </div>
 
-          {/* Status Filter */}
+          {/* Header with Create Button and Status Filter */}
           <div className="flex justify-between items-center">
             <h2 className="text-2xl font-bold">Zgłoszenia</h2>
-            <Select value={statusFilter} onValueChange={(value: typeof statusFilter) => setStatusFilter(value)}>
-              <SelectTrigger className="w-48">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Wszystkie ({leads.length})</SelectItem>
-                <SelectItem value="new">Nowe ({statusCounts.new})</SelectItem>
-                <SelectItem value="completed">Zakończone ({statusCounts.completed})</SelectItem>
-                <SelectItem value="cancelled">Anulowane ({statusCounts.cancelled})</SelectItem>
-              </SelectContent>
-            </Select>
+            <div className="flex gap-3 items-center">
+              <Button
+                onClick={() => setShowCreateDialog(true)}
+                className="flex items-center gap-2"
+              >
+                <Plus className="h-4 w-4" />
+                Dodaj zgłoszenie
+              </Button>
+              <Select value={statusFilter} onValueChange={(value: typeof statusFilter) => setStatusFilter(value)}>
+                <SelectTrigger className="w-48">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Wszystkie ({leads.length})</SelectItem>
+                  <SelectItem value="new">Nowe ({statusCounts.new})</SelectItem>
+                  <SelectItem value="completed">Zakończone ({statusCounts.completed})</SelectItem>
+                  <SelectItem value="cancelled">Anulowane ({statusCounts.cancelled})</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -235,6 +252,13 @@ export const CRMDashboard = () => {
           <CalendarView />
         </TabsContent>
       </Tabs>
+
+      {/* Create Lead Dialog */}
+      <LeadCreateDialog
+        open={showCreateDialog}
+        onOpenChange={setShowCreateDialog}
+        onLeadCreated={handleLeadCreated}
+      />
     </div>
   );
 };
