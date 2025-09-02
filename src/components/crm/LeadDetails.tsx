@@ -10,7 +10,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { format } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import { toast } from 'sonner';
-import { Phone, Mail, MapPin, Calendar, MessageSquare, Plus, Edit, Trash2 } from 'lucide-react';
+import { Phone, MapPin, Calendar, MessageSquare, Plus, Edit, Trash2 } from 'lucide-react';
 import { LeadEditDialog } from './LeadEditDialog';
 
 interface Lead {
@@ -220,15 +220,6 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
               {lead.phone}
             </a>
           </div>
-          
-          {lead.email && (
-            <div className="flex items-center space-x-2">
-              <Mail className="w-4 h-4 text-muted-foreground" />
-              <a href={`mailto:${lead.email}`} className="text-blue-600 hover:underline">
-                {lead.email}
-              </a>
-            </div>
-          )}
 
           <div className="flex items-start space-x-2">
             <MapPin className="w-4 h-4 text-muted-foreground mt-1" />

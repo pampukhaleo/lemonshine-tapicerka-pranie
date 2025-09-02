@@ -14,7 +14,6 @@ const OrderForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    email: '',
     address: '',
     service: '',
     date: '',
@@ -39,7 +38,6 @@ const OrderForm = () => {
       const leadData = {
         name: formData.name,
         phone: formData.phone,
-        email: formData.email || null,
         address: formData.address,
         service: formData.service,
         preferred_date: formData.date || null,
@@ -72,7 +70,6 @@ const OrderForm = () => {
               leadId: createdLead.id,
               name: formData.name,
               phone: formData.phone,
-              email: formData.email,
               address: formData.address,
               service: formData.service,
               preferred_date: formData.date,
@@ -99,7 +96,6 @@ const OrderForm = () => {
       setFormData({
         name: '',
         phone: '',
-        email: '',
         address: '',
         service: '',
         date: '',
@@ -144,7 +140,7 @@ const OrderForm = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold text-foreground flex items-center">
-                      <Mail className="w-5 h-5 mr-2 text-mint-600" />
+                      <Phone className="w-5 h-5 mr-2 text-mint-600" />
                       Dane kontaktowe
                     </h3>
 
@@ -172,17 +168,6 @@ const OrderForm = () => {
                       />
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        placeholder="twoj@email.pl"
-                        className="border-lemon-200"
-                      />
-                    </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="address">Adres *</Label>

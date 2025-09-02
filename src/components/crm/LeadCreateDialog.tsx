@@ -44,7 +44,6 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    email: '',
     address: '',
     service: '',
     preferred_date: '',
@@ -59,7 +58,6 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
     setFormData({
       name: '',
       phone: '',
-      email: '',
       address: '',
       service: '',
       preferred_date: '',
@@ -76,7 +74,6 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
       const insertData: any = {
         name: formData.name,
         phone: formData.phone,
-        email: formData.email || null,
         address: formData.address,
         service: formData.service,
         preferred_date: formData.preferred_date || null,
@@ -144,15 +141,6 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
             </div>
           </div>
 
-          <div>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-            />
-          </div>
 
           <div>
             <Label htmlFor="address">Adres *</Label>
