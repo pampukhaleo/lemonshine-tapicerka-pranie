@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { supabase } from '@/integrations/supabase/client';
-import { format, startOfMonth, endOfMonth, subMonths, startOfWeek, addDays, startOfDay, endOfDay } from 'date-fns';
+import { format, startOfMonth, endOfMonth, subMonths, getDaysInMonth } from 'date-fns';
 import { pl } from 'date-fns/locale';
 import { TrendingUp, DollarSign, CheckCircle, Users } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -22,7 +22,7 @@ interface DailyEarnings {
 
 export const Statistics: React.FC = () => {
   const [stats, setStats] = useState<MonthlyStats | null>(null);
-  const [weeklyData, setWeeklyData] = useState<DailyEarnings[]>([]);
+  const [monthlyData, setMonthlyData] = useState<DailyEarnings[]>([]);
   const [selectedMonth, setSelectedMonth] = useState(format(new Date(), 'yyyy-MM'));
   const [loading, setLoading] = useState(true);
 
@@ -77,32 +77,32 @@ export const Statistics: React.FC = () => {
     }
   };
 
-  const fetchWeeklyEarnings = async () => {
+  const fetchMonthlyEarnings = async (monthStr: string) => {
     try {
-      // Get current week from Monday to Sunday
-      const today = new Date();
-      const monday = startOfWeek(today, { weekStartsOn: 1 }); // Start from Monday
-      const sunday = addDays(monday, 6); // End on Sunday
+      const [year, month] = monthStr.split('-');
+      const startDate = startOfMonth(new Date(parseInt(year), parseInt(month) - 1));
+      const endDate = endOfMonth(startDate);
+      const daysInMonth = getDaysInMonth(startDate);
       
-      // Fetch all completed leads for the week in one query
+      // Fetch all completed leads for the month in one query
       const { data, error } = await (supabase as any)
         .from('leads')
         .select('price, preferred_date')
         .eq('status', 'completed')
-        .gte('preferred_date', format(monday, 'yyyy-MM-dd'))
-        .lte('preferred_date', format(sunday, 'yyyy-MM-dd'));
+        .gte('preferred_date', format(startDate, 'yyyy-MM-dd'))
+        .lte('preferred_date', format(endDate, 'yyyy-MM-dd'));
 
       if (error) {
-        console.error('Error fetching weekly data:', error);
+        console.error('Error fetching monthly data:', error);
         return;
       }
 
       // Group earnings by day
       const earningsByDay: { [key: string]: number } = {};
       
-      // Initialize all days of the week with 0
-      for (let i = 0; i < 7; i++) {
-        const day = addDays(monday, i);
+      // Initialize all days of the month with 0
+      for (let i = 1; i <= daysInMonth; i++) {
+        const day = new Date(parseInt(year), parseInt(month) - 1, i);
         const dayKey = format(day, 'yyyy-MM-dd');
         earningsByDay[dayKey] = 0;
       }
@@ -116,25 +116,25 @@ export const Statistics: React.FC = () => {
       });
 
       // Convert to chart format
-      const weeklyEarnings: DailyEarnings[] = [];
-      for (let i = 0; i < 7; i++) {
-        const day = addDays(monday, i);
+      const monthlyEarnings: DailyEarnings[] = [];
+      for (let i = 1; i <= daysInMonth; i++) {
+        const day = new Date(parseInt(year), parseInt(month) - 1, i);
         const dayKey = format(day, 'yyyy-MM-dd');
-        weeklyEarnings.push({
-          day: format(day, 'EEE', { locale: pl }),
+        monthlyEarnings.push({
+          day: i.toString(),
           earnings: earningsByDay[dayKey] || 0
         });
       }
 
-      setWeeklyData(weeklyEarnings);
+      setMonthlyData(monthlyEarnings);
     } catch (error) {
-      console.error('Error fetching weekly earnings:', error);
+      console.error('Error fetching monthly earnings:', error);
     }
   };
 
   useEffect(() => {
     fetchStats(selectedMonth);
-    fetchWeeklyEarnings();
+    fetchMonthlyEarnings(selectedMonth);
   }, [selectedMonth]);
 
   if (loading) {
@@ -163,15 +163,15 @@ export const Statistics: React.FC = () => {
         </Select>
       </div>
 
-      {/* Weekly Earnings Chart */}
+      {/* Monthly Earnings Chart */}
       <Card>
         <CardHeader>
-          <CardTitle>Zarobki w tym tygodniu (Pn-Nd)</CardTitle>
+          <CardTitle>Zarobki w {stats?.month || 'wybranym miesiącu'}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="h-80">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={weeklyData}>
+              <BarChart data={monthlyData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="day" />
                 <YAxis />
