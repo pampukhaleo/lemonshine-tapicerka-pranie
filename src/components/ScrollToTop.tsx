@@ -1,6 +1,7 @@
 
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { trackPageView } from '@/lib/analytics';
 
 const ScrollToTop = () => {
   const location = useLocation();
@@ -20,6 +21,10 @@ const ScrollToTop = () => {
         behavior: 'smooth'
       });
     }
+
+    // Track page view for Google Analytics (SPA navigation)
+    const page_path = location.pathname + location.search + location.hash;
+    trackPageView(page_path, document.title);
   }, [location.pathname, location.hash]);
 
   return null;

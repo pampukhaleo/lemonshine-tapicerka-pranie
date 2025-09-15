@@ -9,6 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
+import { trackGenerateLead } from '@/lib/analytics';
 
 const OrderForm = () => {
   const [formData, setFormData] = useState({
@@ -90,6 +91,14 @@ const OrderForm = () => {
       };
       
       sendNotification();
+
+      // Track successful lead generation for Google Analytics
+      trackGenerateLead({
+        service: formData.service,
+        preferred_date: formData.date,
+        preferred_time: formData.time
+      });
+
       toast.success('Dziękujemy! Skontaktujemy się z Tobą w ciągu 30 minut.');
       
       // Reset form
