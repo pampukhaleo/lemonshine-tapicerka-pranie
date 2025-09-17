@@ -34,21 +34,21 @@ const Comparison = () => {
     {
       feature: "Sprzęt",
       lemonshine: 5,
-      competitor1: 2.5,
+      competitor1: 2,
       competitor2: 4,
       competitor3: 2.5
     },
     {
       feature: "Dostępność terminów",
       lemonshine: 4.5,
-      competitor1: 4,
+      competitor1: 1,
       competitor2: 2,
       competitor3: 4.5
     },
     {
       feature: "Jakość usługi",
       lemonshine: 5,
-      competitor1: 3,
+      competitor1: 2,
       competitor2: 3,
       competitor3: 4.5
     },
@@ -62,7 +62,7 @@ const Comparison = () => {
     {
       feature: "Gwarancja satysfakcji",
       lemonshine: 5,
-      competitor1: 0,
+      competitor1: 3,
       competitor2: 2,
       competitor3: 2
     }
@@ -97,13 +97,13 @@ const Comparison = () => {
                       </div>
                     </th>
                     <th className="p-6 text-center text-white font-heading font-bold text-lg">
-                      Konkurent 1
+                      Ecoshine
                     </th>
                     <th className="p-6 text-center text-white font-heading font-bold text-lg">
-                      Konkurent 2
+                      Ecoserwis
                     </th>
                     <th className="p-6 text-center text-white font-heading font-bold text-lg">
-                      Konkurent 3
+                      Kamyjka
                     </th>
                   </tr>
                 </thead>

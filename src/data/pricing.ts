@@ -103,7 +103,14 @@ export const pricingItems: PricingItem[] = [
     name: 'Pranie kanapy w krztałcie U',
     subtitle: '',
     price: '250 zł',
-    image: 'furniture/22.jpg',
+    image: 'furniture/36.jpg',
+    popular: false
+  },
+  {
+    name: 'Pranie wykładziny',
+    subtitle: '1m2',
+    price: '15 - 20 zł',
+    image: 'furniture/wykladzina.jpg',
     popular: false
   }
 ];
