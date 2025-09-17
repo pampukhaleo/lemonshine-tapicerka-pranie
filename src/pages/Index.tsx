@@ -31,7 +31,7 @@ const Index = () => {
         }
       },
       {
-        "@type": "Question",
+        "@type": "Question", 
         "name": "Czy metoda ekstrakcyjna naprawdę działa?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -40,7 +40,7 @@ const Index = () => {
       },
       {
         "@type": "Question",
-        "name": "Od czego zależy cena czyszczenia?",
+        "name": "Od czego zależy cena czyszczenia?", 
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Koszt usługi zależy od rodzaju mebla, jego wielkości, stopnia zabrudzenia oraz rodzaju tkaniny. Dodatkowe opcje, takie pełne suszenie, czy usuwanie gum, kleju, cieżkich plam również wpływają na cenę."
@@ -50,7 +50,7 @@ const Index = () => {
         "@type": "Question",
         "name": "Ile czasu trwa pranie mebli?",
         "acceptedAnswer": {
-          "@type": "Answer",
+          "@type": "Answer", 
           "text": "Czas zależy od liczby i wielkości mebli, ale zazwyczaj jedna kanapa jest gotowa w ciągu 1–2 godzin."
         }
       },
@@ -60,6 +60,112 @@ const Index = () => {
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Tak, korzystamy z certyfikowanej, bezpiecznej chemii, która jest delikatna dla materiału, a jednocześnie skutecznie usuwa zabrudzenia. Po wyschnięciu meble są w pełni bezpieczne."
+        }
+      }
+    ]
+  };
+
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Profesjonalne pranie tapicerki meblowej",
+    "description": "Pełny proces profesjonalnego czyszczenia tapicerki metodą ekstrakcyjną",
+    "totalTime": "PT2H",
+    "supply": [
+      {
+        "@type": "HowToSupply",
+        "name": "Profesjonalny ekstraktor"
+      },
+      {
+        "@type": "HowToSupply", 
+        "name": "Certyfikowana chemia czyszcząca"
+      }
+    ],
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Przegląd mebla",
+        "text": "Na początku dokładnie sprawdzamy rodzaj materiału, oceniamy stan tapicerki i lokalizujemy plamy. To pozwala dobrać najbezpieczniejsze i najskuteczniejsze środki czyszczące."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Usuwanie plam nierozpuszczalnych w wodzie",
+        "text": "Zanim rozpoczniemy pranie właściwe, usuwamy najtrudniejsze plamy – np. tłuszcz, wosk, gumę czy zaschnięte resztki jedzenia – aby nie pozostawić po nich żadnego śladu."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Nanoszenie presprayu",
+        "text": "Dobieramy prespray odpowiedni do materiału i rodzaju zabrudzeń. Dzięki temu brud zostaje rozpuszczony i przygotowany do skutecznego wypłukania."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Ekstrakcja",
+        "text": "Za pomocą profesjonalnego ekstraktora dokładnie płuczemy materiał i usuwamy 90% zanieczyszczeń oraz resztek środków czyszczących."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Neutralizacja chemii",
+        "text": "Stabilizujemy pH tkaniny i wypłukujemy pozostałości agresywnych środków, dzięki czemu materiał jest miękki, bezpieczny i ma przyjemny, świeży zapach."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Suszenie ekstraktorem",
+        "text": "Odciągamy jak najwięcej wilgoci z wnętrza mebla, aby skrócić czas schnięcia i zapobiec rozwojowi niepożądanych zapachów."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Suszenie wentylatorem (opcjonalnie)",
+        "text": "Na życzenie możemy całkowicie wysuszyć mebel, aby był gotowy do użytku od razu po czyszczeniu. Przy praniu materaca szczególnie zalecamy tę usługę - szybkie wysuszenie materiału pomaga uniknąć powstawania plam i nieprzyjemnych zapachów. Koszt tej opcji to 30% ceny prania mebla."
+      }
+    ]
+  };
+
+  const offersJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Rabat 10% na usługi powyżej 300zł",
+        "description": "Na czyszczenie powyżej 300zł - 10% rabatu na całą usługę",
+        "validFrom": "2025-01-01",
+        "validThrough": "2025-12-31",
+        "seller": {
+          "@type": "LocalBusiness",
+          "name": "Lemonshine"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Bezpłatny dojazd",
+        "description": "Bezpłatny dojazd do klienta",
+        "validFrom": "2025-01-01", 
+        "validThrough": "2025-12-31",
+        "seller": {
+          "@type": "LocalBusiness",
+          "name": "Lemonshine"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Rabat dla sąsiadów 10%",
+        "description": "Zamów pranie tapicerki z sąsiadem, a oba dostaniecie zniżke 10% rabatu na całą usługę",
+        "validFrom": "2025-01-01",
+        "validThrough": "2025-12-31", 
+        "seller": {
+          "@type": "LocalBusiness",
+          "name": "Lemonshine"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Rabat dla firm do 20%",
+        "description": "Oferujemy zniżkę dla firm i dużych obiektów aż do 20% rabatu od ceny zamówienia",
+        "validFrom": "2025-01-01",
+        "validThrough": "2025-12-31",
+        "seller": {
+          "@type": "LocalBusiness", 
+          "name": "Lemonshine"
         }
       }
     ]
@@ -146,7 +252,7 @@ const Index = () => {
     <div className="min-h-screen">
       <SEOHead 
         canonical="https://lemonshine.pl/"
-        jsonLd={[faqJsonLd, localBusinessJsonLd]}
+        jsonLd={[faqJsonLd, localBusinessJsonLd, howToJsonLd, offersJsonLd]}
       />
       <Header />
       <main>
