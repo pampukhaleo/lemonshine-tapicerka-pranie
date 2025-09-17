@@ -13,20 +13,25 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: 'Ile schnie tapicerka po praniu?',
-      answer: 'Czas schnięcia zależy głównie od rodzaju materiału i warunków w pomieszczeniu. Średnio trwa to od 4 do 12 godzin.\n' +
-        'Lepsza wentylacja, ogrzewanie lub wentylator mogą ten proces przyspieszyć.\n' +
-        'Dla bezpieczeństwa i czystości, zalecamy nie używać mebla do całkowitego wyschnięcia.'
+      question: 'Jak często warto prać tapicerkę meblową?',
+      answer: 'Zalecamy pranie co 6–12 miesięcy, w zależności od intensywności użytkowania mebla. Regularne pranie pozwala utrzymać tkaninę w dobrym stanie i zapobiega gromadzeniu się alergenów.'
     },
     {
-      question: 'Czy każdą tapicerkę można prać na mokro?',
-      answer: 'Większość tapicerek nadaje się do czyszczenia ekstrakcyjnego. Wyjątki to np. antyki, meble z egzotycznym wypełnieniem lub delikatną konstrukcją. Przed praniem sprawdzamy materiał i dobieramy bezpieczną metodę.'
+      question: 'Czy metoda ekstrakcyjna naprawdę działa?',
+      answer: 'Tak! Pranie ekstrakcyjne to jedna z najskuteczniejszych metod – usuwa brud, kurz, alergeny i większość plam, docierając głęboko w strukturę materiału.'
     },
     {
-      question: 'Czy pranie tapicerki usuwa nieprzyjemny zapach?',
-      answer: 'Tak. W większości przypadków skutecznie eliminujemy nieprzyjemne zapachy, takie jak pot, jedzenie, zwierzęta czy codzienne użytkowanie. Używamy profesjonalnego neutralizatora, który nie maskuje, lecz usuwa źródło zapachu.\n' +
-        'Jedynie bardzo silne, długo utrzymujące się zapachy (np. dym papierosowy, mocz, pleśń) mogą wymagać kilku sesji lub nie dać się całkowicie usunąć.'
+      question: 'Od czego zależy cena czyszczenia?',
+      answer: 'Koszt usługi zależy od rodzaju mebla, jego wielkości, stopnia zabrudzenia oraz rodzaju tkaniny. Dodatkowe opcje, takie pełne suszenie, czy usuwanie gum, kleju, cieżkich plam również wpływają na cenę.'
     },
+    {
+      question: 'Ile czasu trwa pranie mebli?',
+      answer: 'Czas zależy od liczby i wielkości mebli, ale zazwyczaj jedna kanapa jest gotowa w ciągu 1–2 godzin.'
+    },
+    {
+      question: 'Czy używane środki są bezpieczne dla dzieci i zwierząt?',
+      answer: 'Tak, korzystamy z certyfikowanej, bezpiecznej chemii, która jest delikatna dla materiału, a jednocześnie skutecznie usuwa zabrudzenia. Po wyschnięciu meble są w pełni bezpieczne.'
+    }
   ];
 
   return (

@@ -4,13 +4,16 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Services from '@/components/Services';
+import Promotions from '@/components/Promotions';
 import OrderForm from '@/components/OrderForm';
 import Results from '@/components/Results';
+import Equipment from "@/components/Equipment.tsx";
+import Comparison from '@/components/Comparison';
 import Blog from '@/components/Blog';
+import CleaningProcess from '@/components/CleaningProcess';
 import FAQ from '@/components/FAQ';
 import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
-import Equipment from "@/components/Equipment.tsx";
 import SEOHead from '@/components/SEOHead';
 
 const Index = () => {
@@ -21,34 +24,42 @@ const Index = () => {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Czy pranie tapicerki jest bezpieczne dla dzieci i zwierząt?",
+        "name": "Jak często warto prać tapicerkę meblową?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tak, używamy wyłącznie bezpiecznych, certyfikowanych środków czyszczących, które są całkowicie bezpieczne dla dzieci i zwierząt domowych."
-        }
-      },
-      {
-        "@type": "Question", 
-        "name": "Jak długo schnie tapicerka po praniu?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Tapicerka zazwyczaj schnie w ciągu 2-4 godzin dzięki naszym profesjonalnym maszynom ekstrakcyjnym."
+          "text": "Zalecamy pranie co 6–12 miesięcy, w zależności od intensywności użytkowania mebla. Regularne pranie pozwala utrzymać tkaninę w dobrym stanie i zapobiega gromadzeniu się alergenów."
         }
       },
       {
         "@type": "Question",
-        "name": "Czy oferujecie gwarancję na usługi?", 
+        "name": "Czy metoda ekstrakcyjna naprawdę działa?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tak, oferujemy 100% gwarancję satysfakcji. Jeśli nie jesteś zadowolony z rezultatów, wrócimy i powtórzymy usługę za darmo."
+          "text": "Tak! Pranie ekstrakcyjne to jedna z najskuteczniejszych metod – usuwa brud, kurz, alergeny i większość plam, docierając głęboko w strukturę materiału."
         }
       },
       {
         "@type": "Question",
-        "name": "Jakie rodzaje plam potraficie usunąć?",
+        "name": "Od czego zależy cena czyszczenia?",
         "acceptedAnswer": {
-          "@type": "Answer", 
-          "text": "Usuwamy praktycznie wszystkie rodzaje plam: od kawy, wina, krwi, po plamy organiczne i tłuste. Mamy specjalistyczne środki do każdego typu zabrudzenia."
+          "@type": "Answer",
+          "text": "Koszt usługi zależy od rodzaju mebla, jego wielkości, stopnia zabrudzenia oraz rodzaju tkaniny. Dodatkowe opcje, takie pełne suszenie, czy usuwanie gum, kleju, cieżkich plam również wpływają na cenę."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ile czasu trwa pranie mebli?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Czas zależy od liczby i wielkości mebli, ale zazwyczaj jedna kanapa jest gotowa w ciągu 1–2 godzin."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy używane środki są bezpieczne dla dzieci i zwierząt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tak, korzystamy z certyfikowanej, bezpiecznej chemii, która jest delikatna dla materiału, a jednocześnie skutecznie usuwa zabrudzenia. Po wyschnięciu meble są w pełni bezpieczne."
         }
       }
     ]
@@ -142,10 +153,13 @@ const Index = () => {
         <Hero />
         <About />
         <Services />
+        <Promotions />
         <OrderForm />
         <Results />
         <Equipment />
+        <Comparison />
         <Blog />
+        <CleaningProcess />
         <FAQ />
       </main>
       <SeoSection />
