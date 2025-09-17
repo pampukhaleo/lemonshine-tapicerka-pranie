@@ -32,7 +32,7 @@ export const pricingItems: PricingItem[] = [
   {
     name: 'Pranie dużego narożnika',
     subtitle: 'od 2,5×1,5 m.',
-    price: 'od 200 - 250 zł',
+    price: '200 - 250 zł',
     image: 'furniture/33.jpg',
     popular: false
   },
@@ -53,7 +53,7 @@ export const pricingItems: PricingItem[] = [
   {
     name: 'Pranie materaca',
     subtitle: 'z jednej strony',
-    price: 'od 150 - 200 zł',
+    price: '150 - 200 zł',
     image: 'furniture/35.jpg',
     popular: true
   },
@@ -96,6 +96,13 @@ export const pricingItems: PricingItem[] = [
     name: 'Pranie krzesła z oparciem',
     subtitle: '',
     price: '40 zł',
+    image: 'furniture/22.jpg',
+    popular: false
+  },
+  {
+    name: 'Pranie kanapy w krztałcie U',
+    subtitle: '',
+    price: '250 zł',
     image: 'furniture/22.jpg',
     popular: false
   }
