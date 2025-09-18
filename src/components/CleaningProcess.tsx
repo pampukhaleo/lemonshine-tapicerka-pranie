@@ -50,57 +50,59 @@ const CleaningProcess = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center space-y-4 mb-16">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
+          <div className="text-center space-y-4 mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-foreground">
               Etapy Czyszczenia Tapicerki
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-lg md:text-xl text-muted-foreground">
               Poznaj nasz profesjonalny 7-etapowy proces prania tapicerki
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             {steps.map((step, index) => (
               <div 
                 key={index}
-                className={`relative bg-white rounded-3xl p-8 shadow-lg border-l-8 ${
+                className={`relative bg-white rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-lg border-l-4 md:border-l-8 ${
                   step.optional ? 'border-mint-500' : 'border-lemon-500'
                 } transition-all duration-300 hover:shadow-xl`}
               >
-                <div className="flex items-start gap-6">
-                  <div className={`flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl ${
+                <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                  <div className={`flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white font-bold text-lg md:text-xl ${
                     step.optional ? 'bg-mint-500' : 'bg-lemon-500'
                   }`}>
                     {step.number}
                   </div>
                   
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className={`p-2 rounded-xl ${
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                      <div className={`p-2 rounded-xl w-fit ${
                         step.optional ? 'bg-mint-100 text-mint-600' : 'bg-lemon-100 text-lemon-600'
                       }`}>
                         {step.icon}
                       </div>
-                      <h3 className="text-2xl font-heading font-bold text-foreground">
-                        {step.title}
+                      <div className="flex flex-col md:flex-row md:items-center gap-2">
+                        <h3 className="text-lg md:text-2xl font-heading font-bold text-foreground break-words">
+                          {step.title}
+                        </h3>
                         {step.optional && (
-                          <span className="ml-2 px-3 py-1 text-sm bg-mint-100 text-mint-700 rounded-full">
+                          <span className="px-2 py-1 md:px-3 text-xs md:text-sm bg-mint-100 text-mint-700 rounded-full w-fit">
                             Opcjonalnie
                           </span>
                         )}
-                      </h3>
+                      </div>
                     </div>
                     
-                    <p className="text-muted-foreground leading-relaxed mb-4">
+                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-3 md:mb-4 break-words">
                       {step.description}
                     </p>
                     
                     {step.price && (
-                      <div className="p-4 bg-mint-50 rounded-xl border border-mint-200">
-                        <p className="text-mint-700 font-semibold">
+                      <div className="p-3 md:p-4 bg-mint-50 rounded-xl border border-mint-200">
+                        <p className="text-sm md:text-base text-mint-700 font-semibold break-words">
                           💰 {step.price}
                         </p>
                       </div>
