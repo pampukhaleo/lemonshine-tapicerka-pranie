@@ -21,7 +21,7 @@ const Promotions = () => {
     {
       icon: <Users className="w-8 h-8 text-lemon-600" />,
       title: "Dla sąsiadów",
-      description: "Zamów pranie tapicerki z sąsiadem, a oba dostaniecie zniżkę 10% rabatu na całą usługę!",
+      description: "Zamów pranie tapicerki z sąsiadem, a oboje dostaniecie zniżkę 10% rabatu na całą usługę!",
       badge: "10% RABATU",
       color: "bg-lemon-100 border-lemon-300"
     },
