@@ -70,7 +70,7 @@ const CleaningProcess = () => {
                   step.optional ? 'border-mint-500' : 'border-lemon-500'
                 } transition-all duration-300 hover:shadow-xl`}
               >
-                <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
+                <div className="flex md:items-start gap-4 md:gap-6">
                   <div className={`flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center text-white font-bold text-lg md:text-xl ${
                     step.optional ? 'bg-mint-500' : 'bg-lemon-500'
                   }`}>
