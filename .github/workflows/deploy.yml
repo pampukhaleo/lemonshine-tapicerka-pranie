@@ -40,6 +40,9 @@ jobs:
       - name: Create 404.html for SPA routing
         run: node scripts/create-404.js
       
+      - name: Create route shells for proper indexing
+        run: node scripts/create-route-shells.js
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
