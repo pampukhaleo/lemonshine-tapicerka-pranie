@@ -29,7 +29,7 @@ const BlogPost = () => {
     },
     "datePublished": new Date(post.date).toISOString(),
     "dateModified": new Date(post.date).toISOString(),
-    "mainEntityOfPage": `https://lemonshine.pl/blog/${post.slug}`,
+    "mainEntityOfPage": `https://lemonshine.pl/blog/${post.slug}/`,
     "articleSection": post.category,
     "publisher": {
       "@type": "Organization",
@@ -55,13 +55,13 @@ const BlogPost = () => {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://lemonshine.pl/blog"
+        "item": "https://lemonshine.pl/blog/"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://lemonshine.pl/blog/${post.slug}`
+        "item": `https://lemonshine.pl/blog/${post.slug}/`
       }
     ]
   };
@@ -72,7 +72,7 @@ const BlogPost = () => {
         title={post.title}
         description={post.excerpt}
         keywords={`${post.title}, pranie tapicerki, czyszczenie kanap, ${post.category.toLowerCase()}`}
-        canonical={`/blog/${post.slug}`}
+        canonical={`/blog/${post.slug}/`}
         ogImage={post.mainPicture}
         ogImageAlt={`${post.title} - Lemonshine`}
         ogType="article"

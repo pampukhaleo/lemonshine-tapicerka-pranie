@@ -1,6 +1,12 @@
 
 import { Helmet } from 'react-helmet-async';
 
+const normalizePathWithTrailingSlash = (path: string): string => {
+  if (!path) return '/';
+  if (path === '/') return path;
+  return path.endsWith('/') ? path : `${path}/`;
+};
+
 interface SEOHeadProps {
   title?: string;
   description?: string;
@@ -30,7 +36,8 @@ const SEOHead = ({
 }: SEOHeadProps) => {
   const fullTitle = title.includes('Lemonshine') ? title : `${title} | Lemonshine`;
   const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://lemonshine.pl/';
-  const absoluteCanonical = canonical?.startsWith('http') ? canonical : `https://lemonshine.pl${canonical || currentUrl.replace('https://lemonshine.pl', '') || '/'}`;
+  const normalizedCanonical = normalizePathWithTrailingSlash(canonical || currentUrl.replace('https://lemonshine.pl', '') || '/');
+  const absoluteCanonical = canonical?.startsWith('http') ? canonical : `https://lemonshine.pl${normalizedCanonical}`;
   const absoluteOgImage = ogImage?.startsWith('http') ? ogImage : `https://lemonshine.pl/${ogImage.replace(/^\/+/, '')}`;
   
   return (
