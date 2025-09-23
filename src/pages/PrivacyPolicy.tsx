@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
       <SEOHead 
         title="Polityka Prywatności"
         description="Polityka prywatności LemonShine - informacje o przetwarzaniu danych osobowych podczas korzystania z naszych usług prania tapicerki."
-        canonical="https://lemonshine.pl/polityka-prywatnosci"
+        canonical="https://lemonshine.pl/polityka-prywatnosci/"
       />
       <Header />
       <main className="pt-20">

@@ -35,9 +35,9 @@ const getCurrentDate = () => {
 // Define static pages
 const staticPages = [
   { url: '/', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '1.0' },
-  { url: '/cennik', lastmod: getCurrentDate(), changefreq: 'monthly', priority: '0.8' },
-  { url: '/blog', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '0.9' },
-  { url: '/polityka-prywatnosci', lastmod: getCurrentDate(), changefreq: 'yearly', priority: '0.3' }
+  { url: '/cennik/', lastmod: getCurrentDate(), changefreq: 'monthly', priority: '0.8' },
+  { url: '/blog/', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '0.9' },
+  { url: '/polityka-prywatnosci/', lastmod: getCurrentDate(), changefreq: 'yearly', priority: '0.3' }
 ];
 
 // Generate sitemap XML
@@ -63,7 +63,7 @@ blogPosts.forEach(post => {
   const lastmod = postDate > today ? today.toISOString().split('T')[0] : post.date;
   
   sitemap += `  <url>
-    <loc>https://lemonshine.pl/blog/${post.slug}</loc>
+    <loc>https://lemonshine.pl/blog/${post.slug}/</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

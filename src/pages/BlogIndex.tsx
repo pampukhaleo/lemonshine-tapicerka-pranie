@@ -36,7 +36,7 @@ const BlogIndex = () => {
         title="Blog o praniu tapicerki – porady i artykuły"
         description="Praktyczne porady o pielęgnacji tapicerki, usuwaniu plam i czyszczeniu mebli. Dowiedz się więcej o profesjonalnym praniu kanap i foteli."
         keywords="blog pranie tapicerki, porady czyszczenie kanap, jak usunąć plamy z tapicerki, pielęgnacja mebli tapicerowanych"
-        canonical="https://lemonshine.pl/blog"
+        canonical="https://lemonshine.pl/blog/"
         ogType="website"
         jsonLd={breadcrumbJsonLd}
       />

@@ -38,7 +38,7 @@ const Pricing = () => {
         title="Cennik Prania Tapicerki - Opole, Wrocław"
         description="Sprawdź nasze konkurencyjne ceny prania tapicerki meblowej. Czyszczenie kanap, foteli, narożników i materacy w Opolu i Wrocławiu."
         keywords="cennik prania tapicerki, ceny czyszczenia kanap, pranie tapicerki opole ceny, pranie tapicerki wrocław ceny"
-        canonical="https://lemonshine.pl/cennik"
+        canonical="https://lemonshine.pl/cennik/"
         jsonLd={offerCatalogJsonLd}
       />
       <Header />
