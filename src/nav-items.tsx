@@ -20,13 +20,13 @@ export const navItems = [
   },
   {
     title: "Cennik",
-    to: "/cennik",
+    to: "/cennik/",
     icon: <TagIcon className="h-4 w-4" />,
     page: <Pricing />,
   },
   {
     title: "Blog",
-    to: "/blog",
+    to: "/blog/",
     icon: <FileTextIcon className="h-4 w-4" />,
     page: <BlogIndex />,
   },
@@ -38,7 +38,7 @@ export const navItems = [
   },
   {
     title: "Polityka Prywatności",
-    to: "/polityka-prywatnosci",
+    to: "/polityka-prywatnosci/",
     icon: <ShieldIcon className="h-4 w-4" />,
     page: <PrivacyPolicy />,
   },

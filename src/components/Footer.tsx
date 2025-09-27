@@ -48,8 +48,8 @@ const Footer = () => {
             <h3 className="text-xl font-heading font-bold">Szybkie Linki</h3>
             <ul className="space-y-3 text-muted-foreground">
               <li><Link to="/#oferta" className="hover:text-lemon-400 transition-colors">Oferta</Link></li>
-              <li><Link to="/cennik" className="hover:text-lemon-400 transition-colors">Cennik</Link></li>
-              <li><Link to="/blog" className="hover:text-lemon-400 transition-colors">Blog</Link></li>
+              <li><Link to="/cennik/" className="hover:text-lemon-400 transition-colors">Cennik</Link></li>
+              <li><Link to="/blog/" className="hover:text-lemon-400 transition-colors">Blog</Link></li>
               <li><Link to="/#onas" className="hover:text-lemon-400 transition-colors">O nas</Link></li>
               <li><Link to="/#realizacje" className="hover:text-lemon-400 transition-colors">Realizacje</Link></li>
               <li><Link to="/#zamow" className="hover:text-lemon-400 transition-colors">Kontakt</Link></li>
@@ -102,7 +102,7 @@ const Footer = () => {
             © 2025 Lemonshine. Wszystkie prawa zastrzeże.
           </div>
           <div className="flex space-x-6">
-            <Link to="/polityka-prywatnosci" className="hover:text-lemon-400 transition-colors">Polityka prywatności</Link>
+            <Link to="/polityka-prywatnosci/" className="hover:text-lemon-400 transition-colors">Polityka prywatności</Link>
             <a href="#" className="hover:text-lemon-400 transition-colors">Cookies</a>
           </div>
         </div>

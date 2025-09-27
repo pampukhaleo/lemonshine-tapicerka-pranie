@@ -84,10 +84,7 @@ const BlogPost = () => {
           <div className="max-w-4xl mx-auto">
             {/* Back button */}
             <Button asChild variant="outline" className="mb-8 border-mint-600 text-mint-600 hover:bg-mint-50">
-              <Link to="/blog">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Wróć do bloga
-              </Link>
+              <Link to="/blog/">\n                <ArrowLeft className="w-4 h-4 mr-2" />\n                Wróć do bloga\n              </Link>
             </Button>
 
             {/* Article header */}

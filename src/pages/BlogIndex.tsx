@@ -25,7 +25,7 @@ const BlogIndex = () => {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog o praniu tapicerki",
-        "item": "https://lemonshine.pl/blog"
+        "item": "https://lemonshine.pl/blog/"
       }
     ]
   };

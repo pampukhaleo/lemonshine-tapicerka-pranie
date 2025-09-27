@@ -30,10 +30,10 @@ const Header = () => {
             <Link to="/#oferta" className="text-foreground hover:text-mint-600 transition-colors font-medium">
               Oferta
             </Link>
-            <Link to="/cennik" className="text-foreground hover:text-mint-600 transition-colors font-medium">
+            <Link to="/cennik/" className="text-foreground hover:text-mint-600 transition-colors font-medium">
               Cennik
             </Link>
-            <Link to="/blog" className="text-foreground hover:text-mint-600 transition-colors font-medium">
+            <Link to="/blog/" className="text-foreground hover:text-mint-600 transition-colors font-medium">
               Blog
             </Link>
             <Link to="/#zamow" className="text-foreground hover:text-mint-600 transition-colors font-medium">
@@ -70,10 +70,10 @@ const Header = () => {
               <Link to="/#oferta" className="text-foreground hover:text-mint-600 transition-colors font-medium">
                 Oferta
               </Link>
-              <Link to="/cennik" className="text-foreground hover:text-mint-600 transition-colors font-medium">
+              <Link to="/cennik/" className="text-foreground hover:text-mint-600 transition-colors font-medium">
                 Cennik
               </Link>
-              <Link to="/blog" className="text-foreground hover:text-mint-600 transition-colors font-medium">
+              <Link to="/blog/" className="text-foreground hover:text-mint-600 transition-colors font-medium">
                 Blog
               </Link>
               <Link to="/#zamow" className="text-foreground hover:text-mint-600 transition-colors font-medium">
