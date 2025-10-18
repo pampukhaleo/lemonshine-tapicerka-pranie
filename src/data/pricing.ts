@@ -27,7 +27,7 @@ export const pricingItems: PricingItem[] = [
     subtitle: 'do 2,5×1,5 m.',
     price: '250 zł',
     image: 'furniture/34.jpg',
-    popular: true
+    popular: false
   },
   {
     name: 'Pranie dużego narożnika',
@@ -111,6 +111,6 @@ export const pricingItems: PricingItem[] = [
     subtitle: '1m2',
     price: '15 - 20 zł',
     image: 'furniture/wykladzina.jpg',
-    popular: false
+    popular: true
   }
 ];

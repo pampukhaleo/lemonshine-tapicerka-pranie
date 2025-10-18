@@ -29,11 +29,10 @@ const Hero = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-foreground">
                 Profesjonalne{ ' ' }
                 <span className="text-mint-600">Pranie Tapicerki</span>{ ' ' }
-                meblowej i materacy
+                meblowej i wykładzin
               </h1>
               <p className="text-xl leading-relaxed text-muted-foreground">
-                Usuwamy plamy, alergeny i nieprzyjemny zapach z kanap i materacy. Gwarancja widocznego efektu już po
-                pierwszym praniu.
+                Usuwamy plamy, roztocze i nieprzyjemny zapach z kanap i wykładzin. Gwarancja widocznego efektu już po pierwszym praniu.
               </p>
             </div>
 

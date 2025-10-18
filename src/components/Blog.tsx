@@ -67,7 +67,7 @@ const Blog = () => {
         <div className="text-center mt-12">
           <Button asChild size="lg" variant="outline"
                   className="border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift">
-            <Link to="/blog/">\n              Zobacz wszystkie artykuły\n            </Link>
+            <Link to="/blog/">Zobacz wszystkie artykuły</Link>
           </Button>
         </div>
       </div>

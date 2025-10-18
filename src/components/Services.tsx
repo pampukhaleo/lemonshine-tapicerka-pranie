@@ -79,7 +79,7 @@ const Services = () => {
 
         <div className="text-center">
           <Button variant="outline" size="lg" className="border-mint-600 text-mint-600 hover:bg-mint-50" asChild>
-            <Link to="/cennik/">\n              Zobacz pełny cennik\n              <ArrowRight className="w-4 h-4 ml-2"/>\n            </Link>
+            <Link to="/cennik/">Zobacz pełny cennik<ArrowRight className="w-4 h-4 ml-2"/></Link>
           </Button>
         </div>
       </div>
