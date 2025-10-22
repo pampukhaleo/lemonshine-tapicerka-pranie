@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { CheckCircle, Sparkles, Clock, Shield } from 'lucide-react';
+import { CheckCircle, Sparkles, Clock, Shield, Phone } from 'lucide-react';
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -71,6 +71,19 @@ const Hero = () => {
                 <div className="text-sm text-muted-foreground">Gwarancja satysfakcji</div>
               </div>
             </div>
+
+            {/* Phone Button - Mobile Only */ }
+            <Button
+              size="lg"
+              variant="outline"
+              className="md:hidden w-full border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift"
+              asChild
+            >
+              <a href="tel:+48662117886" className="flex items-center justify-center gap-2">
+                <Phone className="w-5 h-5" />
+                <span>+48 662 117 886</span>
+              </a>
+            </Button>
 
             {/* CTA Buttons */ }
             <div className="flex flex-col sm:flex-row gap-4">
