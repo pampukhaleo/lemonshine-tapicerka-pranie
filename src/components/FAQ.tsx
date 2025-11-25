@@ -2,6 +2,7 @@ import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { MessageCircle } from 'lucide-react';
+import { trackPhoneClick } from '@/lib/analytics';
 
 const FAQ = () => {
   const handleOrderClick = () => {
@@ -75,8 +76,8 @@ const FAQ = () => {
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Zadaj pytanie
               </Button>
-              <Button size="lg" variant="outline" className="border-mint-600 text-mint-600 hover:bg-mint-50">
-                Zadzwoń: <a href="tel:+48662117886">+48 662 117 886</a>
+              <Button size="lg" variant="outline" className="border-mint-600 text-mint-600 hover:bg-mint-50" asChild>
+                <a href="tel:+48662117886" onClick={() => trackPhoneClick('faq')}>Zadzwoń: +48 662 117 886</a>
               </Button>
             </div>
           </div>

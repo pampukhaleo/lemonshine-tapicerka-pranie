@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { CheckCircle, Sparkles, Clock, Shield, Phone } from 'lucide-react';
 import { Link } from "react-router-dom";
+import { trackPhoneClick } from '@/lib/analytics';
 
 const Hero = () => {
   const handleOrderClick = () => {
@@ -79,7 +80,7 @@ const Hero = () => {
               className="md:hidden w-full border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift"
               asChild
             >
-              <a href="tel:+48662117886" className="flex items-center justify-center gap-2">
+              <a href="tel:+48662117886" onClick={() => trackPhoneClick('hero_mobile')} className="flex items-center justify-center gap-2">
                 <Phone className="w-5 h-5" />
                 <span>+48 662 117 886</span>
               </a>
