@@ -3,6 +3,7 @@ import React from 'react';
 import { Separator } from '@/components/ui/separator';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from 'lucide-react';
 import { Link } from "react-router-dom";
+import { trackPhoneClick } from '@/lib/analytics';
 
 const Footer = () => {
   return (
@@ -63,7 +64,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-lemon-400 mt-0.5" />
                 <div>
-                  <a href="tel:+48662117886" className="font-medium text-background">+48 662 117 886</a>
+                  <a href="tel:+48662117886" onClick={() => trackPhoneClick('footer')} className="font-medium text-background">+48 662 117 886</a>
                   <div className="text-sm">Poniedziałek - Niedziela</div>
                 </div>
               </div>

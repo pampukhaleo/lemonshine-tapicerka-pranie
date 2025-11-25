@@ -9,7 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
-import { trackGenerateLead } from '@/lib/analytics';
+import { trackFormSubmission, trackConversion, trackPhoneClick } from '@/lib/analytics';
 
 const OrderForm = () => {
   const [formData, setFormData] = useState({
@@ -92,12 +92,15 @@ const OrderForm = () => {
       
       sendNotification();
 
-      // Track successful lead generation for Google Analytics
-      trackGenerateLead({
+      // Track successful form submission for Google Analytics
+      trackFormSubmission({
         service: formData.service,
         preferred_date: formData.date,
         preferred_time: formData.time
       });
+
+      // Track Google Ads conversion
+      trackConversion();
 
       toast.success('Dziękujemy! Skontaktujemy się z Tobą w ciągu 30 minut.');
       
@@ -294,7 +297,7 @@ const OrderForm = () => {
               <Phone className="w-8 h-8 mx-auto mb-2 text-mint-600" />
               <div className="font-semibold">Telefon</div>
               <div className="text-sm text-muted-foreground">
-                <a href="tel:+48662117886" className="font-medium">+48 662 117 886</a>
+                <a href="tel:+48662117886" onClick={() => trackPhoneClick('order_form')} className="font-medium">+48 662 117 886</a>
               </div>
             </div>
             <div className="text-center p-4 bg-white/80 rounded-lg">

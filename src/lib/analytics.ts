@@ -29,7 +29,7 @@ export const trackPageView = (page_path: string, page_title?: string) => {
 };
 
 // Track form submissions and conversions
-export const trackGenerateLead = (data: {
+export const trackFormSubmission = (data: {
   form_id?: string;
   service?: string;
   preferred_date?: string;
@@ -37,9 +37,30 @@ export const trackGenerateLead = (data: {
 }) => {
   if (typeof window !== 'undefined' && window.dataLayer) {
     window.dataLayer.push({
-      event: 'generate_lead',
+      event: 'form_submission',
       form_id: 'order_form',
       ...data
+    });
+  }
+};
+
+// Track phone call clicks
+export const trackPhoneClick = (location: string) => {
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({
+      event: 'phone_click',
+      location: location, // e.g., 'header', 'hero', 'footer', 'faq', 'order_form'
+      phone_number: '+48662117886'
+    });
+  }
+};
+
+// Track Google Ads conversion (after successful form submission)
+export const trackConversion = () => {
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({
+      event: 'conversion',
+      send_to: 'AW-17183299023/1NeMCPjo1eQaEM-r0YFA'
     });
   }
 };
