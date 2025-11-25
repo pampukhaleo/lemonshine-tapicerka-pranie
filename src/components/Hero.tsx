@@ -73,19 +73,6 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Phone Button - Mobile Only */ }
-            <Button
-              size="lg"
-              variant="outline"
-              className="md:hidden w-full border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift"
-              asChild
-            >
-              <a href="tel:+48662117886" onClick={() => trackPhoneClick('hero_mobile')} className="flex items-center justify-center gap-2">
-                <Phone className="w-5 h-5" />
-                <span>+48 662 117 886</span>
-              </a>
-            </Button>
-
             {/* CTA Buttons */ }
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -103,6 +90,18 @@ const Hero = () => {
                 asChild
               >
                 <Link to="/cennik/">Zobacz Cennik</Link>
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="md:hidden w-full border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift"
+                asChild
+              >
+                <a href="tel:+48662117886" className="flex items-center justify-center gap-2">
+                  <Phone className="w-5 h-5" />
+                  <span>+48 662 117 886</span>
+                </a>
               </Button>
             </div>
           </div>
