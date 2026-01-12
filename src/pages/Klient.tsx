@@ -256,7 +256,7 @@ const Klient = () => {
         canonical="https://lemonshine.pl/klient/"
         jsonLd={[faqJsonLd, localBusinessJsonLd, howToJsonLd, offersJsonLd]}
       />
-      <Header />
+      <Header variant="klient" />
       <main>
         <Hero />
         <About />

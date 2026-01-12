@@ -41,7 +41,7 @@ const Pricing = () => {
         canonical="https://lemonshine.pl/cennik/"
         jsonLd={offerCatalogJsonLd}
       />
-      <Header />
+      <Header variant="klient" />
       <main className="pt-20">
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">

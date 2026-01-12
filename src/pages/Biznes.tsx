@@ -88,7 +88,7 @@ const Biznes = () => {
         canonical="https://lemonshine.pl/biznes/"
         jsonLd={[jsonLd]}
       />
-      <Header />
+      <Header variant="biznes" />
       
       <main>
         {/* Hero Section */}

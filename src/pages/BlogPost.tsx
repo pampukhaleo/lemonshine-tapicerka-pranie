@@ -78,7 +78,7 @@ const BlogPost = () => {
         ogType="article"
         jsonLd={[blogPostingJsonLd, breadcrumbJsonLd]}
       />
-      <Header />
+      <Header variant="klient" />
       <main className="pt-28 pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">

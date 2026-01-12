@@ -40,7 +40,7 @@ const BlogIndex = () => {
         ogType="website"
         jsonLd={breadcrumbJsonLd}
       />
-      <Header />
+      <Header variant="klient" />
       <main className="pt-28 pb-16">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-12">
