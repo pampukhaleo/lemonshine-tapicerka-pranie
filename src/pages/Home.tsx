@@ -113,7 +113,7 @@ const Home = () => {
             </div>
 
             {/* Animated Cards */}
-            <div className="flex flex-col md:flex-row gap-4 md:gap-6 md:h-[400px]">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 md:h-[300px]">
               {clientTypes.map((type) => {
                 const IconComponent = type.icon;
                 const isHovered = hoveredCard === type.id;
@@ -124,8 +124,8 @@ const Home = () => {
                     key={type.id}
                     to={type.link}
                     className={cn(
-                      "group relative bg-lemon-400 rounded-3xl p-8 flex flex-col justify-end overflow-hidden transition-all duration-500 ease-out",
-                      "md:min-h-0 min-h-[200px]",
+                      "group relative bg-gradient-to-br from-lemon-300 to-lemon-400 rounded-3xl p-6 flex flex-col items-center justify-center text-center overflow-hidden transition-all duration-500 ease-out",
+                      "md:min-h-0 min-h-[180px]",
                       // Desktop flex animation
                       isHovered ? "md:flex-[1.6]" : hasHover ? "md:flex-[0.7]" : "md:flex-1"
                     )}
@@ -134,21 +134,21 @@ const Home = () => {
                   >
                     {/* Background gradient overlay on hover */}
                     <div className={cn(
-                      "absolute inset-0 bg-gradient-to-t from-lemon-500/50 to-transparent transition-opacity duration-500",
+                      "absolute inset-0 bg-gradient-to-t from-lemon-500/40 to-transparent transition-opacity duration-500",
                       isHovered ? "opacity-100" : "opacity-0"
                     )} />
                     
-                    {/* Icon */}
+                    {/* Icon - centered above text */}
                     <div className={cn(
-                      "absolute top-6 right-6 w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all duration-500",
-                      isHovered ? "scale-110 bg-white/30" : ""
+                      "w-14 h-14 rounded-2xl bg-white/30 backdrop-blur-sm flex items-center justify-center mb-4 transition-all duration-500",
+                      isHovered ? "scale-110 bg-white/40" : ""
                     )}>
                       <IconComponent className="w-7 h-7 text-foreground" />
                     </div>
 
-                    {/* Content */}
+                    {/* Content - centered */}
                     <div className="relative z-10">
-                      <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground whitespace-nowrap">
+                      <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
                         {type.title}
                       </h2>
                       
@@ -167,10 +167,10 @@ const Home = () => {
                       
                       {/* Arrow indicator - appears on hover */}
                       <div className={cn(
-                        "flex items-center gap-2 text-foreground font-medium overflow-hidden transition-all duration-500 ease-out",
+                        "flex items-center justify-center gap-2 text-foreground font-medium overflow-hidden transition-all duration-500 ease-out",
                         // Always visible on mobile, animated on desktop
-                        "max-h-10 opacity-100 mt-4 md:max-h-0 md:opacity-0 md:mt-0",
-                        isHovered && "md:max-h-10 md:opacity-100 md:mt-4"
+                        "max-h-10 opacity-100 mt-3 md:max-h-0 md:opacity-0 md:mt-0",
+                        isHovered && "md:max-h-10 md:opacity-100 md:mt-3"
                       )}>
                         <span>Zobacz więcej</span>
                         <ArrowRight className="w-5 h-5" />
