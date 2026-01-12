@@ -148,23 +148,32 @@ const Home = () => {
 
                     {/* Content */}
                     <div className="relative z-10">
-                      <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-2">
+                      <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground whitespace-nowrap">
                         {type.title}
                       </h2>
-                      <p className="text-foreground/80 mb-4">
-                        {type.subtitle}
-                      </p>
                       
-                      {/* Arrow indicator */}
+                      {/* Subtitle - appears on hover */}
                       <div className={cn(
-                        "flex items-center gap-2 text-foreground font-medium transition-all duration-300",
-                        isHovered ? "translate-x-2" : ""
+                        "overflow-hidden transition-all duration-500 ease-out",
+                        isHovered ? "max-h-20 opacity-100 mt-2" : "max-h-0 opacity-0 mt-0 md:max-h-0 md:opacity-0",
+                        // Always visible on mobile
+                        "max-h-20 opacity-100 mt-2 md:max-h-0 md:opacity-0 md:mt-0",
+                        isHovered && "md:max-h-20 md:opacity-100 md:mt-2"
+                      )}>
+                        <p className="text-foreground/80">
+                          {type.subtitle}
+                        </p>
+                      </div>
+                      
+                      {/* Arrow indicator - appears on hover */}
+                      <div className={cn(
+                        "flex items-center gap-2 text-foreground font-medium overflow-hidden transition-all duration-500 ease-out",
+                        // Always visible on mobile, animated on desktop
+                        "max-h-10 opacity-100 mt-4 md:max-h-0 md:opacity-0 md:mt-0",
+                        isHovered && "md:max-h-10 md:opacity-100 md:mt-4"
                       )}>
                         <span>Zobacz więcej</span>
-                        <ArrowRight className={cn(
-                          "w-5 h-5 transition-transform duration-300",
-                          isHovered ? "translate-x-1" : ""
-                        )} />
+                        <ArrowRight className="w-5 h-5" />
                       </div>
                     </div>
                   </Link>
