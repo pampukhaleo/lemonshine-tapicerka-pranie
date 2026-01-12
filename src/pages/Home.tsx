@@ -1,48 +1,57 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home as HomeIcon, Building2, Handshake, ArrowRight, Phone } from 'lucide-react';
+import { Home as HomeIcon, Building2, Handshake, ArrowRight, Phone, Shield, User, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import SEOHead from '@/components/SEOHead';
 import Footer from '@/components/Footer';
+import { cn } from '@/lib/utils';
 
 const clientTypes = [
   {
     id: 'klient',
-    title: 'Klient indywidualny',
-    subtitle: 'Dla Twojego domu',
-    description: 'Profesjonalne czyszczenie kanap, foteli, materacy i dywanów w Twoim domu.',
+    title: 'Dla domu',
+    subtitle: 'Mieszkania i domy prywatne',
     icon: HomeIcon,
     link: '/klient/',
-    features: ['Czyszczenie mebli tapicerowanych', 'Pranie materacy', 'Dywany i wykładziny'],
-    gradient: 'from-lemon-400 to-lemon-600',
-    hoverGradient: 'hover:from-lemon-500 hover:to-lemon-700',
   },
   {
     id: 'biznes',
-    title: 'Dla firm (B2B)',
-    subtitle: 'Dla Twojego biznesu',
-    description: 'Kompleksowe usługi czyszczenia dla biur, hoteli, restauracji i obiektów komercyjnych.',
+    title: 'Dla firm',
+    subtitle: 'Biura, restauracje, lokale',
     icon: Building2,
     link: '/biznes/',
-    features: ['Czyszczenie biur', 'Obsługa hoteli', 'Faktura VAT'],
-    gradient: 'from-mint-500 to-mint-700',
-    hoverGradient: 'hover:from-mint-600 hover:to-mint-800',
   },
   {
     id: 'outsourcing',
-    title: 'Outsourcing',
-    subtitle: 'Rozszerz swoją ofertę',
-    description: 'Partnerstwo dla firm chcących oferować usługi czyszczenia swoim klientom.',
+    title: 'Współpraca',
+    subtitle: 'Firmy sprzątające i partnerzy',
     icon: Handshake,
     link: '/outsourcing/',
-    features: ['Usługi white-label', 'Elastyczne warunki', 'Pełne wsparcie'],
-    gradient: 'from-lemon-500 to-mint-500',
-    hoverGradient: 'hover:from-lemon-600 hover:to-mint-600',
+  },
+];
+
+const cooperationBenefits = [
+  {
+    icon: Shield,
+    title: 'Bezpieczeństwo',
+    description: 'Stosujemy sprawdzone i bezpieczne metody, odpowiednie do każdej przestrzeni.',
+  },
+  {
+    icon: User,
+    title: 'Indywidualność',
+    description: 'Godziny pracy, częstotliwość i zakres dostosowujemy do realnych potrzeb klienta.',
+  },
+  {
+    icon: FileText,
+    title: 'Odpowiedzialność i formalność',
+    description: 'Terminowość, jasna komunikacja i rozliczenia fakturowe to nasz standard.',
   },
 ];
 
 const Home = () => {
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -64,7 +73,7 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <SEOHead
         title="Lemonshine - Profesjonalne Pranie Tapicerki | Opole, Wrocław"
         description="Profesjonalne usługi czyszczenia tapicerki meblowej dla klientów indywidualnych, firm i partnerów. Wybierz swój profil i dowiedz się więcej."
@@ -72,7 +81,7 @@ const Home = () => {
         jsonLd={[jsonLd]}
       />
 
-      {/* Header - simplified for home page */}
+      {/* Header */}
       <header className="py-6 px-4">
         <div className="container mx-auto flex justify-between items-center">
           <img 
@@ -90,85 +99,206 @@ const Home = () => {
       </header>
 
       {/* Main content */}
-      <main className="flex-1 flex flex-col items-center justify-center px-4 py-12">
-        <div className="text-center mb-12 max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-4">
-            Profesjonalne usługi
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-lemon-500 to-mint-500">
-              czyszczenia tapicerki
-            </span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground">
-            Wybierz swój profil, aby poznać ofertę dopasowaną do Twoich potrzeb
-          </p>
-        </div>
+      <main className="flex-1">
+        {/* Hero Selection Section */}
+        <section className="px-4 py-12 md:py-20">
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-10">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-4">
+                Kim jesteś?
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+                Wybierz sekcję, a wyświetlimy ci odpowiednią stronę
+              </p>
+            </div>
 
-        {/* Client type cards */}
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 w-full max-w-6xl mb-12">
-          {clientTypes.map((type) => {
-            const IconComponent = type.icon;
-            return (
-              <Link
-                key={type.id}
-                to={type.link}
-                className="group relative bg-card rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-border overflow-hidden"
-              >
-                {/* Background gradient on hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${type.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+            {/* Animated Cards */}
+            <div className="flex flex-col md:flex-row gap-4 md:gap-6 md:h-[400px]">
+              {clientTypes.map((type) => {
+                const IconComponent = type.icon;
+                const isHovered = hoveredCard === type.id;
+                const hasHover = hoveredCard !== null;
                 
-                {/* Icon */}
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${type.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <IconComponent className="w-8 h-8 text-white" />
-                </div>
+                return (
+                  <Link
+                    key={type.id}
+                    to={type.link}
+                    className={cn(
+                      "group relative bg-lemon-400 rounded-3xl p-8 flex flex-col justify-end overflow-hidden transition-all duration-500 ease-out",
+                      "md:min-h-0 min-h-[200px]",
+                      // Desktop flex animation
+                      isHovered ? "md:flex-[1.6]" : hasHover ? "md:flex-[0.7]" : "md:flex-1"
+                    )}
+                    onMouseEnter={() => setHoveredCard(type.id)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                  >
+                    {/* Background gradient overlay on hover */}
+                    <div className={cn(
+                      "absolute inset-0 bg-gradient-to-t from-lemon-500/50 to-transparent transition-opacity duration-500",
+                      isHovered ? "opacity-100" : "opacity-0"
+                    )} />
+                    
+                    {/* Icon */}
+                    <div className={cn(
+                      "absolute top-6 right-6 w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all duration-500",
+                      isHovered ? "scale-110 bg-white/30" : ""
+                    )}>
+                      <IconComponent className="w-7 h-7 text-foreground" />
+                    </div>
 
-                {/* Content */}
-                <h2 className="text-2xl font-heading font-bold text-foreground mb-1">
-                  {type.title}
+                    {/* Content */}
+                    <div className="relative z-10">
+                      <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-2">
+                        {type.title}
+                      </h2>
+                      <p className="text-foreground/80 mb-4">
+                        {type.subtitle}
+                      </p>
+                      
+                      {/* Arrow indicator */}
+                      <div className={cn(
+                        "flex items-center gap-2 text-foreground font-medium transition-all duration-300",
+                        isHovered ? "translate-x-2" : ""
+                      )}>
+                        <span>Zobacz więcej</span>
+                        <ArrowRight className={cn(
+                          "w-5 h-5 transition-transform duration-300",
+                          isHovered ? "translate-x-1" : ""
+                        )} />
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Approach Section */}
+        <section className="px-4 py-16 md:py-24">
+          <div className="container mx-auto max-w-4xl text-center">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
+              Jedno podejście. Trzy kierunki współpracy.
+            </h2>
+            <div className="space-y-6 text-lg text-muted-foreground">
+              <p>
+                Wielu klientów trafia do nas nie tylko z powodu tego, że „coś jest brudne", 
+                lecz także z uwagi na skargi pracowników, gości lub użytkowników przestrzeni.
+              </p>
+              <p>
+                Lemonshine powstał jako serwis czyszczenia oparty na porządku, przewidywalności 
+                i dopasowaniu do realnych potrzeb klienta.
+              </p>
+              <p>
+                Obsługujemy zarówno osoby prywatne, firmy, jak i partnerów biznesowych — 
+                zawsze w jasno określonym modelu współpracy.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Why Us Section */}
+        <section className="px-4 py-16 md:py-24 bg-muted/30">
+          <div className="container mx-auto max-w-6xl">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="order-2 md:order-1">
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
+                  Dlaczego Lemonshine nie jest „firmą od wszystkiego"
                 </h2>
-                <p className="text-sm text-mint-600 font-medium mb-3">
-                  {type.subtitle}
-                </p>
-                <p className="text-muted-foreground mb-6">
-                  {type.description}
-                </p>
-
-                {/* Features */}
-                <ul className="space-y-2 mb-6">
-                  {type.features.map((feature, index) => (
-                    <li key={index} className="flex items-center text-sm text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-mint-500 mr-2" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA */}
-                <div className="flex items-center text-mint-600 font-semibold group-hover:text-mint-700 transition-colors">
-                  <span>Dowiedz się więcej</span>
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
+                <div className="space-y-6 text-lg text-muted-foreground">
+                  <p>
+                    Od początku wiedzieliśmy, że największym problemem w usługach czyszczenia 
+                    nie jest brak ofert, ale brak odpowiedzialności i powtarzalności.
+                  </p>
+                  <p>
+                    Dlatego Lemonshine został zbudowany wokół wąskiej specjalizacji i jasnych zasad pracy.
+                  </p>
+                  <p>
+                    Zamiast dopasowywać usługę do ceny, skupiamy się na procesie dopasowanym do klienta.
+                  </p>
+                  <p>
+                    To podejście sprawdza się zarówno w mieszkaniach prywatnych, 
+                    jak i w środowisku biznesowym.
+                  </p>
                 </div>
-              </Link>
-            );
-          })}
-        </div>
+              </div>
+              <div className="order-1 md:order-2">
+                <div className="rounded-3xl overflow-hidden shadow-2xl">
+                  <img 
+                    src="/history.jpg" 
+                    alt="Zespół Lemonshine przy pracy" 
+                    className="w-full h-[400px] object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        {/* Trust indicators */}
-        <div className="flex flex-wrap justify-center gap-8 text-center text-muted-foreground">
-          <div>
-            <span className="block text-3xl font-bold text-foreground">500+</span>
-            <span className="text-sm">zadowolonych klientów</span>
+        {/* Cooperation Section */}
+        <section className="px-4 py-16 md:py-24">
+          <div className="container mx-auto max-w-6xl">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground text-center mb-12">
+              Jak wygląda współpraca z Lemonshine
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {cooperationBenefits.map((benefit, index) => {
+                const IconComponent = benefit.icon;
+                return (
+                  <div 
+                    key={index}
+                    className="bg-card rounded-2xl p-8 text-center shadow-lg border border-border hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <div className="w-16 h-16 rounded-full bg-lemon-100 flex items-center justify-center mx-auto mb-6">
+                      <IconComponent className="w-8 h-8 text-lemon-600" />
+                    </div>
+                    <h3 className="text-xl font-heading font-bold text-foreground mb-4">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {benefit.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="hidden sm:block w-px h-12 bg-border" />
-          <div>
-            <span className="block text-3xl font-bold text-foreground">4.9</span>
-            <span className="text-sm">ocena w Google</span>
+        </section>
+
+        {/* CTA Section */}
+        <section className="px-4 py-16 md:py-24 bg-gradient-to-br from-lemon-50 to-mint-50">
+          <div className="container mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+              Gotowy do współpracy?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-10">
+              Wybierz odpowiednią ofertę lub skontaktuj się z nami bezpośrednio
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                className="bg-lemon-500 hover:bg-lemon-600 text-foreground font-semibold px-8"
+                asChild
+              >
+                <Link to="/klient/">
+                  Wybierz ofertę
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-mint-600 text-mint-600 hover:bg-mint-50 font-semibold px-8"
+                asChild
+              >
+                <a href="tel:+48662117886">
+                  <Phone className="w-5 h-5 mr-2" />
+                  Skontaktuj się z nami
+                </a>
+              </Button>
+            </div>
           </div>
-          <div className="hidden sm:block w-px h-12 bg-border" />
-          <div>
-            <span className="block text-3xl font-bold text-foreground">7 dni</span>
-            <span className="text-sm">w tygodniu</span>
-          </div>
-        </div>
+        </section>
       </main>
 
       <Footer />
