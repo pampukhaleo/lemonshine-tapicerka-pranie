@@ -120,7 +120,7 @@ const Outsourcing = () => {
         canonical="https://lemonshine.pl/outsourcing/"
         jsonLd={[jsonLd]}
       />
-      <Header />
+      <Header variant="outsourcing" />
       
       <main>
         {/* Hero Section */}
