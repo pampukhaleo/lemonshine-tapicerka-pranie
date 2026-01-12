@@ -33,7 +33,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-01-20',
     category: 'Porady',
     readTime: '6 min',
-    mainPicture: 'Czy_warto_samemu_prac_tapicerke_meblowa.jpg',
+    mainPicture: '/Czy_warto_samemu_prac_tapicerke_meblowa.jpg',
     content: [
       {
         type: 'paragraph',
@@ -41,7 +41,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        content: 'blogPic/cup.jpg',
+        content: '/blogPic/cup.jpg',
         alt: 'Porównanie efektów domowego i profesjonalnego czyszczenia tapicerki',
         caption: 'Różnica między domowym a profesjonalnym czyszczeniem'
       },
@@ -55,7 +55,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        content: 'blogPic/divan.jpg',
+        content: '/blogPic/divan.jpg',
         alt: 'Mokra tapicerka po domowym czyszczeniu',
         caption: 'Tapicerka po domowym czyszczeniu może być mokra przez długi czas'
       },
@@ -78,7 +78,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-01-18',
     category: 'Problemy',
     readTime: '8 min',
-    mainPicture: 'Plama_wraca_po_praniu_kanapy_Najczestsze_przyczyny.jpg',
+    mainPicture: '/Plama_wraca_po_praniu_kanapy_Najczestsze_przyczyny.jpg',
     content: [
       {
         type: 'paragraph',
@@ -157,7 +157,7 @@ export const blogPosts: BlogPost[] = [
     date: '2025-08-20',
     category: 'Porady',
     readTime: '9 min',
-    mainPicture: 'Rodzaje_plam.jpg',
+    mainPicture: '/Rodzaje_plam.jpg',
     content: [
       {
         type: 'paragraph',
@@ -174,7 +174,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        content: 'blogPic/lemonshine_1.webp',
+        content: '/blogPic/lemonshine_1.webp',
         alt: 'Usuwanie plamy z kawy z tapicerki - przed i po',
         caption: 'Efekt profesjonalnego usuwania plamy z kawy'
       },
@@ -189,7 +189,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        content: 'blogPic/lemonshine_2.webp',
+        content: '/blogPic/lemonshine_2.webp',
         alt: 'Usuwanie plamy z krwi z tapicerki',
         caption: 'Profesjonalne czyszczenie plam z krwi wymaga specjalnych środków'
       },
@@ -231,7 +231,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'image',
-        content: 'blogPic/lemonshine_3.webp',
+        content: '/blogPic/lemonshine_3.webp',
         alt: 'Usuwanie różnych rodzajów plam z tapicerki',
         caption: 'Różne rodzaje plam wymagają specjalistycznego podejścia'
       }
