@@ -1,12 +1,15 @@
 
-import { HomeIcon, TagIcon, FileTextIcon, ShieldIcon, BarChart3Icon } from "lucide-react";
-import Index from "./pages/Index.tsx";
+import { HomeIcon, TagIcon, FileTextIcon, ShieldIcon, BarChart3Icon, Building2Icon, HandshakeIcon } from "lucide-react";
+import Home from "./pages/Home.tsx";
+import Klient from "./pages/Klient.tsx";
 import Pricing from "./pages/Pricing.tsx";
 import BlogIndex from "./pages/BlogIndex.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CRM from "./pages/CRM.tsx";
+import Biznes from "./pages/Biznes.tsx";
+import Outsourcing from "./pages/Outsourcing.tsx";
 
 /**
  * Central place for defining the navigation items. Used for navigation components and routing.
@@ -16,7 +19,25 @@ export const navItems = [
     title: "Home",
     to: "/",
     icon: <HomeIcon className="h-4 w-4" />,
-    page: <Index />,
+    page: <Home />,
+  },
+  {
+    title: "Klient",
+    to: "/klient/",
+    icon: <HomeIcon className="h-4 w-4" />,
+    page: <Klient />,
+  },
+  {
+    title: "Biznes",
+    to: "/biznes/",
+    icon: <Building2Icon className="h-4 w-4" />,
+    page: <Biznes />,
+  },
+  {
+    title: "Outsourcing",
+    to: "/outsourcing/",
+    icon: <HandshakeIcon className="h-4 w-4" />,
+    page: <Outsourcing />,
   },
   {
     title: "Cennik",
