@@ -28,16 +28,32 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/#oferta" className="text-foreground hover:text-mint-600 transition-colors font-medium">
-              Oferta
-            </Link>
+            <div className="relative group">
+              <span className="text-foreground hover:text-mint-600 transition-colors font-medium cursor-pointer flex items-center gap-1">
+                Usługi
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+              <div className="absolute top-full left-0 mt-2 w-48 bg-card rounded-lg shadow-lg border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <Link to="/klient/" className="block px-4 py-3 hover:bg-muted transition-colors rounded-t-lg">
+                  Dla klientów
+                </Link>
+                <Link to="/biznes/" className="block px-4 py-3 hover:bg-muted transition-colors">
+                  Dla firm (B2B)
+                </Link>
+                <Link to="/outsourcing/" className="block px-4 py-3 hover:bg-muted transition-colors rounded-b-lg">
+                  Outsourcing
+                </Link>
+              </div>
+            </div>
             <Link to="/cennik/" className="text-foreground hover:text-mint-600 transition-colors font-medium">
               Cennik
             </Link>
             <Link to="/blog/" className="text-foreground hover:text-mint-600 transition-colors font-medium">
               Blog
             </Link>
-            <Link to="/#zamow" className="text-foreground hover:text-mint-600 transition-colors font-medium">
+            <Link to="/klient/#zamow" className="text-foreground hover:text-mint-600 transition-colors font-medium">
               Kontakt
             </Link>
           </nav>
@@ -51,7 +67,7 @@ const Header = () => {
               </a>
             </Button>
             <Button asChild className="hover:opacity-90">
-              <Link to="/#zamow">Zamów Nasze Usługi</Link>
+              <Link to="/klient/#zamow">Zamów Nasze Usługi</Link>
             </Button>
           </div>
 
@@ -68,17 +84,20 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pt-4 border-t border-lemon-200">
             <nav className="flex flex-col space-y-4">
-              <Link to="/#oferta" className="text-foreground hover:text-mint-600 transition-colors font-medium">
-                Oferta
+              <Link to="/klient/" className="text-foreground hover:text-mint-600 transition-colors font-medium">
+                Dla klientów
+              </Link>
+              <Link to="/biznes/" className="text-foreground hover:text-mint-600 transition-colors font-medium">
+                Dla firm (B2B)
+              </Link>
+              <Link to="/outsourcing/" className="text-foreground hover:text-mint-600 transition-colors font-medium">
+                Outsourcing
               </Link>
               <Link to="/cennik/" className="text-foreground hover:text-mint-600 transition-colors font-medium">
                 Cennik
               </Link>
               <Link to="/blog/" className="text-foreground hover:text-mint-600 transition-colors font-medium">
                 Blog
-              </Link>
-              <Link to="/#zamow" className="text-foreground hover:text-mint-600 transition-colors font-medium">
-                Kontakt
               </Link>
               <div className="flex flex-col space-y-2 pt-4">
                 <Button variant="outline" size="sm" className="border-mint-600 text-mint-600 hover:bg-mint-50" asChild>
@@ -88,7 +107,7 @@ const Header = () => {
                   </a>
                 </Button>
                 <Button asChild className="hover:opacity-90">
-                  <Link to="/#zamow">Zamów Nasze Usługi</Link>
+                  <Link to="/klient/#zamow">Zamów Nasze Usługi</Link>
                 </Button>
               </div>
             </nav>

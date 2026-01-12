@@ -16,7 +16,7 @@ import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 
-const Index = () => {
+const Klient = () => {
   // FAQ JSON-LD
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -251,7 +251,9 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEOHead 
-        canonical="https://lemonshine.pl/"
+        title="Pranie Tapicerki dla Klientów Indywidualnych | Lemonshine Opole, Wrocław"
+        description="Profesjonalne pranie kanap, foteli, materacy i dywanów w Twoim domu. Bezpieczna chemia, szybkie schnięcie, gwarancja jakości."
+        canonical="https://lemonshine.pl/klient/"
         jsonLd={[faqJsonLd, localBusinessJsonLd, howToJsonLd, offersJsonLd]}
       />
       <Header />
@@ -274,4 +276,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Klient;
