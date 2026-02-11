@@ -32,46 +32,53 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-lemon-200">
-      <div className="container mx-auto px-4 py-4">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
+      <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" onClick={handleLogoClick} className="flex items-center space-x-2">
+          <Link to="/" onClick={handleLogoClick} className="flex items-center">
             <img src="/104933_LemonShine_Flat_HP_R_01.png" alt="lemonshine logo" className="h-8 object-contain rounded-2xl" />
           </Link>
 
-          {/* Desktop Navigation - Service Tabs */}
-          <nav className="hidden md:flex items-center space-x-6">
+          {/* Desktop Navigation - Service Tabs with green dots */}
+          <nav className="hidden md:flex items-center gap-1">
             {serviceTabs.map((tab) => (
               <Link
                 key={tab.label}
                 to={tab.disabled ? '#' : tab.to}
                 onClick={tab.disabled ? (e) => e.preventDefault() : undefined}
                 className={cn(
-                  "text-sm font-medium transition-colors pb-1 border-b-2",
+                  "flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors",
                   tab.disabled
-                    ? "text-muted-foreground/50 cursor-not-allowed border-transparent"
+                    ? "text-muted-foreground/50 cursor-not-allowed"
                     : isActive(tab.to)
-                      ? "text-foreground border-lemon-500"
-                      : "text-muted-foreground hover:text-foreground border-transparent hover:border-lemon-300"
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                 )}
               >
+                <span className={cn(
+                  "w-2.5 h-2.5 rounded-full flex-shrink-0",
+                  tab.disabled
+                    ? "bg-muted-foreground/30"
+                    : "bg-mint-500"
+                )} />
                 {tab.label}
-                {tab.disabled && <span className="ml-1 text-xs">(wkrótce)</span>}
               </Link>
             ))}
           </nav>
 
-          {/* CTA Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="border-mint-600 text-mint-600 hover:bg-mint-50" asChild>
-              <a href="tel:+48662117886" onClick={() => trackPhoneClick('header')}>
-                <Phone className="w-4 h-4 mr-2" />
-                +48 662 117 886
-              </a>
-            </Button>
-            <Button asChild className="hover:opacity-90" size="sm">
-              <a href="#zamow">Zamów nasze usługi</a>
+          {/* Right side: phone + CTA */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="tel:+48662117886"
+              onClick={() => trackPhoneClick('header')}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
+            >
+              <Phone className="w-3.5 h-3.5" />
+              +48 662 117 883
+            </a>
+            <Button asChild size="sm" className="rounded-full bg-lemon-400 hover:bg-lemon-500 text-foreground font-semibold px-5 shadow-none">
+              <a href="#zamow">Zamów Nasze Usługi</a>
             </Button>
           </div>
 
@@ -83,8 +90,8 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pt-4 border-t border-lemon-200">
-            <nav className="flex flex-col space-y-3">
+          <div className="md:hidden mt-4 pt-4 border-t border-border">
+            <nav className="flex flex-col space-y-2">
               {serviceTabs.map((tab) => (
                 <Link
                   key={tab.label}
@@ -94,7 +101,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
                     setIsMenuOpen(false);
                   }}
                   className={cn(
-                    "px-3 py-2 rounded-lg font-medium transition-colors",
+                    "flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition-colors",
                     tab.disabled
                       ? "text-muted-foreground/50"
                       : isActive(tab.to)
@@ -102,20 +109,25 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
                         : "text-muted-foreground hover:bg-muted"
                   )}
                 >
+                  <span className={cn(
+                    "w-2.5 h-2.5 rounded-full flex-shrink-0",
+                    tab.disabled ? "bg-muted-foreground/30" : "bg-mint-500"
+                  )} />
                   {tab.label}
-                  {tab.disabled && <span className="ml-1 text-xs">(wkrótce)</span>}
                 </Link>
               ))}
 
-              <div className="flex flex-col space-y-2 pt-4 border-t border-border">
-                <Button variant="outline" size="sm" className="border-mint-600 text-mint-600 hover:bg-mint-50" asChild>
-                  <a href="tel:+48662117886" onClick={() => trackPhoneClick('header_mobile')}>
-                    <Phone className="w-4 h-4 mr-2" />
-                    +48 662 117 886
-                  </a>
-                </Button>
-                <Button asChild className="hover:opacity-90" size="sm">
-                  <a href="#zamow" onClick={() => setIsMenuOpen(false)}>Zamów nasze usługi</a>
+              <div className="flex flex-col space-y-2 pt-3 border-t border-border">
+                <a
+                  href="tel:+48662117886"
+                  onClick={() => trackPhoneClick('header_mobile')}
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground"
+                >
+                  <Phone className="w-4 h-4" />
+                  +48 662 117 883
+                </a>
+                <Button asChild size="sm" className="rounded-full bg-lemon-400 hover:bg-lemon-500 text-foreground font-semibold">
+                  <a href="#zamow" onClick={() => setIsMenuOpen(false)}>Zamów Nasze Usługi</a>
                 </Button>
               </div>
             </nav>
