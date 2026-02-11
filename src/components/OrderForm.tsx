@@ -176,6 +176,17 @@ const OrderForm = () => {
                   />
                 </div>
 
+                <div className="space-y-2">
+                  <Label htmlFor="description">Dodatkowe informacje</Label>
+                  <Textarea
+                    id="description"
+                    value={formData.description}
+                    onChange={(e) => handleInputChange('description', e.target.value)}
+                    placeholder="Dodatkowe uwagi, szczegóły..."
+                    className="border-lemon-200"
+                  />
+                </div>
+
                 <div className="flex items-start space-x-2 p-4 bg-lemon-50 rounded-lg">
                   <Checkbox
                     id="consent"
