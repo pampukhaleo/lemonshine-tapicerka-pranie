@@ -22,6 +22,12 @@ export const navItems = [
     page: <Home />,
   },
   {
+    title: "Pranie tapicerki",
+    to: "/pranie-tapicerki/",
+    icon: <HomeIcon className="h-4 w-4" />,
+    page: <Klient />,
+  },
+  {
     title: "Klient",
     to: "/klient/",
     icon: <HomeIcon className="h-4 w-4" />,
