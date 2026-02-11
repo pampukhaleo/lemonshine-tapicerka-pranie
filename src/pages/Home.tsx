@@ -54,20 +54,19 @@ const Home = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: 'url(/heroImg.webp)' }}
           />
-          {/* Warm yellow-green overlay matching screenshot */}
-          <div className="absolute inset-0 bg-gradient-to-r from-lemon-300/50 via-lemon-200/30 to-transparent" />
+          <div className="absolute inset-0 bg-background/10" />
           <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
-            <div className="max-w-xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-3 italic">
+            <div className="max-w-2xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-3">
                 Sprzątanie Wrocław
               </h1>
               <p className="text-base md:text-lg text-foreground/70 mb-8">
                 Robimy porządki w mieszkaniach i na dużych obiektach
               </p>
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button
                   size="lg"
-                  className="rounded-full bg-lemon-400 hover:bg-lemon-500 text-foreground font-semibold px-8 shadow-none border-2 border-foreground/10"
+                  className="rounded-full bg-lemon-300 hover:bg-lemon-400 text-foreground font-semibold px-10 shadow-none border border-lemon-400"
                   asChild
                 >
                   <a href="#zamow">Zamów sprzątanie</a>
@@ -75,7 +74,7 @@ const Home = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full bg-card/70 backdrop-blur-sm border-2 border-foreground/15 text-foreground hover:bg-card font-semibold px-8"
+                  className="rounded-full bg-card/80 backdrop-blur-sm border border-mint-600 text-foreground hover:bg-card font-semibold px-10"
                   asChild
                 >
                   <a href="#cennik">Sprawdź cennik</a>
