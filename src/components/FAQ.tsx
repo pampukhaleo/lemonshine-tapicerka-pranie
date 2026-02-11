@@ -14,29 +14,33 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: 'Jak często warto prać tapicerkę meblową?',
-      answer: 'Zalecamy pranie co 6–12 miesięcy, w zależności od intensywności użytkowania mebla. Regularne pranie pozwala utrzymać tkaninę w dobrym stanie i zapobiega gromadzeniu się alergenów.'
+      question: 'Jak długo trwa sprzątanie mieszkania?',
+      answer: 'Czas sprzątania zależy od metrażu i stopnia zabrudzenia. Zazwyczaj trwa od 2 do 4 godzin.'
     },
     {
-      question: 'Czy metoda ekstrakcyjna naprawdę działa?',
-      answer: 'Tak! Pranie ekstrakcyjne to jedna z najskuteczniejszych metod – usuwa brud, kurz, alergeny i większość plam, docierając głęboko w strukturę materiału.'
+      question: 'Czy muszę być w mieszkaniu podczas sprzątania?',
+      answer: 'Nie, nie ma takiej potrzeby. Wiele osób przekazuje nam klucze lub udostępnia mieszkanie pod swoją nieobecność.'
     },
     {
-      question: 'Od czego zależy cena czyszczenia?',
-      answer: 'Koszt usługi zależy od rodzaju mebla, jego wielkości, stopnia zabrudzenia oraz rodzaju tkaniny. Dodatkowe opcje, takie pełne suszenie, czy usuwanie gum, kleju, cieżkich plam również wpływają na cenę.'
+      question: 'Czy muszę mieć własny sprzęt i chemię?',
+      answer: 'Nie, przyjeżdżamy z własnym sprzętem oraz profesjonalnymi środkami czystości.'
     },
     {
-      question: 'Ile czasu trwa pranie mebli?',
-      answer: 'Czas zależy od liczby i wielkości mebli, ale zazwyczaj jedna kanapa jest gotowa w ciągu 1–2 godzin.'
+      question: 'Jak wygląda płatność za usługę?',
+      answer: 'Płatność odbywa się po wykonaniu usługi gotówką, blikiem, lub przelewem.'
     },
     {
-      question: 'Czy używane środki są bezpieczne dla dzieci i zwierząt?',
-      answer: 'Tak, korzystamy z certyfikowanej, bezpiecznej chemii, która jest delikatna dla materiału, a jednocześnie skutecznie usuwa zabrudzenia. Po wyschnięciu meble są w pełni bezpieczne.'
+      question: 'Jak mogę zamówić sprzątanie?',
+      answer: 'Wystarczy skontaktować się z nami telefonicznie lub przez formularz na stronie.'
+    },
+    {
+      question: 'Czy sprzątacie w weekendy lub wieczorami?',
+      answer: 'Tak, oferujemy elastyczne terminy, również w weekendy i po godzinach pracy.'
     }
   ];
 
   return (
-    <section className="bg-background">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center space-y-4 mb-12">
@@ -44,7 +48,7 @@ const FAQ = () => {
               Często Zadawane Pytania
             </h2>
             <p className="text-xl text-muted-foreground">
-              Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące prania tapicerki
+              Znajdź odpowiedzi na najczęściej zadawane pytania
             </p>
           </div>
 
@@ -63,7 +67,6 @@ const FAQ = () => {
             </Accordion>
           </div>
 
-          {/* Contact CTA */}
           <div className="mt-12 text-center space-y-6">
             <h3 className="text-2xl font-heading font-bold text-foreground">
               Nie znalazłeś odpowiedzi na swoje pytanie?
