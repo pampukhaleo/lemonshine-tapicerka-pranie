@@ -49,35 +49,33 @@ const Home = () => {
 
       <main className="flex-1 pt-16">
         {/* Hero Section */}
-        <section className="relative min-h-[500px] md:min-h-[600px] flex items-center">
+        <section className="relative min-h-[480px] md:min-h-[560px] flex items-center overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: 'url(/heroImg.webp)' }}
           />
-          <div className="absolute inset-0 bg-lemon-500/30" />
-          <div className="relative z-10 container mx-auto px-4 py-20">
-            <div className="max-w-2xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-4">
+          {/* Warm yellow-green overlay matching screenshot */}
+          <div className="absolute inset-0 bg-gradient-to-r from-lemon-300/50 via-lemon-200/30 to-transparent" />
+          <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
+            <div className="max-w-xl">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-3 italic">
                 Sprzątanie Wrocław
               </h1>
-              <p className="text-lg md:text-xl text-foreground/80 mb-8 max-w-lg">
+              <p className="text-base md:text-lg text-foreground/70 mb-8">
                 Robimy porządki w mieszkaniach i na dużych obiektach
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Button
                   size="lg"
-                  className="bg-lemon-500 hover:bg-lemon-600 text-foreground font-semibold px-8"
+                  className="rounded-full bg-lemon-400 hover:bg-lemon-500 text-foreground font-semibold px-8 shadow-none border-2 border-foreground/10"
                   asChild
                 >
-                  <a href="#zamow">
-                    Zamów sprzątanie
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </a>
+                  <a href="#zamow">Zamów sprzątanie</a>
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-card/80 backdrop-blur-sm border-border text-foreground hover:bg-card font-semibold px-8"
+                  className="rounded-full bg-card/70 backdrop-blur-sm border-2 border-foreground/15 text-foreground hover:bg-card font-semibold px-8"
                   asChild
                 >
                   <a href="#cennik">Sprawdź cennik</a>
