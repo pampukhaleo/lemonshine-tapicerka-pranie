@@ -63,10 +63,10 @@ const Home = () => {
               <p className="text-base md:text-lg text-foreground/70 mb-8">
                 Robimy porządki w mieszkaniach i na dużych obiektach
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="rounded-full bg-lemon-300 hover:bg-lemon-400 text-foreground font-semibold px-10 shadow-none border border-lemon-400"
+                  className="rounded-full bg-lemon-400 hover:bg-lemon-500 text-foreground font-bold text-lg px-12 py-6 shadow-none border border-lemon-400"
                   asChild
                 >
                   <a href="#zamow">Zamów sprzątanie</a>
@@ -74,7 +74,7 @@ const Home = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="rounded-full bg-card/80 backdrop-blur-sm border border-mint-600 text-foreground hover:bg-card font-semibold px-10"
+                  className="rounded-full bg-card/80 backdrop-blur-sm border-2 border-mint-600 text-foreground hover:bg-card font-bold text-lg px-12 py-6"
                   asChild
                 >
                   <a href="#cennik">Sprawdź cennik</a>

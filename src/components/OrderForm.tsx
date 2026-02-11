@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { toast } from 'sonner';
@@ -16,7 +15,7 @@ const OrderForm = () => {
     name: '',
     phone: '',
     address: '',
-    service: '',
+    service: 'sprzątanie',
     date: '',
     time: '',
     description: '',
@@ -35,7 +34,6 @@ const OrderForm = () => {
     setIsSubmitting(true);
 
     try {
-      // Prepare data for database
       const leadData = {
         name: formData.name,
         phone: formData.phone,
@@ -48,7 +46,6 @@ const OrderForm = () => {
 
       console.log('Submitting lead data:', leadData);
 
-      // Insert lead into Supabase and get the created lead back
       const { data: createdLead, error } = await supabase
         .from('leads')
         .insert(leadData)
@@ -63,7 +60,6 @@ const OrderForm = () => {
 
       console.log('Lead created successfully:', createdLead);
 
-      // Send Telegram notification (don't block user if it fails)
       const sendNotification = async (retryCount = 0) => {
         try {
           await supabase.functions.invoke('send-lead-gleb', {
@@ -82,8 +78,6 @@ const OrderForm = () => {
           console.log('Telegram notification sent successfully');
         } catch (telegramError) {
           console.error(`Failed to send Telegram notification (attempt ${retryCount + 1}):`, telegramError);
-          
-          // Retry once after 2 seconds if first attempt fails
           if (retryCount < 1) {
             setTimeout(() => sendNotification(retryCount + 1), 2000);
           }
@@ -92,24 +86,21 @@ const OrderForm = () => {
       
       sendNotification();
 
-      // Track successful form submission for Google Analytics
       trackFormSubmission({
         service: formData.service,
         preferred_date: formData.date,
         preferred_time: formData.time
       });
 
-      // Track Google Ads conversion
       trackConversion();
 
       toast.success('Dziękujemy! Skontaktujemy się z Tobą w ciągu 30 minut.');
       
-      // Reset form
       setFormData({
         name: '',
         phone: '',
         address: '',
-        service: '',
+        service: 'sprzątanie',
         date: '',
         time: '',
         description: '',
@@ -131,135 +122,60 @@ const OrderForm = () => {
   return (
     <section id="zamow" className="py-16 gradient-hero scroll-mt-28">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              Zamów Pranie Tapicerki
+              Zamów Sprzątanie
             </h2>
-            <p className="text-xl text-muted-foreground">
-              Wypełnik formularz, a wktórce się z Tobą kontaktujemy
+            <p className="text-lg text-muted-foreground">
+              Wypełnij formularz, a wkrótce się z Tobą skontaktujemy
             </p>
           </div>
 
           <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-2xl font-heading text-center text-foreground">
-                Szczegóły zamówienia
+                Dane kontaktowe
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <form lang="pl" onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold text-foreground flex items-center">
-                      <Phone className="w-5 h-5 mr-2 text-mint-600" />
-                      Dane kontaktowe
-                    </h3>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Imię i nazwisko *</Label>
-                      <Input
-                        id="name"
-                        value={formData.name}
-                        onChange={(e) => handleInputChange('name', e.target.value)}
-                        required
-                        className="border-lemon-200"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Telefon *</Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => handleInputChange('phone', e.target.value)}
-                        required
-                        placeholder="+48 123 456 789"
-                        className="border-lemon-200"
-                      />
-                    </div>
-
-
-                    <div className="space-y-2">
-                      <Label htmlFor="address">Adres *</Label>
-                      <Textarea
-                        id="address"
-                        value={formData.address}
-                        onChange={(e) => handleInputChange('address', e.target.value)}
-                        required
-                        placeholder="Ulica, numer, kod pocztowy, miasto"
-                        className="border-lemon-200"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Service Details */}
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold text-foreground flex items-center">
-                      <MapPin className="w-5 h-5 mr-2 text-mint-600" />
-                      Szczegóły usługi
-                    </h3>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="service">Rodzaj usługi *</Label>
-                      <Select onValueChange={(value) => handleInputChange('service', value)} value={formData.service}>
-                        <SelectTrigger className="border-lemon-200">
-                          <SelectValue placeholder="Wybierz usługę" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="kanapa">Pranie kanapy</SelectItem>
-                          <SelectItem value="fotel">Pranie fotela</SelectItem>
-                          <SelectItem value="dywan">Pranie dywanu</SelectItem>
-                          <SelectItem value="materac">Pranie materaca</SelectItem>
-                          <SelectItem value="zestaw">Czyszczenie kompleksowe</SelectItem>
-                          <SelectItem value="inne">Inne</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="date">Preferowana data</Label>
-                        <Input
-                          id="date"
-                          type="date"
-                          value={formData.date}
-                          onChange={(e) => handleInputChange('date', e.target.value)}
-                          className="border-lemon-200"
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="time">Preferowana godzina</Label>
-                        <Select onValueChange={(value) => handleInputChange('time', value)} value={formData.time}>
-                          <SelectTrigger className="border-lemon-200">
-                            <SelectValue placeholder="Wybierz" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="9-12">9:00 - 12:00</SelectItem>
-                            <SelectItem value="12-15">12:00 - 15:00</SelectItem>
-                            <SelectItem value="15-18">15:00 - 18:00</SelectItem>
-                            <SelectItem value="flexible">Elastycznie</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="description">Dodatkowe informacje</Label>
-                      <Textarea
-                        id="description"
-                        value={formData.description}
-                        onChange={(e) => handleInputChange('description', e.target.value)}
-                        placeholder="Opisz rodzaj plam, materiał tapicerki, dodatkowe uwagi..."
-                        className="border-lemon-200"
-                      />
-                    </div>
-                  </div>
+              <form lang="pl" onSubmit={handleSubmit} className="space-y-5">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Imię i nazwisko *</Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    required
+                    className="border-lemon-200"
+                  />
                 </div>
 
-                {/* Consent */}
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Telefon *</Label>
+                  <Input
+                    id="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    required
+                    placeholder="+48 123 456 789"
+                    className="border-lemon-200"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="address">Adres *</Label>
+                  <Textarea
+                    id="address"
+                    value={formData.address}
+                    onChange={(e) => handleInputChange('address', e.target.value)}
+                    required
+                    placeholder="Ulica, numer, kod pocztowy, miasto"
+                    className="border-lemon-200"
+                  />
+                </div>
+
                 <div className="flex items-start space-x-2 p-4 bg-lemon-50 rounded-lg">
                   <Checkbox
                     id="consent"
@@ -268,30 +184,28 @@ const OrderForm = () => {
                   />
                   <Label htmlFor="consent" className="text-sm text-muted-foreground leading-relaxed">
                     Wyrażam zgodę na przetwarzanie moich danych osobowych w celu realizacji zamówienia
-                    oraz kontaktu związanego z usługą prania tapicerki. *
+                    oraz kontaktu związanego z usługą. *
                   </Label>
                 </div>
 
-                {/* Submit Button */}
                 <div className="text-center">
                   <Button
                     type="submit"
                     size="lg"
-                    className="hover:opacity-90 hover-lift px-12"
+                    className="hover:opacity-90 hover-lift px-12 w-full sm:w-auto"
                     disabled={isSubmitting}
                   >
                     <Phone className="w-5 h-5 mr-2" />
                     {isSubmitting ? 'Wysyłanie...' : 'Wyślij zamówienie'}
                   </Button>
                   <p className="text-sm text-muted-foreground mt-2">
-                    Wktórce się z Tobą kontaktujemy!
+                    Wkrótce się z Tobą skontaktujemy!
                   </p>
                 </div>
               </form>
             </CardContent>
           </Card>
 
-          {/* Contact Info */}
           <div className="mt-8 grid md:grid-cols-3 gap-4">
             <div className="text-center p-4 bg-white/80 rounded-lg">
               <Phone className="w-8 h-8 mx-auto mb-2 text-mint-600" />
