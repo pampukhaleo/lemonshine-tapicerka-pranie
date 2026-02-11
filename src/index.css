@@ -16,7 +16,7 @@
     --popover: 50 100% 99%;
     --popover-foreground: 210 15% 15%;
 
-    --primary: 48 100% 67%;
+    --primary: 48 99% 67%;
     --primary-foreground: 210 15% 15%;
 
     /--secondary: 120 85% 45%;
@@ -41,9 +41,9 @@
     --lemon-50: 55 100% 95%;
     --lemon-100: 54 100% 88%;
     --lemon-200: 53 100% 82%;
-    --lemon-300: 52 100% 75%;
-    --lemon-400: 51 75% 58%; /* Reduced saturation and lightness */
-    --lemon-500: 54 85% 52%; /* Reduced saturation and lightness */
+    --lemon-300: 48 99% 67%;
+    --lemon-400: 48 99% 67%; /* exact #ffde59 */
+    --lemon-500: 48 95% 55%;
     --lemon-600: 45 85% 45%; /* Reduced saturation and lightness */
     --lemon-700: 42 100% 48%;
     --lemon-800: 38 100% 42%;

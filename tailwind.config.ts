@@ -111,7 +111,7 @@ export default {
 				float: 'float 3s ease-in-out infinite'
 			},
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
+				sans: ['Poppins', 'system-ui', 'sans-serif'],
 				heading: ['Poppins', 'system-ui', 'sans-serif'],
 			}
 		}
