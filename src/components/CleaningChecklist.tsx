@@ -6,18 +6,18 @@ import {
 } from 'lucide-react';
 
 const checklistItems = [
-  { icon: Wind, label: 'Odkurzanie podłóg' },
-  { icon: Droplets, label: 'Mycie podłóg' },
-  { icon: Feather, label: 'Usuwanie kurzu z mebli' },
-  { icon: Hand, label: 'Czyszczenie elementów dotykowych' },
-  { icon: GlassWater, label: 'Mycie luster' },
-  { icon: Trash2, label: 'Zbieranie i wynoszenie śmieci' },
-  { icon: Shirt, label: 'Składanie i rozwieszanie odzieży' },
-  { icon: UtensilsCrossed, label: 'Mycie naczyń' },
-  { icon: CookingPot, label: 'Czyszczenie kuchni' },
-  { icon: Refrigerator, label: 'Przecieranie AGD' },
-  { icon: Bath, label: 'Mycie i dezynfekcja toalety' },
-  { icon: ShowerHead, label: 'Czyszczenie łazienki' },
+  { icon: Wind, label: 'Odkurzanie podłóg', description: 'Odkurzamy wszystkie dostępne powierzchnie' },
+  { icon: Droplets, label: 'Mycie podłóg', description: 'Myjemy wszystkie dostępne powierzchnie' },
+  { icon: Feather, label: 'Usuwanie kurzu z mebli', description: 'Przecieramy meble oraz inne dostępne elementy' },
+  { icon: Hand, label: 'Czyszczenie elementów dotykowych', description: 'Myjemy poręcze, listwy, drzwi oraz włączniki światła' },
+  { icon: GlassWater, label: 'Mycie luster', description: 'Czyścimy lustra, pozostawiając je bez smug' },
+  { icon: Trash2, label: 'Zbieranie i wynoszenie śmieci', description: 'Zbieramy odpady i wynosimy je po sprzątaniu' },
+  { icon: Shirt, label: 'Składanie i rozwieszanie odzieży', description: 'Porządkujemy odzież pozostawioną w widocznych miejscach' },
+  { icon: UtensilsCrossed, label: 'Mycie naczyń', description: 'Myjemy naczynia znajdujące się w zlewie' },
+  { icon: CookingPot, label: 'Czyszczenie kuchni', description: 'Myjemy kuchenkę, zlew oraz blat roboczy' },
+  { icon: Refrigerator, label: 'Przecieranie AGD', description: 'Czyścimy sprzęty AGD: lodówkę, mikrofalę oraz okap' },
+  { icon: Bath, label: 'Mycie i dezynfekcja toalety', description: 'Dokładnie myjemy i dezynfekujemy sedes' },
+  { icon: ShowerHead, label: 'Czyszczenie łazienki', description: 'Myjemy umywalkę, wannę lub prysznic' },
 ];
 
 const CleaningChecklist = () => {
@@ -35,12 +35,15 @@ const CleaningChecklist = () => {
               return (
                 <div
                   key={index}
-                  className="flex items-center gap-4 bg-card rounded-xl p-4 border border-border"
+                  className="flex items-start gap-4 bg-card rounded-xl p-4 border border-border"
                 >
                   <div className="w-10 h-10 rounded-lg bg-lemon-100 flex items-center justify-center flex-shrink-0">
                     <IconComponent className="w-5 h-5 text-lemon-600" />
                   </div>
-                  <span className="text-foreground font-medium">{item.label}</span>
+                  <div>
+                    <span className="text-foreground font-semibold block">{item.label}</span>
+                    <span className="text-sm text-muted-foreground">{item.description}</span>
+                  </div>
                 </div>
               );
             })}
