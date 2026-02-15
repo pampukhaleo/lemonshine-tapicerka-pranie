@@ -53,7 +53,7 @@ const Hero = () => {
                 className="w-full sm:flex-1 border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift"
                 asChild
               >
-                <Link to="/cennik/">Zobacz Cennik</Link>
+                <Link to="/cennik/">Zobacz zakres usług</Link>
               </Button>
 
               <Button
