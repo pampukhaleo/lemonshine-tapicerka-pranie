@@ -88,24 +88,24 @@ const About = () => {
               {steps.map((step, index) => {
                 const IconComp = step.icon;
                 return (
-                  <div key={index} className="flex items-center gap-4">
-                    <div className="flex flex-col items-center">
-                      <div className={`w-14 h-14 rounded-full ${step.color} flex items-center justify-center`}>
+                  <React.Fragment key={index}>
+                    <div className="flex items-center gap-4">
+                      <div className={`w-14 h-14 rounded-full ${step.color} flex items-center justify-center flex-shrink-0`}>
                         <IconComp className="w-7 h-7" />
                       </div>
-                      {index < steps.length - 1 && (
-                        <div className="w-0.5 h-6 bg-mint-500" />
-                      )}
+                      <div className="flex items-center gap-2">
+                        <span className="text-foreground font-semibold text-lg">{step.label}</span>
+                        {step.badge && (
+                          <Badge variant="outline" className="text-xs font-medium border-border text-muted-foreground">
+                            {step.badge}
+                          </Badge>
+                        )}
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 pb-6">
-                      <span className="text-foreground font-semibold text-lg">{step.label}</span>
-                      {step.badge && (
-                        <Badge variant="outline" className="text-xs font-medium border-border text-muted-foreground">
-                          {step.badge}
-                        </Badge>
-                      )}
-                    </div>
-                  </div>
+                    {index < steps.length - 1 && (
+                      <div className="w-0.5 h-6 bg-mint-500 ml-7" />
+                    )}
+                  </React.Fragment>
                 );
               })}
             </div>
