@@ -41,7 +41,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1 bg-mint-50 rounded-full px-2 py-1">
             {serviceTabs.map((tab) => {
               const Icon = tab.icon;
               return (
@@ -50,7 +50,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
                   to={tab.disabled ? '#' : tab.to}
                   onClick={tab.disabled ? (e) => e.preventDefault() : undefined}
                   className={cn(
-                    "flex items-center gap-2 px-4 py-2 rounded-lg text-base font-medium transition-colors",
+                    "flex items-center gap-2 px-4 py-2 rounded-full text-base font-medium transition-colors",
                     tab.disabled
                       ? "text-muted-foreground/50 cursor-not-allowed"
                       : isActive(tab.to)
