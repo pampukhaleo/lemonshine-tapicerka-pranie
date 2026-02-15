@@ -59,15 +59,15 @@ const Promotions = () => {
                   ))}
                 </div>
 
-                {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-mint-500 flex items-center justify-center mb-4">
-                  {promo.icon}
+                {/* Icon + Title */}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 rounded-xl bg-mint-500 flex items-center justify-center flex-shrink-0">
+                    {promo.icon}
+                  </div>
+                  <h3 className="text-lg font-heading font-bold text-foreground">
+                    {promo.title}
+                  </h3>
                 </div>
-
-                {/* Title */}
-                <h3 className="text-lg font-heading font-bold text-foreground mb-3">
-                  {promo.title}
-                </h3>
 
                 {/* Description */}
                 <p className="text-sm text-muted-foreground leading-relaxed">
