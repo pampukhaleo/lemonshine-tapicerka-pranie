@@ -37,42 +37,6 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Features */ }
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex items-center space-x-3">
-                <CheckCircle className="w-6 h-6 text-mint-600"/>
-                <span className="text-foreground font-medium">Bezpieczne środki</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Clock className="w-6 h-6 text-mint-600"/>
-                <span className="text-foreground font-medium">Szybkie wysychanie</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Sparkles className="w-6 h-6 text-mint-600"/>
-                <span className="text-foreground font-medium">Skuteczne odplamianie</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Shield className="w-6 h-6 text-mint-600"/>
-                <span className="text-foreground font-medium">Gwarancja jakości</span>
-              </div>
-            </div>
-
-            {/* Trust Indicators */ }
-            <div className="flex flex-wrap justify-center items-center gap-6 pt-4">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-mint-600">500+</div>
-                <div className="text-sm text-muted-foreground">Zadowolonych klientów</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-mint-600">5★</div>
-                <div className="text-sm text-muted-foreground">Średnia ocen</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-mint-600">100%</div>
-                <div className="text-sm text-muted-foreground">Gwarancja satysfakcji</div>
-              </div>
-            </div>
-
             {/* CTA Buttons */ }
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
