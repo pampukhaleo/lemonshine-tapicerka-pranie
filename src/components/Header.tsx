@@ -32,7 +32,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-mint-50 shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -41,7 +41,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="hidden md:flex items-center gap-1">
             {serviceTabs.map((tab) => {
               const Icon = tab.icon;
               return (
@@ -50,7 +50,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
                   to={tab.disabled ? '#' : tab.to}
                   onClick={tab.disabled ? (e) => e.preventDefault() : undefined}
                   className={cn(
-                    "flex items-center gap-2.5 px-4 py-2 rounded-full text-base font-medium transition-colors",
+                    "flex items-center gap-2 px-4 py-2 rounded-lg text-base font-medium transition-colors",
                     tab.disabled
                       ? "text-muted-foreground/50 cursor-not-allowed"
                       : isActive(tab.to)
@@ -72,12 +72,12 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
             <a
               href="tel:+48662117886"
               onClick={() => trackPhoneClick('header')}
-              className="flex items-center gap-2 border border-border rounded-full px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
+              className="flex items-center gap-2 border-2 border-mint-500 rounded-full px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
             >
               <Phone className="w-4 h-4 text-mint-500" />
               +48 662 117 883
             </a>
-            <Button asChild className="rounded-full bg-lemon-400 hover:bg-lemon-500 text-foreground font-semibold px-6 shadow-none border-none h-10">
+            <Button asChild className="rounded-lg bg-lemon-400 hover:bg-lemon-500 text-foreground font-semibold px-6 shadow-none border-none h-10">
               <a href="#zamow">Zamów Nasze Usługi</a>
             </Button>
           </div>
