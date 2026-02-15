@@ -33,7 +33,7 @@ const Pricing = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <SEOHead 
         title="Cennik Prania Tapicerki - Opole, Wrocław"
         description="Sprawdź nasze konkurencyjne ceny prania tapicerki meblowej. Czyszczenie kanap, foteli, narożników i materacy w Opolu i Wrocławiu."
