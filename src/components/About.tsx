@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Shield, Users, DollarSign, Zap } from 'lucide-react';
+import { Shield, Users, DollarSign, Zap, Search, SprayCan, Waves, Fan, ShieldCheck } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 const About = () => {
   const features = [
@@ -26,6 +27,14 @@ const About = () => {
     }
   ];
 
+  const steps = [
+    { icon: Search, label: 'Przegląd mebla', color: 'bg-lemon-400 text-foreground' },
+    { icon: SprayCan, label: 'Nanoszenie presprayu', color: 'bg-lemon-400 text-foreground' },
+    { icon: Waves, label: 'Ekstrakcja', color: 'bg-lemon-400 text-foreground' },
+    { icon: Fan, label: 'Suszenie', color: 'bg-mint-500 text-card', badge: 'Opcjonalnie' },
+    { icon: ShieldCheck, label: 'Impregnacja', color: 'bg-mint-500 text-card', badge: 'Opcjonalnie' },
+  ];
+
   return (
     <section id="onas" className="py-16 bg-lemon-50/50 scroll-mt-28">
       <div className="container mx-auto px-4">
@@ -39,59 +48,67 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-          { features.map((feature, index) => (
-            <Card key={ index } className="h-full border-0 shadow-lg hover-lift bg-white/80 backdrop-blur-sm">
+          {features.map((feature, index) => (
+            <Card key={index} className="h-full border-0 shadow-lg hover-lift bg-white/80 backdrop-blur-sm">
               <CardContent className="h-full p-6">
                 <div className="flex h-full flex-col items-center text-center">
                   <div className="w-16 h-16 mb-2 rounded-full gradient-fresh flex items-center justify-center shrink-0">
-                    <feature.icon className="w-8 h-8 text-white"/>
+                    <feature.icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="mt-2 text-xl font-heading font-semibold text-foreground leading-7 min-h-14 overflow-hidden"
-                  >
-                    { feature.title }
+                  <h3 className="mt-2 text-xl font-heading font-semibold text-foreground leading-7 min-h-14 overflow-hidden">
+                    {feature.title}
                   </h3>
                   <p className="mt-2 text-muted-foreground leading-6 min-h-[72px] overflow-hidden">
-                    { feature.description }
+                    {feature.description}
                   </p>
-                  <div className="mt-auto"/>
+                  <div className="mt-auto" />
                 </div>
               </CardContent>
             </Card>
-          )) }
+          ))}
         </div>
 
-        {/* Story Section */ }
-        <div className="mt-16 bg-white rounded-3xl p-8 md:p-12 shadow-xl">
-          <div className="flex flex-col lg:flex-row lg:justify-between items-center gap-8 lg:gap-10">
-            <div className="space-y-6 max-w-[38rem]">
+        {/* Nasze rozwiązanie */}
+        <div className="mt-16 bg-card rounded-3xl p-8 md:p-12 shadow-xl">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div className="space-y-6">
               <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
-                Nasza historia i misja
+                Nasze rozwiązanie
               </h3>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  W Lemonshine stawiamy na indywidualne podejście i dokładność. Nie jesteśmy korporacją - każde zlecenie
-                  traktujemy z pełnym zaangażowaniem. Korzystamy z profesjonalnych środków i sprzętu, dbając o komfort,
-                  bezpieczeństwo i zadowolenie klienta. Naszym celem jest świeżość, czystość i przyjemna atmosfera w
-                  domu naszych klientów.
-                </p>
-              </div>
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 rounded-full gradient-lemon flex items-center justify-center">
-                  <span className="text-white font-bold">2+</span>
-                </div>
-                <div>
-                  <div className="font-semibold text-foreground">Lat doświadczenia</div>
-                  <div className="text-sm text-muted-foreground">w branży czyszczenia tapicerki</div>
-                </div>
-              </div>
+              <p className="text-muted-foreground leading-relaxed">
+                Oferujemy profesjonalne pranie tapicerki meblowej, dopasowane do rodzaju tkaniny i stopnia zabrudzeń.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Usuwamy plamy, zapachy oraz alergeny, bez ryzyka uszkodzeń, gwarantując efekt świeżości na tapicerce. Dzięki odpowiedniej technologii prania meble szybko schną i wracają do codziennego użytkowania.
+              </p>
             </div>
-            <img
-              src="/history.jpg"
-              alt="Profesjonalne pranie tapicerki - doświadczenie i jakość"
-              className="mx-auto h-full object-contain rounded-2xl max-h-[440px] min-h-[380px]"
-              loading="lazy"
-              decoding="async"
-            />
+
+            {/* Steps timeline */}
+            <div className="flex flex-col items-start gap-0">
+              {steps.map((step, index) => {
+                const IconComp = step.icon;
+                return (
+                  <div key={index} className="flex items-center gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className={`w-14 h-14 rounded-full ${step.color} flex items-center justify-center`}>
+                        <IconComp className="w-7 h-7" />
+                      </div>
+                      {index < steps.length - 1 && (
+                        <div className="w-0.5 h-6 bg-mint-500" />
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 pb-6">
+                      <span className="text-foreground font-semibold text-lg">{step.label}</span>
+                      {step.badge && (
+                        <Badge variant="outline" className="text-xs font-medium border-border text-muted-foreground">
+                          {step.badge}
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
