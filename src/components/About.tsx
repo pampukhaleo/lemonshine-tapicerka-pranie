@@ -84,7 +84,7 @@ const About = () => {
             </div>
 
             {/* Steps timeline */}
-            <div className="flex flex-col items-start gap-0 lg:pl-12">
+            <div className="flex flex-col items-start gap-0 lg:pl-24">
               {steps.map((step, index) => {
                 const IconComp = step.icon;
                 return (
