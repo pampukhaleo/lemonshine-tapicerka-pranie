@@ -249,7 +249,7 @@ const Klient = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <SEOHead 
         title="Pranie Tapicerki dla Klientów Indywidualnych | Lemonshine Opole, Wrocław"
         description="Profesjonalne pranie kanap, foteli, materacy i dywanów w Twoim domu. Bezpieczna chemia, szybkie schnięcie, gwarancja jakości."

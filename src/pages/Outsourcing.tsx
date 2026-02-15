@@ -113,7 +113,7 @@ const Outsourcing = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <SEOHead
         title="Outsourcing Usług Czyszczenia Tapicerki | Lemonshine Partner"
         description="Rozszerz ofertę swojej firmy o profesjonalne pranie tapicerki. Usługi white-label, atrakcyjne ceny partnerskie, pełne wsparcie."

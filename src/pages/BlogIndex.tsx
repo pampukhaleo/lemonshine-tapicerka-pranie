@@ -31,7 +31,7 @@ const BlogIndex = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <SEOHead 
         title="Blog o praniu tapicerki – porady i artykuły"
         description="Praktyczne porady o pielęgnacji tapicerki, usuwaniu plam i czyszczeniu mebli. Dowiedz się więcej o profesjonalnym praniu kanap i foteli."

@@ -7,7 +7,7 @@ import SEOHead from '@/components/SEOHead';
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <SEOHead 
         title="Polityka Prywatności"
         description="Polityka prywatności LemonShine - informacje o przetwarzaniu danych osobowych podczas korzystania z naszych usług prania tapicerki."
