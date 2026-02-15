@@ -228,12 +228,12 @@ const OrderForm = () => {
             <div className="text-center p-4 bg-white/80 rounded-lg">
               <Clock className="w-8 h-8 mx-auto mb-2 text-mint-600" />
               <div className="font-semibold">Godziny pracy</div>
-              <div className="text-sm text-muted-foreground">Pn-Nd: 8:00-16:00</div>
+              <div className="text-sm text-muted-foreground">Pn-Nd: 8:00-20:00</div>
             </div>
             <div className="text-center p-4 bg-white/80 rounded-lg">
               <MapPin className="w-8 h-8 mx-auto mb-2 text-mint-600" />
               <div className="font-semibold">Obszar działania</div>
-              <div className="text-sm text-muted-foreground">Wrocław i Opole<br />(30 km)</div>
+              <div className="text-sm text-muted-foreground">Wrocław (20 km)</div>
             </div>
           </div>
         </div>
