@@ -9,19 +9,19 @@ export const apartmentPlans = [
   {
     id: 'one-room',
     title: 'Jednopokojowe',
-    basePrice: 248.63,
+    basePrice: 198.90,
     description: 'Sprzątanie obejmuje jeden pokój, kuchnię, przedpokój oraz jedną łazienkę.',
   },
   {
     id: 'two-room',
     title: 'Dwupokojowe',
-    basePrice: 317.38,
+    basePrice: 253.90,
     description: 'Sprzątanie obejmuje dwa pokoje, kuchnię, przedpokój oraz jedną łazienkę.',
   },
   {
     id: 'three-room',
     title: 'Trzypokojowe',
-    basePrice: 386.13,
+    basePrice: 308.90,
     description: 'Sprzątanie obejmuje trzy pokoje, kuchnię, przedpokój oraz jedną łazienkę.',
   },
 ];
