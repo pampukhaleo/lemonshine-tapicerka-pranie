@@ -20,7 +20,7 @@ const Promotions = () => {
       icon: <Users className="w-7 h-7 text-card" />,
       title: "Razem z sąsiadem",
       description: "Zamów sprzątanie z sąsiadem, a oboje otrzymacie 20% rabatu!",
-      badges: ["20% RABATU", "10% RABATU"],
+      badges: ["20% RABATU"],
     },
   ];
 
