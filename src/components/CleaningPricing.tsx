@@ -61,14 +61,16 @@ const CleaningPricing = () => {
               return (
                 <div
                   key={plan.id}
-                  className="bg-card rounded-2xl border border-border p-6 flex flex-col"
+                  className="bg-card rounded-2xl border border-border p-6 flex flex-col relative overflow-hidden"
                 >
-                  {/* Title with green accent bar */}
-                  <div className="flex items-center justify-between mb-4">
+                  {/* Bookmark tab in top-right corner */}
+                  <div className="absolute top-0 right-6 w-8 bg-lemon-400 rounded-b-lg" style={{ height: '40px' }} />
+
+                  {/* Title */}
+                  <div className="mb-4">
                     <h3 className="text-xl md:text-2xl font-heading font-bold text-foreground">
                       {plan.title}
                     </h3>
-                    <div className="w-2 h-8 rounded-full bg-mint-500" />
                   </div>
 
                   {/* Price */}
