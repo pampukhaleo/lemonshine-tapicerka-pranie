@@ -64,7 +64,7 @@ const CleaningPricing = () => {
                   className="bg-card rounded-2xl border border-border p-6 flex flex-col relative overflow-hidden"
                 >
                   {/* Bookmark tab in top-right corner */}
-                  <div className="absolute top-0 right-6 w-8 bg-lemon-400 rounded-b-lg" style={{ height: '40px' }} />
+                  <div className="absolute top-0 right-6 w-8 bg-mint-500 rounded-b-lg" style={{ height: '52px' }} />
 
                   {/* Title */}
                   <div className="mb-4">
