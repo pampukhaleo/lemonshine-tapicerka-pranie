@@ -1,30 +1,41 @@
 
 
-# Обновление хедера по макету
+## Plan: Create "Mycie Okien" (Window Cleaning) Page
 
-## Что нужно изменить
+The new page will follow the same structure as the Home page, reusing existing components where possible and creating new ones specific to window cleaning.
 
-На основе скриншота, хедер должен иметь:
+### Page Structure (7 blocks + header/footer)
 
-1. **Логотип** -- больший размер, с текстом "LemonShine" (используем существующий `lemonshine_big.png` или `104933_LemonShine_Flat_HP_R_01_1.png`)
-2. **Навигация** -- вместо зеленых точек использовать цветные иконки-эмодзи перед каждым пунктом:
-   - Sprzatanie -- иконка чистящих средств (используем `SprayCan` из lucide)
-   - Pranie tapicerki -- иконка дивана (используем `Sofa` из lucide)
-   - Mycie okien -- иконка окна/инструментов (используем `PanelTop` или подобную из lucide)
-3. **Текст навигации** -- крупнее (text-base вместо text-sm), темный цвет
-4. **Телефон** -- в отдельной округлой рамке (pill с border), иконка телефона зеленая
-5. **CTA кнопка** -- "Zamow Nasze Uslugi" желтая (#ffde59), скругленная, без рамки
-6. **Общий вид** -- больше отступов, светлый фон без прозрачности
+1. **Hero** - similar to Home hero with background image, title "Profesjonalne **Mycie Okien**", CTA buttons "Zamów Mycie Okien" + "Zobacz zakres usług"
+2. **TrustIndicators** - reuse existing component as-is (0% Ryzyka, Własny sprzęt, Terminowość, Zrobimy to za Ciebie)
+3. **WindowPricing** - new component with 3 cards: Umycie jednego okna (30 zł), Umycie obudowy balkonu (20 zł), Mycie paneli szklanych 1m² (10 zł) + minimum order notice + "Zobacz pełny cennik" button
+4. **Promotions** - reuse existing component (same promotions apply, text adjusted for "mycie" instead of "sprzątanie")
+5. **OrderForm** - reuse existing component
+6. **Testimonials** - reuse existing component
+7. **FAQ** - new `WindowFAQ` component with window-cleaning-specific questions
 
-## Технические изменения
+### Files to Create
+- **`src/pages/MycieOkien.tsx`** - main page, assembles all blocks
+- **`src/components/window/WindowPricing.tsx`** - pricing block with 3 service cards (illustration images from screenshots as reference, will use placeholder/icon approach)
+- **`src/components/window/WindowFAQ.tsx`** - FAQ specific to window cleaning
 
-### Файл: `src/components/Header.tsx`
+### Files to Modify
+- **`src/nav-items.tsx`** - add route `/mycie-okien/` pointing to MycieOkien page
+- **`src/components/Header.tsx`** - enable "Mycie okien" tab (remove `disabled: true`, set `to: '/mycie-okien/'`)
 
-- Увеличить логотип (`h-10` вместо `h-8`)
-- Заменить зеленые точки на lucide-иконки с цветными фонами (маленькие круглые бэджи с иконкой)
-- Увеличить текст навигации до `text-base`
-- Обернуть телефон в `border rounded-full px-4 py-2` pill-контейнер с зеленой иконкой
-- Убрать `border-b` у хедера, оставить легкую тень или чистый белый фон
-- Обновить мобильное меню аналогично
+### Header Navigation Update
+The "Mycie okien" tab is currently disabled. It will be enabled and linked to `/mycie-okien/`.
 
-Никакие другие файлы не затрагиваются.
+### Hero Section
+Will reuse the same pattern as Home hero (background image with overlay), but with window-cleaning text. The uploaded screenshot shows a kitchen/window image - we'll need a hero image or use a gradient fallback initially.
+
+### WindowPricing Component
+Based on screenshot 3:
+- 3 cards in a row with illustrations/icons
+- Each card: title, subtitle, price in green, "Zamów" button
+- Minimum order notice (150 zł) below
+- "Zobacz pełny cennik" link at bottom
+
+### Promotions
+Reuse existing `Promotions` component - the promotions (10% over 300zł, review discount, neighbor discount) apply across services. The description text says "mycie" which matches.
+
