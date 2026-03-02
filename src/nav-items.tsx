@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound.tsx";
 import CRM from "./pages/CRM.tsx";
 import Biznes from "./pages/Biznes.tsx";
 import Outsourcing from "./pages/Outsourcing.tsx";
+import MycieOkien from "./pages/MycieOkien.tsx";
 
 /**
  * Central place for defining the navigation items. Used for navigation components and routing.
@@ -38,6 +39,12 @@ export const navItems = [
     to: "/biznes/",
     icon: <Building2Icon className="h-4 w-4" />,
     page: <Biznes />,
+  },
+  {
+    title: "Mycie Okien",
+    to: "/mycie-okien/",
+    icon: <HomeIcon className="h-4 w-4" />,
+    page: <MycieOkien />,
   },
   {
     title: "Outsourcing",

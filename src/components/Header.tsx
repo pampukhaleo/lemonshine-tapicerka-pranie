@@ -15,7 +15,7 @@ interface HeaderProps {
 const serviceTabs = [
   { label: 'Sprzątanie', to: '/', icon: SprayCan, iconBg: 'bg-blue-100 text-blue-600' },
   { label: 'Pranie tapicerki', to: '/pranie-tapicerki/', icon: Sofa, iconBg: 'bg-orange-100 text-orange-600' },
-  { label: 'Mycie okien', to: '#', disabled: true, icon: PanelTop, iconBg: 'bg-cyan-100 text-cyan-600' },
+  { label: 'Mycie okien', to: '/mycie-okien/', icon: PanelTop, iconBg: 'bg-cyan-100 text-cyan-600' },
 ];
 
 const Header = ({ variant = 'home' }: HeaderProps) => {
@@ -47,18 +47,15 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
               return (
                 <Link
                   key={tab.label}
-                  to={tab.disabled ? '#' : tab.to}
-                  onClick={tab.disabled ? (e) => e.preventDefault() : undefined}
+                  to={tab.to}
                   className={cn(
                     "flex items-center gap-2 px-4 py-2 rounded-full text-base font-medium transition-colors",
-                    tab.disabled
-                      ? "text-muted-foreground/50 cursor-not-allowed"
-                      : isActive(tab.to)
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
+                    isActive(tab.to)
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   )}
                 >
-                  <span className={cn("w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0", tab.disabled ? "bg-muted text-muted-foreground/40" : tab.iconBg)}>
+                  <span className={cn("w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0", tab.iconBg)}>
                     <Icon className="w-4 h-4" />
                   </span>
                   {tab.label}
@@ -97,21 +94,16 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
                 return (
                   <Link
                     key={tab.label}
-                    to={tab.disabled ? '#' : tab.to}
-                    onClick={(e) => {
-                      if (tab.disabled) { e.preventDefault(); return; }
-                      setIsMenuOpen(false);
-                    }}
+                    to={tab.to}
+                    onClick={() => setIsMenuOpen(false)}
                     className={cn(
                       "flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium transition-colors",
-                      tab.disabled
-                        ? "text-muted-foreground/50"
-                        : isActive(tab.to)
-                          ? "bg-lemon-100 text-foreground"
-                          : "text-muted-foreground hover:bg-muted"
+                      isActive(tab.to)
+                        ? "bg-lemon-100 text-foreground"
+                        : "text-muted-foreground hover:bg-muted"
                     )}
                   >
-                    <span className={cn("w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0", tab.disabled ? "bg-muted text-muted-foreground/40" : tab.iconBg)}>
+                    <span className={cn("w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0", tab.iconBg)}>
                       <Icon className="w-4 h-4" />
                     </span>
                     {tab.label}
