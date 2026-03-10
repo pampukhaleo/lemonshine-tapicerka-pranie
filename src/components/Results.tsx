@@ -111,18 +111,14 @@ const Results = () => {
 
         {/* Stats */}
         <div className="mt-16 bg-gradient-to-r from-lemon-100 to-mint-100 rounded-3xl p-8">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-3xl font-bold text-mint-600 mb-2">500+</div>
+              <div className="text-3xl font-bold text-mint-600 mb-2">1500+</div>
               <div className="text-muted-foreground">Wykonanych usług</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-mint-600 mb-2">98%</div>
+              <div className="text-3xl font-bold text-mint-600 mb-2">100%</div>
               <div className="text-muted-foreground">Zadowolonych klientów</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-mint-600 mb-2">24h</div>
-              <div className="text-muted-foreground">Czas realizacji</div>
             </div>
             <div>
               <div className="text-3xl font-bold text-mint-600 mb-2">5★</div>
