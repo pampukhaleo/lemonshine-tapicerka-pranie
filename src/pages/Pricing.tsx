@@ -60,7 +60,7 @@ const Pricing = () => {
                 <Card key={index} className="bg-white shadow-md hover-lift border-0 overflow-hidden">
                   <div>
                     <img
-                      src={`/${item.image}`}
+                      src={item.image}
                       alt={item.name}
                       className="w-full h-full object-contain"
                     />
