@@ -6,6 +6,7 @@ import WindowPricing from '@/components/window/WindowPricing';
 import Promotions from '@/components/Promotions';
 import OrderForm from '@/components/OrderForm';
 import Testimonials from '@/components/Testimonials';
+import StatsBar from '@/components/StatsBar';
 import WindowFAQ from '@/components/window/WindowFAQ';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -17,26 +18,34 @@ const MycieOkien = () => {
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Jak często warto myć okna?",
+        "name": "Czy potrzebuję mieć własny sprzęt lub chemię?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Zalecamy mycie okien co 2–3 miesiące. W przypadku mieszkań przy ruchliwych ulicach lub w pobliżu budowy — nawet częściej."
+          "text": "Nie, przyjeżdżamy z własnym profesjonalnym sprzętem oraz skutecznymi środkami do mycia szyb i ram."
         }
       },
       {
         "@type": "Question",
-        "name": "Co wchodzi w cenę mycia jednego okna?",
+        "name": "Czy myjecie okna z obu stron?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "W cenę wliczone jest mycie obu stron szyby, ramy okiennej oraz parapetu wewnętrznego i zewnętrznego."
+          "text": "Tak, myjemy okna z obu stron, pod warunkiem że mamy bezpieczny dostęp do zewnętrznej części szyby lub okno otwiera się w sposób umożliwiający jej dokładne umycie."
         }
       },
       {
         "@type": "Question",
-        "name": "Ile czasu trwa mycie okien w mieszkaniu?",
+        "name": "Czy usuwacie zabrudzenia znajdujące się wewnątrz okna oraz na ramach?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Dla standardowego mieszkania (5–8 okien) mycie trwa zwykle 1–2 godziny."
+          "text": "Tak, czyścimy nie tylko powierzchnię szyb, ale również ramy, uszczelki oraz trudno dostępne miejsca wokół okna, zapewniając kompleksowy efekt."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jakie są dostępne formy płatności?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Akceptujemy płatność gotówką, przelewem, BLIK-iem oraz wystawiamy fakturę na życzenie klienta."
         }
       }
     ]
@@ -74,6 +83,7 @@ const MycieOkien = () => {
         <Promotions />
         <OrderForm />
         <Testimonials />
+        <StatsBar />
         <WindowFAQ />
       </main>
       <Footer />

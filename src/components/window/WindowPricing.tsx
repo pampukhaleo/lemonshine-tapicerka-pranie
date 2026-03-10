@@ -48,7 +48,7 @@ const WindowPricing = () => {
               Cennik Mycia Okien
             </h2>
             <p className="text-lg text-muted-foreground">
-              Proste i przejrzyste ceny — płacisz tylko za to, co potrzebujesz
+              Sprawdź cennik na mycie okien i zamów usługę już teraz!
             </p>
           </div>
 

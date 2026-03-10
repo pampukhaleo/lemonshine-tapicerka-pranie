@@ -6,28 +6,20 @@ import { trackPhoneClick } from '@/lib/analytics';
 
 const faqs = [
   {
-    question: 'Jak często warto myć okna?',
-    answer: 'Zalecamy mycie okien co 2–3 miesiące. W przypadku mieszkań przy ruchliwych ulicach lub w pobliżu budowy — nawet częściej.',
+    question: 'Czy potrzebuję mieć własny sprzęt lub chemię?',
+    answer: 'Nie, przyjeżdżamy z własnym profesjonalnym sprzętem oraz skutecznymi środkami do mycia szyb i ram.',
   },
   {
-    question: 'Czy myjecie okna na wysokości?',
-    answer: 'Tak, obsługujemy mieszkania i domy na każdym piętrze. Mamy odpowiedni sprzęt do pracy na wysokości.',
+    question: 'Czy myjecie okna z obu stron?',
+    answer: 'Tak, myjemy okna z obu stron, pod warunkiem że mamy bezpieczny dostęp do zewnętrznej części szyby lub okno otwiera się w sposób umożliwiający jej dokładne umycie.',
   },
   {
-    question: 'Co wchodzi w cenę mycia jednego okna?',
-    answer: 'W cenę wliczone jest mycie obu stron szyby, ramy okiennej oraz parapetu wewnętrznego i zewnętrznego.',
+    question: 'Czy usuwacie zabrudzenia znajdujące się wewnątrz okna oraz na ramach?',
+    answer: 'Tak, czyścimy nie tylko powierzchnię szyb, ale również ramy, uszczelki oraz trudno dostępne miejsca wokół okna, zapewniając kompleksowy efekt.',
   },
   {
-    question: 'Ile czasu trwa mycie okien w mieszkaniu?',
-    answer: 'Dla standardowego mieszkania (5–8 okien) mycie trwa zwykle 1–2 godziny.',
-  },
-  {
-    question: 'Czy używacie swoich środków?',
-    answer: 'Tak, przyjeżdżamy z pełnym wyposażeniem — profesjonalne środki do mycia szyb, ściągaczki i ściereczki z mikrofibry.',
-  },
-  {
-    question: 'Czy myjecie też rolety i żaluzje?',
-    answer: 'Tak, oferujemy dodatkową usługę czyszczenia rolet i żaluzji. Szczegóły i cenę ustalamy indywidualnie.',
+    question: 'Jakie są dostępne formy płatności?',
+    answer: 'Akceptujemy płatność gotówką, przelewem, BLIK-iem oraz wystawiamy fakturę na życzenie klienta.',
   },
 ];
 
