@@ -20,10 +20,10 @@ const Services = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-            Cennik Prania Tapicerki we Wrocławiu
+            Cennik Prania Tapicerki
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Sprawdź cennik na pranie tapicerki meblowej we Wrocławiu
+            Sprawdź cennik na pranie tapicerki meblowej i zamów usługę już teraz!
           </p>
         </div>
 

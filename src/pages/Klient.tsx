@@ -8,9 +8,7 @@ import Promotions from '@/components/Promotions';
 import OrderForm from '@/components/OrderForm';
 import Results from '@/components/Results';
 import Equipment from "@/components/Equipment.tsx";
-import Comparison from '@/components/Comparison';
 import Blog from '@/components/Blog';
-import CleaningProcess from '@/components/CleaningProcess';
 import FAQ from '@/components/FAQ';
 import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
@@ -262,12 +260,10 @@ const Klient = () => {
         <About />
         <Services />
         <Promotions />
-        <OrderForm />
         <Results />
+        <OrderForm />
         <Equipment />
-        <Comparison />
         <Blog />
-        <CleaningProcess />
         <FAQ />
       </main>
       <SeoSection />

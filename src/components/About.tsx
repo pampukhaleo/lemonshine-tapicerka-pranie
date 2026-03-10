@@ -103,7 +103,7 @@ const About = () => {
                       </div>
                     </div>
                     {index < steps.length - 1 && (
-                      <div className="w-0.5 h-6 bg-mint-500 ml-7" />
+                      <div className={`w-0.5 h-6 ml-7 ${index < 2 ? 'bg-lemon-400' : 'bg-mint-500'}`} />
                     )}
                   </React.Fragment>
                 );
