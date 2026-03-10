@@ -1,41 +1,30 @@
 
 
-## Plan: Create "Mycie Okien" (Window Cleaning) Page
+## Plan: Edit Mycie Okien page
 
-The new page will follow the same structure as the Home page, reusing existing components where possible and creating new ones specific to window cleaning.
+### 1. WindowHero.tsx — Update text
+- Title: "Profesjonalne **mycie okien**" (remove "bez smug i zacieków")
+- Description: "Dokładnie myjemy okna w mieszkaniach, domach i obiektach firmowych."
 
-### Page Structure (7 blocks + header/footer)
+### 2. WindowPricing.tsx — Update description
+- Change line 51 description to: "Sprawdź cennik na mycie okien i zamów usługę już teraz!"
 
-1. **Hero** - similar to Home hero with background image, title "Profesjonalne **Mycie Okien**", CTA buttons "Zamów Mycie Okien" + "Zobacz zakres usług"
-2. **TrustIndicators** - reuse existing component as-is (0% Ryzyka, Własny sprzęt, Terminowość, Zrobimy to za Ciebie)
-3. **WindowPricing** - new component with 3 cards: Umycie jednego okna (30 zł), Umycie obudowy balkonu (20 zł), Mycie paneli szklanych 1m² (10 zł) + minimum order notice + "Zobacz pełny cennik" button
-4. **Promotions** - reuse existing component (same promotions apply, text adjusted for "mycie" instead of "sprzątanie")
-5. **OrderForm** - reuse existing component
-6. **Testimonials** - reuse existing component
-7. **FAQ** - new `WindowFAQ` component with window-cleaning-specific questions
+### 3. Add StatsBar under Testimonials
+- In `MycieOkien.tsx`, import `StatsBar` and place it after `<Testimonials />`, before `<WindowFAQ />`
+- The existing `StatsBar` component already matches the screenshot (1500+, 100%, 5★)
 
-### Files to Create
-- **`src/pages/MycieOkien.tsx`** - main page, assembles all blocks
-- **`src/components/window/WindowPricing.tsx`** - pricing block with 3 service cards (illustration images from screenshots as reference, will use placeholder/icon approach)
-- **`src/components/window/WindowFAQ.tsx`** - FAQ specific to window cleaning
+### 4. WindowFAQ.tsx — Replace FAQ content
+Replace all questions with the 4 provided:
+1. Czy potrzebuję mieć własny sprzęt lub chemię? → Nie, przyjeżdżamy z własnym...
+2. Czy myjecie okna z obu stron? → Tak, myjemy okna z obu stron...
+3. Czy usuwacie zabrudzenia znajdujące się wewnątrz okna oraz na ramach? → Tak, czyścimy nie tylko...
+4. Jakie są dostępne formy płatności? → Akceptujemy płatność gotówką...
 
-### Files to Modify
-- **`src/nav-items.tsx`** - add route `/mycie-okien/` pointing to MycieOkien page
-- **`src/components/Header.tsx`** - enable "Mycie okien" tab (remove `disabled: true`, set `to: '/mycie-okien/'`)
+Also update the FAQ JSON-LD in `MycieOkien.tsx` to match.
 
-### Header Navigation Update
-The "Mycie okien" tab is currently disabled. It will be enabled and linked to `/mycie-okien/`.
-
-### Hero Section
-Will reuse the same pattern as Home hero (background image with overlay), but with window-cleaning text. The uploaded screenshot shows a kitchen/window image - we'll need a hero image or use a gradient fallback initially.
-
-### WindowPricing Component
-Based on screenshot 3:
-- 3 cards in a row with illustrations/icons
-- Each card: title, subtitle, price in green, "Zamów" button
-- Minimum order notice (150 zł) below
-- "Zobacz pełny cennik" link at bottom
-
-### Promotions
-Reuse existing `Promotions` component - the promotions (10% over 300zł, review discount, neighbor discount) apply across services. The description text says "mycie" which matches.
+### Files to modify
+- `src/components/window/WindowHero.tsx`
+- `src/components/window/WindowPricing.tsx`
+- `src/components/window/WindowFAQ.tsx`
+- `src/pages/MycieOkien.tsx`
 
