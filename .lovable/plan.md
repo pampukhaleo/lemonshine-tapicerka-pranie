@@ -1,41 +1,32 @@
 
 
-## Plan: Create "Mycie Okien" (Window Cleaning) Page
+## Plan: Updates to Pranie Tapicerki page
 
-The new page will follow the same structure as the Home page, reusing existing components where possible and creating new ones specific to window cleaning.
+### 1. Timeline connector lines color (About.tsx)
+In the "Nasze rozwiązanie" steps timeline, the connector lines between steps are all `bg-mint-500`. Change:
+- Lines after step 0 and step 1 (first two) → `bg-lemon-400` (yellow)
+- Lines after step 2 and step 3 (last two) → keep `bg-mint-500` (green)
 
-### Page Structure (7 blocks + header/footer)
+Update line 106 to use conditional color based on `index`: `index < 2 ? 'bg-lemon-400' : 'bg-mint-500'`.
 
-1. **Hero** - similar to Home hero with background image, title "Profesjonalne **Mycie Okien**", CTA buttons "Zamów Mycie Okien" + "Zobacz zakres usług"
-2. **TrustIndicators** - reuse existing component as-is (0% Ryzyka, Własny sprzęt, Terminowość, Zrobimy to za Ciebie)
-3. **WindowPricing** - new component with 3 cards: Umycie jednego okna (30 zł), Umycie obudowy balkonu (20 zł), Mycie paneli szklanych 1m² (10 zł) + minimum order notice + "Zobacz pełny cennik" button
-4. **Promotions** - reuse existing component (same promotions apply, text adjusted for "mycie" instead of "sprzątanie")
-5. **OrderForm** - reuse existing component
-6. **Testimonials** - reuse existing component
-7. **FAQ** - new `WindowFAQ` component with window-cleaning-specific questions
+### 2. Services heading text (Services.tsx)
+- Line 23: Change `"Cennik Prania Tapicerki we Wrocławiu"` → `"Cennik Prania Tapicerki"`
+- Line 26: Change description → `"Sprawdź cennik na pranie tapicerki meblowej i zamów usługę już teraz!"`
 
-### Files to Create
-- **`src/pages/MycieOkien.tsx`** - main page, assembles all blocks
-- **`src/components/window/WindowPricing.tsx`** - pricing block with 3 service cards (illustration images from screenshots as reference, will use placeholder/icon approach)
-- **`src/components/window/WindowFAQ.tsx`** - FAQ specific to window cleaning
+### 3. Reorder blocks in Klient.tsx
+Move `<OrderForm />` from its current position (line 265) to after `<Results />` (Opinie naszych klientów). New order:
+```
+Hero → About → Services → Promotions → Results → OrderForm → Equipment → Blog → FAQ
+```
 
-### Files to Modify
-- **`src/nav-items.tsx`** - add route `/mycie-okien/` pointing to MycieOkien page
-- **`src/components/Header.tsx`** - enable "Mycie okien" tab (remove `disabled: true`, set `to: '/mycie-okien/'`)
+### 4. Remove Comparison block (Klient.tsx)
+Remove `<Comparison />` (line 268) and its import (line 11).
 
-### Header Navigation Update
-The "Mycie okien" tab is currently disabled. It will be enabled and linked to `/mycie-okien/`.
+### 5. Remove CleaningProcess block (Klient.tsx)
+Remove `<CleaningProcess />` (line 270) and its import (line 12).
 
-### Hero Section
-Will reuse the same pattern as Home hero (background image with overlay), but with window-cleaning text. The uploaded screenshot shows a kitchen/window image - we'll need a hero image or use a gradient fallback initially.
-
-### WindowPricing Component
-Based on screenshot 3:
-- 3 cards in a row with illustrations/icons
-- Each card: title, subtitle, price in green, "Zamów" button
-- Minimum order notice (150 zł) below
-- "Zobacz pełny cennik" link at bottom
-
-### Promotions
-Reuse existing `Promotions` component - the promotions (10% over 300zł, review discount, neighbor discount) apply across services. The description text says "mycie" which matches.
+### Files to modify
+- `src/components/About.tsx` — conditional line colors
+- `src/components/Services.tsx` — heading/description text
+- `src/pages/Klient.tsx` — reorder blocks, remove Comparison and CleaningProcess
 
