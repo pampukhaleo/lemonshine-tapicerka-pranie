@@ -1,29 +1,29 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Shield, Users, DollarSign, Zap, Search, SprayCan, Waves, Fan, ShieldCheck } from 'lucide-react';
+import { Search, SprayCan, Waves, Fan, ShieldCheck, Droplets, Wind, Bug, XCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const About = () => {
-  const features = [
+  const problems = [
     {
-      icon: Shield,
-      title: 'Gwarancja Jakości',
-      description: 'Zwrócimy do 100% kosztów, jeśli wynik prania będzie inny, niż zapowiedziany.'
+      icon: Droplets,
+      title: 'Widoczne plamy',
+      description: 'Plamy, których nie da się usunąć zwykłym odkurzaniem ani domowymi środkami'
     },
     {
-      icon: Users,
-      title: 'Zrobimy wszystko za Ciebie',
-      description: 'Przyjeżdżamy na miejsce, wnosimy sprzęt, wykonujemy usługę i zostawiamy po sobie porządek.'
+      icon: Wind,
+      title: 'Nieprzyjemne zapachy',
+      description: 'Tapicerka chłonie zapachy zwierząt, dymu lub wilgoci, nawet po sprzątaniu'
     },
     {
-      icon: DollarSign,
-      title: 'Konkurencyjne Ceny',
-      description: 'Profesjonalne pranie tapicerki w uczciwej cenie - bez kompromisów w jakości.'
+      icon: Bug,
+      title: 'Kurz i alergeny',
+      description: 'W tkaninach gromadzi się kurz i alergeny, niewidoczne na pierwszy rzut oka'
     },
     {
-      icon: Zap,
-      title: 'Sprzęt Klasy Premium',
-      description: 'Korzystamy z zaawansowanego sprzętu i profesjonaljych środków czyszczących.'
+      icon: XCircle,
+      title: 'Brak efektu',
+      description: 'Samodzielne pranie nie usuwa zabrudzeń, a tapicerka szybko wraca do poprzedniego stanu'
     }
   ];
 
@@ -40,26 +40,26 @@ const About = () => {
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-            Kilka słów o nas
+            Najczęstsze problemy z tapicerką w domu
           </h2>
           <p className="text-xl text-muted-foreground mx-auto max-w-[48rem] text-balance leading-snug">
-            Jesteśmy liderem w dziedzinie profesjonalnego prania tapicerki. Nasze doświadczenie i pasja do czystości gwarantują najwyższą jakość usług.
+            Codzienne użytkowanie sprawia, że tapicerka traci świeżość, chłonie zapachy i z czasem przestaje wyglądać tak, jak powinna.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-          {features.map((feature, index) => (
+          {problems.map((problem, index) => (
             <Card key={index} className="h-full border-0 shadow-lg hover-lift bg-white/80 backdrop-blur-sm">
               <CardContent className="h-full p-6">
                 <div className="flex h-full flex-col items-center text-center">
-                  <div className="w-16 h-16 mb-2 rounded-full gradient-fresh flex items-center justify-center shrink-0">
-                    <feature.icon className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 mb-2 rounded-full bg-mint-100 flex items-center justify-center shrink-0">
+                    <problem.icon className="w-8 h-8 text-destructive" />
                   </div>
                   <h3 className="mt-2 text-xl font-heading font-semibold text-foreground leading-7 min-h-14 overflow-hidden">
-                    {feature.title}
+                    {problem.title}
                   </h3>
                   <p className="mt-2 text-muted-foreground leading-6 min-h-[72px] overflow-hidden">
-                    {feature.description}
+                    {problem.description}
                   </p>
                   <div className="mt-auto" />
                 </div>
