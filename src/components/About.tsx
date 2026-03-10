@@ -1,29 +1,29 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Shield, Users, DollarSign, Zap, Search, SprayCan, Waves, Fan, ShieldCheck } from 'lucide-react';
+import { Search, SprayCan, Waves, Fan, ShieldCheck, Droplets, Wind, Bug, XCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 const About = () => {
-  const features = [
+  const problems = [
     {
-      icon: Shield,
-      title: 'Gwarancja Jakości',
-      description: 'Zwrócimy do 100% kosztów, jeśli wynik prania będzie inny, niż zapowiedziany.'
+      icon: Droplets,
+      title: 'Widoczne plamy',
+      description: 'Plamy, których nie da się usunąć zwykłym odkurzaniem ani domowymi środkami'
     },
     {
-      icon: Users,
-      title: 'Zrobimy wszystko za Ciebie',
-      description: 'Przyjeżdżamy na miejsce, wnosimy sprzęt, wykonujemy usługę i zostawiamy po sobie porządek.'
+      icon: Wind,
+      title: 'Nieprzyjemne zapachy',
+      description: 'Tapicerka chłonie zapachy zwierząt, dymu lub wilgoci, nawet po sprzątaniu'
     },
     {
-      icon: DollarSign,
-      title: 'Konkurencyjne Ceny',
-      description: 'Profesjonalne pranie tapicerki w uczciwej cenie - bez kompromisów w jakości.'
+      icon: Bug,
+      title: 'Kurz i alergeny',
+      description: 'W tkaninach gromadzi się kurz i alergeny, niewidoczne na pierwszy rzut oka'
     },
     {
-      icon: Zap,
-      title: 'Sprzęt Klasy Premium',
-      description: 'Korzystamy z zaawansowanego sprzętu i profesjonaljych środków czyszczących.'
+      icon: XCircle,
+      title: 'Brak efektu',
+      description: 'Samodzielne pranie nie usuwa zabrudzeń, a tapicerka szybko wraca do poprzedniego stanu'
     }
   ];
 
@@ -40,10 +40,10 @@ const About = () => {
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-            Kilka słów o nas
+            Najczęstsze problemy z tapicerką w domu
           </h2>
           <p className="text-xl text-muted-foreground mx-auto max-w-[48rem] text-balance leading-snug">
-            Jesteśmy liderem w dziedzinie profesjonalnego prania tapicerki. Nasze doświadczenie i pasja do czystości gwarantują najwyższą jakość usług.
+            Codzienne użytkowanie sprawia, że tapicerka traci świeżość, chłonie zapachy i z czasem przestaje wyglądać tak, jak powinna.
           </p>
         </div>
 
