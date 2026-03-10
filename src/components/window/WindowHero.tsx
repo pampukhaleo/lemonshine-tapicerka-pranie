@@ -26,11 +26,10 @@ const WindowHero = () => {
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-foreground">
                 Profesjonalne{' '}
-                <span className="text-cyan-600">Mycie Okien</span>{' '}
-                bez smug i zacieków
+                <span className="text-cyan-600">mycie okien</span>
               </h1>
               <p className="text-xl leading-relaxed text-muted-foreground">
-                Czyste okna wpuszczają więcej światła i poprawiają wygląd mieszkania. Zajmiemy się myciem okien, ram i parapetów — szybko, dokładnie i bez wysiłku z Twojej strony.
+                Dokładnie myjemy okna w mieszkaniach, domach i obiektach firmowych.
               </p>
             </div>
 
