@@ -260,12 +260,10 @@ const Klient = () => {
         <About />
         <Services />
         <Promotions />
-        <OrderForm />
         <Results />
+        <OrderForm />
         <Equipment />
-        <Comparison />
         <Blog />
-        <CleaningProcess />
         <FAQ />
       </main>
       <SeoSection />
