@@ -38,8 +38,8 @@ const Results = () => {
       rating: 5
     },
     {
-      name: 'Maria Wiśniewska',
-      location: 'Brzeg',
+      name: 'Maria W.',
+      location: 'Opole',
       text: 'Fantastyczny serwis! Dywan po czyszczeniu pachnie świeżością. Na pewno będę korzystać ponownie.',
       rating: 5
     }

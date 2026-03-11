@@ -16,8 +16,8 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: 'Maria Wiśniewska',
-    location: 'Brzeg',
+    name: 'Maria W.',
+    location: 'Opole',
     text: 'Polecam serdecznie! Świetna komunikacja, uczciwa cena i doskonały efekt końcowy. Na pewno skorzystam ponownie.',
     rating: 5,
   },
