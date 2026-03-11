@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Phone, Menu, X, SprayCan, Sofa, PanelTop } from 'lucide-react';
-import { useState } from 'react';
+import { Phone, Menu, X, SprayCan, Sofa, PanelTop, ChevronDown } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { trackPhoneClick } from '@/lib/analytics';
 import { cn } from '@/lib/utils';
@@ -18,8 +18,17 @@ const serviceTabs = [
   { label: 'Mycie okien', to: '/mycie-okien/', icon: PanelTop, iconBg: 'bg-cyan-100 text-cyan-600' },
 ];
 
+const quickLinks = [
+  { label: 'Oferta', to: '/#uslugi' },
+  { label: 'Cennik', to: '/cennik/' },
+  { label: 'Blog', to: '/blog/' },
+  { label: 'Kontakt', to: '/#zamow' },
+];
+
 const Header = ({ variant = 'home' }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   const handleLogoClick = () => {
@@ -28,7 +37,31 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
 
   const isActive = (to: string) => {
     if (to === '/') return location.pathname === '/';
+    if (to.startsWith('/#')) return false;
     return location.pathname.startsWith(to.replace(/\/$/, ''));
+  };
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleQuickLinkClick = (to: string) => {
+    setIsMenuOpen(false);
+    setIsDropdownOpen(false);
+    if (to.startsWith('/#')) {
+      const hash = to.slice(1);
+      if (location.pathname === '/') {
+        const el = document.querySelector(hash);
+        el?.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
   };
 
   return (
@@ -62,6 +95,34 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
                 </Link>
               );
             })}
+
+            {/* Desktop Dropdown - Szybkie linki */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className={cn(
+                  "flex items-center gap-1.5 px-4 py-2 rounded-full text-base font-medium transition-colors",
+                  "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                Szybkie linki
+                <ChevronDown className={cn("w-4 h-4 transition-transform", isDropdownOpen && "rotate-180")} />
+              </button>
+              {isDropdownOpen && (
+                <div className="absolute top-full right-0 mt-2 w-44 bg-card rounded-xl shadow-lg border border-border py-2 z-50">
+                  {quickLinks.map((link) => (
+                    <Link
+                      key={link.label}
+                      to={link.to}
+                      onClick={() => handleQuickLinkClick(link.to)}
+                      className="block px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Right side: phone + CTA */}
@@ -88,7 +149,8 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden mt-4 pt-4 border-t border-border">
-            <nav className="flex flex-col space-y-2">
+            <nav className="flex flex-col space-y-1">
+              <p className="px-3 pt-1 pb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Nasze usługi</p>
               {serviceTabs.map((tab) => {
                 const Icon = tab.icon;
                 return (
@@ -110,6 +172,21 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
                   </Link>
                 );
               })}
+
+              {/* Mobile Szybkie linki */}
+              <div className="pt-3 border-t border-border">
+                <p className="px-3 pt-1 pb-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Szybkie linki</p>
+                {quickLinks.map((link) => (
+                  <Link
+                    key={link.label}
+                    to={link.to}
+                    onClick={() => handleQuickLinkClick(link.to)}
+                    className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
 
               <div className="flex flex-col space-y-2 pt-3 border-t border-border">
                 <a
