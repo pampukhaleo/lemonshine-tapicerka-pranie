@@ -32,8 +32,8 @@ const Results = () => {
       rating: 5
     },
     {
-      name: 'Piotr Nowak',
-      location: 'Opole, Zakrzów',
+      name: 'Piotr N.',
+      location: 'Wrocław',
       text: 'Polecam! Trudne plamy zniknęły bez śladu. Szybko, profesjonalnie i w dobrej cenie.',
       rating: 5
     },
