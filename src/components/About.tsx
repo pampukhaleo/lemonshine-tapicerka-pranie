@@ -47,7 +47,8 @@ const About = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-stretch">
+        {/* Mobile: list layout; Desktop: grid cards */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-stretch">
           {problems.map((problem, index) => (
             <Card key={index} className="h-full border-0 shadow-lg hover-lift bg-white/80 backdrop-blur-sm">
               <CardContent className="h-full p-6">
@@ -65,6 +66,20 @@ const About = () => {
                 </div>
               </CardContent>
             </Card>
+          ))}
+        </div>
+
+        <div className="md:hidden bg-card rounded-2xl shadow-lg overflow-hidden">
+          {problems.map((problem, index) => (
+            <div key={index} className={`flex items-start gap-4 p-4 ${index < problems.length - 1 ? 'border-b border-border' : ''}`}>
+              <div className="w-12 h-12 rounded-full bg-mint-100 flex items-center justify-center shrink-0">
+                <problem.icon className="w-6 h-6 text-mint-600" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base font-heading font-semibold text-foreground">{problem.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground leading-snug">{problem.description}</p>
+              </div>
+            </div>
           ))}
         </div>
 
