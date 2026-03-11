@@ -48,6 +48,7 @@ const CleaningChecklist = () => {
                   </div>
               );
             })}
+            </div>
           </div>
         </div>
       </div>
