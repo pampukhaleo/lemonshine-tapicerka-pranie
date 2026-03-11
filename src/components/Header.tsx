@@ -19,7 +19,6 @@ const serviceTabs = [
 ];
 
 const quickLinks = [
-  { label: 'Oferta', to: '/#uslugi' },
   { label: 'Cennik', to: '/cennik/' },
   { label: 'Blog', to: '/blog/' },
   { label: 'Kontakt', to: '/#zamow' },
