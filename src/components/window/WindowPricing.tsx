@@ -53,12 +53,11 @@ const WindowPricing = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {services.map((service, index) => {
-              const Icon = service.icon;
               return (
                 <Card key={index} className="border-2 border-border hover:border-mint-400 transition-colors rounded-2xl overflow-hidden">
                   <CardContent className="p-6 text-center space-y-5">
-                    <div className={`w-16 h-16 rounded-2xl ${service.iconBg} flex items-center justify-center mx-auto`}>
-                      <Icon className="w-8 h-8" />
+                    <div className="w-32 h-32 mx-auto flex items-center justify-center">
+                      <img src={service.image} alt={service.title} className="max-w-full max-h-full object-contain" />
                     </div>
                     <div className="space-y-1">
                       <h3 className="text-lg font-heading font-bold text-foreground">{service.title}</h3>
