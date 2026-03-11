@@ -65,7 +65,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-card shadow-sm">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-2 md:py-4">
         <div className="flex items-center justify-between py-0">
           {/* Logo */}
           <Link to="/" onClick={handleLogoClick} className="flex items-center">
