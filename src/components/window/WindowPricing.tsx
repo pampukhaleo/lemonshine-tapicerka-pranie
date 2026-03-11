@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 const services = [
   {
     image: '/window/window-1.jpg',
-    iconBg: 'bg-cyan-100 text-cyan-600',
     title: 'Umycie jednego okna',
     subtitle: 'Szyba + rama + parapet',
     price: '30',
@@ -14,7 +13,6 @@ const services = [
   },
   {
     image: '/window/window-2.jpg',
-    iconBg: 'bg-mint-100 text-mint-600',
     title: 'Umycie obudowy balkonu',
     subtitle: 'Szyby balkonowe + ramy',
     price: '20',
@@ -22,7 +20,6 @@ const services = [
   },
   {
     image: '/window/window-3.jpg',
-    iconBg: 'bg-lemon-100 text-lemon-600',
     title: 'Mycie paneli szklanych',
     subtitle: 'Balustrady, ścianki szklane',
     price: '10',
@@ -52,29 +49,27 @@ const WindowPricing = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {services.map((service, index) => {
-              return (
-                <Card key={index} className="border-2 border-border hover:border-mint-400 transition-colors rounded-2xl overflow-hidden">
-                  <CardContent className="p-6 text-center space-y-5">
-                    <div className="w-32 h-32 mx-auto flex items-center justify-center">
-                      <img src={service.image} alt={service.title} className="max-w-full max-h-full object-contain" />
-                    </div>
-                    <div className="space-y-1">
-                      <h3 className="text-lg font-heading font-bold text-foreground">{service.title}</h3>
-                      <p className="text-sm text-muted-foreground">{service.subtitle}</p>
-                    </div>
-                    <div>
-                      <span className="text-4xl font-bold text-mint-600">{service.price}</span>
-                      <span className="text-lg text-mint-600 ml-1">zł</span>
-                      <p className="text-sm text-muted-foreground mt-1">{service.unit}</p>
-                    </div>
-                    <Button onClick={handleOrderClick} className="w-full hover-lift">
-                      Zamów
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
+            {services.map((service, index) => (
+              <Card key={index} className="border-2 border-border hover:border-mint-400 transition-colors rounded-2xl overflow-hidden">
+                <CardContent className="p-6 text-center space-y-5">
+                  <div className="w-32 h-32 mx-auto flex items-center justify-center">
+                    <img src={service.image} alt={service.title} className="max-w-full max-h-full object-contain" />
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-heading font-bold text-foreground">{service.title}</h3>
+                    <p className="text-sm text-muted-foreground">{service.subtitle}</p>
+                  </div>
+                  <div>
+                    <span className="text-4xl font-bold text-mint-600">{service.price}</span>
+                    <span className="text-lg text-mint-600 ml-1">zł</span>
+                    <p className="text-sm text-muted-foreground mt-1">{service.unit}</p>
+                  </div>
+                  <Button onClick={handleOrderClick} className="w-full hover-lift">
+                    Zamów
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
 
           <div className="mt-8 text-center space-y-4">
