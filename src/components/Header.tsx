@@ -69,7 +69,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
         <div className="flex items-center justify-between py-0">
           {/* Logo */}
           <Link to="/" onClick={handleLogoClick} className="flex items-center">
-            <img src="/104933_LemonShine_Flat_HP_R_01.png" alt="lemonshine logo" className="h-10 object-contain rounded-2xl" />
+            <img src="/104933_LemonShine_Flat_HP_R_01.png" alt="lemonshine logo" className="h-8 md:h-10 object-contain rounded-2xl" />
           </Link>
 
           {/* Desktop Navigation */}

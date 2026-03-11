@@ -27,7 +27,7 @@ const CleaningPricing = () => {
           </div>
 
           {/* Frequency Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
+          <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-2 mb-12">
             {frequencyTabs.map((tab) => (
               <button
                 key={tab.id}
