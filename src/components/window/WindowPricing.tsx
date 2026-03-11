@@ -1,12 +1,11 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { PanelTop, Fence, Grid3X3 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const services = [
   {
-    icon: PanelTop,
+    image: '/window/window-1.jpg',
     iconBg: 'bg-cyan-100 text-cyan-600',
     title: 'Umycie jednego okna',
     subtitle: 'Szyba + rama + parapet',
@@ -14,7 +13,7 @@ const services = [
     unit: 'za sztukę',
   },
   {
-    icon: Fence,
+    image: '/window/window-2.jpg',
     iconBg: 'bg-mint-100 text-mint-600',
     title: 'Umycie obudowy balkonu',
     subtitle: 'Szyby balkonowe + ramy',
@@ -22,7 +21,7 @@ const services = [
     unit: 'za sztukę',
   },
   {
-    icon: Grid3X3,
+    image: '/window/window-3.jpg',
     iconBg: 'bg-lemon-100 text-lemon-600',
     title: 'Mycie paneli szklanych',
     subtitle: 'Balustrady, ścianki szklane',
@@ -54,12 +53,11 @@ const WindowPricing = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {services.map((service, index) => {
-              const Icon = service.icon;
               return (
                 <Card key={index} className="border-2 border-border hover:border-mint-400 transition-colors rounded-2xl overflow-hidden">
                   <CardContent className="p-6 text-center space-y-5">
-                    <div className={`w-16 h-16 rounded-2xl ${service.iconBg} flex items-center justify-center mx-auto`}>
-                      <Icon className="w-8 h-8" />
+                    <div className="w-32 h-32 mx-auto flex items-center justify-center">
+                      <img src={service.image} alt={service.title} className="max-w-full max-h-full object-contain" />
                     </div>
                     <div className="space-y-1">
                       <h3 className="text-lg font-heading font-bold text-foreground">{service.title}</h3>
