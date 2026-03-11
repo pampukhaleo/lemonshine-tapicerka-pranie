@@ -47,7 +47,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-stretch">
           {problems.map((problem, index) => (
             <Card key={index} className="h-full border-0 shadow-lg hover-lift bg-white/80 backdrop-blur-sm">
               <CardContent className="h-full p-6">
