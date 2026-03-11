@@ -54,7 +54,7 @@ const About = () => {
               <CardContent className="h-full p-6">
                 <div className="flex h-full flex-col items-center text-center">
                   <div className="w-16 h-16 mb-2 rounded-full bg-mint-100 flex items-center justify-center shrink-0">
-                    <problem.icon className="w-8 h-8 text-destructive" />
+                    <problem.icon className="w-8 h-8 text-mint-600" />
                   </div>
                   <h3 className="mt-2 text-xl font-heading font-semibold text-foreground leading-7 min-h-14 overflow-hidden">
                     {problem.title}
