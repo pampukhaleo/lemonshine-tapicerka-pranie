@@ -38,28 +38,25 @@ const Hero = () => {
             </div>
 
             {/* CTA Buttons */ }
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Button
                 onClick={ handleOrderClick }
-                size="lg"
-                className="w-full sm:flex-1 hover-lift"
+                className="w-full sm:flex-1 hover-lift h-10 text-sm md:h-11 md:text-base md:px-8"
               >
                 Zamów Pranie Tapicerki
               </Button>
 
               <Button
-                size="lg"
                 variant="outline"
-                className="w-full sm:flex-1 border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift"
+                className="w-full sm:flex-1 border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift h-10 text-sm md:h-11 md:text-base md:px-8"
                 asChild
               >
                 <Link to="/cennik/">Zobacz zakres usług</Link>
               </Button>
 
               <Button
-                size="lg"
                 variant="outline"
-                className="md:hidden w-full border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift"
+                className="md:hidden w-full border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift h-10 text-sm"
                 asChild
               >
                 <a href="tel:+48662117886" onClick={() => trackPhoneClick('hero_mobile')} className="flex items-center justify-center gap-2">

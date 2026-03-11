@@ -65,11 +65,11 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-card shadow-sm">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-4 py-2 md:py-4">
+        <div className="flex items-center justify-between py-0">
           {/* Logo */}
           <Link to="/" onClick={handleLogoClick} className="flex items-center">
-            <img src="/104933_LemonShine_Flat_HP_R_01.png" alt="lemonshine logo" className="h-10 object-contain rounded-2xl" />
+            <img src="/104933_LemonShine_Flat_HP_R_01.png" alt="lemonshine logo" className="h-8 md:h-10 object-contain rounded-2xl" />
           </Link>
 
           {/* Desktop Navigation */}
