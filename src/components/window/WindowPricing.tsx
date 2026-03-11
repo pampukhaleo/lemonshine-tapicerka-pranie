@@ -48,32 +48,38 @@ const WindowPricing = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 items-stretch">
             {services.map((service, index) => (
-              <Card key={index} className="border-2 border-border hover:border-mint-400 transition-colors rounded-2xl overflow-hidden">
-                <CardContent className="p-6 text-center space-y-5">
-                  <div className="w-32 h-32 mx-auto flex items-center justify-center">
-                    <img src={service.image} alt={service.title} className="max-w-full max-h-full object-contain" />
+              <div
+                key={index}
+                className="bg-white rounded-2xl shadow-lg p-6 transition-transform duration-300 hover:-translate-y-2 flex flex-col h-full"
+              >
+                <div className="mb-6">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-48 object-cover rounded-xl mb-4"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <h3 className="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
+                  <p className="text-muted-foreground text-sm">{service.subtitle}</p>
+                </div>
+
+                <div className="mt-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div className="text-2xl font-bold text-mint-600 leading-none">
+                    {service.price} zł <span className="text-sm font-normal text-muted-foreground">{service.unit}</span>
                   </div>
-                  <div className="space-y-1">
-                    <h3 className="text-lg font-heading font-bold text-foreground">{service.title}</h3>
-                    <p className="text-sm text-muted-foreground">{service.subtitle}</p>
-                  </div>
-                  <div>
-                    <span className="text-4xl font-bold text-mint-600">{service.price}</span>
-                    <span className="text-lg text-mint-600 ml-1">zł</span>
-                    <p className="text-sm text-muted-foreground mt-1">{service.unit}</p>
-                  </div>
-                  <Button onClick={handleOrderClick} className="w-full hover-lift">
+                  <Button onClick={handleOrderClick} className="w-full sm:w-auto hover:opacity-90">
                     Zamów
                   </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
 
           <div className="mt-8 text-center space-y-4">
-            <div className="inline-block bg-lemon-100 text-foreground px-6 py-3 rounded-full text-sm font-semibold">
+            <div className="inline-block bg-lemon-100 text-foreground px-6 py-3 rounded-lg text-sm font-semibold">
               ⚠️ Minimalna kwota zamówienia: 150 zł
             </div>
             <div>
