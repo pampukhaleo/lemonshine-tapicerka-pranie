@@ -70,17 +70,16 @@ const Services = () => {
           )) }
         </div>
 
-        {/* Minimum Order Notice */ }
-        <div className="border border-lemon-600 rounded-2xl p-6 mb-12 text-center">
-          <p className="text-lg font-bold text-foreground">
-            Minimalna kwota zamówienia wynosi 150 zł
-          </p>
-        </div>
-
-        <div className="text-center">
-          <Button variant="outline" size="lg" className="border-mint-600 text-mint-600 hover:bg-mint-50" asChild>
-            <Link to="/cennik/">Zobacz pełny cennik<ArrowRight className="w-4 h-4 ml-2"/></Link>
-          </Button>
+        {/* Minimum Order Notice */}
+        <div className="mt-8 text-center space-y-4">
+          <div className="inline-block bg-lemon-100 text-foreground px-6 py-3 rounded-full text-sm font-semibold">
+            ⚠️ Minimalna kwota zamówienia: 150 zł
+          </div>
+          <div>
+            <Link to="/cennik/" className="text-mint-600 hover:text-mint-700 font-medium underline underline-offset-4">
+              Zobacz pełny cennik →
+            </Link>
+          </div>
         </div>
       </div>
     </section>
