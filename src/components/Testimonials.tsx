@@ -4,20 +4,20 @@ import { Star } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Anna Kowalska',
-    location: 'Opole, Centrum',
+    name: 'Anna K.',
+    location: 'Wrocław',
     text: 'Jestem bardzo zadowolona z usługi. Panowie przyjechali punktualnie, pracowali szybko i dokładnie. Kanapa wygląda jak nowa!',
     rating: 5,
   },
   {
-    name: 'Piotr Nowak',
-    location: 'Opole, Zakrzów',
+    name: 'Piotr N.',
+    location: 'Wrocław',
     text: 'Profesjonalne podejście do klienta. Sprzątanie mieszkania wykonane perfekcyjnie, wrócę na pewno.',
     rating: 5,
   },
   {
-    name: 'Maria Wiśniewska',
-    location: 'Brzeg',
+    name: 'Maria W.',
+    location: 'Opole',
     text: 'Polecam serdecznie! Świetna komunikacja, uczciwa cena i doskonały efekt końcowy. Na pewno skorzystam ponownie.',
     rating: 5,
   },
