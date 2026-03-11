@@ -26,8 +26,8 @@ const Results = () => {
 
   const testimonials = [
     {
-      name: 'Anna Kowalska',
-      location: 'Opole, Centrum',
+      name: 'Anna K.',
+      location: 'Wrocław',
       text: 'Niesamowity efekt! Kanapa wygląda jak nowa. Profesjonalna obsługa i terminowość na najwyższym poziomie.',
       rating: 5
     },
