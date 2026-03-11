@@ -66,7 +66,7 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="bg-lemon-400 hover:bg-lemon-500 text-foreground font-bold text-xl px-16 py-7 shadow-none border border-lemon-400 hover-lift font-[Poppins] h-auto"
+                  className="bg-lemon-400 hover:bg-lemon-500 text-foreground font-bold text-base md:text-xl px-8 py-4 md:px-16 md:py-7 shadow-none border border-lemon-400 hover-lift font-[Poppins] h-auto"
                   asChild
                 >
                   <a href="#zamow">Zamów sprzątanie</a>
@@ -74,7 +74,7 @@ const Home = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-card/80 backdrop-blur-sm border-2 border-mint-600 text-foreground hover:bg-card font-bold text-xl px-16 py-7 hover-lift font-[Poppins] h-auto"
+                  className="bg-card/80 backdrop-blur-sm border-2 border-mint-600 text-foreground hover:bg-card font-bold text-base md:text-xl px-8 py-4 md:px-16 md:py-7 hover-lift font-[Poppins] h-auto"
                   asChild
                 >
                   <a href="#cennik">Sprawdź cennik</a>
