@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const services = [
   {
-    icon: PanelTop,
+    image: '/window/window-1.jpg',
     iconBg: 'bg-cyan-100 text-cyan-600',
     title: 'Umycie jednego okna',
     subtitle: 'Szyba + rama + parapet',
@@ -14,7 +14,7 @@ const services = [
     unit: 'za sztukę',
   },
   {
-    icon: Fence,
+    image: '/window/window-2.jpg',
     iconBg: 'bg-mint-100 text-mint-600',
     title: 'Umycie obudowy balkonu',
     subtitle: 'Szyby balkonowe + ramy',
@@ -22,7 +22,7 @@ const services = [
     unit: 'za sztukę',
   },
   {
-    icon: Grid3X3,
+    image: '/window/window-3.jpg',
     iconBg: 'bg-lemon-100 text-lemon-600',
     title: 'Mycie paneli szklanych',
     subtitle: 'Balustrady, ścianki szklane',
