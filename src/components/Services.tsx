@@ -72,7 +72,7 @@ const Services = () => {
 
         {/* Minimum Order Notice */}
         <div className="mt-8 text-center space-y-4">
-          <div className="inline-block bg-lemon-100 text-foreground px-6 py-3 rounded-full text-sm font-semibold">
+          <div className="inline-block bg-lemon-100 text-foreground px-6 py-3 rounded-lg text-sm font-semibold">
             ⚠️ Minimalna kwota zamówienia: 150 zł
           </div>
           <div>
