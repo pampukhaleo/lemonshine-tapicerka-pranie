@@ -10,8 +10,8 @@ const testimonials = [
     rating: 5,
   },
   {
-    name: 'Piotr Nowak',
-    location: 'Opole, Zakrzów',
+    name: 'Piotr N.',
+    location: 'Wrocław',
     text: 'Profesjonalne podejście do klienta. Sprzątanie mieszkania wykonane perfekcyjnie, wrócę na pewno.',
     rating: 5,
   },
