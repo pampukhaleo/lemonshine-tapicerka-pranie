@@ -4,8 +4,8 @@ import { Star } from 'lucide-react';
 
 const testimonials = [
   {
-    name: 'Anna Kowalska',
-    location: 'Opole, Centrum',
+    name: 'Anna K.',
+    location: 'Wrocław',
     text: 'Jestem bardzo zadowolona z usługi. Panowie przyjechali punktualnie, pracowali szybko i dokładnie. Kanapa wygląda jak nowa!',
     rating: 5,
   },
