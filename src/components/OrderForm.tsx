@@ -44,13 +44,12 @@ const OrderForm = () => {
         description: formData.description || null,
       };
 
+      const leadId = crypto.randomUUID();
       console.log('Submitting lead data:', leadData);
 
-      const { data: createdLead, error } = await supabase
+      const { error } = await supabase
         .from('leads')
-        .insert(leadData)
-        .select()
-        .single();
+        .insert({ ...leadData, id: leadId });
 
       if (error) {
         console.error('Database error:', error);
@@ -58,13 +57,13 @@ const OrderForm = () => {
         return;
       }
 
-      console.log('Lead created successfully:', createdLead);
+      console.log('Lead created successfully, id:', leadId);
 
       const sendNotification = async (retryCount = 0) => {
         try {
           await supabase.functions.invoke('send-lead-gleb', {
             body: {
-              leadId: createdLead.id,
+              leadId,
               name: formData.name,
               phone: formData.phone,
               address: formData.address,
