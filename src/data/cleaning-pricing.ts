@@ -16,7 +16,7 @@ export const apartmentPlans = [
     id: 'two-room',
     title: 'Mieszkanie <60m²',
     basePrice: 298.90,
-    description: 'Sprzątanie obejmuje dwa pokoje, kuchnię, przedpokój oraz jedną łazienkę.',
+    description: 'Utrzymanie czystości w całym mieszkaniu: odkurzanie, mycie podłóg, łazienka, kuchnia i ścieranie kurzu.',
   },
   {
     id: 'three-room',
