@@ -1,14 +1,15 @@
 
 
-## Plan: Update cleaning checklist descriptions
+## Plan: Vertically center icon and text in checklist cards
 
-### File: `src/components/CleaningChecklist.tsx`
+### File: `src/components/CleaningChecklist.tsx`, line 39
 
-Update 3 descriptions in the `checklistItems` array:
+Change `items-start` to `items-center` in the flex container class so the icon and text are vertically centered within each card.
 
-1. **Czyszczenie kuchni** (index 8): `'Myjemy kuchenkę, zlew oraz blat roboczy'` → `'Myjemy powieszchownie kuchenkę, zlew oraz blat roboczy'`
-2. **Przecieranie AGD** (index 9): `'Czyścimy sprzęty AGD: lodówkę, mikrofalę oraz okap'` → `'Przecieramy na zewnątrz sprzęty AGD: lodówkę, mikrofale oraz okap'`
-3. **Czyszczenie łazienki** (index 11): `'Myjemy umywalkę, wannę lub prysznic'` → `'Myjemy umywalne, wannę lub prysznic (przy dużym stopniu zabrudzenia - liczymy osobno)'`
+```
+- className="flex items-start gap-3 md:gap-4 ..."
++ className="flex items-center gap-3 md:gap-4 ..."
+```
 
-No other files affected.
+One line change, no other files affected.
 
