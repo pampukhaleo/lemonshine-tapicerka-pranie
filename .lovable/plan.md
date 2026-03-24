@@ -1,15 +1,14 @@
 
 
-## Plan: Update pricing data and titles
+## Plan: Update cleaning checklist descriptions
 
-### Changes in `src/data/cleaning-pricing.ts`:
+### File: `src/components/CleaningChecklist.tsx`
 
-1. Update `apartmentPlans` array:
-   - "Jednopokojowe" → "Mieszkanie <40m²", basePrice: 198.90 → 248.90
-   - "Dwupokojowe" → "Mieszkanie <60m²", basePrice: 253.90 → 298.90
-   - "Trzypokojowe" → "Mieszkanie <80m²", basePrice: 308.90 → 348.90
+Update 3 descriptions in the `checklistItems` array:
 
-These are the base prices (Jednorazowo, discount=0). The frequency discounts will automatically apply to the new base prices.
+1. **Czyszczenie kuchni** (index 8): `'Myjemy kuchenkę, zlew oraz blat roboczy'` → `'Myjemy powieszchownie kuchenkę, zlew oraz blat roboczy'`
+2. **Przecieranie AGD** (index 9): `'Czyścimy sprzęty AGD: lodówkę, mikrofalę oraz okap'` → `'Przecieramy na zewnątrz sprzęty AGD: lodówkę, mikrofale oraz okap'`
+3. **Czyszczenie łazienki** (index 11): `'Myjemy umywalkę, wannę lub prysznic'` → `'Myjemy umywalne, wannę lub prysznic (przy dużym stopniu zabrudzenia - liczymy osobno)'`
 
-No other files need changes — `CleaningPricing.tsx` renders titles and prices dynamically from this data.
+No other files affected.
 
