@@ -10,7 +10,7 @@ export const apartmentPlans = [
     id: 'one-room',
     title: 'Mieszkanie <40m²',
     basePrice: 248.90,
-    description: 'Sprzątanie obejmuje jeden pokój, kuchnię, przedpokój oraz jedną łazienkę.',
+    description: 'Utrzymanie czystości w całym mieszkaniu: odkurzanie, mycie podłóg, łazienka, kuchnia i ścieranie kurzu.',
   },
   {
     id: 'two-room',
