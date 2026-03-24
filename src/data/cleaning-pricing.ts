@@ -8,20 +8,20 @@ export const frequencyTabs = [
 export const apartmentPlans = [
   {
     id: 'one-room',
-    title: 'Jednopokojowe',
-    basePrice: 198.90,
+    title: 'Mieszkanie <40m²',
+    basePrice: 248.90,
     description: 'Sprzątanie obejmuje jeden pokój, kuchnię, przedpokój oraz jedną łazienkę.',
   },
   {
     id: 'two-room',
-    title: 'Dwupokojowe',
-    basePrice: 253.90,
+    title: 'Mieszkanie <60m²',
+    basePrice: 298.90,
     description: 'Sprzątanie obejmuje dwa pokoje, kuchnię, przedpokój oraz jedną łazienkę.',
   },
   {
     id: 'three-room',
-    title: 'Trzypokojowe',
-    basePrice: 308.90,
+    title: 'Mieszkanie <80m²',
+    basePrice: 348.90,
     description: 'Sprzątanie obejmuje trzy pokoje, kuchnię, przedpokój oraz jedną łazienkę.',
   },
 ];
