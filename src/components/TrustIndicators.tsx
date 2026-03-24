@@ -34,15 +34,15 @@ const TrustIndicators = () => {
             return (
               <div
                 key={index}
-                className="text-center space-y-3 rounded-2xl border border-border bg-card p-6"
+                className="flex flex-col items-center text-center rounded-2xl border border-border bg-card p-6"
               >
-                <div className="w-14 h-14 rounded-full bg-lemon-100 flex items-center justify-center mx-auto">
+                <div className="w-14 h-14 rounded-full bg-lemon-100 flex items-center justify-center mb-3">
                   <IconComponent className="w-7 h-7 text-lemon-600" />
                 </div>
-                <h3 className="font-heading font-bold text-foreground text-sm md:text-base">
+                <h3 className="font-heading font-bold text-foreground text-sm md:text-base mb-3 min-h-[2.5rem] flex items-center">
                   {item.title}
                 </h3>
-                <p className="text-muted-foreground text-xs md:text-sm">
+                <p className="text-muted-foreground text-xs md:text-sm mt-auto">
                   {item.description}
                 </p>
               </div>
