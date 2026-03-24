@@ -1,36 +1,15 @@
 
 
-## Проблема
+## Plan: Update pricing data and titles
 
-Форма отправки заявок не работает из-за конфликта RLS-политик.
+### Changes in `src/data/cleaning-pricing.ts`:
 
-**Причина:** В коде `OrderForm.tsx` после вставки вызывается `.select().single()` — это требует SELECT-доступа к таблице. Но SELECT-политика разрешает чтение только авторизованным админам (`is_admin(auth.uid())`). Анонимный пользователь с сайта не может прочитать вставленную строку, и запрос падает с ошибкой RLS.
+1. Update `apartmentPlans` array:
+   - "Jednopokojowe" → "Mieszkanie <40m²", basePrice: 198.90 → 248.90
+   - "Dwupokojowe" → "Mieszkanie <60m²", basePrice: 253.90 → 298.90
+   - "Trzypokojowe" → "Mieszkanie <80m²", basePrice: 308.90 → 348.90
 
-В логах БД видно: `"new row violates row-level security policy for table leads"` — это Postgres сообщает об ошибке при попытке SELECT после INSERT.
+These are the base prices (Jednorazowo, discount=0). The frequency discounts will automatically apply to the new base prices.
 
-## Решение
-
-Убрать `.select().single()` из вызова insert в `OrderForm.tsx`. Вместо этого генерировать UUID на клиенте для передачи в Telegram-уведомление.
-
-### Изменения в файле `src/components/OrderForm.tsx`:
-
-1. Импортировать `crypto.randomUUID()` или использовать uuid-генерацию
-2. Заменить:
-   ```ts
-   const { data: createdLead, error } = await supabase
-     .from('leads')
-     .insert(leadData)
-     .select()
-     .single();
-   ```
-   На:
-   ```ts
-   const leadId = crypto.randomUUID();
-   const { error } = await supabase
-     .from('leads')
-     .insert({ ...leadData, id: leadId });
-   ```
-3. Использовать `leadId` вместо `createdLead.id` при вызове edge function
-
-Никаких миграций или изменений RLS не требуется.
+No other files need changes — `CleaningPricing.tsx` renders titles and prices dynamically from this data.
 
