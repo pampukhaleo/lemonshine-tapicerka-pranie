@@ -36,7 +36,7 @@ const CleaningChecklist = () => {
                 return (
                   <div
                     key={index}
-                    className="flex items-start gap-3 md:gap-4 py-3 md:py-0 md:bg-card md:rounded-xl md:p-4 md:border md:border-border border-b border-border last:border-b-0 md:last:border-b md:border-b-border"
+                    className="flex items-center gap-3 md:gap-4 py-3 md:py-0 md:bg-card md:rounded-xl md:p-4 md:border md:border-border border-b border-border last:border-b-0 md:last:border-b md:border-b-border"
                   >
                     <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-lemon-100 flex items-center justify-center flex-shrink-0">
                       <IconComponent className="w-4 h-4 md:w-5 md:h-5 text-lemon-600" />
