@@ -22,7 +22,7 @@ export const apartmentPlans = [
     id: 'three-room',
     title: 'Mieszkanie <80m²',
     basePrice: 348.90,
-    description: 'Sprzątanie obejmuje trzy pokoje, kuchnię, przedpokój oraz jedną łazienkę.',
+    description: 'Utrzymanie czystości w całym mieszkaniu: odkurzanie, mycie podłóg, łazienka, kuchnia i ścieranie kurzu.',
   },
 ];
 
