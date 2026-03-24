@@ -14,10 +14,10 @@ const checklistItems = [
   { icon: Trash2, label: 'Zbieranie i wynoszenie śmieci', description: 'Zbieramy odpady i wynosimy je po sprzątaniu' },
   { icon: Shirt, label: 'Składanie i rozwieszanie odzieży', description: 'Porządkujemy odzież pozostawioną w widocznych miejscach' },
   { icon: UtensilsCrossed, label: 'Mycie naczyń', description: 'Myjemy naczynia znajdujące się w zlewie' },
-  { icon: CookingPot, label: 'Czyszczenie kuchni', description: 'Myjemy kuchenkę, zlew oraz blat roboczy' },
-  { icon: Refrigerator, label: 'Przecieranie AGD', description: 'Czyścimy sprzęty AGD: lodówkę, mikrofalę oraz okap' },
+  { icon: CookingPot, label: 'Czyszczenie kuchni', description: 'Myjemy powieszchownie kuchenkę, zlew oraz blat roboczy' },
+  { icon: Refrigerator, label: 'Przecieranie AGD', description: 'Przecieramy na zewnątrz sprzęty AGD: lodówkę, mikrofale oraz okap' },
   { icon: Bath, label: 'Mycie i dezynfekcja toalety', description: 'Dokładnie myjemy i dezynfekujemy sedes' },
-  { icon: ShowerHead, label: 'Czyszczenie łazienki', description: 'Myjemy umywalkę, wannę lub prysznic' },
+  { icon: ShowerHead, label: 'Czyszczenie łazienki', description: 'Myjemy umywalne, wannę lub prysznic (przy dużym stopniu zabrudzenia - liczymy osobno)' },
 ];
 
 const CleaningChecklist = () => {
