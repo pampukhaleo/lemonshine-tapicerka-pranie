@@ -97,7 +97,7 @@ const Pricing = () => {
             </div>
 
             {/* Cards grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
               {items.map((item, index) => (
                 <Card key={`${activeTab}-${index}`} className="bg-white shadow-md hover-lift border-0 overflow-hidden">
                   <div className="aspect-[4/3] bg-muted">
@@ -108,25 +108,25 @@ const Pricing = () => {
                       loading="lazy"
                     />
                   </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-heading font-semibold text-foreground text-sm mb-1">
+                  <CardContent className="p-2 md:p-4">
+                    <h3 className="font-heading font-semibold text-foreground text-xs md:text-sm mb-1">
                       {item.name}
                     </h3>
                     {item.subtitle && (
-                      <p className="text-xs text-muted-foreground mb-3">
+                      <p className="text-[10px] md:text-xs text-muted-foreground mb-2 md:mb-3">
                         {item.subtitle}
                       </p>
                     )}
                     <div className="flex items-center justify-between">
-                      <span className="text-lg font-bold text-mint-600">
+                      <span className="text-sm md:text-lg font-bold text-mint-600">
                         {item.price}
                       </span>
                       <Button
                         size="sm"
-                        className="text-xs px-3 py-1"
+                        className="text-[10px] md:text-xs px-2 md:px-3 py-1 h-7 md:h-8"
                         onClick={() => document.getElementById('zamow')?.scrollIntoView({ behavior: 'smooth' })}
                       >
-                        Zamów
+                        Zamów →
                       </Button>
                     </div>
                   </CardContent>
