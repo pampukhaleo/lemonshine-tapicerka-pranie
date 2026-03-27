@@ -174,12 +174,9 @@ const Pricing = () => {
         {/* FAQ */}
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4 max-w-3xl">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground text-center mb-2">
-              Najczęściej zadawane pytania
-            </h2>
-            <p className="text-center text-muted-foreground mb-10">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground text-center mb-10">
               Odpowiedzi na częste pytania
-            </p>
+            </h2>
             <Accordion type="single" collapsible className="space-y-3">
               {[
                 { q: 'Czy oferujecie rabaty przy większych zleceniach?', a: 'Tak, przy większym zakresie prac możemy zaproponować zniżkę.' },
