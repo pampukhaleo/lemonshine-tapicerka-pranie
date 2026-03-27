@@ -97,38 +97,37 @@ const Pricing = () => {
             </div>
 
             {/* Cards grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
               {items.map((item, index) => (
-                <Card key={`${activeTab}-${index}`} className="bg-white shadow-md hover-lift border-0 overflow-hidden">
-                  <div className="aspect-[4/3] bg-muted">
+                <Card key={`${activeTab}-${index}`} className="bg-white shadow-md hover-lift border-0 overflow-hidden rounded-xl">
+                  <div className="aspect-[4/3] bg-lemon-100 flex items-center justify-center p-3">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                       loading="lazy"
                     />
                   </div>
-                  <CardContent className="p-4">
-                    <h3 className="font-heading font-semibold text-foreground text-sm mb-1">
+                  <CardContent className="p-3 md:p-4">
+                    <h3 className="font-heading font-semibold text-foreground text-xs md:text-sm mb-0.5">
                       {item.name}
                     </h3>
                     {item.subtitle && (
-                      <p className="text-xs text-muted-foreground mb-3">
+                      <p className="text-[10px] md:text-xs text-muted-foreground mb-2">
                         {item.subtitle}
                       </p>
                     )}
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg font-bold text-mint-600">
-                        {item.price}
-                      </span>
-                      <Button
-                        size="sm"
-                        className="text-xs px-3 py-1"
-                        onClick={() => document.getElementById('zamow')?.scrollIntoView({ behavior: 'smooth' })}
-                      >
-                        Zamów
-                      </Button>
-                    </div>
+                    <p className="text-sm md:text-lg font-bold text-mint-600 mb-2">
+                      {item.price}
+                    </p>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="w-full text-xs px-3 py-1 bg-lemon-100 border-lemon-200 hover:bg-lemon-200 text-foreground"
+                      onClick={() => document.getElementById('zamow')?.scrollIntoView({ behavior: 'smooth' })}
+                    >
+                      Zamów →
+                    </Button>
                   </CardContent>
                 </Card>
               ))}
