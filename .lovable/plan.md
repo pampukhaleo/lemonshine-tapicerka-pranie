@@ -1,40 +1,29 @@
 
 
-## Plan: Redesign /cennik/ page with 3 tabbed sections
+## Plan: Mobile 2-column cards layout
 
-### Overview
-Rewrite the Pricing page to have 3 tab sections: **Sprzątanie**, **Pranie tapicerki**, **Mycie okien**. The "Pranie tapicerki" tab uses the existing 15 items with images from `pricingItems`. The other two tabs get placeholder cards for now.
+### Problem
+On mobile, card grids in `Services.tsx` and `CleaningPricing.tsx` show 1 card per row (no `grid-cols-2` base class). The `/cennik/` page already has `grid-cols-2` but cards need to be more compact on mobile (smaller padding, text, buttons) as shown in the screenshot.
 
-### File changes
+### Changes
 
-#### 1. `src/data/pricing.ts`
-Add two new exported arrays:
+#### 1. `src/components/Services.tsx` (line 30)
+- Change `grid md:grid-cols-2 lg:grid-cols-4 gap-8` → `grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8`
+- Reduce card padding on mobile: `p-3 md:p-6`
+- Smaller image height on mobile: `h-32 md:h-48`
+- Smaller text on mobile: title `text-sm md:text-xl`, price `text-lg md:text-2xl`
+- Compact button: smaller on mobile
 
-- **`cleaningPricingItems`** — 3-4 placeholder cards for Sprzątanie (title, price from `apartmentPlans` data, image set to `/placeholder.svg` as stub)
-- **`windowPricingItems`** — 3 placeholder cards for Mycie okien (title/price from window data, image set to `/placeholder.svg` as stub)
+#### 2. `src/components/CleaningPricing.tsx` (line 58)
+- Change `grid md:grid-cols-3 gap-6` → `grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6`
+- Reduce padding on mobile: `p-3 md:p-6`
+- Smaller text on mobile for title and price
 
-Keep existing `pricingItems` array untouched — it becomes the Pranie tapicerki data.
-
-#### 2. `src/pages/Pricing.tsx` — Full rewrite
-
-**Structure:**
-1. **Hero**: Title "Cennik na usługi sprzątania we Wrocławiu" + subtitle
-2. **3 category tabs** (styled buttons, active = yellow/lemon background):
-   - **Sprzątanie** — shows `cleaningPricingItems` (placeholder images, you'll add real ones later)
-   - **Pranie tapicerki** — shows existing `pricingItems` (all 15 cards with current images)
-   - **Mycie okien** — shows `windowPricingItems` (placeholder images)
-3. **CTA block**: "Potrzebujesz wyceny?" + button
-4. **"Co wpływa na cenę"** section: 4 info cards (Wielkość powierzchni, Stopień zabrudzenia, Zakres prac, Lokalizacja)
-5. **OrderForm** component (reuse existing)
-6. **FAQ** component (reuse existing)
-7. **Footer**
-
-**Tab implementation**: `useState` for active tab. Cards in `grid-cols-2 md:grid-cols-3 lg:grid-cols-4` grid. Each card: image, title, subtitle, price, "Zamów" button linking to order form on page.
-
-**Placeholder cards** for Sprzątanie and Mycie okien will use `/placeholder.svg` — ready to swap when you upload real images.
+#### 3. `src/pages/Pricing.tsx` (lines 100-132)
+- Reduce gap on mobile: `gap-3 md:gap-6`
+- Reduce card padding on mobile: `p-2 md:p-4`
+- Match screenshot style: compact "Zamów →" button with arrow, smaller font sizes on mobile
 
 ### Summary
-- 2 files modified: `src/data/pricing.ts`, `src/pages/Pricing.tsx`
-- All current pricing card images stay in the "Pranie tapicerki" tab
-- Other two tabs get stub cards with placeholder images
+3 files modified. All product card grids become 2 columns on mobile with compact styling.
 
