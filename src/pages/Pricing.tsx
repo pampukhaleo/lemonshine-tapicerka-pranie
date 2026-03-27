@@ -1,19 +1,43 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
-import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
-import { pricingItems } from '@/data/pricing';
-import { Link } from 'react-router-dom';
+import OrderForm from '@/components/OrderForm';
+import FAQ from '@/components/FAQ';
+import { pricingItems, cleaningPricingItems, windowPricingItems, PricingItem } from '@/data/pricing';
+import { Ruler, Sparkles, ClipboardList, MapPin } from 'lucide-react';
+
+const tabs = [
+  { id: 'cleaning', label: 'Sprzątanie' },
+  { id: 'upholstery', label: 'Pranie tapicerki' },
+  { id: 'windows', label: 'Mycie okien' },
+];
+
+const tabData: Record<string, PricingItem[]> = {
+  cleaning: cleaningPricingItems,
+  upholstery: pricingItems,
+  windows: windowPricingItems,
+};
+
+const priceFactors = [
+  { icon: Ruler, title: 'Wielkość powierzchni', description: 'Cena zależy od metrażu mieszkania lub liczby mebli do czyszczenia.' },
+  { icon: Sparkles, title: 'Stopień zabrudzenia', description: 'Silne zabrudzenia mogą wymagać dodatkowych środków i czasu pracy.' },
+  { icon: ClipboardList, title: 'Zakres prac', description: 'Możesz wybrać podstawowe sprzątanie lub rozszerzony pakiet usług.' },
+  { icon: MapPin, title: 'Lokalizacja zlecenia', description: 'Dojazd poza Wrocław może wiązać się z dodatkową opłatą.' },
+];
 
 const Pricing = () => {
+  const [activeTab, setActiveTab] = useState('cleaning');
+
+  const items = tabData[activeTab];
+
   const offerCatalogJsonLd = {
     "@context": "https://schema.org",
     "@type": "OfferCatalog",
-    "name": "Cennik usług prania tapicerki - Lemonshine",
+    "name": "Cennik usług sprzątania - Lemonshine",
     "itemListElement": pricingItems.map((item, index) => ({
       "@type": "Offer",
       "position": index + 1,
@@ -24,51 +48,69 @@ const Pricing = () => {
       },
       "priceCurrency": "PLN",
       "price": item.price.replace(/[^\d]/g, '') || "0",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "price": item.price.replace(/[^\d]/g, '') || "0",
-        "priceCurrency": "PLN"
-      }
     }))
   };
 
   return (
     <div className="min-h-screen bg-background">
-      <SEOHead 
-        title="Cennik Prania Tapicerki - Opole, Wrocław"
-        description="Sprawdź nasze konkurencyjne ceny prania tapicerki meblowej. Czyszczenie kanap, foteli, narożników i materacy w Opolu i Wrocławiu."
-        keywords="cennik prania tapicerki, ceny czyszczenia kanap, pranie tapicerki opole ceny, pranie tapicerki wrocław ceny"
+      <SEOHead
+        title="Cennik Usług Sprzątania - Wrocław | Lemonshine"
+        description="Sprawdź cennik usług sprzątania, prania tapicerki i mycia okien we Wrocławiu. Przejrzyste ceny, profesjonalna obsługa."
+        keywords="cennik sprzątania wrocław, cennik prania tapicerki, cennik mycia okien, sprzątanie mieszkań ceny"
         canonical="https://lemonshine.pl/cennik/"
         jsonLd={offerCatalogJsonLd}
       />
       <Header variant="klient" />
+
       <main className="pt-20">
+        {/* Hero */}
         <section className="py-16 bg-background">
+          <div className="container mx-auto px-4 text-center space-y-4">
+            <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
+              Cennik na usługi sprzątania we Wrocławiu
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Przejrzysty cennik naszych usług. Ostateczna cena zależy od wielkości powierzchni i stopnia zabrudzenia.
+            </p>
+          </div>
+        </section>
+
+        {/* Tabs + Cards */}
+        <section className="pb-16 bg-background">
           <div className="container mx-auto px-4">
-            <div className="text-center space-y-4 mb-12">
-              <h1 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-                Cennik
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Sprawdź nasze konkurencyjne ceny dla różnych rodzajów mebli tapicerowanych.
-                Gwarantujemy profesjonalne podejście i najwyższą jakość usług.
-              </p>
+            {/* Tab buttons */}
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-6 py-3 rounded-full font-semibold text-sm transition-all ${
+                    activeTab === tab.id
+                      ? 'bg-lemon-300 text-foreground shadow-md'
+                      : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
 
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {pricingItems.map((item, index) => (
-                <Card key={index} className="bg-white shadow-md hover-lift border-0 overflow-hidden">
-                  <div>
+            {/* Cards grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {items.map((item, index) => (
+                <Card key={`${activeTab}-${index}`} className="bg-white shadow-md hover-lift border-0 overflow-hidden">
+                  <div className="aspect-[4/3] bg-muted">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                   <CardContent className="p-4">
-                    <h4 className="font-heading font-semibold text-foreground text-sm mb-1">
+                    <h3 className="font-heading font-semibold text-foreground text-sm mb-1">
                       {item.name}
-                    </h4>
+                    </h3>
                     {item.subtitle && (
                       <p className="text-xs text-muted-foreground mb-3">
                         {item.subtitle}
@@ -78,8 +120,12 @@ const Pricing = () => {
                       <span className="text-lg font-bold text-mint-600">
                         {item.price}
                       </span>
-                      <Button asChild size="sm" className="text-xs px-3 py-1">
-                        <Link to="/#zamow">Zamów</Link>
+                      <Button
+                        size="sm"
+                        className="text-xs px-3 py-1"
+                        onClick={() => document.getElementById('zamow')?.scrollIntoView({ behavior: 'smooth' })}
+                      >
+                        Zamów
                       </Button>
                     </div>
                   </CardContent>
@@ -87,18 +133,47 @@ const Pricing = () => {
               ))}
             </div>
 
+            {/* CTA */}
             <div className="text-center mt-12">
               <p className="text-muted-foreground mb-4">
                 Potrzebujesz wyceny dla czegoś innego?
               </p>
-              <Button asChild size="lg" className="hover:opacity-90">
-                <Link to="/#zamow">Skontaktuj się z nami</Link>
+              <Button
+                size="lg"
+                className="hover:opacity-90"
+                onClick={() => document.getElementById('zamow')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Skontaktuj się z nami
               </Button>
             </div>
           </div>
         </section>
+
+        {/* Co wpływa na cenę */}
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground text-center mb-10">
+              Co wpływa na cenę?
+            </h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {priceFactors.map((factor, index) => (
+                <Card key={index} className="bg-white border-0 shadow-sm text-center p-6">
+                  <factor.icon className="w-10 h-10 mx-auto mb-4 text-mint-600" />
+                  <h3 className="font-heading font-semibold text-foreground mb-2">{factor.title}</h3>
+                  <p className="text-sm text-muted-foreground">{factor.description}</p>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Order Form */}
+        <OrderForm />
+
+        {/* FAQ */}
+        <FAQ />
       </main>
-      <SeoSection />
+
       <Footer />
     </div>
   );
