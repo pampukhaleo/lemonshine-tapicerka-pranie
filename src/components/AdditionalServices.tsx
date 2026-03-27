@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -47,41 +48,38 @@ const AdditionalServices = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 items-stretch">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-8">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-card rounded-2xl shadow-lg p-6 transition-transform duration-300 hover:-translate-y-2 flex flex-col h-full border border-border"
-            >
-              <div className="mb-6">
+            <Card key={index} className="bg-white shadow-md hover-lift border-0 overflow-hidden rounded-xl">
+              <div className="aspect-[4/3]">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-48 object-cover rounded-xl mb-4"
+                  className="w-full h-full object-cover"
                   loading="lazy"
                   decoding="async"
                 />
-                <h3 className="text-xl font-semibold text-foreground mb-2">
+              </div>
+              <CardContent className="p-3 md:p-4">
+                <h3 className="font-heading font-semibold text-foreground text-xs md:text-sm mb-0.5">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-[10px] md:text-xs text-muted-foreground mb-2">
                   {service.subtitle}
                 </p>
-              </div>
-
-              <div className="mt-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div className="text-2xl font-bold text-mint-600 leading-none">
+                <p className="text-sm md:text-lg font-bold text-mint-600 mb-2">
                   {service.price}
-                </div>
+                </p>
                 <Button
+                  size="sm"
+                  variant="outline"
+                  className="w-full text-xs px-3 py-1 bg-lemon-100 border-lemon-200 hover:bg-lemon-200 text-foreground"
                   onClick={handleOrderClick}
-                  className="w-full sm:w-auto hover:opacity-90"
                 >
-                  Zamów
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  Zamów →
                 </Button>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
