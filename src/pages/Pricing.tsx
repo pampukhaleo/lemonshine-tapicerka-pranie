@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -171,7 +172,32 @@ const Pricing = () => {
         <OrderForm />
 
         {/* FAQ */}
-        <FAQ />
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground text-center mb-10">
+              Najczęściej zadawane pytania
+            </h2>
+            <Accordion type="single" collapsible className="space-y-3">
+              {[
+                { q: 'Czy oferujecie rabaty przy większych zleceniach?', a: 'Tak, przy większym zakresie prac możemy zaproponować zniżkę.' },
+                { q: 'Czy są zniżki przy stałej współpracy?', a: 'Tak, dla stałych klientów oferujemy korzystniejsze warunki cenowe.' },
+                { q: 'Czy dojazd jest wliczony w cenę?', a: 'W większości przypadków tak, przy dalszych lokalizacjach może być doliczony koszt.' },
+                { q: 'Jak mogę zapłacić za usługę?', a: 'Akceptujemy płatność gotówką lub przelewem.' },
+                { q: 'Czy cena podana na stronie jest ostateczna?', a: 'Nie zawsze - ostateczna cena zależy od wielkości i stopnia zabrudzenia.' },
+                { q: 'Czy minimalna kwota zamówienia obowiązuje?', a: 'Tak, przy małych zleceniach obowiązuje minimalna wartość usługi - 150 zł.' },
+              ].map((faq, i) => (
+                <AccordionItem key={i} value={`faq-${i}`} className="bg-white rounded-lg border-0 shadow-sm px-6">
+                  <AccordionTrigger className="text-left font-semibold text-foreground">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
       </main>
 
       <Footer />
