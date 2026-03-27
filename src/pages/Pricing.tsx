@@ -97,7 +97,7 @@ const Pricing = () => {
             </div>
 
             {/* Cards grid */}
-            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {items.map((item, index) => (
                 <Card key={`${activeTab}-${index}`} className="bg-white shadow-md hover-lift border-0 overflow-hidden">
                   <div className="aspect-[4/3] bg-muted">
