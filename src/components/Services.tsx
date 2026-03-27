@@ -27,42 +27,43 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 mb-8 items-stretch">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 items-stretch">
           { popularItems.map((item, index) => (
             <div
               key={ index }
-              className="bg-white rounded-2xl shadow-lg p-3 md:p-6 transition-transform duration-300 hover:-translate-y-2 flex flex-col h-full"
+              className="bg-white rounded-2xl shadow-lg p-6 transition-transform duration-300 hover:-translate-y-2 flex flex-col h-full"
             >
-              <div className="mb-3 md:mb-6">
+              {/* Верх карточки */ }
+              <div className="mb-6">
                 <img
                   src={ item.image }
                   alt={ item.name }
-                  className="w-full h-28 md:h-48 object-cover rounded-xl mb-2 md:mb-4"
+                  className="w-full h-48 object-cover rounded-xl mb-4"
                   loading="lazy"
                   decoding="async"
                 />
-                <h3 className="text-sm md:text-xl font-semibold text-foreground mb-1 md:mb-2">
+                <h3 className="text-xl font-semibold text-foreground mb-2">
                   { item.name }
                 </h3>
                 { item.subtitle && (
-                  <p className="text-muted-foreground text-xs md:text-sm">
+                  <p className="text-muted-foreground text-sm">
                     { item.subtitle }
                   </p>
                 ) }
               </div>
 
-              <div className="mt-auto space-y-2">
-                <div className="text-lg md:text-2xl font-bold text-mint-600 leading-none">
+              {/* НИЗ карточки: цена + кнопка */ }
+              <div className="mt-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div className="text-2xl font-bold text-mint-600 leading-none">
                   { item.price }
                 </div>
 
                 <Button
                   onClick={ handleOrderClick }
-                  size="sm"
-                  className="w-full text-xs md:text-sm hover:opacity-90"
+                  className="w-full sm:w-auto hover:opacity-90"
                 >
                   Zamów
-                  <ArrowRight className="w-3 h-3 md:w-4 md:h-4 ml-1"/>
+                  <ArrowRight className="w-4 h-4 ml-2"/>
                 </Button>
               </div>
             </div>
