@@ -100,11 +100,11 @@ const Pricing = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
               {items.map((item, index) => (
                 <Card key={`${activeTab}-${index}`} className="bg-white shadow-md hover-lift border-0 overflow-hidden rounded-xl">
-                  <div className="aspect-[4/3] bg-lemon-100 flex items-center justify-center p-3">
+                  <div className="aspect-[4/3]">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-contain"
+                      className="w-full h-full object-cover"
                       loading="lazy"
                     />
                   </div>
