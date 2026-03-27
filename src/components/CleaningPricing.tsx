@@ -55,39 +55,36 @@ const CleaningPricing = () => {
           </div>
 
           {/* Pricing Cards */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
             {apartmentPlans.map((plan) => {
               const price = calculatePrice(plan.basePrice, currentTab.discount);
               return (
                 <div
                   key={plan.id}
-                  className="bg-card rounded-2xl border border-border p-6 flex flex-col relative overflow-hidden"
+                  className="bg-card rounded-2xl border border-border p-3 md:p-6 flex flex-col relative overflow-hidden"
                 >
-                  {/* Bookmark tab in top-right corner */}
-                  <div className="absolute top-0 right-6 w-8 bg-mint-500 rounded-b-lg" style={{ height: '52px' }} />
+                  <div className="absolute top-0 right-4 md:right-6 w-6 md:w-8 bg-mint-500 rounded-b-lg" style={{ height: '40px' }} />
 
-                  {/* Title */}
-                  <div className="mb-4">
-                    <h3 className="text-xl md:text-2xl font-heading font-bold text-foreground">
+                  <div className="mb-2 md:mb-4">
+                    <h3 className="text-base md:text-2xl font-heading font-bold text-foreground">
                       {plan.title}
                     </h3>
                   </div>
 
-                  {/* Price */}
-                  <div className="mb-4">
-                    <span className="text-3xl md:text-4xl font-heading font-bold text-foreground">
+                  <div className="mb-2 md:mb-4">
+                    <span className="text-xl md:text-4xl font-heading font-bold text-foreground">
                       {price} zł
                     </span>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-sm text-muted-foreground mb-6 flex-1">
+                  <p className="text-xs md:text-sm text-muted-foreground mb-3 md:mb-6 flex-1">
                     {plan.description}
                   </p>
 
                   <Button
                     onClick={scrollToOrder}
-                    className="w-full rounded-xl bg-lemon-300 hover:bg-lemon-400 text-foreground font-semibold shadow-none"
+                    size="sm"
+                    className="w-full rounded-xl bg-lemon-300 hover:bg-lemon-400 text-foreground font-semibold shadow-none text-xs md:text-sm"
                   >
                     Zamów sprzątanie
                   </Button>
