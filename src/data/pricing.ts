@@ -114,3 +114,65 @@ export const pricingItems: PricingItem[] = [
     popular: true
   }
 ];
+
+export const cleaningPricingItems: PricingItem[] = [
+  {
+    name: 'Sprzątanie mieszkania',
+    subtitle: 'do 40 m²',
+    price: 'od 199 zł',
+    image: '/placeholder.svg',
+    popular: true
+  },
+  {
+    name: 'Sprzątanie mieszkania',
+    subtitle: 'do 60 m²',
+    price: 'od 249 zł',
+    image: '/placeholder.svg',
+    popular: true
+  },
+  {
+    name: 'Sprzątanie mieszkania',
+    subtitle: 'do 80 m²',
+    price: 'od 299 zł',
+    image: '/placeholder.svg',
+    popular: false
+  },
+  {
+    name: 'Sprzątanie mieszkania',
+    subtitle: 'powyżej 80 m²',
+    price: 'od 349 zł',
+    image: '/placeholder.svg',
+    popular: false
+  },
+];
+
+export const windowPricingItems: PricingItem[] = [
+  {
+    name: 'Mycie okien standardowych',
+    subtitle: 'do 5 okien',
+    price: 'od 150 zł',
+    image: '/placeholder.svg',
+    popular: true
+  },
+  {
+    name: 'Mycie okien',
+    subtitle: '6-10 okien',
+    price: 'od 250 zł',
+    image: '/placeholder.svg',
+    popular: true
+  },
+  {
+    name: 'Mycie okien balkonowych',
+    subtitle: 'drzwi balkonowe',
+    price: 'od 50 zł/szt',
+    image: '/placeholder.svg',
+    popular: false
+  },
+  {
+    name: 'Mycie przeszkleń',
+    subtitle: 'duże powierzchnie',
+    price: 'wycena indywidualna',
+    image: '/placeholder.svg',
+    popular: false
+  },
+];
