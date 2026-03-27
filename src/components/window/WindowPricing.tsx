@@ -48,33 +48,38 @@ const WindowPricing = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8 items-stretch">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 mb-8">
             {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl shadow-lg p-6 transition-transform duration-300 hover:-translate-y-2 flex flex-col h-full"
-              >
-                <div className="mb-6">
+              <Card key={index} className="bg-white shadow-md hover-lift border-0 overflow-hidden rounded-xl">
+                <div className="aspect-[4/3]">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-48 object-cover rounded-xl mb-4"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                     decoding="async"
                   />
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm">{service.subtitle}</p>
                 </div>
-
-                <div className="mt-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div className="text-2xl font-bold text-mint-600 leading-none">
-                    {service.price} zł <span className="text-sm font-normal text-muted-foreground">{service.unit}</span>
-                  </div>
-                  <Button onClick={handleOrderClick} className="w-full sm:w-auto hover:opacity-90">
-                    Zamów
+                <CardContent className="p-3 md:p-4">
+                  <h3 className="font-heading font-semibold text-foreground text-xs md:text-sm mb-0.5">
+                    {service.title}
+                  </h3>
+                  <p className="text-[10px] md:text-xs text-muted-foreground mb-2">
+                    {service.subtitle}
+                  </p>
+                  <p className="text-sm md:text-lg font-bold text-mint-600 mb-2">
+                    {service.price} zł <span className="text-[10px] md:text-xs font-normal text-muted-foreground">{service.unit}</span>
+                  </p>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    className="w-full text-xs px-3 py-1 bg-lemon-100 border-lemon-200 hover:bg-lemon-200 text-foreground"
+                    onClick={handleOrderClick}
+                  >
+                    Zamów →
                   </Button>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
 
