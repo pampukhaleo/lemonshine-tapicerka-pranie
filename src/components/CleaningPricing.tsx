@@ -33,7 +33,7 @@ const CleaningPricing = () => {
                 key={tab.id}
                 onClick={() => setSelectedFrequency(tab.id)}
                 className={cn(
-                  "flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-medium transition-all duration-200 border min-h-[60px] md:min-h-0",
+                  "flex items-center justify-center gap-1.5 px-3 py-3 rounded-xl text-sm font-medium transition-all duration-200 border min-h-[60px] md:min-h-0 md:px-5 md:gap-2",
                   frequencyTabs.length % 2 !== 0 && index === frequencyTabs.length - 1 && "col-span-2 max-w-[50%] mx-auto md:max-w-none",
                   selectedFrequency === tab.id
                     ? "bg-lemon-100 border-lemon-400 text-foreground"
