@@ -28,12 +28,13 @@ const CleaningPricing = () => {
 
           {/* Frequency Tabs */}
           <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-2 mb-12">
-            {frequencyTabs.map((tab) => (
+            {frequencyTabs.map((tab, index) => (
               <button
                 key={tab.id}
                 onClick={() => setSelectedFrequency(tab.id)}
                 className={cn(
-                  "flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium transition-all duration-200 border",
+                  "flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-medium transition-all duration-200 border min-h-[60px] md:min-h-0",
+                  frequencyTabs.length % 2 !== 0 && index === frequencyTabs.length - 1 && "col-span-2 max-w-[50%] mx-auto md:max-w-none",
                   selectedFrequency === tab.id
                     ? "bg-lemon-100 border-lemon-400 text-foreground"
                     : "bg-card border-border text-muted-foreground hover:border-lemon-300"
@@ -49,7 +50,7 @@ const CleaningPricing = () => {
                     {tab.badge}
                   </Badge>
                 )}
-                <span>{tab.label}</span>
+                <span className="text-center">{tab.label}</span>
               </button>
             ))}
           </div>
