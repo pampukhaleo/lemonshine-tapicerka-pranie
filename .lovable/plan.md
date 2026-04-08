@@ -1,33 +1,31 @@
 
 
-## Plan: Убрать поле `service` из формы и заявок
+## Plan: Удалить CRM из сайта
 
-### Что делаем
-Поле `service` всегда `'sprzątanie'` и бесполезно — `source` уже показывает откуда заявка. Убираем `service` из формы, но оставляем колонку в БД (там уже есть данные).
+CRM полностью изолирована — это отдельный роут `/crm` и папка компонентов. Ни одна другая страница или компонент от неё не зависит.
 
-### Изменения
+### Что удаляем
 
-1. **`src/components/OrderForm.tsx`** — убрать `service` из `formData` state, из `leadData`, и из тела запроса к Telegram Edge Function.
+1. **Файлы CRM-компонентов** (6 файлов):
+   - `src/pages/CRM.tsx`
+   - `src/components/crm/CRMDashboard.tsx`
+   - `src/components/crm/CRMLogin.tsx`
+   - `src/components/crm/LeadsTable.tsx`
+   - `src/components/crm/LeadDetails.tsx`
+   - `src/components/crm/LeadCreateDialog.tsx`
+   - `src/components/crm/LeadEditDialog.tsx`
+   - `src/components/crm/CalendarView.tsx`
+   - `src/components/crm/Statistics.tsx`
 
-2. **`src/components/crm/LeadCreateDialog.tsx`** — убрать поле `service` из формы создания лида. Передавать пустую строку или значение по умолчанию в insert (колонка NOT NULL).
+2. **`src/nav-items.tsx`** — убрать импорт CRM и запись роута `/crm`.
 
-3. **`src/components/crm/LeadsTable.tsx`** — убрать отображение «Usługa» из карточки лида.
+3. **`src/hooks/useAuth.tsx`** — можно оставить (используется только CRM, но не мешает). Или удалить если хочешь почистить.
 
-4. **`src/components/crm/LeadDetails.tsx`** — убрать отображение service.
+### Что НЕ трогаем
+- Таблицы `leads`, `admins`, `lead_notes` в БД — данные остаются
+- Edge Functions (`send-lead-gleb`, `notify-telegram`) — заявки продолжают приходить в Telegram
+- `OrderForm.tsx` — формы на сайте работают как раньше
 
-5. **`supabase/functions/send-lead-gleb/index.ts`** — убрать service из Telegram-сообщения.
-
-6. **Миграция** — сделать колонку `service` nullable или задать default, чтобы новые заявки без service не падали:
-   ```sql
-   ALTER TABLE public.leads ALTER COLUMN service DROP NOT NULL;
-   ALTER TABLE public.leads ALTER COLUMN service SET DEFAULT '';
-   ```
-
-### Файлы
-- `src/components/OrderForm.tsx`
-- `src/components/crm/LeadCreateDialog.tsx`
-- `src/components/crm/LeadsTable.tsx`
-- `src/components/crm/LeadDetails.tsx`
-- `supabase/functions/send-lead-gleb/index.ts`
-- `supabase/migrations/` — новая миграция
+### Результат
+Роут `/crm` перестанет существовать. Заявки по-прежнему сохраняются в БД и приходят в Telegram.
 
