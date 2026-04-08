@@ -16,8 +16,8 @@ const Footer = () => {
               <img src="/104933_LemonShine_Flat_HP_R_01_1.png" alt="lemonshine logo" className="h-8 object-contain rounded-2xl"/>
             </div>
             <p className="text-muted-foreground">
-              Profesjonalne pranie tapicerki we Wrocławiu i Opole.
-              Przywracamy świeżość Twoim meblom z gwarancją najwyższej jakości.
+              Profesjonalne sprzątanie, pranie tapicerki i mycie okien we Wrocławiu.
+              Gwarancja najwyższej jakości usług.
             </p>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/profile.php?id=61576970773440" target="_blank" className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-lemon-600 transition-colors">
@@ -48,11 +48,10 @@ const Footer = () => {
           <div className="space-y-6">
             <h3 className="text-xl font-heading font-bold">Szybkie Linki</h3>
             <ul className="space-y-3 text-muted-foreground">
-              <li><Link to="/#oferta" className="hover:text-lemon-400 transition-colors">Oferta</Link></li>
+              <li><Link to="/pranie-tapicerki/" className="hover:text-lemon-400 transition-colors">Pranie tapicerki</Link></li>
+              <li><Link to="/mycie-okien/" className="hover:text-lemon-400 transition-colors">Mycie okien</Link></li>
               <li><Link to="/cennik/" className="hover:text-lemon-400 transition-colors">Cennik</Link></li>
               <li><Link to="/blog/" className="hover:text-lemon-400 transition-colors">Blog</Link></li>
-              <li><Link to="/#onas" className="hover:text-lemon-400 transition-colors">O nas</Link></li>
-              <li><Link to="/#realizacje" className="hover:text-lemon-400 transition-colors">Realizacje</Link></li>
               <li><Link to="/#zamow" className="hover:text-lemon-400 transition-colors">Kontakt</Link></li>
             </ul>
           </div>

@@ -31,8 +31,9 @@ const Home = () => {
       "addressCountry": "PL"
     },
     "sameAs": [
-      "https://www.facebook.com/lemonshine.opole",
-      "https://www.instagram.com/lemonshine_opole/"
+      "https://www.facebook.com/profile.php?id=61576970773440",
+      "https://www.instagram.com/lemonshine_pl/",
+      "https://www.tiktok.com/@lemonshine_pl"
     ]
   };
 
