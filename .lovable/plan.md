@@ -1,31 +1,30 @@
 
 
-## Plan: Удалить CRM из сайта
+## Plan: SEO-фикс и чистка после реструктуризации
 
-CRM полностью изолирована — это отдельный роут `/crm` и папка компонентов. Ни одна другая страница или компонент от неё не зависит.
+### Изменения
 
-### Что удаляем
+1. **`public/robots.txt`** — убрать `Disallow: /crm` (CRM удалена).
 
-1. **Файлы CRM-компонентов** (6 файлов):
-   - `src/pages/CRM.tsx`
-   - `src/components/crm/CRMDashboard.tsx`
-   - `src/components/crm/CRMLogin.tsx`
-   - `src/components/crm/LeadsTable.tsx`
-   - `src/components/crm/LeadDetails.tsx`
-   - `src/components/crm/LeadCreateDialog.tsx`
-   - `src/components/crm/LeadEditDialog.tsx`
-   - `src/components/crm/CalendarView.tsx`
-   - `src/components/crm/Statistics.tsx`
+2. **`public/sitemap.xml`** — добавить `/pranie-tapicerki/` и `/mycie-okien/`, обновить lastmod даты.
 
-2. **`src/nav-items.tsx`** — убрать импорт CRM и запись роута `/crm`.
+3. **`src/pages/Klient.tsx`** — изменить canonical с `/klient/` на `/pranie-tapicerki/`. Обновить sameAs в JSON-LD на актуальные соцсети (`lemonshine_pl`).
 
-3. **`src/hooks/useAuth.tsx`** — можно оставить (используется только CRM, но не мешает). Или удалить если хочешь почистить.
+4. **`src/components/Footer.tsx`** — обновить текст описания компании, чтобы отражал все три сервиса. Исправить ссылки "Oferta", "O nas", "Realizacje" на рабочие якоря или страницы.
+
+5. **`index.html`** — добавить `preload` для `/heroImg-home.png` (основной LCP-ресурс главной страницы).
+
+6. **`src/pages/Home.tsx`** — обновить sameAs в JSON-LD на актуальные ссылки соцсетей.
 
 ### Что НЕ трогаем
-- Таблицы `leads`, `admins`, `lead_notes` в БД — данные остаются
-- Edge Functions (`send-lead-gleb`, `notify-telegram`) — заявки продолжают приходить в Telegram
-- `OrderForm.tsx` — формы на сайте работают как раньше
+- Страницы `/biznes/` и `/outsourcing/` — оставляем для обратной совместимости, не мешают.
+- Формы и Edge Functions — работают корректно.
 
-### Результат
-Роут `/crm` перестанет существовать. Заявки по-прежнему сохраняются в БД и приходят в Telegram.
+### Файлы
+- `public/robots.txt`
+- `public/sitemap.xml`
+- `src/pages/Klient.tsx`
+- `src/pages/Home.tsx`
+- `src/components/Footer.tsx`
+- `index.html`
 
