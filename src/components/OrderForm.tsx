@@ -69,7 +69,6 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
               name: formData.name,
               phone: formData.phone,
               address: formData.address,
-              service: formData.service,
               preferred_date: formData.date,
               preferred_time: formData.time,
               description: formData.description,
