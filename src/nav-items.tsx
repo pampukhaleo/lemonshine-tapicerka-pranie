@@ -76,12 +76,6 @@ export const navItems = [
     page: <PrivacyPolicy />,
   },
   {
-    title: "CRM",
-    to: "/crm",
-    icon: <BarChart3Icon className="h-4 w-4" />,
-    page: <CRM />,
-  },
-  {
     title: "404",
     to: "*",
     page: <NotFound />,
