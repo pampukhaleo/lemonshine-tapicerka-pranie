@@ -1,40 +1,61 @@
 
 
-## Plan: Redesign /cennik/ page with 3 tabbed sections
+## Plan: Track source page and form for each lead
 
-### Overview
-Rewrite the Pricing page to have 3 tab sections: **Sprzątanie**, **Pranie tapicerki**, **Mycie okien**. The "Pranie tapicerki" tab uses the existing 15 items with images from `pricingItems`. The other two tabs get placeholder cards for now.
+### Problem
+Currently all leads come in with `source: 'website'` — no way to tell which page or form section they came from.
 
-### File changes
+### Approach
+1. **Add `source` column to `leads` table** via migration — a `text` field, default `'website'`.
 
-#### 1. `src/data/pricing.ts`
-Add two new exported arrays:
+2. **Add `source` prop to `OrderForm` component** — each page passes a specific source string like `'home'`, `'pranie-tapicerki'`, `'mycie-okien'`, `'cennik'`, `'outsourcing'`, `'biznes'`.
 
-- **`cleaningPricingItems`** — 3-4 placeholder cards for Sprzątanie (title, price from `apartmentPlans` data, image set to `/placeholder.svg` as stub)
-- **`windowPricingItems`** — 3 placeholder cards for Mycie okien (title/price from window data, image set to `/placeholder.svg` as stub)
+3. **Save source to DB** — include `source` in the insert query.
 
-Keep existing `pricingItems` array untouched — it becomes the Pranie tapicerki data.
+4. **Pass source to Telegram notification** — already sends `source`, just needs the real value instead of hardcoded `'website'`.
 
-#### 2. `src/pages/Pricing.tsx` — Full rewrite
+5. **Update all pages** that use `<OrderForm />` to pass the source prop:
+   - `Home.tsx` → `source="home"`
+   - `Klient.tsx` → `source="pranie-tapicerki"`
+   - `MycieOkien.tsx` → `source="mycie-okien"`
+   - `Pricing.tsx` → `source="cennik"`
+   - `Outsourcing.tsx` → `source="outsourcing"`
+   - `Biznes.tsx` → `source="biznes"`
 
-**Structure:**
-1. **Hero**: Title "Cennik na usługi sprzątania we Wrocławiu" + subtitle
-2. **3 category tabs** (styled buttons, active = yellow/lemon background):
-   - **Sprzątanie** — shows `cleaningPricingItems` (placeholder images, you'll add real ones later)
-   - **Pranie tapicerki** — shows existing `pricingItems` (all 15 cards with current images)
-   - **Mycie okien** — shows `windowPricingItems` (placeholder images)
-3. **CTA block**: "Potrzebujesz wyceny?" + button
-4. **"Co wpływa na cenę"** section: 4 info cards (Wielkość powierzchni, Stopień zabrudzenia, Zakres prac, Lokalizacja)
-5. **OrderForm** component (reuse existing)
-6. **FAQ** component (reuse existing)
-7. **Footer**
+6. **CRM LeadCreateDialog** — pass `source="crm"` for manually created leads.
 
-**Tab implementation**: `useState` for active tab. Cards in `grid-cols-2 md:grid-cols-3 lg:grid-cols-4` grid. Each card: image, title, subtitle, price, "Zamów" button linking to order form on page.
+7. **Show source in CRM** — display the source field in LeadDetails and LeadsTable so it's visible which page/form the lead came from.
 
-**Placeholder cards** for Sprzątanie and Mycie okien will use `/placeholder.svg` — ready to swap when you upload real images.
+### Technical details
 
-### Summary
-- 2 files modified: `src/data/pricing.ts`, `src/pages/Pricing.tsx`
-- All current pricing card images stay in the "Pranie tapicerki" tab
-- Other two tabs get stub cards with placeholder images
+**Migration SQL:**
+```sql
+ALTER TABLE leads ADD COLUMN source text DEFAULT 'website';
+```
+
+**OrderForm changes:**
+```tsx
+interface OrderFormProps {
+  source?: string;
+}
+
+const OrderForm = ({ source = 'website' }: OrderFormProps) => {
+  // ... in handleSubmit:
+  const { error } = await supabase
+    .from('leads')
+    .insert({ ...leadData, id: leadId, source });
+  // ... in Telegram call:
+  source: source
+};
+```
+
+**Telegram message** — already shows source, will now show the real page name.
+
+### Files to modify
+- `supabase/migrations/` — new migration file
+- `src/components/OrderForm.tsx` — add `source` prop, save to DB
+- `src/pages/Home.tsx`, `Klient.tsx`, `MycieOkien.tsx`, `Pricing.tsx`, `Outsourcing.tsx`, `Biznes.tsx` — pass source prop
+- `src/components/crm/LeadCreateDialog.tsx` — pass `source="crm"`
+- `src/components/crm/LeadsTable.tsx` — show source column
+- `src/components/crm/LeadDetails.tsx` — show source field
 
