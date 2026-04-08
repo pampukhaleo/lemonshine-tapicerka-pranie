@@ -16,8 +16,8 @@ const Footer = () => {
               <img src="/104933_LemonShine_Flat_HP_R_01_1.png" alt="lemonshine logo" className="h-8 object-contain rounded-2xl"/>
             </div>
             <p className="text-muted-foreground">
-              Profesjonalne pranie tapicerki we Wrocławiu i Opole.
-              Przywracamy świeżość Twoim meblom z gwarancją najwyższej jakości.
+              Profesjonalne sprzątanie, pranie tapicerki i mycie okien we Wrocławiu.
+              Gwarancja najwyższej jakości usług.
             </p>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/profile.php?id=61576970773440" target="_blank" className="w-10 h-10 rounded-full flex items-center justify-center hover:bg-lemon-600 transition-colors">
