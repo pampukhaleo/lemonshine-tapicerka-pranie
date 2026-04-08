@@ -53,7 +53,7 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
 
       const { error } = await supabase
         .from('leads')
-        .insert({ ...leadData, id: leadId });
+        .insert({ ...leadData, id: leadId, source } as any);
 
       if (error) {
         console.error('Database error:', error);
