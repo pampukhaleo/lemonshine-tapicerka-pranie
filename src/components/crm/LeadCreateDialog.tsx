@@ -80,7 +80,8 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
         preferred_time: formData.preferred_time || null,
         description: formData.description || null,
         price: formData.price ? parseFloat(formData.price) : null,
-        status: formData.status
+        status: formData.status,
+        source: 'crm'
       };
 
       const { data, error } = await (supabase as any)

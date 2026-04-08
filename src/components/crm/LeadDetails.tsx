@@ -228,6 +228,9 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
 
           <div className="border-t pt-4 space-y-2">
             <div><strong>Usługa:</strong> {getServiceLabel(lead.service)}</div>
+            {(lead as any).source && (
+              <div><strong>Źródło:</strong> {(lead as any).source}</div>
+            )}
             
             {lead.price && (
               <div><strong>Cena:</strong> {lead.price.toLocaleString('pl-PL', {

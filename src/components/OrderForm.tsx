@@ -10,7 +10,11 @@ import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
 import { trackFormSubmission, trackConversion, trackPhoneClick } from '@/lib/analytics';
 
-const OrderForm = () => {
+interface OrderFormProps {
+  source?: string;
+}
+
+const OrderForm = ({ source = 'website' }: OrderFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -49,7 +53,7 @@ const OrderForm = () => {
 
       const { error } = await supabase
         .from('leads')
-        .insert({ ...leadData, id: leadId });
+        .insert({ ...leadData, id: leadId, source } as any);
 
       if (error) {
         console.error('Database error:', error);
@@ -71,7 +75,7 @@ const OrderForm = () => {
               preferred_date: formData.date,
               preferred_time: formData.time,
               description: formData.description,
-              source: 'website'
+              source
             }
           });
           console.log('Telegram notification sent successfully');
