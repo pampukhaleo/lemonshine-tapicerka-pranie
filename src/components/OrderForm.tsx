@@ -99,7 +99,6 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
         name: '',
         phone: '',
         address: '',
-        service: 'sprzątanie',
         date: '',
         time: '',
         description: '',

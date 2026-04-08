@@ -1,0 +1,2 @@
+ALTER TABLE public.leads ALTER COLUMN service DROP NOT NULL;
+ALTER TABLE public.leads ALTER COLUMN service SET DEFAULT '';

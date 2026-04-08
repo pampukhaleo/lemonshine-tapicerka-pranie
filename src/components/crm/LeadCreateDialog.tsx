@@ -248,7 +248,7 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
             </Button>
             <Button
               onClick={handleSave}
-              disabled={loading || !formData.name || !formData.phone || !formData.address || !formData.service}
+              disabled={loading || !formData.name || !formData.phone || !formData.address}
             >
               {loading ? 'Tworzenie...' : 'Utwórz zgłoszenie'}
             </Button>

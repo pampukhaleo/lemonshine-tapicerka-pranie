@@ -227,7 +227,6 @@ export const LeadDetails: React.FC<LeadDetailsProps> = ({
           </div>
 
           <div className="border-t pt-4 space-y-2">
-            <div><strong>Usługa:</strong> {getServiceLabel(lead.service)}</div>
             {(lead as any).source && (
               <div><strong>Źródło:</strong> {(lead as any).source}</div>
             )}

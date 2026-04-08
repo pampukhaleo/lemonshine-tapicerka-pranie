@@ -76,7 +76,7 @@ export type Database = {
           preferred_date: string | null
           preferred_time: string | null
           price: number | null
-          service: string
+          service: string | null
           source: string | null
           status: Database["public"]["Enums"]["lead_status"]
           updated_at: string
@@ -92,7 +92,7 @@ export type Database = {
           preferred_date?: string | null
           preferred_time?: string | null
           price?: number | null
-          service: string
+          service?: string | null
           source?: string | null
           status?: Database["public"]["Enums"]["lead_status"]
           updated_at?: string
@@ -108,7 +108,7 @@ export type Database = {
           preferred_date?: string | null
           preferred_time?: string | null
           price?: number | null
-          service?: string
+          service?: string | null
           source?: string | null
           status?: Database["public"]["Enums"]["lead_status"]
           updated_at?: string

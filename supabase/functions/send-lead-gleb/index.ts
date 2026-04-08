@@ -44,7 +44,6 @@ serve(async (req) => {
       message += `<b>Email:</b> ${escapeHtml(email)}\n`;
     }
     message += `<b>Adres:</b> ${escapeHtml(address)}\n`;
-    message += `<b>Usługa:</b> ${escapeHtml(service)}\n`;
     if (preferred_date) {
       message += `<b>Preferowana data:</b> ${escapeHtml(preferred_date)}\n`;
     }
