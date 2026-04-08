@@ -87,7 +87,6 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
       sendNotification();
 
       trackFormSubmission({
-        service: formData.service,
         preferred_date: formData.date,
         preferred_time: formData.time
       });
