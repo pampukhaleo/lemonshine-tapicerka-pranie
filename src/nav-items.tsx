@@ -1,5 +1,5 @@
 
-import { HomeIcon, TagIcon, FileTextIcon, ShieldIcon, BarChart3Icon, Building2Icon, HandshakeIcon } from "lucide-react";
+import { HomeIcon, TagIcon, FileTextIcon, ShieldIcon, Building2Icon, HandshakeIcon } from "lucide-react";
 import Home from "./pages/Home.tsx";
 import Klient from "./pages/Klient.tsx";
 import Pricing from "./pages/Pricing.tsx";
@@ -7,7 +7,6 @@ import BlogIndex from "./pages/BlogIndex.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import CRM from "./pages/CRM.tsx";
 import Biznes from "./pages/Biznes.tsx";
 import Outsourcing from "./pages/Outsourcing.tsx";
 import MycieOkien from "./pages/MycieOkien.tsx";
