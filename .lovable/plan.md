@@ -1,61 +1,33 @@
 
 
-## Plan: Track source page and form for each lead
+## Plan: Убрать поле `service` из формы и заявок
 
-### Problem
-Currently all leads come in with `source: 'website'` — no way to tell which page or form section they came from.
+### Что делаем
+Поле `service` всегда `'sprzątanie'` и бесполезно — `source` уже показывает откуда заявка. Убираем `service` из формы, но оставляем колонку в БД (там уже есть данные).
 
-### Approach
-1. **Add `source` column to `leads` table** via migration — a `text` field, default `'website'`.
+### Изменения
 
-2. **Add `source` prop to `OrderForm` component** — each page passes a specific source string like `'home'`, `'pranie-tapicerki'`, `'mycie-okien'`, `'cennik'`, `'outsourcing'`, `'biznes'`.
+1. **`src/components/OrderForm.tsx`** — убрать `service` из `formData` state, из `leadData`, и из тела запроса к Telegram Edge Function.
 
-3. **Save source to DB** — include `source` in the insert query.
+2. **`src/components/crm/LeadCreateDialog.tsx`** — убрать поле `service` из формы создания лида. Передавать пустую строку или значение по умолчанию в insert (колонка NOT NULL).
 
-4. **Pass source to Telegram notification** — already sends `source`, just needs the real value instead of hardcoded `'website'`.
+3. **`src/components/crm/LeadsTable.tsx`** — убрать отображение «Usługa» из карточки лида.
 
-5. **Update all pages** that use `<OrderForm />` to pass the source prop:
-   - `Home.tsx` → `source="home"`
-   - `Klient.tsx` → `source="pranie-tapicerki"`
-   - `MycieOkien.tsx` → `source="mycie-okien"`
-   - `Pricing.tsx` → `source="cennik"`
-   - `Outsourcing.tsx` → `source="outsourcing"`
-   - `Biznes.tsx` → `source="biznes"`
+4. **`src/components/crm/LeadDetails.tsx`** — убрать отображение service.
 
-6. **CRM LeadCreateDialog** — pass `source="crm"` for manually created leads.
+5. **`supabase/functions/send-lead-gleb/index.ts`** — убрать service из Telegram-сообщения.
 
-7. **Show source in CRM** — display the source field in LeadDetails and LeadsTable so it's visible which page/form the lead came from.
+6. **Миграция** — сделать колонку `service` nullable или задать default, чтобы новые заявки без service не падали:
+   ```sql
+   ALTER TABLE public.leads ALTER COLUMN service DROP NOT NULL;
+   ALTER TABLE public.leads ALTER COLUMN service SET DEFAULT '';
+   ```
 
-### Technical details
-
-**Migration SQL:**
-```sql
-ALTER TABLE leads ADD COLUMN source text DEFAULT 'website';
-```
-
-**OrderForm changes:**
-```tsx
-interface OrderFormProps {
-  source?: string;
-}
-
-const OrderForm = ({ source = 'website' }: OrderFormProps) => {
-  // ... in handleSubmit:
-  const { error } = await supabase
-    .from('leads')
-    .insert({ ...leadData, id: leadId, source });
-  // ... in Telegram call:
-  source: source
-};
-```
-
-**Telegram message** — already shows source, will now show the real page name.
-
-### Files to modify
-- `supabase/migrations/` — new migration file
-- `src/components/OrderForm.tsx` — add `source` prop, save to DB
-- `src/pages/Home.tsx`, `Klient.tsx`, `MycieOkien.tsx`, `Pricing.tsx`, `Outsourcing.tsx`, `Biznes.tsx` — pass source prop
-- `src/components/crm/LeadCreateDialog.tsx` — pass `source="crm"`
-- `src/components/crm/LeadsTable.tsx` — show source column
-- `src/components/crm/LeadDetails.tsx` — show source field
+### Файлы
+- `src/components/OrderForm.tsx`
+- `src/components/crm/LeadCreateDialog.tsx`
+- `src/components/crm/LeadsTable.tsx`
+- `src/components/crm/LeadDetails.tsx`
+- `supabase/functions/send-lead-gleb/index.ts`
+- `supabase/migrations/` — новая миграция
 
