@@ -252,7 +252,7 @@ const Klient = () => {
       <SEOHead 
         title="Pranie Tapicerki dla Klientów Indywidualnych | Lemonshine Opole, Wrocław"
         description="Profesjonalne pranie kanap, foteli, materacy i dywanów w Twoim domu. Bezpieczna chemia, szybkie schnięcie, gwarancja jakości."
-        canonical="https://lemonshine.pl/klient/"
+        canonical="https://lemonshine.pl/pranie-tapicerki/"
         jsonLd={[faqJsonLd, localBusinessJsonLd, howToJsonLd, offersJsonLd]}
       />
       <Header variant="klient" />
