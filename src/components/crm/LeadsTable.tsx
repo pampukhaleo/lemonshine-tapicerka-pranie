@@ -102,7 +102,6 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
                 
                 <div className="space-y-1 text-sm">
                   <div><strong>Telefon:</strong> {lead.phone}</div>
-                  <div><strong>Usługa:</strong> {getServiceLabel(lead.service)}</div>
                   {(lead as any).source && (
                     <div><strong>Źródło:</strong> {(lead as any).source}</div>
                   )}

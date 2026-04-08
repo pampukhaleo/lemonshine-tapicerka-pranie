@@ -19,7 +19,6 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
     name: '',
     phone: '',
     address: '',
-    service: 'sprzątanie',
     date: '',
     time: '',
     description: '',
@@ -42,7 +41,6 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
         name: formData.name,
         phone: formData.phone,
         address: formData.address,
-        service: formData.service,
         preferred_date: formData.date || null,
         preferred_time: formData.time || null,
         description: formData.description || null,
@@ -71,7 +69,6 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
               name: formData.name,
               phone: formData.phone,
               address: formData.address,
-              service: formData.service,
               preferred_date: formData.date,
               preferred_time: formData.time,
               description: formData.description,
@@ -90,7 +87,6 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
       sendNotification();
 
       trackFormSubmission({
-        service: formData.service,
         preferred_date: formData.date,
         preferred_time: formData.time
       });
@@ -103,7 +99,6 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
         name: '',
         phone: '',
         address: '',
-        service: 'sprzątanie',
         date: '',
         time: '',
         description: '',

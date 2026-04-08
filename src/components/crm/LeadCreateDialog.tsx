@@ -45,7 +45,6 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
     name: '',
     phone: '',
     address: '',
-    service: '',
     preferred_date: '',
     preferred_time: '',
     description: '',
@@ -59,7 +58,6 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
       name: '',
       phone: '',
       address: '',
-      service: '',
       preferred_date: '',
       preferred_time: '',
       description: '',
@@ -75,7 +73,6 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
         name: formData.name,
         phone: formData.phone,
         address: formData.address,
-        service: formData.service,
         preferred_date: formData.preferred_date || null,
         preferred_time: formData.preferred_time || null,
         description: formData.description || null,
@@ -154,25 +151,6 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <div>
-              <Label htmlFor="service">Usługa *</Label>
-              <Select
-                value={formData.service}
-                onValueChange={(value) => setFormData(prev => ({ ...prev, service: value }))}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Wybierz usługę" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="kanapa">Pranie kanapy</SelectItem>
-                  <SelectItem value="fotel">Pranie fotela</SelectItem>
-                  <SelectItem value="dywan">Pranie dywanu</SelectItem>
-                  <SelectItem value="materac">Pranie materaca</SelectItem>
-                  <SelectItem value="zestaw">Czyszczenie kompleksowe</SelectItem>
-                  <SelectItem value="inne">Inne</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
             <div>
               <Label htmlFor="price">Cena (zł)</Label>
               <Input
@@ -270,7 +248,7 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
             </Button>
             <Button
               onClick={handleSave}
-              disabled={loading || !formData.name || !formData.phone || !formData.address || !formData.service}
+              disabled={loading || !formData.name || !formData.phone || !formData.address}
             >
               {loading ? 'Tworzenie...' : 'Utwórz zgłoszenie'}
             </Button>
