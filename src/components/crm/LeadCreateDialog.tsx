@@ -73,7 +73,6 @@ export const LeadCreateDialog: React.FC<LeadCreateDialogProps> = ({
         name: formData.name,
         phone: formData.phone,
         address: formData.address,
-        service: formData.service,
         preferred_date: formData.preferred_date || null,
         preferred_time: formData.preferred_time || null,
         description: formData.description || null,
