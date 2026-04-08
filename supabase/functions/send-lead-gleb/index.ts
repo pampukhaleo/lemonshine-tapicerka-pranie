@@ -23,7 +23,7 @@ serve(async (req) => {
   }
 
   try {
-    const { leadId, name, phone, email, address, service, preferred_date, preferred_time, description, source } = await req.json();
+    const { leadId, name, phone, email, address, preferred_date, preferred_time, description, source } = await req.json();
 
     const botToken = Deno.env.get('TELEGRAM_BOT_TOKEN_GLEB');
     const chatId = Deno.env.get('TELEGRAM_CHAT_ID_GLEB');
