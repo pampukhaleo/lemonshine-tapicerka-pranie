@@ -168,7 +168,7 @@ const Pricing = () => {
         </section>
 
         {/* Order Form */}
-        <OrderForm />
+        <OrderForm source="cennik" />
 
         {/* FAQ */}
         <section className="py-16 bg-background">
