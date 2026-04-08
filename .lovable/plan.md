@@ -1,30 +1,38 @@
 
 
-## Plan: SEO-фикс и чистка после реструктуризации
+## Plan: Исправление проблем безопасности
 
-### Изменения
+### Приоритет 1: Убрать Realtime с таблиц leads и lead_notes
 
-1. **`public/robots.txt`** — убрать `Disallow: /crm` (CRM удалена).
+CRM удалена, Realtime больше не нужен. Самый простой и надёжный фикс.
 
-2. **`public/sitemap.xml`** — добавить `/pranie-tapicerki/` и `/mycie-okien/`, обновить lastmod даты.
+**Миграция SQL:**
+```sql
+ALTER PUBLICATION supabase_realtime DROP TABLE public.leads;
+ALTER PUBLICATION supabase_realtime DROP TABLE public.lead_notes;
+```
 
-3. **`src/pages/Klient.tsx`** — изменить canonical с `/klient/` на `/pranie-tapicerki/`. Обновить sameAs в JSON-LD на актуальные соцсети (`lemonshine_pl`).
+Это закрывает оба error-уровня сразу.
 
-4. **`src/components/Footer.tsx`** — обновить текст описания компании, чтобы отражал все три сервиса. Исправить ссылки "Oferta", "O nas", "Realizacje" на рабочие якоря или страницы.
+### Приоритет 2: Зафиксировать search_path у set_updated_at
 
-5. **`index.html`** — добавить `preload` для `/heroImg-home.png` (основной LCP-ресурс главной страницы).
+**Миграция SQL:**
+```sql
+ALTER FUNCTION public.set_updated_at() SET search_path = public;
+```
 
-6. **`src/pages/Home.tsx`** — обновить sameAs в JSON-LD на актуальные ссылки соцсетей.
+### Приоритет 3: Включить Leaked Password Protection
+
+Это делается в Supabase Dashboard → Auth → Settings. Не требует миграции.
+
+### Приоритет 4: Postgres upgrade
+
+Делается через Supabase Dashboard → Settings → Infrastructure.
 
 ### Что НЕ трогаем
-- Страницы `/biznes/` и `/outsourcing/` — оставляем для обратной совместимости, не мешают.
-- Формы и Edge Functions — работают корректно.
+- `Anyone can insert leads` с `true` — это корректно, форма публичная.
+- `is_admin` — уже безопасна, просто audit-reminder.
 
 ### Файлы
-- `public/robots.txt`
-- `public/sitemap.xml`
-- `src/pages/Klient.tsx`
-- `src/pages/Home.tsx`
-- `src/components/Footer.tsx`
-- `index.html`
+- `supabase/migrations/` — одна новая миграция (приоритеты 1-2)
 
