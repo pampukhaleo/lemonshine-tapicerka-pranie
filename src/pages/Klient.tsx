@@ -197,8 +197,9 @@ const Klient = () => {
       "closes": "16:00"
     },
     "sameAs": [
-      "https://www.facebook.com/lemonshine.opole",
-      "https://www.instagram.com/lemonshine_opole/"
+      "https://www.facebook.com/profile.php?id=61576970773440",
+      "https://www.instagram.com/lemonshine_pl/",
+      "https://www.tiktok.com/@lemonshine_pl"
     ],
     "serviceArea": {
       "@type": "Place",
