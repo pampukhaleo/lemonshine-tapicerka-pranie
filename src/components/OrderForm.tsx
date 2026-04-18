@@ -19,6 +19,7 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
     name: '',
     phone: '',
     address: '',
+    city: '',
     date: '',
     time: '',
     description: '',
@@ -41,6 +42,7 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
         name: formData.name,
         phone: formData.phone,
         address: formData.address,
+        city: formData.city || null,
         preferred_date: formData.date || null,
         preferred_time: formData.time || null,
         description: formData.description || null,
@@ -69,6 +71,7 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
               name: formData.name,
               phone: formData.phone,
               address: formData.address,
+              city: formData.city,
               preferred_date: formData.date,
               preferred_time: formData.time,
               description: formData.description,
@@ -99,6 +102,7 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
         name: '',
         phone: '',
         address: '',
+        city: '',
         date: '',
         time: '',
         description: '',
@@ -169,7 +173,19 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
                     value={formData.address}
                     onChange={(e) => handleInputChange('address', e.target.value)}
                     required
-                    placeholder="Ulica, numer, kod pocztowy, miasto"
+                    placeholder="Ulica, numer, kod pocztowy"
+                    className="border-lemon-200"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="city">Miasto *</Label>
+                  <Input
+                    id="city"
+                    value={formData.city}
+                    onChange={(e) => handleInputChange('city', e.target.value)}
+                    required
+                    placeholder="np. Wrocław, Opole"
                     className="border-lemon-200"
                   />
                 </div>
