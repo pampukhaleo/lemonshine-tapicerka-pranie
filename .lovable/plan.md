@@ -1,50 +1,54 @@
 
-## План: Привести `/cennik/` в соответствие со списком
 
-### Что меняем
+## Оценка security warnings
 
-**`src/data/pricing.ts`** — переписываем три массива под точный список пользователя.
+Кратко по каждому — насколько реально опасно и что делать.
 
-#### 1. `cleaningPricingItems` (Sprzątanie) — ПОЛНОСТЬЮ заменить
-Сейчас там 4 пакета по метражу — они не соответствуют списку. Заменяем на 9 позиций:
-- Mycie naczyń (leżące w umywalce) — 20 zł
-- Mycie mikrofali — 15 zł
-- Mycie piekarnika — 10–60 zł
-- Mycie okapu — 10–60 zł
-- Sprzątanie szafek kuchennych — 10–40 zł
-- Czyszczenie lodówki — 50 zł
-- Sprzątanie balkonu — 10 zł
-- Mycie zmywarki — 20–50 zł
-- Mycie prysznicu/wanny — 20–60 zł
+### 1. `is_admin` SECURITY DEFINER audit — 🟢 Низкий риск (info)
+Это **не баг**, а напоминание провести аудит. Сейчас:
+- `is_admin()` — read-only, корректно написана.
+- Таблица `admins` пишется только `service_role`.
+- Других SECURITY DEFINER функций, пишущих в `admins`, нет (проверил — есть только `set_updated_at`, она триггер, к admins не относится).
 
-Все с `image: '/placeholder.svg'` (фото для уборки в проекте нет — пользователь сможет потом добавить). `popular: true` для первых 3.
+**Действие:** игнорировать (mark as ignored с обоснованием).
 
-#### 2. `pricingItems` (Pranie tapicerki) — обновить цены/подписи
-Сравнение с текущими:
-| Позиция | Было | Станет |
-|---|---|---|
-| 3-osobowa kanapa | 220 | **230** |
-| Fotel duży | 60+ | **100** |
-| Element rozkładany | 40 | **50** |
-| Osobna poduszka | 20 | **30+** |
-| Krzesło z oparciem | 40 | **40** (добавить subtitle "okrągłe") |
-| Kanapa U | 350+ | **350+** (добавить subtitle "duża") |
+### 2. Edge Functions Return Raw Internal Errors — 🟡 Средний риск
+Функции возвращают `error.message` и полный `details: data` от Telegram API. Утечка имён переменных, возможно намёков на конфиг.
 
-Остальные (2-os kanapa 200, narożnik 250/300+, materac 250+, krzesło konferencyjne 30, tapicerowane 20, fotel mały 50, biurowe 30, wykładzina 15-20) — без изменений или уже совпадают. Materac уже 200+ → меняем на **250+**.
+**Действие:** заменить на generic `"Internal server error"`, детали только в `console.error`. Применить к `notify-telegram`, `notify-telegram-gleb`, `send-lead-gleb`.
 
-#### 3. `windowPricingItems` (Mycie okien) — ПОЛНОСТЬЮ заменить
-Сейчас 4 общих пакета. Заменяем на 3 точные позиции:
-- Mycie okna — 25–50 zł
-- Umycie obudowy balkonu (szyby) — od 20 zł
-- Mycie paneli szklanych — 20 zł / 1 m²
+### 3. Unused Telegram Edge Functions — 🟠 Реальный риск
+`notify-telegram` и `notify-telegram-gleb` **никем не вызываются** (проверил весь src/), но открыты на публичный POST без авторизации. Любой может спамить твой Telegram.
 
-Изображения: использовать `/window/window-1.jpg`, `/window/window-2.jpg`, `/window/window-3.jpg` (они уже есть в проекте, см. `WindowPricing.tsx`).
+**Действие:** **удалить обе функции** — `send-lead-gleb` единственная используется формой.
 
-### Что НЕ трогаем
-- Структуру табов в `Pricing.tsx` — она уже корректная.
-- `cleaning-pricing.ts` (apartmentPlans) — это отдельная логика для калькулятора метража на другой странице, не связана с табом «Sprzątanie» в `/cennik/`.
-- JSON-LD — он автоматом подхватит новые данные из `pricingItems`.
-- Минимум 150 zł и блок «Co wpływa na cenę» — без изменений.
+### 4. Leaked Password Protection Disabled — 🟢 Не применимо
+У тебя нет пользовательской аутентификации на сайте (CRM удалён, формы анонимные). Эта опция бесполезна.
+
+**Действие:** игнорировать с обоснованием "no user auth in app".
+
+### 5. RLS Policy Always True — 🟡 Ложноположительное
+Это про политику `Anyone can insert leads` с `WITH CHECK (true)`. Так и должно быть — форма публичная, любой посетитель должен мочь оставить заявку. Это уже обсуждалось в прошлом плане как "не трогаем".
+
+**Действие:** игнорировать с обоснованием "public lead form by design".
+
+### 6. Postgres version patches — 🟡 Средний риск
+Делается только в Supabase Dashboard → Settings → Infrastructure. Я не могу это сделать.
+
+**Действие:** показать ссылку, пользователь делает сам.
+
+---
+
+### Что реально буду менять
+
+1. **Удалить** `supabase/functions/notify-telegram/` и `supabase/functions/notify-telegram-gleb/` (плюс убрать запись из `supabase/config.toml` для `notify-telegram`). Вызвать `supabase--delete_edge_functions` для деплоя.
+2. **Переписать error handling** в `supabase/functions/send-lead-gleb/index.ts` — generic ошибки наружу, детали в логи.
+3. **Пометить findings** в security-сканере: `is_admin_definer_audit`, `SUPA_auth_leaked_password_protection`, `SUPA_rls_policy_always_true` → ignore с обоснованием. `orphan_telegram_fns`, `edge_fn_error_leak` → mark_as_fixed после деплоя.
+
+### Что пользователь делает сам
+- Postgres upgrade в Supabase Dashboard (дам ссылку).
 
 ### Файлы
-- `src/data/pricing.ts` — единственное изменение.
+- удалить: `supabase/functions/notify-telegram/index.ts`, `supabase/functions/notify-telegram-gleb/index.ts`
+- изменить: `supabase/functions/send-lead-gleb/index.ts`, `supabase/config.toml`
+
