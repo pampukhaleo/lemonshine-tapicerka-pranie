@@ -8,17 +8,20 @@ const SeoSection = () => {
       <div className="container mx-auto px-4">
         <div className="space-y-6">
           <h4 className="text-lg">
-            Profesjonalne pranie tapicerki meblowej we Wrocławiu i Opole - Lemonshine
+            Pranie tapicerki meblowej, samochodowej i wykładzin - Lemonshine
           </h4>
           <div className="text-muted-foreground text-sm leading-relaxed space-y-4">
             <p>
-              Pranie tapicerki meblowej i wykładzin - Lemonshine to wiodąca firma specjalizująca się w profesjonalnym praniu tapicerki, kanap, foteli i wykładzin we Wrocławiu, Opole i okolicach. Nasze usługi czyszczenia tapicerki meblowej obejmują wszystkie rodzaje materiałów - od delikatnych tkanin po skórę naturalną.
+              Pranie tapicerki meblowej, samochodowej i wykładzin - Lemonshine to firma, która od początku swojej działalności skupia się na usłudze prania tapicerki, dlatego mamy w niej duże doświadczenie i dopracowane metody działania.
             </p>
             <p>
-              Wykonujemy usługę przy użyciu najnowocześniejszego sprzętu i bezpiecznych środków czyszczących. Specializujemy się w usuwaniu trudnych plam, neutralizacji zapachów oraz przywracaniu świeżości tapicerce. Pranie narożnika we Wrocławiu i Opolu nigdy nie było tak skuteczne i bezpieczne.
+              Oferujemy profesjonalne pranie tapicerki meblowej, pranie kanap, narożników, foteli oraz pranie tapicerki samochodowej we Wrocławiu, Opolu i okolicach. Wykonujemy także pranie wykładzin i dywanów. Podejmujemy się każdego zlecenia związanego z tapicerką - niezależnie od materiału i stopnia zabrudzenia.
             </p>
             <p>
-              Oferujemy kompleksowe usługi czyszczenia tapicerki dla klientów indywidualnych oraz firm. Nasze pranie gwarantuje najwyższą jakość wykonania przy konkurencyjnych cenach. Skontaktuj się z nami już dziś i przekonaj się, dlaczego jesteśmy liderem w branży czyszczenia tapicerki w regionie.
+              Korzystamy z wysokiej jakości sprzętu oraz skutecznych środków do czyszczenia tapicerki, dzięki czemu usuwamy nawet trudne plamy i zapachy. Pranie tapicerki kanapy, narożnika czy samochodu wykonujemy dokładnie i bezpiecznie dla tkanin.
+            </p>
+            <p>
+              Świadczymy kompleksowe czyszczenie tapicerki dla klientów indywidualnych i firm. Jeśli potrzebne jest skuteczne pranie tapicerki we Wrocławiu lub Opolu - skontaktuj się z nami i zamów usługę dopasowaną do swoich potrzeb.
             </p>
           </div>
         </div>
