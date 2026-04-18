@@ -117,30 +117,65 @@ export const pricingItems: PricingItem[] = [
 
 export const cleaningPricingItems: PricingItem[] = [
   {
-    name: 'Sprzątanie mieszkania',
-    subtitle: 'do 40 m²',
-    price: 'od 199 zł',
+    name: 'Mycie naczyń',
+    subtitle: 'leżące w umywalce',
+    price: '20 zł',
     image: '/placeholder.svg',
     popular: true
   },
   {
-    name: 'Sprzątanie mieszkania',
-    subtitle: 'do 60 m²',
-    price: 'od 249 zł',
+    name: 'Mycie mikrofali',
+    subtitle: '',
+    price: '15 zł',
     image: '/placeholder.svg',
     popular: true
   },
   {
-    name: 'Sprzątanie mieszkania',
-    subtitle: 'do 80 m²',
-    price: 'od 299 zł',
+    name: 'Mycie piekarnika',
+    subtitle: '',
+    price: '10-60 zł',
+    image: '/placeholder.svg',
+    popular: true
+  },
+  {
+    name: 'Mycie okapu',
+    subtitle: '',
+    price: '10-60 zł',
     image: '/placeholder.svg',
     popular: false
   },
   {
-    name: 'Sprzątanie mieszkania',
-    subtitle: 'powyżej 80 m²',
-    price: 'od 349 zł',
+    name: 'Sprzątanie szafek kuchennych',
+    subtitle: '',
+    price: '10-40 zł',
+    image: '/placeholder.svg',
+    popular: false
+  },
+  {
+    name: 'Czyszczenie lodówki',
+    subtitle: '',
+    price: '50 zł',
+    image: '/placeholder.svg',
+    popular: false
+  },
+  {
+    name: 'Sprzątanie balkonu',
+    subtitle: '',
+    price: '10 zł',
+    image: '/placeholder.svg',
+    popular: false
+  },
+  {
+    name: 'Mycie zmywarki',
+    subtitle: '',
+    price: '20-50 zł',
+    image: '/placeholder.svg',
+    popular: false
+  },
+  {
+    name: 'Mycie prysznicu/wanny',
+    subtitle: '',
+    price: '20-60 zł',
     image: '/placeholder.svg',
     popular: false
   },
@@ -148,31 +183,24 @@ export const cleaningPricingItems: PricingItem[] = [
 
 export const windowPricingItems: PricingItem[] = [
   {
-    name: 'Mycie okien standardowych',
-    subtitle: 'do 5 okien',
-    price: 'od 150 zł',
-    image: '/placeholder.svg',
+    name: 'Mycie okna',
+    subtitle: '',
+    price: '25-50 zł',
+    image: '/window/window-1.jpg',
     popular: true
   },
   {
-    name: 'Mycie okien',
-    subtitle: '6-10 okien',
-    price: 'od 250 zł',
-    image: '/placeholder.svg',
+    name: 'Umycie obudowy balkonu',
+    subtitle: 'szyby',
+    price: 'od 20 zł',
+    image: '/window/window-2.jpg',
     popular: true
   },
   {
-    name: 'Mycie okien balkonowych',
-    subtitle: 'drzwi balkonowe',
-    price: 'od 50 zł/szt',
-    image: '/placeholder.svg',
-    popular: false
-  },
-  {
-    name: 'Mycie przeszkleń',
-    subtitle: 'duże powierzchnie',
-    price: 'wycena indywidualna',
-    image: '/placeholder.svg',
+    name: 'Mycie paneli szklanych',
+    subtitle: '1 m²',
+    price: '20 zł',
+    image: '/window/window-3.jpg',
     popular: false
   },
 ];
