@@ -23,7 +23,7 @@ serve(async (req) => {
   }
 
   try {
-    const { leadId, name, phone, email, address, preferred_date, preferred_time, description, source } = await req.json();
+    const { leadId, name, phone, email, address, city, preferred_date, preferred_time, description, source } = await req.json();
 
     const botToken = Deno.env.get('TELEGRAM_BOT_TOKEN_GLEB');
     const chatId = Deno.env.get('TELEGRAM_CHAT_ID_GLEB');
@@ -44,6 +44,9 @@ serve(async (req) => {
       message += `<b>Email:</b> ${escapeHtml(email)}\n`;
     }
     message += `<b>Adres:</b> ${escapeHtml(address)}\n`;
+    if (city) {
+      message += `<b>Miasto:</b> ${escapeHtml(city)}\n`;
+    }
     if (preferred_date) {
       message += `<b>Preferowana data:</b> ${escapeHtml(preferred_date)}\n`;
     }
