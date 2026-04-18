@@ -1,27 +1,50 @@
 
-
-## План: Добавить поле "Miasto" в формы
+## План: Привести `/cennik/` в соответствие со списком
 
 ### Что меняем
 
-1. **`src/components/OrderForm.tsx`**
-   - Добавить поле `city` в state формы (по умолчанию пусто, обязательное).
-   - Добавить новый `<Input>` "Miasto *" после поля Adres.
-   - Передавать `city` в Supabase insert и в edge function `send-lead-gleb`.
+**`src/data/pricing.ts`** — переписываем три массива под точный список пользователя.
 
-2. **БД (миграция)**
-   - Добавить колонку `city text` в таблицу `leads` (nullable, чтобы не сломать существующие записи).
+#### 1. `cleaningPricingItems` (Sprzątanie) — ПОЛНОСТЬЮ заменить
+Сейчас там 4 пакета по метражу — они не соответствуют списку. Заменяем на 9 позиций:
+- Mycie naczyń (leżące w umywalce) — 20 zł
+- Mycie mikrofali — 15 zł
+- Mycie piekarnika — 10–60 zł
+- Mycie okapu — 10–60 zł
+- Sprzątanie szafek kuchennych — 10–40 zł
+- Czyszczenie lodówki — 50 zł
+- Sprzątanie balkonu — 10 zł
+- Mycie zmywarki — 20–50 zł
+- Mycie prysznicu/wanny — 20–60 zł
 
-3. **`supabase/functions/send-lead-gleb/index.ts`**
-   - Принимать `city` в payload.
-   - Добавить строку `<b>Miasto:</b> ...` в Telegram-сообщение (между Adres и preferred_date).
+Все с `image: '/placeholder.svg'` (фото для уборки в проекте нет — пользователь сможет потом добавить). `popular: true` для первых 3.
+
+#### 2. `pricingItems` (Pranie tapicerki) — обновить цены/подписи
+Сравнение с текущими:
+| Позиция | Было | Станет |
+|---|---|---|
+| 3-osobowa kanapa | 220 | **230** |
+| Fotel duży | 60+ | **100** |
+| Element rozkładany | 40 | **50** |
+| Osobna poduszka | 20 | **30+** |
+| Krzesło z oparciem | 40 | **40** (добавить subtitle "okrągłe") |
+| Kanapa U | 350+ | **350+** (добавить subtitle "duża") |
+
+Остальные (2-os kanapa 200, narożnik 250/300+, materac 250+, krzesło konferencyjne 30, tapicerowane 20, fotel mały 50, biurowe 30, wykładzina 15-20) — без изменений или уже совпадают. Materac уже 200+ → меняем на **250+**.
+
+#### 3. `windowPricingItems` (Mycie okien) — ПОЛНОСТЬЮ заменить
+Сейчас 4 общих пакета. Заменяем на 3 точные позиции:
+- Mycie okna — 25–50 zł
+- Umycie obudowy balkonu (szyby) — od 20 zł
+- Mycie paneli szklanych — 20 zł / 1 m²
+
+Изображения: использовать `/window/window-1.jpg`, `/window/window-2.jpg`, `/window/window-3.jpg` (они уже есть в проекте, см. `WindowPricing.tsx`).
 
 ### Что НЕ трогаем
-- `notify-telegram` и `send-lead` — не используются текущей формой.
-- Существующие лиды без города — поле просто будет пустым.
+- Структуру табов в `Pricing.tsx` — она уже корректная.
+- `cleaning-pricing.ts` (apartmentPlans) — это отдельная логика для калькулятора метража на другой странице, не связана с табом «Sprzątanie» в `/cennik/`.
+- JSON-LD — он автоматом подхватит новые данные из `pricingItems`.
+- Минимум 150 zł и блок «Co wpływa na cenę» — без изменений.
 
 ### Файлы
-- `src/components/OrderForm.tsx`
-- `supabase/functions/send-lead-gleb/index.ts`
-- новая миграция в `supabase/migrations/`
-
+- `src/data/pricing.ts` — единственное изменение.
