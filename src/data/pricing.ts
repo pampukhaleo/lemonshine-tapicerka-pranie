@@ -18,7 +18,7 @@ export const pricingItems: PricingItem[] = [
   {
     name: 'Pranie 3-osobowej kanapy',
     subtitle: '1,7-2.5 m.',
-    price: '220 zł',
+    price: '230 zł',
     image: '/furniture/25.jpg',
     popular: true
   },
@@ -39,28 +39,28 @@ export const pricingItems: PricingItem[] = [
   {
     name: 'Pranie fotela',
     subtitle: 'dużego',
-    price: '60+ zł',
+    price: '100 zł',
     image: '/furniture/28.jpg',
     popular: false
   },
   {
     name: 'Pranie elementu rozkładanego',
     subtitle: 'kanapy',
-    price: '40 zł',
+    price: '50 zł',
     image: '/furniture/30.jpg',
     popular: false
   },
   {
     name: 'Pranie materaca',
     subtitle: 'z jednej strony',
-    price: '200+ zł',
+    price: '250+ zł',
     image: '/furniture/35.jpg',
     popular: true
   },
   {
     name: 'Pranie osobnej poduszki',
     subtitle: 'od kanapy',
-    price: '20 zł',
+    price: '30+ zł',
     image: '/furniture/31.jpg',
     popular: false
   },
@@ -94,14 +94,14 @@ export const pricingItems: PricingItem[] = [
   },
   {
     name: 'Pranie krzesła z oparciem',
-    subtitle: '',
+    subtitle: 'okrągłe',
     price: '40 zł',
     image: '/furniture/22.jpg',
     popular: false
   },
   {
     name: 'Pranie kanapy w krztałcie U',
-    subtitle: '',
+    subtitle: 'duża',
     price: '350+ zł',
     image: '/furniture/36.jpg',
     popular: false
