@@ -30,7 +30,7 @@ serve(async (req) => {
 
     if (!botToken || !chatId) {
       console.error('Missing Telegram configuration for GLEB');
-      return new Response(JSON.stringify({ error: 'Telegram configuration missing' }), {
+      return new Response(JSON.stringify({ error: 'Internal server error' }), {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
@@ -77,20 +77,20 @@ serve(async (req) => {
 
     if (!response.ok) {
       console.error('Telegram API error (GLEB):', data);
-      return new Response(JSON.stringify({ error: 'Failed to send Telegram message', details: data }), {
+      return new Response(JSON.stringify({ error: 'Internal server error' }), {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
     console.log('Telegram message sent successfully (GLEB):', data.result.message_id);
-    return new Response(JSON.stringify({ success: true, messageId: data.result.message_id }), {
+    return new Response(JSON.stringify({ success: true }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
 
   } catch (error) {
     console.error('Error in send-lead-gleb function:', error);
-    return new Response(JSON.stringify({ error: error.message }), {
+    return new Response(JSON.stringify({ error: 'Internal server error' }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
