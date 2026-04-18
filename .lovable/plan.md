@@ -1,38 +1,27 @@
 
 
-## Plan: Исправление проблем безопасности
+## План: Добавить поле "Miasto" в формы
 
-### Приоритет 1: Убрать Realtime с таблиц leads и lead_notes
+### Что меняем
 
-CRM удалена, Realtime больше не нужен. Самый простой и надёжный фикс.
+1. **`src/components/OrderForm.tsx`**
+   - Добавить поле `city` в state формы (по умолчанию пусто, обязательное).
+   - Добавить новый `<Input>` "Miasto *" после поля Adres.
+   - Передавать `city` в Supabase insert и в edge function `send-lead-gleb`.
 
-**Миграция SQL:**
-```sql
-ALTER PUBLICATION supabase_realtime DROP TABLE public.leads;
-ALTER PUBLICATION supabase_realtime DROP TABLE public.lead_notes;
-```
+2. **БД (миграция)**
+   - Добавить колонку `city text` в таблицу `leads` (nullable, чтобы не сломать существующие записи).
 
-Это закрывает оба error-уровня сразу.
-
-### Приоритет 2: Зафиксировать search_path у set_updated_at
-
-**Миграция SQL:**
-```sql
-ALTER FUNCTION public.set_updated_at() SET search_path = public;
-```
-
-### Приоритет 3: Включить Leaked Password Protection
-
-Это делается в Supabase Dashboard → Auth → Settings. Не требует миграции.
-
-### Приоритет 4: Postgres upgrade
-
-Делается через Supabase Dashboard → Settings → Infrastructure.
+3. **`supabase/functions/send-lead-gleb/index.ts`**
+   - Принимать `city` в payload.
+   - Добавить строку `<b>Miasto:</b> ...` в Telegram-сообщение (между Adres и preferred_date).
 
 ### Что НЕ трогаем
-- `Anyone can insert leads` с `true` — это корректно, форма публичная.
-- `is_admin` — уже безопасна, просто audit-reminder.
+- `notify-telegram` и `send-lead` — не используются текущей формой.
+- Существующие лиды без города — поле просто будет пустым.
 
 ### Файлы
-- `supabase/migrations/` — одна новая миграция (приоритеты 1-2)
+- `src/components/OrderForm.tsx`
+- `supabase/functions/send-lead-gleb/index.ts`
+- новая миграция в `supabase/migrations/`
 
