@@ -1,25 +1,25 @@
 
-## План: добавить фото к товарам в табе Sprzątanie на /cennik/
+## План: уточнить и заменить 3 фото
 
-### Что делаем
+### Что вижу
+- Все 9 файлов лежат в `public/cleaning/` (проверил `ls`).
+- В `src/data/pricing.ts` пути `image: '/cleaning/...jpg'` уже прописаны для всех 9 позиций.
+- В `Pricing.tsx` (строка 104-106) `<img src={item.image}>` рендерится.
 
-1. Скопировать 9 загруженных фото в `public/cleaning/` с теми же именами:
-   - `mycie_naczyn.jpg`
-   - `mycie_mikrofali.jpg`
-   - `mycie_piekarnika.jpg`
-   - `mycie_okapu.jpg`
-   - `sprzatanie_szafek_kuchennych.jpg`
-   - `czyszczenie_lodowki.jpg`
-   - `sprzatanie_balkonu.jpg`
-   - `mycie_zmywarki.jpg`
-   - `mycie_prysznicuwanny.jpg`
+Технически фото **уже на странице**. Если вы их не видите — это кэш браузера (Ctrl+Shift+R / Cmd+Shift+R обновит).
 
-2. В `src/data/pricing.ts` обновить массив `cleaningPricingItems` — заменить `image: '/placeholder.svg'` на соответствующие пути `/cleaning/<имя>.jpg` для каждой из 9 позиций (соответствие по названию товара).
+### Что предлагаю сделать сейчас
+Вы прислали 3 новых файла — заменить ими существующие:
+1. `user-uploads://mycie_prysznicuwanny-2.jpg` → `public/cleaning/mycie_prysznicuwanny.jpg` (перезапись)
+2. `user-uploads://mycie_zmywarki-2.jpg` → `public/cleaning/mycie_zmywarki.jpg` (перезапись)
+3. `user-uploads://sprzatanie_balkonu-2.jpg` → `public/cleaning/sprzatanie_balkonu.jpg` (перезапись)
 
-### Что не трогаем
-- Структуру `Pricing.tsx`, табы, цены, подписи.
-- Массивы `pricingItems` и `windowPricingItems` — там уже есть свои фото.
+Имена файлов оставляем те же — `pricing.ts` править не нужно.
 
 ### Файлы
-- `public/cleaning/*.jpg` (9 новых файлов через lov-copy)
-- `src/data/pricing.ts` (обновить 9 строк `image`)
+- `public/cleaning/mycie_prysznicuwanny.jpg` (заменить)
+- `public/cleaning/mycie_zmywarki.jpg` (заменить)
+- `public/cleaning/sprzatanie_balkonu.jpg` (заменить)
+
+### После применения
+Сделайте hard refresh (Ctrl+Shift+R), чтобы браузер подтянул новые файлы вместо закэшированных.
