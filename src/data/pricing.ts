@@ -120,63 +120,63 @@ export const cleaningPricingItems: PricingItem[] = [
     name: 'Mycie naczyń',
     subtitle: 'leżące w umywalce',
     price: '20 zł',
-    image: '/placeholder.svg',
+    image: '/cleaning/mycie_naczyn.jpg',
     popular: true
   },
   {
     name: 'Mycie mikrofali',
     subtitle: '',
     price: '15 zł',
-    image: '/placeholder.svg',
+    image: '/cleaning/mycie_mikrofali.jpg',
     popular: true
   },
   {
     name: 'Mycie piekarnika',
     subtitle: '',
     price: '10-60 zł',
-    image: '/placeholder.svg',
+    image: '/cleaning/mycie_piekarnika.jpg',
     popular: true
   },
   {
     name: 'Mycie okapu',
     subtitle: '',
     price: '10-60 zł',
-    image: '/placeholder.svg',
+    image: '/cleaning/mycie_okapu.jpg',
     popular: false
   },
   {
     name: 'Sprzątanie szafek kuchennych',
     subtitle: '',
     price: '10-40 zł',
-    image: '/placeholder.svg',
+    image: '/cleaning/sprzatanie_szafek_kuchennych.jpg',
     popular: false
   },
   {
     name: 'Czyszczenie lodówki',
     subtitle: '',
     price: '50 zł',
-    image: '/placeholder.svg',
+    image: '/cleaning/czyszczenie_lodowki.jpg',
     popular: false
   },
   {
     name: 'Sprzątanie balkonu',
     subtitle: '',
     price: '10 zł',
-    image: '/placeholder.svg',
+    image: '/cleaning/sprzatanie_balkonu.jpg',
     popular: false
   },
   {
     name: 'Mycie zmywarki',
     subtitle: '',
     price: '20-50 zł',
-    image: '/placeholder.svg',
+    image: '/cleaning/mycie_zmywarki.jpg',
     popular: false
   },
   {
     name: 'Mycie prysznicu/wanny',
     subtitle: '',
     price: '20-60 zł',
-    image: '/placeholder.svg',
+    image: '/cleaning/mycie_prysznicuwanny.jpg',
     popular: false
   },
 ];
