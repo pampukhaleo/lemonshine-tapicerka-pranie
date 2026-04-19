@@ -1,25 +1,27 @@
 
-## План: уточнить и заменить 3 фото
+## План: обновить Telegram-бота для лидов
 
-### Что вижу
-- Все 9 файлов лежат в `public/cleaning/` (проверил `ls`).
-- В `src/data/pricing.ts` пути `image: '/cleaning/...jpg'` уже прописаны для всех 9 позиций.
-- В `Pricing.tsx` (строка 104-106) `<img src={item.image}>` рендерится.
+### Что делаем
+Меняем значения двух существующих секретов на новые — код и логика остаются прежними, форма продолжит работать через `send-lead-gleb`, просто сообщения пойдут в новый чат от нового бота.
 
-Технически фото **уже на странице**. Если вы их не видите — это кэш браузера (Ctrl+Shift+R / Cmd+Shift+R обновит).
+### Шаги
 
-### Что предлагаю сделать сейчас
-Вы прислали 3 новых файла — заменить ими существующие:
-1. `user-uploads://mycie_prysznicuwanny-2.jpg` → `public/cleaning/mycie_prysznicuwanny.jpg` (перезапись)
-2. `user-uploads://mycie_zmywarki-2.jpg` → `public/cleaning/mycie_zmywarki.jpg` (перезапись)
-3. `user-uploads://sprzatanie_balkonu-2.jpg` → `public/cleaning/sprzatanie_balkonu.jpg` (перезапись)
+1. **Получить новые данные** (делаешь сам):
+   - **Token нового бота** — в [@BotFather](https://t.me/BotFather): `/newbot` → имя → копируешь токен вида `123456:ABC-DEF...`
+   - **Chat ID нового чата** — добавь нового бота в нужный чат/группу, отправь там любое сообщение, потом открой `https://api.telegram.org/bot<НОВЫЙ_ТОКЕН>/getUpdates` → найди `"chat":{"id": ...}`. Для групп ID будет с минусом (`-100...`).
 
-Имена файлов оставляем те же — `pricing.ts` править не нужно.
+2. **Я обновляю секреты** через `add_secret` (перезаписывает старые значения):
+   - `TELEGRAM_BOT_TOKEN_GLEB` → новый токен
+   - `TELEGRAM_CHAT_ID_GLEB` → новый chat_id
+   
+   Edge-функция автоматически подхватит новые значения при следующем вызове — деплой не нужен.
+
+3. **Проверка**: отправляешь тест через любую форму на сайте → лид должен прийти в новый чат.
+
+### Что НЕ трогаем
+- `supabase/functions/send-lead-gleb/index.ts` — код уже читает правильные имена секретов
+- `OrderForm.tsx` и остальные формы
+- Другие telegram-секреты (`TELEGRAM_BOT_TOKEN`, `SPOTLESSPRO_*`, `RAVISTO_*`, `LASERBEAUTY_*`) — не используются этой формой
 
 ### Файлы
-- `public/cleaning/mycie_prysznicuwanny.jpg` (заменить)
-- `public/cleaning/mycie_zmywarki.jpg` (заменить)
-- `public/cleaning/sprzatanie_balkonu.jpg` (заменить)
-
-### После применения
-Сделайте hard refresh (Ctrl+Shift+R), чтобы браузер подтянул новые файлы вместо закэшированных.
+Никаких изменений кода. Только перезапись двух секретов.
