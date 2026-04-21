@@ -61,42 +61,42 @@ export const pricingItems: PricingItem[] = [
     name: 'Pranie osobnej poduszki',
     subtitle: 'od kanapy',
     price: '30+ zł',
-    image: '/furniture/31.jpg',
+    image: '/furniture/pranie_osobnej_poduszki.jpg',
     popular: false
   },
   {
     name: 'Pranie krzesła',
     subtitle: 'konferencyjnego',
     price: '30 zł',
-    image: '/furniture/29.jpg',
+    image: '/furniture/pranie_krzesla.jpg',
     popular: false
   },
   {
     name: 'Pranie krzesła tapicerowanego',
     subtitle: 'siedzenie',
     price: '20 zł',
-    image: '/furniture/26.jpg',
+    image: '/furniture/pranie_krzesla_tapicerowanego.jpg',
     popular: false
   },
   {
     name: 'Pranie fotela małego',
     subtitle: 'bez oparć tapicerowanych',
     price: '50 zł',
-    image: '/furniture/27.jpg',
+    image: '/furniture/pranie_fotela_malego.jpg',
     popular: false
   },
   {
     name: 'Pranie krzesła biurowego',
     subtitle: 'obrotowego',
     price: '30 zł',
-    image: '/furniture/24.jpg',
+    image: '/furniture/pranie_krzesla_biurowego.jpg',
     popular: false
   },
   {
     name: 'Pranie krzesła z oparciem',
     subtitle: 'okrągłe',
     price: '40 zł',
-    image: '/furniture/22.jpg',
+    image: '/furniture/pranie_krzesla_z_oparciem.jpg',
     popular: false
   },
   {
