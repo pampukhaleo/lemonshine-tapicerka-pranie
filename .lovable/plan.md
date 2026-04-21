@@ -1,27 +1,47 @@
 
-## План: обновить Telegram-бота для лидов
+## План: добавить/заменить картинки в cennik
+
+### Что вижу
+Загружено 10 файлов. Соответствие названиям в `src/data/pricing.ts`:
+
+**Таб Pranie (`pricingItems`)** — заменить `image` на новые:
+1. `Pranie_osobnej_poduszki.jpg` → "Pranie osobnej poduszki" (сейчас `/furniture/31.jpg`)
+2. `Pranie_fotela_małego.jpg` → "Pranie fotela małego" (сейчас `/furniture/27.jpg`)
+3. `Pranie_krzesła_biurowego.jpg` → "Pranie krzesła biurowego" (сейчас `/furniture/24.jpg`)
+4. `Pranie_krzesła_tapicerowanego.jpg` → "Pranie krzesła tapicerowanego" (сейчас `/furniture/26.jpg`)
+5. `Pranie_krzesła_z_oparciem.jpg` → "Pranie krzesła z oparciem" (сейчас `/furniture/22.jpg`)
+6. `Pranie_krzesła.jpg` → "Pranie krzesła" (конференционного, сейчас `/furniture/29.jpg`)
+
+**Таб Sprzątanie (`cleaningPricingItems`)** — перезаписать существующие файлы более качественными:
+7. `Czyszczenie_lodówki.jpg` → перезапись `public/cleaning/czyszczenie_lodowki.jpg`
+8. `Mycie_piekarnika.jpg` → перезапись `public/cleaning/mycie_piekarnika.jpg`
+9. `Mycie_prysznicuwanny.jpg` → перезапись `public/cleaning/mycie_prysznicuwanny.jpg`
+10. `Mycie_zmywarki.jpg` → перезапись `public/cleaning/mycie_zmywarki.jpg`
 
 ### Что делаем
-Меняем значения двух существующих секретов на новые — код и логика остаются прежними, форма продолжит работать через `send-lead-gleb`, просто сообщения пойдут в новый чат от нового бота.
 
-### Шаги
+1. **Скопировать 6 новых картинок мебели** в `public/furniture/` с латинскими именами (без польских символов, чтобы избежать проблем с URL):
+   - `pranie_osobnej_poduszki.jpg`
+   - `pranie_fotela_malego.jpg`
+   - `pranie_krzesla_biurowego.jpg`
+   - `pranie_krzesla_tapicerowanego.jpg`
+   - `pranie_krzesla_z_oparciem.jpg`
+   - `pranie_krzesla.jpg`
 
-1. **Получить новые данные** (делаешь сам):
-   - **Token нового бота** — в [@BotFather](https://t.me/BotFather): `/newbot` → имя → копируешь токен вида `123456:ABC-DEF...`
-   - **Chat ID нового чата** — добавь нового бота в нужный чат/группу, отправь там любое сообщение, потом открой `https://api.telegram.org/bot<НОВЫЙ_ТОКЕН>/getUpdates` → найди `"chat":{"id": ...}`. Для групп ID будет с минусом (`-100...`).
+2. **Перезаписать 4 файла в `public/cleaning/`** свежими версиями (имена не меняем — `pricing.ts` править не надо).
 
-2. **Я обновляю секреты** через `add_secret` (перезаписывает старые значения):
-   - `TELEGRAM_BOT_TOKEN_GLEB` → новый токен
-   - `TELEGRAM_CHAT_ID_GLEB` → новый chat_id
-   
-   Edge-функция автоматически подхватит новые значения при следующем вызове — деплой не нужен.
-
-3. **Проверка**: отправляешь тест через любую форму на сайте → лид должен прийти в новый чат.
+3. **Обновить `src/data/pricing.ts`** — для 6 позиций мебели заменить пути в поле `image` на новые `/furniture/<имя>.jpg`. Цены, названия, подписи — не трогаем.
 
 ### Что НЕ трогаем
-- `supabase/functions/send-lead-gleb/index.ts` — код уже читает правильные имена секретов
-- `OrderForm.tsx` и остальные формы
-- Другие telegram-секреты (`TELEGRAM_BOT_TOKEN`, `SPOTLESSPRO_*`, `RAVISTO_*`, `LASERBEAUTY_*`) — не используются этой формой
+- Структуру `Pricing.tsx` и табов
+- Цены, названия товаров, подписи
+- Остальные позиции в `pricingItems` (наружники, материац, кanapy и т.д.)
+- `windowPricingItems`
 
 ### Файлы
-Никаких изменений кода. Только перезапись двух секретов.
+- `public/furniture/*.jpg` — 6 новых файлов
+- `public/cleaning/*.jpg` — 4 перезаписи
+- `src/data/pricing.ts` — обновить 6 строк `image`
+
+### После применения
+Hard refresh (Ctrl+Shift+R), чтобы браузер подтянул новые картинки вместо закэшированных старых.
