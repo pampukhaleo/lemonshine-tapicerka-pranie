@@ -57,12 +57,12 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Hero Image - Hidden on mobile */ }
-          <div className="hidden md:block text-center text-white">
+          {/* Hero Image */ }
+          <div className="block text-center">
             <img
               src="/heroImg.webp"
               alt="Profesjonalne pranie tapicerki - nowoczesny sprzęt i bezpieczne środki"
-              className="mx-auto mb-4 object-contain rounded-2xl"
+              className="mx-auto mb-4 w-full max-w-md lg:max-w-xl object-contain rounded-2xl shadow-lg"
               loading="eager"
               fetchPriority="high"
               width="600"
