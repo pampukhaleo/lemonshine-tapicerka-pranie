@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -15,9 +16,14 @@ const tabs = [
   { id: 'cleaning', label: 'Sprzątanie' },
   { id: 'upholstery', label: 'Pranie tapicerki' },
   { id: 'windows', label: 'Mycie okien' },
-];
+] as const;
 
-const tabData: Record<string, PricingItem[]> = {
+type PricingTab = typeof tabs[number]['id'];
+
+const isPricingTab = (tab: string | null): tab is PricingTab =>
+  tabs.some((pricingTab) => pricingTab.id === tab);
+
+const tabData: Record<PricingTab, PricingItem[]> = {
   cleaning: cleaningPricingItems,
   upholstery: pricingItems,
   windows: windowPricingItems,
@@ -31,7 +37,14 @@ const priceFactors = [
 ];
 
 const Pricing = () => {
-  const [activeTab, setActiveTab] = useState('cleaning');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialTab = searchParams.get('tab');
+  const [activeTab, setActiveTab] = useState<PricingTab>(isPricingTab(initialTab) ? initialTab : 'cleaning');
+
+  const handleTabChange = (tab: PricingTab) => {
+    setActiveTab(tab);
+    setSearchParams({ tab });
+  };
 
   const items = tabData[activeTab];
 
@@ -84,7 +97,7 @@ const Pricing = () => {
               {tabs.map((tab) => (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => handleTabChange(tab.id)}
                   className={`px-6 py-3 rounded-full font-semibold text-sm transition-all ${
                     activeTab === tab.id
                       ? 'bg-lemon-300 text-foreground shadow-md'

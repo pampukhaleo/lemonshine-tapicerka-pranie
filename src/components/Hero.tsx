@@ -51,7 +51,7 @@ const Hero = () => {
                 className="w-full sm:flex-1 border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift h-10 text-sm md:h-11 md:text-base md:px-8"
                 asChild
               >
-                <Link to="/cennik/">Zobacz zakres usług</Link>
+                <Link to="/cennik/?tab=upholstery">Zobacz zakres usług</Link>
               </Button>
 
             </div>
