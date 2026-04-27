@@ -48,7 +48,7 @@ const WindowHero = () => {
                 className="w-full sm:flex-1 border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift"
                 asChild
               >
-                <Link to="/cennik/">Zobacz zakres usług</Link>
+                <Link to="/cennik/?tab=windows">Zobacz zakres usług</Link>
               </Button>
 
             </div>
