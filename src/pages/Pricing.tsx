@@ -93,20 +93,22 @@ const Pricing = () => {
         <section className="pb-16 bg-background">
           <div className="container mx-auto px-4">
             {/* Tab buttons */}
-            <div className="flex flex-wrap justify-center gap-3 mb-10">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => handleTabChange(tab.id)}
-                  className={`px-6 py-3 rounded-full font-semibold text-sm transition-all ${
-                    activeTab === tab.id
-                      ? 'bg-lemon-300 text-foreground shadow-md'
-                      : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+            <div className="sticky top-14 z-40 -mx-4 mb-8 border-b border-border bg-background/95 px-4 py-3 backdrop-blur supports-[backdrop-filter]:bg-background/80 md:static md:mx-0 md:mb-10 md:border-b-0 md:bg-transparent md:px-0 md:py-0 md:backdrop-blur-none">
+              <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide md:flex-wrap md:justify-center md:gap-3 md:overflow-visible md:pb-0">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => handleTabChange(tab.id)}
+                    className={`shrink-0 rounded-full px-4 py-2.5 text-sm font-semibold transition-all md:px-6 md:py-3 ${
+                      activeTab === tab.id
+                        ? 'bg-lemon-300 text-foreground shadow-md'
+                        : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Cards grid */}
