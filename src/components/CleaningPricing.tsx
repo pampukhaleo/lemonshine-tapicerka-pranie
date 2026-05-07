@@ -17,14 +17,16 @@ const CleaningPricing = ({ showHeading = true }: { showHeading?: boolean }) => {
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
-              Cennik sprzątania mieszkania
-            </h2>
-            <p className="text-muted-foreground text-base md:text-lg">
-              Sprawdź cenę w zależności od częstotliwości sprzątania
-            </p>
-          </div>
+          {showHeading && (
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-3">
+                Cennik sprzątania mieszkania
+              </h2>
+              <p className="text-muted-foreground text-base md:text-lg">
+                Sprawdź cenę w zależności od częstotliwości sprzątania
+              </p>
+            </div>
+          )}
 
           {/* Frequency Tabs */}
           <div className="grid grid-cols-2 md:flex md:flex-wrap justify-center gap-2 mb-12">
