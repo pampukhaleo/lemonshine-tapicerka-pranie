@@ -51,6 +51,8 @@ const Footer = () => {
               <li><Link to="/pranie-tapicerki/" className="hover:text-lemon-400 transition-colors">Pranie tapicerki</Link></li>
               <li><Link to="/mycie-okien/" className="hover:text-lemon-400 transition-colors">Mycie okien</Link></li>
               <li><Link to="/cennik/" className="hover:text-lemon-400 transition-colors">Cennik</Link></li>
+              <li><Link to="/biznes/" className="hover:text-lemon-400 transition-colors">Sprzątanie dla firm</Link></li>
+              <li><Link to="/outsourcing/" className="hover:text-lemon-400 transition-colors">Outsourcing</Link></li>
               <li><Link to="/blog/" className="hover:text-lemon-400 transition-colors">Blog</Link></li>
               <li><Link to="/#zamow" className="hover:text-lemon-400 transition-colors">Kontakt</Link></li>
             </ul>
