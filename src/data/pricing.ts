@@ -175,7 +175,7 @@ export const cleaningPricingItems: PricingItem[] = [
   {
     name: 'Mycie prysznicu/wanny',
     subtitle: '',
-    price: '20-60 zł',
+    price: '20-100 zł',
     image: '/cleaning/mycie_prysznicuwanny.jpg',
     popular: false
   },
