@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import OrderForm from '@/components/OrderForm';
 import FAQ from '@/components/FAQ';
+import CleaningPricing from '@/components/CleaningPricing';
 import { pricingItems, cleaningPricingItems, windowPricingItems, PricingItem } from '@/data/pricing';
 import { Ruler, Sparkles, ClipboardList, MapPin } from 'lucide-react';
 
