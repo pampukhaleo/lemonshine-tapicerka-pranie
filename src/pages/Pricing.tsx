@@ -90,6 +90,9 @@ const Pricing = () => {
           </div>
         </section>
 
+        {/* Cennik sprzątania mieszkania */}
+        <CleaningPricing />
+
         {/* Tabs + Cards */}
         <section className="pb-16 bg-background">
           <div className="container mx-auto px-4">
