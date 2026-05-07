@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { frequencyTabs, apartmentPlans, calculatePrice } from '@/data/cleaning-pricing';
 import { cn } from '@/lib/utils';
 
-const CleaningPricing = ({ showHeading = true }: { showHeading?: boolean }) => {
+const CleaningPricing = ({ showHeading = true, className }: { showHeading?: boolean, className?: string }) => {
   const [selectedFrequency, setSelectedFrequency] = useState('weekly');
 
   const currentTab = frequencyTabs.find(t => t.id === selectedFrequency)!;
@@ -14,7 +14,7 @@ const CleaningPricing = ({ showHeading = true }: { showHeading?: boolean }) => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className={cn("py-16 md:py-24 bg-background", className)}>
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {showHeading && (
