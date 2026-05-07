@@ -91,7 +91,7 @@ const Pricing = () => {
         </section>
 
         {/* Cennik sprzątania mieszkania */}
-        <CleaningPricing showHeading={false} />
+        <CleaningPricing showHeading={false} className="pt-0" />
 
         {/* Tabs + Cards */}
         <section className="pb-16 bg-background">
