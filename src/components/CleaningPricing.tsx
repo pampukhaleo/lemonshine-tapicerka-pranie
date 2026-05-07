@@ -14,7 +14,7 @@ const CleaningPricing = ({ showHeading = true, className }: { showHeading?: bool
   };
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className={cn("py-16 md:py-24 bg-background", className)}>
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {showHeading && (
