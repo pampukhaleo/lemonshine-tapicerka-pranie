@@ -185,7 +185,7 @@ export const windowPricingItems: PricingItem[] = [
   {
     name: 'Mycie okna',
     subtitle: '',
-    price: '25-50 zł',
+    price: '30-100 zł',
     image: '/window/window-1.jpg',
     popular: true
   },
