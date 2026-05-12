@@ -1,57 +1,93 @@
-## Контекст
+## Что делаем
 
-Сайт теперь хостится на **Lovable** (не GitHub Pages). Lovable автоматически обслуживает SPA fallback: любой неизвестный путь отдаёт `index.html`. Однако Ahrefs (и другие краулеры без JS-рендеринга) видят на каждом URL **один и тот же** HTML — отсюда все 6 ошибок аудита: Orphan, No outgoing links, Duplicate without canonical, H1 missing, Title too long (78 симв.), Low word count (10 слов).
+Заменяем нынешний костыль с «оболочками» (`scripts/create-route-shells.js` — невидимый `#seo-fallback` div с H1 и parag) на **настоящий статический рендеринг** через `vite-react-ssg` — точно так же, как сделано на chea-taic.be (european-arbitration-nexus).
 
-Хорошая новость: Lovable отдаёт **реальные файлы**, если они есть в `dist/<route>/index.html`. Значит подход с pre-rendered HTML-«оболочками» по-прежнему работает — нужно только наполнить их уникальным SEO-контентом.
+Разница принципиальная:
+- **Сейчас:** краулер видит фейковый `<div id="seo-fallback">` с парой абзацев, а реальный контент страницы — пустой `<div id="root">`, который заполняет JS.
+- **После:** при `vite build` каждая страница (`/`, `/pranie-tapicerki/`, `/cennik/`, `/blog/<slug>/` и т.д.) пре-рендерится в полноценный HTML со **всем реальным контентом** — заголовками, текстами, ценами, FAQ, формами. Helmet вставляет per-route `<title>`, `<meta description>`, `<link rel=canonical>`, OG-теги прямо в `<head>` каждого файла.
 
-## План исправления
+Для пользователя ничего не меняется (React гидрирует HTML и работает как обычно). Для Ahrefs/Google/соцсетей каждая страница — это нормальная статическая HTML-страница с уникальным контентом.
 
-### 1. Сократить базовый `<title>` и добавить canonical в корневой `index.html`
-- Текущий title 78 симв. → новый ≤60 симв.: «Pranie tapicerki Wrocław, Opole | Lemonshine».
-- Добавить `<link rel="canonical" href="https://lemonshine.pl/">` в `<head>`.
-- Это сразу чинит главную страницу для Title too long, Duplicate canonical, H1.
+## Шаги
 
-### 2. Переписать `scripts/create-route-shells.js` для per-route SEO
+### 1. Установить зависимости
+- `vite-react-ssg` (SSG-движок)
+- Уже есть: `react-helmet-async`, `react-router-dom`
 
-Скрипт уже запускается после `vite build`. Расширяем его так, чтобы для каждого маршрута он:
+### 2. Переделать `src/App.tsx`
+Сейчас роуты заданы через `navItems` + `<BrowserRouter>` внутри App. Для `vite-react-ssg` нужно **экспортировать массив `routes`** в формате `RouteRecord[]` (как в chea-taic). Структура:
+```
+routes = [{
+  path: '/',
+  element: <RootLayout/>,   // QueryClient, Toaster, Tooltip, ScrollToTop
+  children: [
+    { index: true, Component: Home },
+    { path: 'pranie-tapicerki', Component: Klient },
+    { path: 'klient', Component: Klient },
+    { path: 'biznes', Component: Biznes },
+    { path: 'mycie-okien', Component: MycieOkien },
+    { path: 'outsourcing', Component: Outsourcing },
+    { path: 'cennik', Component: Pricing },
+    { path: 'blog', Component: BlogIndex },
+    { path: 'blog/:slug', Component: BlogPost,
+      getStaticPaths: () => blogPosts.map(p => `blog/${p.slug}`) },
+    { path: 'polityka-prywatnosci', Component: PrivacyPolicy },
+    { path: '*', Component: NotFound },
+  ],
+}]
+```
 
-1. Брал `dist/index.html` как шаблон.
-2. Заменял в `<head>`:
-   - `<title>` — уникальный, ≤60 симв.
-   - `<meta name="description">` — уникальное, ≤160 симв.
-   - `<link rel="canonical">` — точный URL страницы (с trailing slash).
-3. Вставлял в `<body>` перед `<div id="root">` блок `<noscript>` (или обычный `<div>`, который React сразу заменит при гидрации):
-   - `<h1>` с уникальным заголовком — закрывает H1 missing.
-   - 2–3 коротких абзаца (>100 слов) — закрывает Low word count.
-   - `<nav>` со ссылками на все ключевые разделы (`/`, `/pranie-tapicerki/`, `/mycie-okien/`, `/cennik/`, `/biznes/`, `/outsourcing/`, `/blog/`, `/polityka-prywatnosci/`) — закрывает Orphan и No outgoing links.
+### 3. Переделать `src/main.tsx`
+```ts
+import { ViteReactSSG } from 'vite-react-ssg';
+import { routes } from './App';
+import './index.css';
+export const createRoot = ViteReactSSG({ routes, basename: '/' });
+```
+Лишний `<HelmetProvider>` убираем — `vite-react-ssg` подключает его сам.
 
-### 3. Расширить список статических маршрутов в скрипте
+### 4. Обновить `package.json`
+```json
+"build": "vite-react-ssg build && node scripts/generate-sitemap.js"
+```
+`build:dev` оставляем на обычный `vite build` (для Lovable preview).
 
-Сейчас только `cennik`, `blog`, `polityka-prywatnosci`. Добавить: `pranie-tapicerki`, `mycie-okien`, `biznes`, `outsourcing`. Иначе для них Lovable отдаёт SPA fallback — тот же `dist/index.html` без уникального SEO.
+### 5. Перенести SEO-метаданные в `<SEOHead>` каждой страницы
+`SEOHead` уже есть и работает через Helmet. Нужно убедиться, что **каждая страница** (`Home`, `Klient`, `Biznes`, `MycieOkien`, `Outsourcing`, `Pricing`, `BlogIndex`, `BlogPost`, `PrivacyPolicy`) рендерит `<SEOHead>` с уникальными `title` (≤60), `description` (≤160), `canonical`. Сегодня большинство страниц это уже делают — пробежимся и подровняем.
 
-### 4. Дополнить `Footer.tsx` ссылками на `/biznes/` и `/outsourcing/`
-Сейчас в «Szybkie Linki» их нет. Это даст incoming internal links и для пользователей, и для краулера, который рендерит JS.
+### 6. Удалить старый костыль
+- `scripts/create-route-shells.js` — удалить.
+- В `index.html` — оставить только базовый каркас без захардкоженных `<title>`/`<meta description>`/`<link canonical>` (как в chea-taic), чтобы не конфликтовало с Helmet.
+- В `vite.config.ts` — добавить `dedupe: ['react','react-dom','react-helmet-async']` (необходимо для SSG).
 
-### 5. Per-route метаданные
+### 7. Проверить SSG-совместимость компонентов
+- Все обращения к `window`/`document`/`localStorage` обернуть в `typeof window !== 'undefined'`.
+- Supabase-клиент инициализируется только на клиенте (он и так через React-хуки).
+- `<Helmet>` уже SSR-safe.
+- Картинки, `framer-motion`, формы — работают.
 
-| URL | Title (≤60) | H1 |
-|---|---|---|
-| `/` | Pranie tapicerki Wrocław, Opole \| Lemonshine | Profesjonalne pranie tapicerki we Wrocławiu i Opolu |
-| `/cennik/` | Cennik sprzątania i prania tapicerki \| Lemonshine | Cennik usług Lemonshine |
-| `/pranie-tapicerki/` | Pranie tapicerki meblowej Wrocław \| Lemonshine | Pranie tapicerki meblowej |
-| `/mycie-okien/` | Mycie okien Wrocław – profesjonalnie \| Lemonshine | Mycie okien we Wrocławiu |
-| `/biznes/` | Sprzątanie dla firm Wrocław \| Lemonshine | Sprzątanie dla biznesu |
-| `/outsourcing/` | Outsourcing sprzątania \| Lemonshine | Outsourcing usług sprzątania |
-| `/blog/` | Blog o praniu tapicerki – porady \| Lemonshine | Blog Lemonshine |
-| `/polityka-prywatnosci/` | Polityka prywatności \| Lemonshine | Polityka prywatności |
-| `/blog/<slug>/` | из `blogPosts.title` (обрезка ≤60) | из `blogPosts.title` |
+### 8. Sitemap и robots
+Существующие `scripts/generate-sitemap.js` и `public/robots.txt` оставляем, проверим что в sitemap включены все нужные URL.
 
-Для блог-постов title/description берутся из `src/data/blog.ts` (regex по slug/title/excerpt — slug-парсер уже есть в скрипте).
+## Что меняется в DX и хостинге
 
-### Что НЕ меняется
-- React-компоненты страниц и `SEOHead` остаются как есть — для пользователей и Google (он рендерит JS) ничего не ломается.
-- Дизайн, формы заказа, табы — не трогаем.
-- Никаких файлов `_redirects` / `_headers` — Lovable их не использует, SPA fallback встроен.
+- Lovable preview (`bun dev`) работает как раньше через обычный Vite-dev — SSG включается только на `vite build`.
+- Lovable hosting просто отдаёт сгенерированные `dist/<route>/index.html` напрямую — никаких настроек хостинга менять не надо, SPA-fallback продолжит работать для динамических URL.
+- Бандл по-прежнему code-split, гидрация быстрая.
 
-### Технический момент про `<noscript>` vs обычный `<div>`
-Чтобы контент учитывался Ahrefs гарантированно, лучше вставлять блок как обычный `<div id="seo-fallback">` внутри `<div id="root">`. React при гидрации заменит содержимое `#root` своим деревом, поэтому пользователь этого не увидит. Краулер без JS прочитает H1, текст и ссылки.
+## Чего НЕ делаем
+
+- Не трогаем дизайн, формы заказа, Telegram-функцию, цены, бизнес-логику.
+- Не меняем поддомены/CNAME/DNS.
+- Не вводим i18n (в chea-taic он есть, нам он не нужен).
+- Не переписываем компоненты — только роутинг и SEO-метаданные.
+
+## Результат
+
+После публикации все 6 ошибок Ahrefs закроются естественным путём:
+- **H1 missing** — каждая страница имеет реальный H1 в HTML.
+- **Title too long / Duplicate canonical** — Helmet выставляет per-route уникальные значения.
+- **Low word count** — реальный контент страницы (а не 3 абзаца fallback) в HTML.
+- **Orphan / No outgoing links** — Header и Footer пре-рендерятся, краулер видит реальное меню.
+
+Плюс бонус: соцсети (Facebook, LinkedIn, Slack, Twitter) начнут показывать корректные превью для каждой страницы — сейчас они видят только метаданные с главной.
