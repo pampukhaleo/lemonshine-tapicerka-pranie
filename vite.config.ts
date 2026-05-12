@@ -20,4 +20,8 @@ export default defineConfig(({ mode }) => ({
     },
     dedupe: ["react", "react-dom", "react-helmet-async"],
   },
+  ssr: {
+    external: ["react-helmet-async"],
+    noExternal: [],
+  },
 }));
