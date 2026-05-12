@@ -5,12 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite-react-ssg build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "postbuild": "node scripts/create-404.js && node scripts/generate-sitemap.js && node scripts/create-route-shells.js",
+    "postbuild": "node scripts/create-404.js && node scripts/generate-sitemap.js",
     "deploy": "npm run clean && npm run build && gh-pages -d dist"
   },
   "dependencies": {
