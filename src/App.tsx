@@ -1,7 +1,6 @@
 import React from 'react';
 import type { RouteRecord } from 'vite-react-ssg';
 import { Outlet } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -22,15 +21,13 @@ import { blogPosts } from '@/data/blog';
 const queryClient = new QueryClient();
 
 const RootLayout = () => (
-  <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <ScrollToTop />
-        <Outlet />
-        <Toaster />
-      </TooltipProvider>
-    </QueryClientProvider>
-  </HelmetProvider>
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <ScrollToTop />
+      <Outlet />
+      <Toaster />
+    </TooltipProvider>
+  </QueryClientProvider>
 );
 
 export const routes: RouteRecord[] = [
