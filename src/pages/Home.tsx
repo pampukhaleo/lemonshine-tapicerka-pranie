@@ -87,9 +87,9 @@ const Home = () => {
 
         <TrustIndicators />
 
-        <div id="cennik">
+        {/* <div id="cennik">
           <CleaningPricing />
-        </div>
+        </div> */}
 
         <CleaningChecklist />
 
