@@ -19,7 +19,6 @@ const serviceTabs = [
 ];
 
 const quickLinks = [
-  { label: 'Cennik', to: '/cennik/' },
   { label: 'Blog', to: '/blog/' },
   { label: 'Kontakt', to: '/#zamow' },
 ];
@@ -132,7 +131,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
               className="flex items-center gap-2 border-2 border-mint-500 rounded-full px-4 py-2 text-sm text-foreground hover:bg-muted transition-colors"
             >
               <Phone className="w-4 h-4 text-mint-500" />
-              +48 662 117 883
+              +48 662 117 886
             </a>
             <Button asChild className="rounded-lg bg-lemon-400 hover:bg-lemon-500 text-foreground font-semibold px-6 shadow-none border-none h-10">
               <a href="#zamow">Zamów Nasze Usługi</a>
@@ -194,7 +193,7 @@ const Header = ({ variant = 'home' }: HeaderProps) => {
                   className="flex items-center gap-2 px-3 py-2 text-sm text-foreground"
                 >
                   <Phone className="w-4 h-4 text-mint-500" />
-                  +48 662 117 883
+                  +48 662 117 886
                 </a>
                 <Button asChild className="rounded-full bg-lemon-400 hover:bg-lemon-500 text-foreground font-semibold border-none">
                   <a href="#zamow" onClick={() => setIsMenuOpen(false)}>Zamów Nasze Usługi</a>
