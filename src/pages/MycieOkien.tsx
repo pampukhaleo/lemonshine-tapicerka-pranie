@@ -65,6 +65,42 @@ const MycieOkien = () => {
       "addressCountry": "PL"
     },
     "priceRange": "150-500 PLN",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "127",
+      "bestRating": "5"
+    }
+  };
+
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Mycie okien — Lemonshine",
+    "serviceType": "Mycie okien",
+    "description": "Profesjonalne mycie okien bez smug: szyby, ramy, parapety. Mieszkania, domy, biura, witryny we Wrocławiu i Opolu.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Lemonshine",
+      "telephone": "+48 662 117 886",
+      "url": "https://lemonshine.pl/"
+    },
+    "areaServed": [
+      { "@type": "City", "name": "Wrocław" },
+      { "@type": "City", "name": "Opole" }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "PLN",
+      "price": "150",
+      "url": "https://lemonshine.pl/mycie-okien/"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "127",
+      "bestRating": "5"
+    }
   };
 
   const breadcrumbJsonLd = {
@@ -82,7 +118,7 @@ const MycieOkien = () => {
         title="Mycie Okien - Profesjonalne usługi | Lemonshine Wrocław, Opole"
         description="Profesjonalne mycie okien bez smug i zacieków. Szyby, ramy, parapety — szybko i dokładnie. Zamów mycie okien we Wrocławiu i Opolu."
         canonical="https://lemonshine.pl/mycie-okien/"
-        jsonLd={[faqJsonLd, localBusinessJsonLd, breadcrumbJsonLd]}
+        jsonLd={[faqJsonLd, localBusinessJsonLd, serviceJsonLd, breadcrumbJsonLd]}
       />
       <Header />
       <main>
