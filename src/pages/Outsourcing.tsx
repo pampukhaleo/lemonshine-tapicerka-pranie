@@ -112,13 +112,23 @@ const Outsourcing = () => {
     "areaServed": ["Opole", "Wrocław", "Brzeg", "Nysa", "Kędzierzyn-Koźle"]
   };
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map((f) => ({
+      "@type": "Question",
+      "name": f.question,
+      "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+    }))
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Outsourcing Usług Czyszczenia Tapicerki | Lemonshine Partner"
         description="Rozszerz ofertę swojej firmy o profesjonalne pranie tapicerki. Usługi white-label, atrakcyjne ceny partnerskie, pełne wsparcie."
         canonical="https://lemonshine.pl/outsourcing/"
-        jsonLd={[jsonLd]}
+        jsonLd={[jsonLd, faqJsonLd]}
       />
       <Header variant="outsourcing" />
       
