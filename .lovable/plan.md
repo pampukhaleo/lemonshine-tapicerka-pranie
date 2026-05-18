@@ -1,19 +1,33 @@
-## Zmiany
+## Cel
 
-1. **Naprawić numer telefonu w headerze (`src/components/Header.tsx`)**
-   - Desktop: tekst `+48 662 117 883` → `+48 662 117 886` (linia ~136)
-   - Mobile: tekst `+48 662 117 883` → `+48 662 117 886` (linia ~199)
-   - Atrybuty `href="tel:+48662117886"` są już poprawne, zmieniamy tylko wyświetlany tekst.
+Domknąć dwa brakujące elementy z audytu SEO/AI:
 
-2. **Ukryć blok "Cennik sprzątania mieszkania" na stronie Sprzątanie (`src/pages/Home.tsx`)**
-   - Zakomentować (nie usuwać) sekcję `<div id="cennik"><CleaningPricing /></div>`.
-   - Przycisk "Sprawdź cennik" w hero nadal kieruje na `#cennik` — przekierować go na `/cennik/` lub usunąć kotwicę, żeby nie prowadził w pustkę. **Proponuję:** zmienić link przycisku na `#zamow` (formularz zamówienia), bo strona `/cennik/` ma być ukryta z nawigacji (patrz pkt 3).
+1. **AggregateRating** w JSON-LD na pozostałych stronach (Home, Biznes, Outsourcing, MycieOkien) — obecnie tylko `/klient/` ma rating.
+2. **Service** JSON-LD na `/mycie-okien/` — strona ma LocalBusiness + FAQ + Breadcrumb, ale brakuje schematu usługi.
 
-3. **Ukryć stronę Cennik z nawigacji (`src/components/Header.tsx`)**
-   - Usunąć `{ label: 'Cennik', to: '/cennik/' }` z tablicy `quickLinks` (desktop dropdown + mobile menu znikną automatycznie).
-   - Route `/cennik/` w `App.tsx` zostaje — strona dostępna pod bezpośrednim linkiem, tylko niewidoczna w menu.
-   - Sprawdzić inne miejsca z linkiem do `/cennik/` (Footer itp.) — **pytanie poniżej**.
+## Zmiany w plikach
 
-## Pytanie
+### 1. `src/pages/Home.tsx`
+Dodać `aggregateRating` do istniejącego `localBusinessLd`:
+```json
+"aggregateRating": {
+  "@type": "AggregateRating",
+  "ratingValue": "5.0",
+  "reviewCount": "47",
+  "bestRating": "5"
+}
+```
 
-Czy w stopce (Footer) i w innych miejscach (np. linki w treści) też ukryć link do `/cennik/`, czy tylko z górnego menu? Domyślnie zakładam: **tylko z górnej nawigacji**, stopka bez zmian.
+### 2. `src/pages/Biznes.tsx`
+Dodać `aggregateRating` do istniejącego LocalBusiness JSON-LD (te same wartości).
+
+### 3. `src/pages/Outsourcing.tsx`
+To samo — `aggregateRating` w LocalBusiness JSON-LD.
+
+### 4. `src/pages/MycieOkien.tsx`
+- Dodać `aggregateRating` do LocalBusiness JSON-LD.
+- Dodać nowy `serviceJsonLd` z `@type: "Service"` (nazwa: "Mycie okien", obszar: Wrocław/Opole, provider: Lemonshine, offers z minimalną ceną) i podłączyć do tablicy `jsonLd` w `SEOHead`.
+
+## Pytanie do potwierdzenia
+
+Jakie wartości `ratingValue` i `reviewCount` użyć? Na `/klient/` obecnie jest jedna konkretna wartość — sprawdzę ją i użyję tej samej spójnie wszędzie, chyba że podasz inne (np. realne liczby z Google Maps).
