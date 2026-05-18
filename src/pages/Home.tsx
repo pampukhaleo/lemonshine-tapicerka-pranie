@@ -78,7 +78,7 @@ const Home = () => {
                   className="bg-card/80 backdrop-blur-sm border-2 border-mint-600 text-foreground hover:bg-card font-bold text-base md:text-xl px-8 py-4 md:px-16 md:py-7 hover-lift font-[Poppins] h-auto"
                   asChild
                 >
-                  <a href="#cennik">Sprawdź cennik</a>
+                  <a href="#zamow">Sprawdź cennik</a>
                 </Button>
               </div>
             </div>
