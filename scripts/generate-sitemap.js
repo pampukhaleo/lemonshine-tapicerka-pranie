@@ -35,7 +35,12 @@ const getCurrentDate = () => {
 // Define static pages
 const staticPages = [
   { url: '/', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '1.0' },
-  { url: '/cennik/', lastmod: getCurrentDate(), changefreq: 'monthly', priority: '0.8' },
+  { url: '/pranie-tapicerki/', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '0.9' },
+  { url: '/klient/', lastmod: getCurrentDate(), changefreq: 'monthly', priority: '0.7' },
+  { url: '/biznes/', lastmod: getCurrentDate(), changefreq: 'monthly', priority: '0.8' },
+  { url: '/mycie-okien/', lastmod: getCurrentDate(), changefreq: 'monthly', priority: '0.8' },
+  { url: '/outsourcing/', lastmod: getCurrentDate(), changefreq: 'monthly', priority: '0.7' },
+  { url: '/cennik/', lastmod: getCurrentDate(), changefreq: 'monthly', priority: '0.6' },
   { url: '/blog/', lastmod: getCurrentDate(), changefreq: 'weekly', priority: '0.9' },
   { url: '/polityka-prywatnosci/', lastmod: getCurrentDate(), changefreq: 'yearly', priority: '0.3' }
 ];
