@@ -66,6 +66,15 @@ const Pricing = () => {
     }))
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://lemonshine.pl/" },
+      { "@type": "ListItem", "position": 2, "name": "Cennik", "item": "https://lemonshine.pl/cennik/" }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
@@ -73,7 +82,7 @@ const Pricing = () => {
         description="Sprawdź cennik usług sprzątania, prania tapicerki i mycia okien we Wrocławiu. Przejrzyste ceny, profesjonalna obsługa."
         keywords="cennik sprzątania wrocław, cennik prania tapicerki, cennik mycia okien, sprzątanie mieszkań ceny"
         canonical="https://lemonshine.pl/cennik/"
-        jsonLd={offerCatalogJsonLd}
+        jsonLd={[offerCatalogJsonLd, breadcrumbJsonLd]}
       />
       <Header variant="klient" />
 

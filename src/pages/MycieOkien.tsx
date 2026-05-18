@@ -67,13 +67,22 @@ const MycieOkien = () => {
     "priceRange": "150-500 PLN",
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://lemonshine.pl/" },
+      { "@type": "ListItem", "position": 2, "name": "Mycie okien", "item": "https://lemonshine.pl/mycie-okien/" }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Mycie Okien - Profesjonalne usługi | Lemonshine Wrocław, Opole"
         description="Profesjonalne mycie okien bez smug i zacieków. Szyby, ramy, parapety — szybko i dokładnie. Zamów mycie okien we Wrocławiu i Opolu."
         canonical="https://lemonshine.pl/mycie-okien/"
-        jsonLd={[faqJsonLd, localBusinessJsonLd]}
+        jsonLd={[faqJsonLd, localBusinessJsonLd, breadcrumbJsonLd]}
       />
       <Header />
       <main>

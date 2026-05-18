@@ -90,13 +90,22 @@ const Biznes = () => {
     }))
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://lemonshine.pl/" },
+      { "@type": "ListItem", "position": 2, "name": "Dla firm", "item": "https://lemonshine.pl/biznes/" }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Czyszczenie Tapicerki dla Firm B2B | Lemonshine Opole, Wrocław"
         description="Profesjonalne usługi czyszczenia tapicerki meblowej dla firm. Biura, hotele, restauracje. Faktura VAT, rabaty do 20%, elastyczne godziny."
         canonical="https://lemonshine.pl/biznes/"
-        jsonLd={[jsonLd, faqJsonLd]}
+        jsonLd={[jsonLd, faqJsonLd, breadcrumbJsonLd]}
       />
       <Header variant="biznes" />
       
