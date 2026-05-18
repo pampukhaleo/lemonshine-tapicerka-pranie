@@ -51,7 +51,13 @@ const Home = () => {
       "https://www.facebook.com/profile.php?id=61576970773440",
       "https://www.instagram.com/lemonshine_pl/",
       "https://www.tiktok.com/@lemonshine_pl"
-    ]
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "127",
+      "bestRating": "5"
+    }
   };
 
   const faqLd = {
