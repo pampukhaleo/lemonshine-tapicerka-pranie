@@ -16,24 +16,96 @@ import OrderForm from '@/components/OrderForm';
 import FAQ from '@/components/FAQ';
 
 const Home = () => {
-  const jsonLd = {
+  const localBusinessLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "LocalBusiness",
+    "@id": "https://lemonshine.pl/#business",
     "name": "Lemonshine",
-    "description": "Profesjonalne usługi sprzątania i czyszczenia tapicerki w Opolu i Wrocławiu",
-    "url": "https://lemonshine.pl",
+    "description": "Profesjonalne usługi sprzątania mieszkań, biur i prania tapicerki meblowej w Opolu, Wrocławiu i okolicach.",
+    "url": "https://lemonshine.pl/",
     "logo": "https://lemonshine.pl/lemonshine.png",
+    "image": "https://lemonshine.pl/lemonshine.png",
     "telephone": "+48 662 117 886",
+    "priceRange": "150-2000 PLN",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "Cash, BLIK, Bank transfer",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Wrocław",
       "addressRegion": "Dolnośląskie",
       "addressCountry": "PL"
     },
+    "areaServed": [
+      { "@type": "City", "name": "Wrocław" },
+      { "@type": "City", "name": "Opole" }
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "08:00",
+        "closes": "20:00"
+      }
+    ],
     "sameAs": [
       "https://www.facebook.com/profile.php?id=61576970773440",
       "https://www.instagram.com/lemonshine_pl/",
       "https://www.tiktok.com/@lemonshine_pl"
+    ]
+  };
+
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Jak długo trwa sprzątanie mieszkania?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Czas sprzątania zależy od metrażu i stopnia zabrudzenia. Zazwyczaj trwa od 2 do 4 godzin."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy muszę być w mieszkaniu podczas sprzątania?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nie, nie ma takiej potrzeby. Wiele osób przekazuje nam klucze lub udostępnia mieszkanie pod swoją nieobecność."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy muszę mieć własny sprzęt i chemię?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nie, przyjeżdżamy z własnym sprzętem oraz profesjonalnymi środkami czystości."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak wygląda płatność za usługę?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Płatność odbywa się po wykonaniu usługi gotówką, blikiem, lub przelewem."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Jak mogę zamówić sprzątanie?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wystarczy skontaktować się z nami telefonicznie lub przez formularz na stronie."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Czy sprzątacie w weekendy lub wieczorami?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tak, oferujemy elastyczne terminy, również w weekendy i po godzinach pracy."
+        }
+      }
     ]
   };
 
@@ -43,7 +115,7 @@ const Home = () => {
         title="Lemonshine - Sprzątanie Wrocław | Profesjonalne Usługi"
         description="Profesjonalne sprzątanie mieszkań i obiektów we Wrocławiu i Opolu. Robimy porządki w mieszkaniach i na dużych obiektach. Zamów online!"
         canonical="https://lemonshine.pl/"
-        jsonLd={[jsonLd]}
+        jsonLd={[localBusinessLd, faqLd]}
       />
 
       <Header variant="home" />
