@@ -22,4 +22,7 @@ export default defineConfig(({ mode }) => ({
   ssr: {
     external: ["react-helmet-async", "react", "react-dom"],
   },
+  ssgOptions: {
+    dirStyle: "nested",
+  },
 }));
