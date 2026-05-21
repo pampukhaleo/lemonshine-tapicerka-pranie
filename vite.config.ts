@@ -22,7 +22,6 @@ export default defineConfig(({ mode }) => ({
   ssr: {
     external: ["react-helmet-async", "react", "react-dom"],
   },
-  // @ts-expect-error vite-react-ssg extends Vite config
   ssgOptions: {
     dirStyle: "nested",
   },
