@@ -109,13 +109,7 @@ const Outsourcing = () => {
       "name": "Lemonshine",
       "telephone": "+48 662 117 886"
     },
-    "areaServed": ["Opole", "Wrocław", "Brzeg", "Nysa", "Kędzierzyn-Koźle"],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "127",
-      "bestRating": "5"
-    }
+    "areaServed": ["Opole", "Wrocław", "Brzeg", "Nysa", "Kędzierzyn-Koźle"]
   };
 
   const faqJsonLd = {

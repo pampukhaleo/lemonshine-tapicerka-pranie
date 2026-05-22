@@ -94,12 +94,6 @@ const MycieOkien = () => {
       "priceCurrency": "PLN",
       "price": "150",
       "url": "https://lemonshine.pl/mycie-okien/"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "127",
-      "bestRating": "5"
     }
   };
 
