@@ -14,6 +14,11 @@ import Testimonials from '@/components/Testimonials';
 import StatsBar from '@/components/StatsBar';
 import OrderForm from '@/components/OrderForm';
 import FAQ from '@/components/FAQ';
+import SprzataniaServices from '@/components/sprzatanie/SprzataniaServices';
+import DlaczegoLemonShine from '@/components/sprzatanie/DlaczegoLemonShine';
+import JakPracujemy from '@/components/sprzatanie/JakPracujemy';
+import SprzatanieBiur from '@/components/sprzatanie/SprzatanieBiur';
+import { trackPhoneClick } from '@/lib/analytics';
 
 const Home = () => {
   const localBusinessLd = {
@@ -156,12 +161,23 @@ const Home = () => {
                   className="bg-card/80 backdrop-blur-sm border-2 border-mint-600 text-foreground hover:bg-card font-bold text-base md:text-xl px-8 py-4 md:px-16 md:py-7 hover-lift font-[Poppins] h-auto"
                   asChild
                 >
-                  <a href="#zamow">Sprawdź cennik</a>
+                  <a href="tel:+48886344660" onClick={() => trackPhoneClick('home_hero')}>
+                    <Phone className="w-5 h-5 mr-2" />
+                    Zadzwoń teraz
+                  </a>
                 </Button>
               </div>
             </div>
           </div>
         </section>
+
+        <SprzataniaServices />
+
+        <DlaczegoLemonShine />
+
+        <JakPracujemy />
+
+        <SprzatanieBiur />
 
         <TrustIndicators />
 
