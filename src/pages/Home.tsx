@@ -14,6 +14,11 @@ import Testimonials from '@/components/Testimonials';
 import StatsBar from '@/components/StatsBar';
 import OrderForm from '@/components/OrderForm';
 import FAQ from '@/components/FAQ';
+import SprzataniaServices from '@/components/sprzatanie/SprzataniaServices';
+import DlaczegoLemonShine from '@/components/sprzatanie/DlaczegoLemonShine';
+import JakPracujemy from '@/components/sprzatanie/JakPracujemy';
+import SprzatanieBiur from '@/components/sprzatanie/SprzatanieBiur';
+import { trackPhoneClick } from '@/lib/analytics';
 
 const Home = () => {
   const localBusinessLd = {
