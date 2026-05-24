@@ -71,7 +71,7 @@ const SprzataniaServices = () => {
             {small.map((s, i) => (
               <div
                 key={i}
-                className="bg-lemon-50 rounded-2xl overflow-hidden border border-border flex flex-col sm:flex-row"
+                className="bg-lemon-50 rounded-2xl overflow-hidden border border-border flex flex-col sm:flex-row-reverse"
               >
                 <div className="sm:w-2/5 aspect-[4/3] sm:aspect-auto overflow-hidden flex-shrink-0">
                   <img
