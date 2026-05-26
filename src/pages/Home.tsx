@@ -194,7 +194,7 @@ const Home = () => {
         {/* <Testimonials /> */}
 
 
-        <StatsBar />
+        {/* <StatsBar /> */}
 
         <OrderForm source="sprzątanie" />
 
