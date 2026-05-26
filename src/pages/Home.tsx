@@ -185,13 +185,14 @@ const Home = () => {
           <CleaningPricing />
         </div> */}
 
-        <CleaningChecklist />
+        {/* <CleaningChecklist /> */}
 
-        <AdditionalServices />
+        {/* <AdditionalServices /> */}
 
-        <Promotions />
+        {/* <Promotions /> */}
 
-        <Testimonials />
+        {/* <Testimonials /> */}
+
 
         <StatsBar />
 
