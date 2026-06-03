@@ -40,11 +40,8 @@ const About = () => {
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-            Najczęstsze problemy z tapicerką w domu
+            Kiedy tapicerka potrzebuje profesjonalnego prania?
           </h2>
-          <p className="text-xl text-muted-foreground mx-auto max-w-[48rem] text-balance leading-snug">
-            Codzienne użytkowanie sprawia, że tapicerka traci świeżość, chłonie zapachy i z czasem przestaje wyglądać tak, jak powinna.
-          </p>
         </div>
 
         {/* Mobile: list layout; Desktop: grid cards */}

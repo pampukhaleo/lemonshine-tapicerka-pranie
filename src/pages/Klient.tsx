@@ -3,8 +3,6 @@ import React from 'react';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Services from '@/components/Services';
-import Promotions from '@/components/Promotions';
 import OrderForm from '@/components/OrderForm';
 import Results from '@/components/Results';
 import Equipment from "@/components/Equipment.tsx";
@@ -13,6 +11,9 @@ import FAQ from '@/components/FAQ';
 import SeoSection from '@/components/SeoSection';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
+import CoCzyscimy from '@/components/klient/CoCzyscimy';
+import PranieDlaFirm from '@/components/klient/PranieDlaFirm';
+import NaszeOpinie from '@/components/shared/NaszeOpinie';
 
 const Klient = () => {
   // FAQ JSON-LD
@@ -268,11 +269,12 @@ const Klient = () => {
       <main>
         <Hero />
         <About />
-        <Services />
-        <Promotions />
+        <CoCzyscimy />
+        <PranieDlaFirm />
         <Results />
         <OrderForm source="pranie-tapicerki" />
         <Equipment />
+        <NaszeOpinie />
         <Blog />
         <FAQ />
       </main>

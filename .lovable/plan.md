@@ -1,71 +1,52 @@
-# Чому сторінки не індексуються — діагностика
+## /  (Sprzątanie Wrocław)
 
-## Що показав GSC
-- **Discovered – currently not indexed (2):** `/biznes/`, `/outsourcing/`
-- **Crawled – currently not indexed (4):** `/blog/`, `/cennik/`, `/blog/czy-warto-samemu-prac-tapicerke-meblowa/`, `/blog/rodzaje-plam-na-tapicerce-jak-sobie-z-nimi-poradzic/`
-- Indexed: 9 сторінок
+1. **Hero**: на десктопе hero-картинка занимает левую половину прямоугольника, текст и кнопки — правую половину (как на 1-м скрине). На мобиле — текст под фоном, как сейчас.
+   - Переделать `<section>` в `grid lg:grid-cols-2` с левой колонкой `bg-cover` (heroImg-home.png) и правой колонкой с заголовком, подзаголовком, двумя кнопками. Сохранить кнопки `Zamów sprzątanie` и `Zadzwoń teraz` (tel:+48886344660).
 
-Усі ці URL-и **повинні** індексуватися — це ключові комерційні та контентні сторінки. Це не нормальна ситуація.
+2. **Над формой `OrderForm`** добавить новый компонент `NaszeOpinie` (общий, в `src/components/shared/NaszeOpinie.tsx`):
+   - Заголовок `Nasze opinie`.
+   - Карточка с логотипом/именем `LemonShine - Sprzątanie Mieszkań i Biur Wrocław`, рейтинг 5.0, кол-во отзывов, ссылка `Zobacz wszystkie opinie w Google`.
+   - Сетка из последних 5 отзывов (имя, аватар-инициал, звёзды, текст с line-clamp, дата).
+   - Полоса статистики (1500+ / 100% / 5★) в стиле существующего `StatsBar` (lemon→mint градиент).
+   - Источник данных: edge function `get-google-reviews`, кеш в памяти 6 ч.
 
-## Знайдена причина (критично)
+3. **Edge function `get-google-reviews`** (`supabase/functions/get-google-reviews/index.ts`):
+   - Деплоится автоматически.
+   - Принимает `placeId` (с фронта или из env `GOOGLE_PLACE_ID`).
+   - Зовёт `POST https://connector-gateway.lovable.dev/google_maps/places/v1/places/{placeId}` с заголовками `Authorization: Bearer LOVABLE_API_KEY`, `X-Connection-Api-Key: GOOGLE_MAPS_API_KEY`, `X-Goog-FieldMask: id,displayName,rating,userRatingCount,googleMapsUri,reviews`.
+   - Возвращает `{ rating, userRatingCount, googleMapsUri, reviews: [...] }`.
+   - CORS включён.
+   - До получения настоящего Place ID — функция возвращает стат-заглушку (rating 5.0, 52, 3 текста-заглушки) если placeId не задан, чтобы блок не падал.
+   - Требует подключения коннектора **Google Maps Platform** через `standard_connectors--connect` и добавления секрета `GOOGLE_PLACE_ID` после того, как пользователь пришлёт ID.
 
-Я перевірив, що віддає сервер на кожен URL (`curl` без JS — саме так бачить Googlebot при першому проході):
+## /pranie-tapicerki/  (Klient.tsx)
 
-| URL | Розмір відповіді | `<title>` | `canonical` |
-|---|---|---|---|
-| `/` | 75630 B | Lemonshine - Sprzątanie Wrocław | `https://lemonshine.pl/` |
-| `/biznes/` | **75630 B** | Lemonshine - Sprzątanie Wrocław | `https://lemonshine.pl/` |
-| `/outsourcing/` | **75630 B** | Lemonshine - Sprzątanie Wrocław | `https://lemonshine.pl/` |
-| `/pranie-tapicerki/` | **75630 B** | Lemonshine - Sprzątanie Wrocław | `https://lemonshine.pl/` |
-| `/mycie-okien/` | **75630 B** | Lemonshine - Sprzątanie Wrocław | `https://lemonshine.pl/` |
-| `/cennik/` | **75630 B** | Lemonshine - Sprzątanie Wrocław | `https://lemonshine.pl/` |
-| `/blog/` | **75630 B** | Lemonshine - Sprzątanie Wrocław | `https://lemonshine.pl/` |
+1. **Текст под хедером** — компонент `About.tsx`, секция «Najczęstsze problemy» заменить на «Kiedy tapicerka potrzebuje profesjonalnego prania?» (3-й скрин). Сами 4 карточки (Widoczne plamy, Nieprzyjemne zapachy, Kurz i alergeny, Brak efektu) уже совпадают по контенту — только меняем заголовок и убираем подзаголовок. Блок «Nasze rozwiązanie» внутри `About.tsx` остаётся.
 
-**Кожен URL віддає байт-у-байт ідентичний HTML головної сторінки**, з canonical-тегом, що вказує на `/`. Тобто Google бачить усі підсторінки як **дублі головної з явним сигналом «канонічна — це /»**, і коректно відмовляється їх індексувати окремо.
+2. **Над «Nasze rozwiązanie»** добавить новый блок `CoCzyscimy` (4-й скрин): заголовок `Co czyścimy?`, 3 карточки (Wykładziny i dywany, Tapicerka meblowa, Samochodowa) с фото, описанием и жёлтой CTA `Zapytaj o ofertę` (скролл к `#zamow`). Дизайн взять из `Services.tsx` (`Cennik Prania Tapicerki`) — те же карточки `rounded-xl`, белый фон, изображение `aspect-[4/3]`, заголовок, описание, кнопка lemon. Сам `Services.tsx` (Cennik Prania Tapicerki) **скрыть** в `Klient.tsx`.
+   - Картинки: использовать существующие `/cleaning/...` или `/before_after/...`. Если подходящих нет, создать через imagegen (ковёр, диван, автокресло).
 
-Те, що *хоч щось* проіндексовано (9 сторінок), — це тому, що Googlebot інколи виконує JS і бачить справжній контент, але canonical→/ все одно перешкоджає.
+3. **Скрыть** `Promotions` в `Klient.tsx`.
 
-## Чому так сталося
+4. **Над `Results` (Zobacz Efekt Prania Tapicerki)** добавить новый блок `PranieDlaFirm` (5-й скрин): сетка 2 колонки — слева заголовок `Pranie tapicerki dla firm`, текст про офисы/отели/рестораны/салоны, жёлтая CTA `Zapytaj o ofertę dla firmy`; справа фото (офисный ковёр). Дизайн: lemon-50 фон / closed card в стиле `SprzatanieBiur`-ish, чтобы вписывалось.
 
-У проєкті стоїть `vite-react-ssg` (build-команда `vite-react-ssg build`), яка має генерувати окремі HTML-файли для кожного маршруту (`dist/biznes/index.html`, `dist/blog/index.html` тощо) з правильними тегами через `react-helmet-async`. На live-сайті цих файлів немає — на будь-який шлях віддається `dist/index.html` з головної.
+5. **В `Results.tsx`**:
+   - Заголовок → `Efekty naszej pracy`, описание убрать.
+   - Секцию `Opinie naszych klientów` (3 захардкоженные отзыва) **удалить**, вместо неё рендерить тот же компонент `NaszeOpinie` из пункта Sprzątanie.2.
+   - Stats-блок снизу оставить как есть.
 
-Можливі причини:
-1. Lovable hosting публікує не результат `npm run build` (SSG), а звичайний `vite build`, який віддає тільки SPA-shell.
-2. SSG будується, але `vite-react-ssg` не знаходить маршрути (через структуру `routes` у `src/App.tsx`) і генерує тільки `/`.
-3. Hosting/CDN перехоплює всі шляхи й завжди віддає кореневий `index.html`.
+## Technical section
 
-Окремо: `scripts/create-404.js` копіює `dist/index.html` у `dist/404.html` для GitHub Pages SPA-fallback — тобто проєкт спочатку був задуманий під gh-pages, але зараз публікується через Lovable.
-
-## Що пропоную зробити
-
-### Крок 1. Підтвердити, що збирає Lovable hosting
-Запустити локально `npm run build` і подивитися, чи з'являються файли:
-- `dist/biznes/index.html`
-- `dist/outsourcing/index.html`
-- `dist/blog/index.html`
-- `dist/cennik/index.html`
-- `dist/blog/czy-warto-samemu-prac-tapicerke-meblowa/index.html` тощо
-
-Якщо так — проблема в hosting (треба писати в Lovable support, бо вони сервлять `/index.html` замість `dist/<route>/index.html`).
-Якщо ні — проблема в конфігурації `vite-react-ssg` (треба фіксити її).
-
-### Крок 2. Залежно від результату
-- **Якщо SSG не генерує per-route HTML** — налаштувати `vite-react-ssg` (entry, routing, getStaticPaths для блогу вже є).
-- **Якщо генерує, але hosting не сервить** — або (а) звернутися в підтримку Lovable, або (б) перевести на gh-pages (вже все готово — `CNAME`, `404.html`-скрипт), або (в) розгорнути на Vercel/Netlify, де SSG-вихід коректно сервиться.
-
-### Крок 3. Після фіксу
-- Запросити переіндексацію в GSC для уражених URL-ів («Inspect URL» → «Request indexing»).
-- Натиснути «Validate fix» на `Discovered – currently not indexed` і `Crawled – currently not indexed`.
-
-## Технічні деталі для розробника
-
-- `src/main.tsx` використовує `ViteReactSSG` з масивом маршрутів із `src/App.tsx`.
-- `src/App.tsx` визначає 9 статичних маршрутів + динамічний `blog/:slug` з `getStaticPaths`.
-- Кожна сторінка (`Biznes.tsx`, `Outsourcing.tsx`, `MycieOkien.tsx`, …) використовує `<SEOHead>` з власним `canonical`, `title`, `jsonLd` — тобто на рівні React-коду все правильно.
-- `vite.config.ts` має `ssr.external: ["react-helmet-async", "react", "react-dom"]` — це коректно для SSG.
-- `package.json`: `"build": "vite-react-ssg build"`.
-- Проблема **не в коді React-сторінок** — проблема у тому, що згенерований SSG-HTML не доходить до Googlebot.
-
-## Підсумок щодо запитання
-
-Так, причини зрозумілі: **всі підсторінки виглядають для Google як дублі головної з canonical на головну**. Усі ці сторінки **потрібно** індексувати — це не «можна ігнорувати». Перший крок (Крок 1) дасть точну відповідь, у який бік копати.
+- New files:
+  - `src/components/shared/NaszeOpinie.tsx`
+  - `src/components/sprzatanie/HeroSprzatanie.tsx` (вынести hero, чтобы Home.tsx был чище)
+  - `src/components/klient/CoCzyscimy.tsx`
+  - `src/components/klient/PranieDlaFirm.tsx`
+  - `supabase/functions/get-google-reviews/index.ts`
+- Edited files:
+  - `src/pages/Home.tsx` — заменить inline hero на компонент, вставить `NaszeOpinie` над `OrderForm`.
+  - `src/pages/Klient.tsx` — скрыть `Services`/`Promotions`, добавить `CoCzyscimy` (перед `About`'s rozwiązanie?  — фактически между `About` и `Results`), `PranieDlaFirm` перед `Results`. Проще: оставить порядок `Hero → About → CoCzyscimy → PranieDlaFirm → Results → OrderForm → Equipment → Blog → FAQ`. Подтвердите если порядок иной.
+  - `src/components/About.tsx` — поменять заголовок секции и убрать подзаголовок (только для /pranie-tapicerki/; так как `About` используется только здесь — правим напрямую).
+  - `src/components/Results.tsx` — обновить заголовок, удалить описание, удалить блок тестимониалов.
+- Connector: попросим пользователя подключить Google Maps Platform; до этого блок отзывов работает на заглушке.
+- Place ID: после получения от пользователя — добавим секрет `GOOGLE_PLACE_ID`.
