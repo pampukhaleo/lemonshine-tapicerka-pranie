@@ -269,11 +269,12 @@ const Klient = () => {
       <main>
         <Hero />
         <About />
-        <Services />
-        <Promotions />
+        <CoCzyscimy />
+        <PranieDlaFirm />
         <Results />
         <OrderForm source="pranie-tapicerki" />
         <Equipment />
+        <NaszeOpinie />
         <Blog />
         <FAQ />
       </main>
