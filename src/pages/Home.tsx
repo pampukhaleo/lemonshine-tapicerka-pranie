@@ -138,7 +138,7 @@ const Home = () => {
         <section className="relative min-h-[480px] md:min-h-[560px] flex items-center overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: 'url(/heroImg-home.png)' }}
+            style={{ backgroundImage: `url(${heroBgAsset.url})` }}
           />
           <div className="absolute inset-0 bg-background/10" />
           <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
