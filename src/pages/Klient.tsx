@@ -273,7 +273,7 @@ const Klient = () => {
         <PranieDlaFirm />
         <Results />
         <OrderForm source="pranie-tapicerki" />
-        <Equipment />
+        
         <NaszeOpinie />
         <Blog />
         <FAQ />
