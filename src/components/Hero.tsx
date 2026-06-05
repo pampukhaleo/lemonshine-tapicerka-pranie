@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle, Sparkles, Clock, Shield, Phone } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { trackPhoneClick } from '@/lib/analytics';
+import heroImg from '@/assets/gleb-hero-pranie.png.asset.json';
 
 const Hero = () => {
   const handleOrderClick = () => {
@@ -59,7 +60,7 @@ const Hero = () => {
           {/* Hero Image */ }
           <div className="block text-center">
             <img
-              src="/heroImg.webp"
+              src={heroImg.url}
               alt="Profesjonalne pranie tapicerki - nowoczesny sprzęt i bezpieczne środki"
               className="mx-auto mb-4 w-full max-w-md lg:max-w-xl object-contain rounded-2xl shadow-lg"
               loading="eager"
