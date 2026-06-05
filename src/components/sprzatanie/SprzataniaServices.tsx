@@ -1,5 +1,9 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import biurImg from '@/assets/sprzatanie-biur.webp.asset.json';
+import remontImg from '@/assets/sprzatanie-po-remoncie.webp.asset.json';
+import generalneImg from '@/assets/sprzatanie-generalne.webp.asset.json';
+import regularnaImg from '@/assets/regularna-opieka.webp.asset.json';
 
 const SprzataniaServices = () => {
   const handleScrollToOrder = () => {
