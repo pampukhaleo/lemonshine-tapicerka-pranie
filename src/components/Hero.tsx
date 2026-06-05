@@ -32,7 +32,7 @@ const Hero = () => {
                 Wrocław
               </h1>
               <p className="text-xl leading-relaxed text-muted-foreground">
-                Usuwamy plamy, roztocze i nieprzyjemny zapach z kanap i wykładzin. Gwarancja widocznego efektu już po pierwszym praniu.
+                Meblowej, samochodowej i wykładzin - profesjonalnie, bez ryzyka uszkodzeń.
               </p>
             </div>
 
