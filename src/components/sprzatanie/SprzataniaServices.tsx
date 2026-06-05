@@ -71,11 +71,11 @@ const SprzataniaServices = () => {
           </div>
 
           {/* Small cards stack */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 h-full">
             {small.map((s, i) => (
               <div
                 key={i}
-                className="bg-lemon-50 rounded-2xl overflow-hidden border border-border flex flex-col sm:flex-row-reverse"
+                className="bg-lemon-50 rounded-2xl overflow-hidden border border-border flex flex-col sm:flex-row-reverse flex-1 min-h-0"
               >
                 <div className="sm:w-2/5 aspect-[4/3] sm:aspect-auto overflow-hidden flex-shrink-0">
                   <img
