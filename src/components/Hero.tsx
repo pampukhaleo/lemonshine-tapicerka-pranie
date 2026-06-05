@@ -42,7 +42,7 @@ const Hero = () => {
                 onClick={ handleOrderClick }
                 className="w-full sm:flex-1 hover-lift h-10 text-sm md:h-11 md:text-base md:px-8"
               >
-                Zamów Pranie Tapicerki
+                Zapytaj o wycenę
               </Button>
 
               <Button
