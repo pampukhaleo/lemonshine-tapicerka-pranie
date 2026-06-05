@@ -16,21 +16,21 @@ const SprzataniaServices = () => {
       title: 'Regularna opieka nad domem',
       description:
         'Więcej czasu, mniej stresu. Dom, do którego chce się wracać - dbamy o to za Ciebie.',
-      img: '/cleaning/sprzatanie_szafek_kuchennych.jpg',
+      img: regularnaImg.url,
       cta: 'Zapytaj o ofertę',
     },
     {
       title: 'Sprzątanie generalne',
       description:
         'Rozkręcamy piekarnik, odsuwamy lodówkę, myjemy to, czego inni nie dotykają.',
-      img: '/cleaning/mycie_piekarnika.jpg',
+      img: generalneImg.url,
       cta: 'Zapytaj o ofertę',
     },
     {
       title: 'Sprzątanie po remoncie',
       description:
         'Pył z betonu, resztki farby, klej, folia - usuwamy wszystko. Oddajemy lokal gotowy do użytku.',
-      img: '/cleaning/mycie_prysznicuwanny.jpg',
+      img: remontImg.url,
       cta: 'Zapytaj o ofertę',
     },
   ];
@@ -47,7 +47,7 @@ const SprzataniaServices = () => {
           <div className="bg-lemon-50 rounded-2xl overflow-hidden border border-border flex flex-col">
             <div className="aspect-[4/3] overflow-hidden">
               <img
-                src="/cleaning/sprzatanie_balkonu.jpg"
+                src={biurImg.url}
                 alt="Sprzątanie biur i lokali we Wrocławiu"
                 className="w-full h-full object-cover"
                 loading="lazy"
