@@ -15,7 +15,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="pt-28 md:pt-36 pb-16 gradient-hero relative overflow-hidden">
+    <section className="pt-28 md:pt-36 pb-16 lg:pb-0 gradient-hero relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-20 pointer-events-none -z-10">
         <div className="absolute top-20 left-10 w-20 h-20 rounded-full bg-lemon-400 animate-float"></div>
