@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import biuroImg from '@/assets/zielone-biuro.webp.asset.json';
 
 const PranieDlaFirm = () => {
   const handleOrderClick = () => {
@@ -30,7 +31,7 @@ const PranieDlaFirm = () => {
           </div>
           <div className="order-1 lg:order-2 rounded-xl overflow-hidden shadow-md">
             <img
-              src="/cleaning/biuro_wykladzina.jpg"
+              src={biuroImg.url}
               alt="Pranie wykładziny w biurze"
               className="w-full h-full object-cover aspect-[4/3]"
               loading="lazy"
