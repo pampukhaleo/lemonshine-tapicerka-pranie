@@ -24,9 +24,9 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-4 lg:gap-0 items-center">
+        <div className="grid lg:grid-cols-2 gap-4 lg:gap-0 items-center lg:min-h-[520px]">
           {/* Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 relative z-10">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-foreground">
                 <span className="text-mint-600">Pranie Tapicerki</span>{ ' ' }
@@ -58,11 +58,11 @@ const Hero = () => {
           </div>
 
           {/* Hero Image */ }
-          <div className="block text-center">
+          <div className="block text-center lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-1/2 lg:flex lg:items-end lg:justify-end lg:pointer-events-none">
             <img
               src={heroImg.url}
               alt="Profesjonalne pranie tapicerki - nowoczesny sprzęt i bezpieczne środki"
-              className="mx-auto lg:mx-0 lg:-ml-12 w-full max-w-md lg:max-w-none object-contain"
+              className="mx-auto w-full max-w-md lg:max-w-none lg:mx-0 lg:h-full lg:w-auto object-contain object-bottom"
               loading="eager"
               fetchPriority="high"
               width="600"
