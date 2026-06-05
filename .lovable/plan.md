@@ -1,39 +1,9 @@
-Переделать компонент `src/components/shared/NaszeOpinie.tsx`, чтобы блок отзывов выглядел как на скриншоте.
+## Problem
+The hero image on `/pranie-tapicerki/` is a transparent WebP, but it's rendered with `rounded-2xl shadow-lg` and a max-width container, which creates a visible card/box around it.
 
-## Что меняется визуально
+## Changes (src/components/Hero.tsx)
+- Remove `rounded-2xl shadow-lg` from the `<img>` className so the transparent background blends with the section gradient.
+- Remove `mb-4` and tighten max-width so the figure feels anchored next to the heading rather than floating in a square.
+- Keep `loading="eager"`, `fetchPriority="high"`, alt text, and dimensions intact.
 
-1. **Шапка "Google Reviews"** — широкая светло-серая карточка `rounded-2xl bg-muted/40`:
-   - Слева: цветной логотип Google (SVG, разноцветные буквы G-o-o-g-l-e) + слово `Reviews`, под ним крупный рейтинг `5.0` + жёлтые звёзды + `(N opinii)` мелким серым.
-   - Справа: синяя pill-кнопка `Review us on Google` → ведёт на `googleMapsUri` (writeAReview если возможно). Цвет фиксированный google-blue.
-
-2. **Карусель карточек отзывов** под шапкой:
-   - 4 карточки в ряд на десктопе, 2 на планшете, 1 на мобиле, горизонтальный скролл/слайдер (используем shadcn `carousel`, уже есть в проекте).
-   - Карточка: белый фон, `rounded-xl`, лёгкая тень/border, padding ~20px.
-   - Верх карточки: круглый аватар с Google-G бейджем в углу (mini Google-G SVG поверх), имя жирным + синяя «verified» галочка, под именем серое `relativePublishTimeDescription`.
-   - Под шапкой карточки: 5 жёлтых звёзд.
-   - Текст отзыва: 3 строки `line-clamp-3`, под ним синяя ссылка `Read more` (раскрывает текст либо ведёт на отзыв в Google).
-   - Стрелки навигации справа/слева (как у shadcn carousel).
-   - Точки-пагинация под каруселью.
-
-3. **Заголовок секции**: `Co mówią nasi klienci` (вместо `Nasze opinie`) — по центру, чёрный, bold. Можно оставить параметром.
-
-4. **Stats-bar снизу** — оставляем как сейчас (1500+/100%/5★), он в фирменном lemon/mint и нормально замыкает блок.
-
-## Технические детали
-
-- Файл: `src/components/shared/NaszeOpinie.tsx` (полная перепись JSX, логика fetch из edge function без изменений).
-- Использовать `@/components/ui/carousel` (Embla) для слайдера отзывов.
-- Логотип Google — инлайн SVG с официальными цветами (#4285F4 / #EA4335 / #FBBC05 / #34A853), без внешних запросов.
-- Google-G бейдж на аватаре — маленький inline SVG, абсолютно позиционированный в правом нижнем углу аватара.
-- "Verified" галочка — `BadgeCheck` из lucide, цвет google-blue (`text-[#1a73e8]`).
-- Кнопка "Review us on Google" — кастомный `bg-[#1a73e8] hover:bg-[#1765cc] text-white rounded-full`. Это исключение из дизайн-системы ради узнаваемости Google-блока (одобрено стилем скриншота).
-- `Read more`: при клике toggle локального state `expanded[i]`, либо линк на конкретный `review.authorAttribution.uri`. Сделаю toggle с line-clamp.
-- Аватары: если у `authorAttribution.photoUri` есть фото — показываем `<img>`, иначе инициал в цветном круге (как сейчас, но добавим Google-G бейдж).
-- Сетка → carousel: до 4 видимых карточек.
-- Stats-bar остаётся.
-
-## Что НЕ меняется
-
-- Edge function `get-google-reviews` — не трогаем.
-- Заголовок страницы, остальные секции `Home.tsx` / `Klient.tsx` — не трогаем.
-- Дизайн-токены и tailwind config — не трогаем (Google-цвета — локальное исключение).
+No other components, routes, or styles are touched.
