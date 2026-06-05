@@ -181,7 +181,6 @@ const Home = () => {
 
         <SprzatanieBiur />
 
-        <TrustIndicators />
 
         <NaszeOpinie />
 
