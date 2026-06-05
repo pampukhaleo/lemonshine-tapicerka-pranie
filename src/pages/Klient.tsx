@@ -278,7 +278,6 @@ const Klient = () => {
         <Blog />
         <FAQ />
       </main>
-      <SeoSection />
       <Footer />
     </div>
   );
