@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { CheckCircle, Sparkles, Clock, Shield, Phone } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { trackPhoneClick } from '@/lib/analytics';
-import heroImg from '@/assets/gleb-hero-pranie.png.asset.json';
+import heroImg from '@/assets/pranie-tapicerki-4.webp.asset.json';
 
 const Hero = () => {
   const handleOrderClick = () => {
