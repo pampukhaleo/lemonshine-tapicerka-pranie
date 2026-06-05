@@ -1,7 +1,9 @@
 ## Goal
-Make the hero image sit visually closer to the heading/text on `/pranie-tapicerki/`, matching the reference (person overlaps the text column edge, no big gap).
+Enlarge hero image and position flush to top-right of section, extending beyond bottom padding — matching reference where person's head touches the top and image is significantly larger.
 
 ## Changes (src/components/Hero.tsx)
-- Reduce the grid gap on the hero row (`gap-12` → `gap-4 lg:gap-0`) so columns sit tight.
-- Make the image bigger and flush-left within its column: drop `mx-auto`, allow `lg:max-w-none w-full`, and add a negative left margin on desktop (`lg:-ml-12`) so the figure overlaps toward the text.
-- Keep transparent background (no shadow/rounded).
+- Section: reduce `pb-16` to `pb-0 lg:pb-0` so the image bottom aligns with section edge.
+- Image column: position absolutely on desktop, anchored top-right of the section. Use `lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-1/2` wrapper.
+- Image: scale up to fill the wrapper height (`lg:h-full lg:w-auto lg:ml-auto`), remove left negative margin.
+- Keep mobile layout intact (image below text, centered).
+- Ensure text column keeps min height (`lg:min-h-[520px]`) so absolute image has room.
