@@ -24,7 +24,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-4 lg:gap-0 items-center">
           {/* Content */}
           <div className="space-y-8">
             <div className="space-y-4">
@@ -62,7 +62,7 @@ const Hero = () => {
             <img
               src={heroImg.url}
               alt="Profesjonalne pranie tapicerki - nowoczesny sprzęt i bezpieczne środki"
-              className="mx-auto w-full max-w-md lg:max-w-xl object-contain"
+              className="mx-auto lg:mx-0 lg:-ml-12 w-full max-w-md lg:max-w-none object-contain"
               loading="eager"
               fetchPriority="high"
               width="600"
