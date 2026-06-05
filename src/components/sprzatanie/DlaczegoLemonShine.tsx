@@ -1,4 +1,5 @@
 import React from 'react';
+import glebImg from '@/assets/gleb-like-banner.webp.asset.json';
 
 const DlaczegoLemonShine = () => {
   return (
@@ -21,7 +22,7 @@ const DlaczegoLemonShine = () => {
           </div>
           <div className="rounded-2xl overflow-hidden bg-muted">
             <img
-              src="/IMG_6660.JPG"
+              src={glebImg.url}
               alt="Pracownik LemonShine"
               className="w-full h-full object-cover"
               loading="lazy"
