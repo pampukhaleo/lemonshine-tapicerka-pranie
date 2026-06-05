@@ -19,6 +19,7 @@ import DlaczegoLemonShine from '@/components/sprzatanie/DlaczegoLemonShine';
 import JakPracujemy from '@/components/sprzatanie/JakPracujemy';
 import SprzatanieBiur from '@/components/sprzatanie/SprzatanieBiur';
 import NaszeOpinie from '@/components/shared/NaszeOpinie';
+import heroBgAsset from '@/assets/banner-sprzatanie.webp.asset.json';
 import { trackPhoneClick } from '@/lib/analytics';
 
 const Home = () => {
@@ -137,7 +138,7 @@ const Home = () => {
         <section className="relative min-h-[480px] md:min-h-[560px] flex items-center overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: 'url(/heroImg-home.png)' }}
+            style={{ backgroundImage: `url(${heroBgAsset.url})` }}
           />
           <div className="absolute inset-0 bg-background/10" />
           <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
