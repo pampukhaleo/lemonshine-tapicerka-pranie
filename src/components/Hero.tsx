@@ -62,7 +62,7 @@ const Hero = () => {
             <img
               src={heroImg.url}
               alt="Profesjonalne pranie tapicerki - nowoczesny sprzęt i bezpieczne środki"
-              className="mx-auto w-full max-w-md lg:max-w-xl object-contain"
+              className="mx-auto lg:mx-0 lg:-ml-12 w-full max-w-md lg:max-w-none object-contain"
               loading="eager"
               fetchPriority="high"
               width="600"
