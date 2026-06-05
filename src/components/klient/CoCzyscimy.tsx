@@ -1,25 +1,28 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import wykladzinyImg from '@/assets/wykladziny-dywany.webp.asset.json';
+import tapicerkaImg from '@/assets/tapicerka-meblowa.webp.asset.json';
+import samochodowaImg from '@/assets/samochodowa.webp.asset.json';
 
 const items = [
   {
     title: 'Wykładziny i dywany',
     description:
       'Od małych dywanów po duże wykładziny biurowe i hotelowe. Świeżość w całym pomieszczeniu.',
-    image: '/furniture/wykladzina.jpg',
+    image: wykladzinyImg.url,
   },
   {
     title: 'Tapicerka meblowa',
     description:
       'Kanapy, fotele, krzesła, materace. Usuwamy plamy, zapachy i alergeny używając bezpiecznej chemii.',
-    image: '/furniture/22.jpg',
+    image: tapicerkaImg.url,
   },
   {
     title: 'Samochodowa',
     description:
       'Fotele, podsufitka, dywaniki, bagażnik. Przywracamy wnętrzu świeżość.',
-    image: '/furniture/samochodowa.jpg',
+    image: samochodowaImg.url,
   },
 ];
 
