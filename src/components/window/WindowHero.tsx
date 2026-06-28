@@ -61,8 +61,8 @@ const WindowHero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
-          <div className="space-y-8">
-            <div className="space-y-4">
+          <div className="space-y-2">
+            <div className="space-y-3">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-foreground">
                 Mycie okien
               </h1>
@@ -71,7 +71,7 @@ const WindowHero = () => {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-8">
               <Button
                 onClick={handleOrderClick}
                 size="lg"
