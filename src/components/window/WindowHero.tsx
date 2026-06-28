@@ -92,14 +92,7 @@ const WindowHero = () => {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center justify-center">
-            <img
-              src="/heroImg-window.png"
-              alt="Profesjonalne mycie okien - czyste okna w kuchni"
-              className="w-full max-w-md rounded-2xl object-cover shadow-lg"
-              loading="eager"
-            />
-          </div>
+          <div className="hidden lg:block" />
         </div>
       </div>
     </section>
