@@ -16,7 +16,7 @@ interface OrderFormProps {
   className?: string;
 }
 
-const OrderForm = ({ source = 'website' }: OrderFormProps) => {
+const OrderForm = ({ source = 'website', className }: OrderFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
