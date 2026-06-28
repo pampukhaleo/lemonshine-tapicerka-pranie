@@ -9,12 +9,14 @@ import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
 import { trackFormSubmission, trackConversion, trackPhoneClick } from '@/lib/analytics';
+import { cn } from '@/lib/utils';
 
 interface OrderFormProps {
   source?: string;
+  className?: string;
 }
 
-const OrderForm = ({ source = 'website' }: OrderFormProps) => {
+const OrderForm = ({ source = 'website', className }: OrderFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -122,7 +124,7 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
   };
 
   return (
-    <section id="zamow" className="py-16 gradient-hero scroll-mt-28">
+    <section id="zamow" className={cn("py-16 scroll-mt-28", className || "gradient-hero")}>
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center space-y-4 mb-12">

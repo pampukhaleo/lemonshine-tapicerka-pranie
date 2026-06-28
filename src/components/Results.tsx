@@ -4,8 +4,13 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import ReactBeforeSliderComponent from 'react-before-after-slider-component';
 import 'react-before-after-slider-component/dist/build.css';
+import { cn } from '@/lib/utils';
 
-const Results = () => {
+interface ResultsProps {
+  className?: string;
+}
+
+const Results = ({ className }: ResultsProps) => {
   const handleOrderClick = () => {
     const orderSection = document.getElementById('zamow');
     if (orderSection) {
@@ -26,7 +31,7 @@ const Results = () => {
 
 
   return (
-    <section id="realizacje" className="py-16 bg-background scroll-mt-28">
+    <section id="realizacje" className={cn("py-16 scroll-mt-28", className || "bg-background")}>
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
