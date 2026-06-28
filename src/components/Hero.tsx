@@ -62,7 +62,7 @@ const Hero = () => {
         <div className="max-w-2xl space-y-8">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-foreground">
-              <span className="text-mint-600">Pranie Tapicerki</span>
+              <span className="text-foreground">Pranie Tapicerki</span>
             </h1>
             <p className="text-xl leading-relaxed text-muted-foreground">
               Meblowej, samochodowej i wykładzin - profesjonalnie, bez ryzyka uszkodzeń.

@@ -121,7 +121,7 @@ const Biznes = () => {
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
                 Profesjonalne czyszczenie
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-mint-500 to-mint-700">
+                <span className="block text-foreground">
                   dla Twojej firmy
                 </span>
               </h1>
