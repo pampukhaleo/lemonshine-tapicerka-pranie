@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Star, BadgeCheck } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
+import { cn } from '@/lib/utils';
 import {
   Carousel,
   CarouselContent,
@@ -138,9 +139,10 @@ const ReviewCard = ({ r }: { r: Review }) => {
 
 interface Props {
   title?: string;
+  className?: string;
 }
 
-const NaszeOpinie = ({ title = 'Co mówią nasi klienci' }: Props) => {
+const NaszeOpinie = ({ title = 'Co mówią nasi klienci', className }: Props) => {
   const [data, setData] = useState<ReviewsData | null>(null);
 
   useEffect(() => {
@@ -160,7 +162,7 @@ const NaszeOpinie = ({ title = 'Co mówią nasi klienci' }: Props) => {
   const reviews = data?.reviews ?? [];
 
   return (
-    <section className="py-16 bg-background">
+    <section className={cn("py-16", className || "bg-background")}>
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-center text-foreground mb-10">
           {title}
