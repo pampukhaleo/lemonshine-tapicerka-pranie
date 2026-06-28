@@ -1,24 +1,19 @@
 import React from 'react';
-import { MessageCircle, Calculator, Truck, Sparkles } from 'lucide-react';
 
 const steps = [
   {
-    icon: MessageCircle,
     title: 'Kontakt',
     description: 'Piszesz lub dzwonisz, ustalamy szczegóły.',
   },
   {
-    icon: Calculator,
     title: 'Wycena',
     description: 'Telefonicznie lub na miejscu przy większych obiektach.',
   },
   {
-    icon: Truck,
     title: 'Przyjeżdżamy',
     description: 'Punktualnie, z własnym sprzętem i chemią.',
   },
   {
-    icon: Sparkles,
     title: 'Sprzątamy',
     description: 'Dokładnie, według ustalonego protokołu.',
   },
@@ -42,25 +37,19 @@ const JakPracujemy = () => {
           />
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4 relative">
-            {steps.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <div key={i} className="flex flex-col items-center text-center">
-                  <div className="relative w-12 h-12 rounded-full bg-lemon-400 border-4 border-mint-50 text-foreground font-heading font-bold flex items-center justify-center shadow-md z-10">
-                    {i + 1}
-                  </div>
-                  <div className="w-10 h-10 rounded-xl bg-mint-100 flex items-center justify-center mt-3 mb-2">
-                    <Icon className="w-5 h-5 text-mint-700" />
-                  </div>
-                  <h3 className="font-heading font-bold text-foreground mb-1">
-                    {s.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-snug">
-                    {s.description}
-                  </p>
+            {steps.map((s, i) => (
+              <div key={i} className="flex flex-col items-center text-center">
+                <div className="relative w-12 h-12 rounded-full bg-lemon-400 border-4 border-mint-50 text-foreground font-heading font-bold flex items-center justify-center shadow-md z-10">
+                  {i + 1}
                 </div>
-              );
-            })}
+                <h3 className="font-heading font-bold text-foreground mt-3 mb-1">
+                  {s.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-snug">
+                  {s.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
