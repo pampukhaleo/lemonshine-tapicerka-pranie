@@ -60,7 +60,7 @@ const WindowHero = () => {
       </svg>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-3xl">
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-foreground">
@@ -88,11 +88,8 @@ const WindowHero = () => {
               >
                 <a href="tel:+48662117886" onClick={() => trackPhoneClick('window_hero')}>Zadzwoń teraz</a>
               </Button>
-
             </div>
           </div>
-
-          <div className="hidden lg:block" />
         </div>
       </div>
     </section>
