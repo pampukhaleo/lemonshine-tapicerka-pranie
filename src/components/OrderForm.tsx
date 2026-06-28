@@ -127,7 +127,7 @@ const OrderForm = ({ source = 'website' }: OrderFormProps) => {
         <div className="max-w-2xl mx-auto">
           <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-              Zamów Sprzątanie
+              Zamów pranie
             </h2>
             <p className="text-lg text-muted-foreground">
               Wypełnij formularz, a wkrótce się z Tobą skontaktujemy
