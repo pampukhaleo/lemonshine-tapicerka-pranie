@@ -220,7 +220,7 @@ const NaszeOpinie = ({ title = 'Co mówią nasi klienci', className }: Props) =>
         )}
 
         {/* Stats bar */}
-        <div className="max-w-5xl mx-auto bg-gradient-to-r from-lemon-100 to-mint-100 rounded-3xl p-8">
+        <div className="max-w-6xl mx-auto bg-lemon-50 rounded-2xl p-8">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {stats.map((s, i) => (
               <div key={i}>
