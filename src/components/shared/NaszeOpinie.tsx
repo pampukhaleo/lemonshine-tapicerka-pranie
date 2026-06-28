@@ -105,7 +105,7 @@ const ReviewCard = ({ r }: { r: Review }) => {
   const isLong = text.length > 140;
 
   return (
-    <div className="bg-card border border-border rounded-xl p-5 h-full flex flex-col shadow-sm">
+    <div className="bg-lemon-50 border border-border rounded-xl p-5 h-full flex flex-col shadow-sm">
       <div className="flex items-center gap-3 mb-3">
         <Avatar name={r.authorAttribution?.displayName ?? '?'} photoUri={r.authorAttribution?.photoUri} />
         <div className="min-w-0 flex-1">
@@ -169,7 +169,7 @@ const NaszeOpinie = ({ title = 'Co mówią nasi klienci', className }: Props) =>
         </h2>
 
         {/* Google summary bar */}
-        <div className="max-w-6xl mx-auto bg-muted/50 rounded-2xl px-6 py-5 md:px-8 md:py-6 mb-6 flex flex-col md:flex-row items-center gap-4 md:gap-6">
+        <div className="max-w-6xl mx-auto bg-lemon-50 rounded-2xl px-6 py-5 md:px-8 md:py-6 mb-6 flex flex-col md:flex-row items-center gap-4 md:gap-6">
           <div className="flex-1 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2">
               <GoogleLogo className="text-2xl md:text-3xl" />

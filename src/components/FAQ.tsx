@@ -57,7 +57,7 @@ const FAQ = ({ className }: FAQProps) => {
             </p>
           </div>
 
-          <div className="bg-white rounded-3xl shadow-xl p-8">
+          <div className="bg-lemon-50 rounded-3xl shadow-xl p-8">
             <Accordion type="single" collapsible className="space-y-4">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`} className="border border-lemon-200 rounded-lg px-6">

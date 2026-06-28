@@ -8,7 +8,7 @@ const PranieDlaFirm = () => {
   };
 
   return (
-    <section className="py-16 bg-lemon-50">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-center bg-lemon-50 border border-border rounded-2xl p-6 md:p-10">
           <div className="space-y-6 order-2 lg:order-1">

@@ -271,12 +271,12 @@ const Klient = () => {
         <About />
         <CoCzyscimy />
         <PranieDlaFirm />
-        <Results className="bg-lemon-50" />
-        <OrderForm source="pranie-tapicerki" className="bg-lemon-50" />
+        <Results />
+        <OrderForm source="pranie-tapicerki" />
         
-        <NaszeOpinie className="bg-lemon-50" />
+        <NaszeOpinie />
         <Blog />
-        <FAQ className="bg-lemon-50" />
+        <FAQ />
       </main>
       <Footer />
     </div>
