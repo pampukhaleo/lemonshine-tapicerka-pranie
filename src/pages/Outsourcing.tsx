@@ -153,7 +153,7 @@ const Outsourcing = () => {
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6">
                 Outsourcing usług
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-lemon-500 to-mint-500">
+                <span className="block text-foreground">
                   czyszczenia tapicerki
                 </span>
               </h1>
