@@ -1,11 +1,13 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { CalendarDays, FileText, Lock } from 'lucide-react';
+import stalyGrafik from '@/assets/staly-grafik.webp.asset.json';
+import fakturaVat from '@/assets/faktura-vat.webp.asset.json';
+import umowaPoufnosc from '@/assets/umowa-poufnosc.webp.asset.json';
 
 const badges = [
-  { icon: CalendarDays, label: 'Stały grafik' },
-  { icon: FileText, label: 'Faktura VAT' },
-  { icon: Lock, label: 'Umowa i poufność' },
+  { icon: stalyGrafik.url, label: 'Stały grafik' },
+  { icon: fakturaVat.url, label: 'Faktura VAT' },
+  { icon: umowaPoufnosc.url, label: 'Umowa i poufność' },
 ];
 
 const SprzatanieBiur = () => {
@@ -28,18 +30,15 @@ const SprzatanieBiur = () => {
           </p>
 
           <div className="flex flex-wrap justify-center gap-3 mb-6">
-            {badges.map((b, i) => {
-              const Icon = b.icon;
-              return (
-                <div
-                  key={i}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-mint-600 text-mint-700 bg-card"
-                >
-                  <Icon className="w-4 h-4" />
-                  <span className="text-sm font-medium">{b.label}</span>
-                </div>
-              );
-            })}
+            {badges.map((b, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-mint-600 text-mint-700 bg-card"
+              >
+                <img src={b.icon} alt={b.label} className="w-6 h-6" loading="lazy" />
+                <span className="text-sm font-medium">{b.label}</span>
+              </div>
+            ))}
           </div>
 
           <Button
