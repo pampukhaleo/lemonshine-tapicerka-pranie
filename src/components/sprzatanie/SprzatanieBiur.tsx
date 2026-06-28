@@ -29,14 +29,11 @@ const SprzatanieBiur = () => {
             dwutygodniowy, miesięczny lub inny, dostosowany pod Twoje potrzeby.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-3 mb-6">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12 mb-8">
             {badges.map((b, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-mint-600 text-mint-700 bg-card"
-              >
-                <img src={b.icon} alt={b.label} className="w-6 h-6" loading="lazy" />
-                <span className="text-sm font-medium">{b.label}</span>
+              <div key={i} className="flex flex-col items-center gap-2">
+                <img src={b.icon} alt={b.label} className="w-16 h-16" loading="lazy" />
+                <span className="text-sm font-medium text-foreground">{b.label}</span>
               </div>
             ))}
           </div>
