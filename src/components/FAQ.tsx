@@ -3,8 +3,13 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Button } from '@/components/ui/button';
 import { MessageCircle } from 'lucide-react';
 import { trackPhoneClick } from '@/lib/analytics';
+import { cn } from '@/lib/utils';
 
-const FAQ = () => {
+interface FAQProps {
+  className?: string;
+}
+
+const FAQ = ({ className }: FAQProps) => {
   const handleOrderClick = () => {
     const orderSection = document.getElementById('zamow');
     if (orderSection) {
@@ -40,7 +45,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className={cn("py-20", className || "bg-background")}>
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center space-y-4 mb-12">
