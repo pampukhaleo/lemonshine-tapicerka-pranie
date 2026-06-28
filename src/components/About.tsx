@@ -36,7 +36,7 @@ const About = () => {
   ];
 
   return (
-    <section id="onas" className="py-16 bg-lemon-50 scroll-mt-28">
+    <section id="onas" className="py-16 bg-background scroll-mt-28">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
@@ -47,7 +47,7 @@ const About = () => {
         {/* Mobile: list layout; Desktop: grid cards */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 items-stretch">
           {problems.map((problem, index) => (
-            <Card key={index} className="h-full border-0 shadow-lg hover-lift bg-white/80 backdrop-blur-sm">
+            <Card key={index} className="h-full border-0 shadow-lg hover-lift bg-lemon-50/80 backdrop-blur-sm">
               <CardContent className="h-full p-6">
                 <div className="flex h-full flex-col items-center text-center">
                   <div className="w-16 h-16 mb-2 rounded-full bg-mint-100 flex items-center justify-center shrink-0">
@@ -66,7 +66,7 @@ const About = () => {
           ))}
         </div>
 
-        <div className="md:hidden bg-card rounded-2xl shadow-lg overflow-hidden">
+        <div className="md:hidden bg-lemon-50 rounded-2xl shadow-lg overflow-hidden">
           {problems.map((problem, index) => (
             <div key={index} className={`flex items-start gap-4 p-4 ${index < problems.length - 1 ? 'border-b border-border' : ''}`}>
               <div className="w-12 h-12 rounded-full bg-mint-100 flex items-center justify-center shrink-0">
@@ -81,7 +81,7 @@ const About = () => {
         </div>
 
         {/* Nasze rozwiązanie */}
-        <div className="mt-16 bg-card rounded-3xl p-8 md:p-12 shadow-xl">
+        <div className="mt-16 bg-lemon-50 rounded-3xl p-8 md:p-12 shadow-xl">
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             <div className="space-y-6">
               <h3 className="text-2xl md:text-3xl font-heading font-bold text-foreground">

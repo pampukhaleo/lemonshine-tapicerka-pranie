@@ -42,7 +42,7 @@ const Results = ({ className }: ResultsProps) => {
         {/* Before/After Gallery */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           { results.map((r) => (
-            <Card key={ r.id } className="border-0 shadow-lg hover-lift overflow-hidden bg-white p-0">
+            <Card key={ r.id } className="border-0 shadow-lg hover-lift overflow-hidden bg-lemon-50 p-0">
               <ReactBeforeSliderComponent
                 firstImage={ { imageUrl: r.before, alt: 'Przed czyszczeniem' } }
                 secondImage={ { imageUrl: r.after, alt: 'Po czyszczeniu' } }

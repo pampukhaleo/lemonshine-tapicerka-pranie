@@ -8,7 +8,7 @@ import { blogPosts } from '@/data/blog';
 
 const Blog = () => {
   return (
-    <section id="blog" className="py-16 bg-lemon-50">
+    <section id="blog" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
@@ -23,7 +23,7 @@ const Blog = () => {
           { blogPosts.map((article) => (
             <Card
               key={ article.id }
-              className="border-0 shadow-lg hover-lift bg-white overflow-hidden h-full flex flex-col"
+              className="border-0 shadow-lg hover-lift bg-lemon-50 overflow-hidden h-full flex flex-col"
             >
               <img src={ article.mainPicture } alt={ article.title } loading="lazy" decoding="async" />
 
