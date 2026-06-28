@@ -13,7 +13,7 @@ const WindowHero = () => {
 
   return (
     <section
-      className="pt-28 md:pt-36 pb-16 relative overflow-hidden"
+      className="pt-20 md:pt-28 pb-28 md:pb-36 relative overflow-hidden"
       style={{
         background: 'linear-gradient(100deg, #f9f5a8 0%, #d4f5d4 45%, #e0f7ff 100%)',
       }}
@@ -61,8 +61,8 @@ const WindowHero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
-          <div className="space-y-8">
-            <div className="space-y-4">
+          <div className="space-y-2">
+            <div className="space-y-3">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-foreground">
                 Mycie okien
               </h1>
@@ -71,7 +71,7 @@ const WindowHero = () => {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-8">
               <Button
                 onClick={handleOrderClick}
                 size="lg"
