@@ -38,7 +38,7 @@ const WindowHero = () => {
                 size="lg"
                 className="w-full sm:flex-1 hover-lift"
               >
-                Zamów Mycie Okien
+                Zapytaj o wycenę
               </Button>
 
               <Button
@@ -47,7 +47,7 @@ const WindowHero = () => {
                 className="w-full sm:flex-1 border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift"
                 asChild
               >
-                <Link to="/cennik/?tab=windows">Zobacz zakres usług</Link>
+                <a href="tel:+48662117886" onClick={() => trackPhoneClick('window_hero')}>Zadzwoń teraz</a>
               </Button>
 
             </div>
