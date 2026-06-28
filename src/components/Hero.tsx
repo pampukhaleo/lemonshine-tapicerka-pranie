@@ -12,7 +12,7 @@ const Hero = () => {
 
   return (
     <section
-      className="pt-32 md:pt-40 pb-28 md:pb-36 relative overflow-hidden"
+      className="pt-44 md:pt-56 pb-28 md:pb-36 relative overflow-hidden"
       style={{
         background: 'linear-gradient(100deg, #f9f5a8 0%, #d4f5d4 45%, #e0f7ff 100%)',
       }}
