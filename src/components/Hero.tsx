@@ -57,12 +57,12 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Hero Image */ }
-          <div className="block text-center lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-1/2 lg:flex lg:items-end lg:justify-end lg:pointer-events-none">
+          {/* Hero Image */}
+          <div className="hidden lg:flex lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[58%] lg:items-end lg:justify-end lg:pointer-events-none">
             <img
               src={heroImg.url}
               alt="Profesjonalne pranie tapicerki - nowoczesny sprzęt i bezpieczne środki"
-              className="mx-auto w-full max-w-md lg:max-w-none lg:mx-0 lg:h-full lg:w-auto object-contain object-bottom"
+              className="mx-auto w-full max-w-md lg:max-w-none lg:mx-0 lg:h-full lg:w-full object-cover object-bottom"
               loading="eager"
               fetchPriority="high"
               width="600"
