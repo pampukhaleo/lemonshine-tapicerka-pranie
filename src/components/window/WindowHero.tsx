@@ -25,11 +25,10 @@ const WindowHero = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-foreground">
-                Profesjonalne{' '}
-                <span className="text-foreground">mycie okien</span>
+                Mycie okien
               </h1>
               <p className="text-xl leading-relaxed text-muted-foreground">
-                Dokładnie myjemy okna w mieszkaniach, domach i obiektach firmowych.
+                Dokładnie myjemy okna w mieszkaniach, domach i obiektach firmowych
               </p>
             </div>
 
@@ -39,7 +38,7 @@ const WindowHero = () => {
                 size="lg"
                 className="w-full sm:flex-1 hover-lift"
               >
-                Zamów Mycie Okien
+                Zapytaj o wycenę
               </Button>
 
               <Button
@@ -48,7 +47,7 @@ const WindowHero = () => {
                 className="w-full sm:flex-1 border-mint-600 text-mint-600 hover:bg-mint-50 hover-lift"
                 asChild
               >
-                <Link to="/cennik/?tab=windows">Zobacz zakres usług</Link>
+                <a href="tel:+48662117886" onClick={() => trackPhoneClick('window_hero')}>Zadzwoń teraz</a>
               </Button>
 
             </div>
