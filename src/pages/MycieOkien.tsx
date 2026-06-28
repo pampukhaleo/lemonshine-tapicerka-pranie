@@ -118,12 +118,13 @@ const MycieOkien = () => {
       <Header />
       <main>
         <WindowHero />
-        <TrustIndicators />
-        <WindowPricing />
-        <Promotions />
+        <CoMyjemy />
+        <JakMyjemy />
+        <MycieDlaFirm />
+        <DlaczegoMycie />
+        <NaszeOpinie />
         <OrderForm source="mycie-okien" />
-        <Testimonials />
-        <StatsBar />
+        <KontaktyInfo />
         <WindowFAQ />
       </main>
       <Footer />
