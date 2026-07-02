@@ -11,17 +11,18 @@ const steps = [
       'Używamy systemu filtracji wody. Czysta woda nie zostawia kamienia, osadu ani smug. Bez chemii, bezpiecznie dla roślin i elewacji.',
   },
   {
-    image: tradycyjne.url,
+    image: zasieg.url,
     title: 'Tradycyjne mycie wewnątrz',
     description:
       'Szyby od wewnątrz myjemy klasyczną metodą — profesjonalny efekt bez smug na każdej powierzchni.',
   },
   {
-    image: zasieg.url,
+    image: tradycyjne.url,
     title: 'Zasięg do 11,5 metra',
     description:
       'Teleskopowy drążek sięga do 4 piętra. Pracujemy bezpiecznie z ziemi — szybciej, taniej i bez ryzyka wypadku.',
   },
+
 ];
 
 const JakMyjemy = () => {
