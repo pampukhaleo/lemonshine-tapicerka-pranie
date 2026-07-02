@@ -14,10 +14,12 @@ const Hero = () => {
   return (
     <section
       className="pt-44 md:pt-56 pb-28 md:pb-36 relative overflow-hidden"
-      style={{
-        background: 'linear-gradient(100deg, #f9f5a8 0%, #d4f5d4 45%, #e0f7ff 100%)',
-      }}
     >
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroBgAsset.url})` }}
+      />
+      <div className="absolute inset-0 bg-background/10" />
       {/* Decorative cloud */}
       <svg
         className="absolute top-8 md:top-12 right-8 md:right-20 w-20 h-12 md:w-28 md:h-16 opacity-90 pointer-events-none"
