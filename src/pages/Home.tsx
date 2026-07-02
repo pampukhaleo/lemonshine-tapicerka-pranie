@@ -186,8 +186,6 @@ const Home = () => {
         <NaszeOpinie />
 
         <OrderForm source="sprzątanie" />
-
-        <FAQ />
       </main>
 
       <Footer />
