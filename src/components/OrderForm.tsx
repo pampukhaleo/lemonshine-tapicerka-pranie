@@ -219,7 +219,7 @@ const OrderForm = ({ source = 'website', className }: OrderFormProps) => {
                   <Button
                     type="submit"
                     size="lg"
-                    className="hover:opacity-90 hover-lift px-12 w-full sm:w-auto"
+                    className="bg-lemon-400 hover:bg-lemon-500 text-foreground font-bold hover-lift px-12 w-full sm:w-auto"
                     disabled={isSubmitting}
                   >
                     <Phone className="w-5 h-5 mr-2" />
