@@ -13,7 +13,7 @@ const WindowHero = () => {
 
   return (
     <section
-      className="pt-16 md:pt-24 pb-16 md:pb-24 relative overflow-hidden"
+      className="py-20 md:py-28 min-h-[520px] md:min-h-[620px] flex items-center relative overflow-hidden"
       style={{
         background: 'linear-gradient(100deg, #f9f5a8 0%, #d4f5d4 45%, #e0f7ff 100%)',
       }}
