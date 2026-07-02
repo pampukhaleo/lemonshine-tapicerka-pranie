@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { trackPhoneClick } from '@/lib/analytics';
+import heroBgAsset from '@/assets/banner-sprzatanie.webp.asset.json';
 
 const Hero = () => {
   const handleOrderClick = () => {
