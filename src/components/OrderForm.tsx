@@ -124,7 +124,7 @@ const OrderForm = ({ source = 'website', className }: OrderFormProps) => {
   };
 
   return (
-    <section id="zamow" className={cn("py-16 scroll-mt-28", className || "bg-background")}>
+    <section id="zamow" className={cn("py-16 scroll-mt-28", className || "bg-gradient-to-br from-mint-50 via-lemon-50 to-mint-100")}>
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center space-y-4 mb-12">
@@ -136,7 +136,7 @@ const OrderForm = ({ source = 'website', className }: OrderFormProps) => {
             </p>
           </div>
 
-          <Card className="shadow-2xl border-0 bg-lemon-50/95 backdrop-blur-sm">
+          <Card className="shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="text-2xl font-heading text-center text-foreground">
                 Dane kontaktowe
