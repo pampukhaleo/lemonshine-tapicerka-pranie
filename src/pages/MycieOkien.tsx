@@ -7,7 +7,6 @@ import MycieDlaFirm from '@/components/window/MycieDlaFirm';
 import DlaczegoMycie from '@/components/window/DlaczegoMycie';
 import NaszeOpinie from '@/components/shared/NaszeOpinie';
 import OrderForm from '@/components/OrderForm';
-import KontaktyInfo from '@/components/window/KontaktyInfo';
 import WindowFAQ from '@/components/window/WindowFAQ';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
@@ -124,7 +123,6 @@ const MycieOkien = () => {
         <DlaczegoMycie />
         <NaszeOpinie />
         <OrderForm source="mycie-okien" />
-        <KontaktyInfo />
         <WindowFAQ />
       </main>
       <Footer />
