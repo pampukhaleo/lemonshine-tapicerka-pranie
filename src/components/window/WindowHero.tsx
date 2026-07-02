@@ -13,14 +13,14 @@ const WindowHero = () => {
 
   return (
     <section
-      className="pt-20 md:pt-28 pb-28 md:pb-36 relative overflow-hidden"
+      className="pt-16 md:pt-24 pb-16 md:pb-24 relative overflow-hidden"
       style={{
         background: 'linear-gradient(100deg, #f9f5a8 0%, #d4f5d4 45%, #e0f7ff 100%)',
       }}
     >
       {/* Decorative cloud */}
       <svg
-        className="absolute top-8 md:top-12 right-8 md:right-20 w-20 h-12 md:w-28 md:h-16 opacity-90 pointer-events-none"
+        className="absolute top-6 md:top-10 right-8 md:right-20 w-20 h-12 md:w-28 md:h-16 opacity-90 pointer-events-none"
         viewBox="0 0 120 70"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -61,17 +61,17 @@ const WindowHero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
-          <div className="space-y-2">
-            <div className="space-y-3">
+          <div className="space-y-4">
+            <div className="space-y-2">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight text-foreground">
                 Mycie okien
               </h1>
-              <p className="text-xl leading-relaxed text-muted-foreground">
+              <p className="text-lg md:text-xl leading-relaxed text-muted-foreground">
                 Dokładnie myjemy okna w mieszkaniach, domach i obiektach firmowych
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-8">
+            <div className="flex flex-col sm:flex-row gap-4 pt-6">
               <Button
                 onClick={handleOrderClick}
                 size="lg"
