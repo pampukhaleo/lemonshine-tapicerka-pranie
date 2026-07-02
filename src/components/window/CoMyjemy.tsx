@@ -1,25 +1,28 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import okienZewnetrznych from '@/assets/mycie-okien-zewnetrznych.webp.asset.json';
+import witrynSklepowych from '@/assets/mycie-witryn-sklepowych.webp.asset.json';
+import paneliFoto from '@/assets/mycie-paneli-fotowoltaicznych.webp.asset.json';
 
 const items = [
   {
     title: 'Mycie okien zewnętrznych',
     description:
       'Mieszkania, domy i biurowce do 4 piętra. Myjemy metodą WFP (woda demineralizowana — bez detergentów). Idealne dla okien bez smug, bez zacieków, bez ryzyka.',
-    image: '/window/window-1.jpg',
+    image: okienZewnetrznych.url,
   },
   {
     title: 'Mycie witryn sklepowych',
     description:
       'Stały grafik — codziennie, co tydzień lub miesięcznie. Czysta witryna to pierwsze wrażenie Twojego sklepu.',
-    image: '/window/window-2.jpg',
+    image: witrynSklepowych.url,
   },
   {
     title: 'Mycie paneli fotowoltaicznych',
     description:
       'Brudne panele tracą nawet 30% wydajności. Myjemy wodą demineralizowaną — panele wracają do pełnej mocy.',
-    image: '/window/window-3.jpg',
+    image: paneliFoto.url,
   },
 ];
 
