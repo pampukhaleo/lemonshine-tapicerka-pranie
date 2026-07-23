@@ -14,10 +14,11 @@ const WindowHero = () => {
   return (
     <section className="py-20 md:py-28 min-h-[520px] md:min-h-[620px] flex items-center relative overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-right"
         style={{ backgroundImage: `url(${heroBgAsset.url})` }}
       />
-      <div className="absolute inset-0 bg-background/10" />
+      <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-lemon-200 via-mint-200/80 to-transparent" />
+
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
