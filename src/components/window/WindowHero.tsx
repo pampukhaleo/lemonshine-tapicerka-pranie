@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { trackPhoneClick } from '@/lib/analytics';
-import heroBgAsset from '@/assets/banner-sprzatanie.webp.asset.json';
+import heroBgAsset from '@/assets/mycie-okien-hero.jpg.asset.json';
 
 const WindowHero = () => {
   const handleOrderClick = () => {

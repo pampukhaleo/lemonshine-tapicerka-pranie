@@ -1,5 +1,5 @@
 import React from 'react';
-import glebImg from '@/assets/gleb-like-banner.webp.asset.json';
+import glebImg from '@/assets/dlaczego-sprzatanie.jpg.asset.json';
 
 const DlaczegoLemonShine = () => {
   return (

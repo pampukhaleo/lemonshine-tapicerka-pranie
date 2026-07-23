@@ -1,18 +1,29 @@
 import React from 'react';
+import dlaczegoImg from '@/assets/dlaczego-mycie-okien.jpg.asset.json';
 
 const DlaczegoMycie = () => {
   return (
     <section className="py-16 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-            Dlaczego LemonShine?
-          </h2>
-          <p className="text-muted-foreground leading-relaxed">
-            Dokładność to nasz standard. Woda demineralizowana, czyste narzędzia, każdy
-            centymetr szyby — ramy, uszczelki, parapet. Pracujemy tak przy każdym wyjeździe,
-            bo stawiamy na stałą współpracę, nie jednorazowe zlecenia.
-          </p>
+        <div className="grid md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
+              Dlaczego LemonShine?
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Dokładność to nasz standard. Woda demineralizowana, czyste narzędzia, każdy
+              centymetr szyby — ramy, uszczelki, parapet. Pracujemy tak przy każdym wyjeździe,
+              bo stawiamy na stałą współpracę, nie jednorazowe zlecenia.
+            </p>
+          </div>
+          <div className="rounded-2xl overflow-hidden bg-muted">
+            <img
+              src={dlaczegoImg.url}
+              alt="Pracownik LemonShine myjący okno"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
       </div>
 
