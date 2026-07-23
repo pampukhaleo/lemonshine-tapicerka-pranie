@@ -13,13 +13,14 @@ const Hero = () => {
 
   return (
     <section
-      className="pt-44 md:pt-56 pb-28 md:pb-36 relative overflow-hidden"
+      className="pt-44 md:pt-56 pb-28 md:pb-36 relative overflow-hidden bg-gradient-to-r from-lemon-200 via-mint-200 to-mint-100"
     >
       <div
-        className="absolute inset-0 bg-cover bg-right"
+        className="hidden md:block absolute right-0 top-0 h-full w-[55%] bg-cover bg-center"
         style={{ backgroundImage: `url(${heroBgAsset.url})` }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-lemon-200 via-mint-200/80 to-transparent" />
+      <div className="hidden md:block absolute top-0 h-full w-[25%] left-[45%] bg-gradient-to-r from-lemon-200 via-lemon-200/70 to-transparent pointer-events-none" />
+
 
 
 
