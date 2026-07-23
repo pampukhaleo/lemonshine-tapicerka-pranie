@@ -16,10 +16,11 @@ const Hero = () => {
       className="pt-44 md:pt-56 pb-28 md:pb-36 relative overflow-hidden"
     >
       <div
-        className="absolute inset-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-right"
         style={{ backgroundImage: `url(${heroBgAsset.url})` }}
       />
-      <div className="absolute inset-0 bg-background/10" />
+      <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-lemon-200 via-mint-200/80 to-transparent" />
+
 
 
 

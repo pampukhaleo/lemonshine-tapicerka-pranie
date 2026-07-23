@@ -1,17 +1,41 @@
-## Замена изображений
+## Что меняем
 
-**Загрузить 5 картинок в Lovable Assets:**
-- `sprzątanie.jpg` → новый хиро-фон для Sprzątanie
-- `pranie_tapicerki.jpg` → новый хиро-фон для Pranie Tapicerki
-- `mycie_okien.jpg` → новый хиро-фон для Mycie okien
-- `Dlaczego_Lemonshine_sprzątanie.jpg` → картинка в блоке «Dlaczego LemonShine?» на Sprzątanie
-- `Dlaczego_Lemonshine_mycie_okien.jpg` → картинка для блока «Dlaczego LemonShine?» на Mycie okien
+Применить один hero-паттерн, как на присланном скрине (Sprzątanie), к трём страницам:
+- `/sprzatanie/` — `src/pages/Home.tsx` (inline hero)
+- `/pranie-tapicerki/` — `src/components/Hero.tsx`
+- `/mycie-okien/` — `src/components/window/WindowHero.tsx`
 
-**Правки в коде:**
-1. `src/pages/Home.tsx` — заменить `heroBgAsset` на новый asset Sprzątanie.
-2. `src/components/Hero.tsx` (Pranie Tapicerki) — заменить `heroBgAsset` на новый asset.
-3. `src/components/window/WindowHero.tsx` — заменить `heroBgAsset` на новый asset Mycie okien.
-4. `src/components/sprzatanie/DlaczegoLemonShine.tsx` — заменить `glebImg` на новую картинку.
-5. `src/components/window/DlaczegoMycie.tsx` — сейчас блок без картинки (только текст по центру + волна). Переделать в такой же двухколоночный layout, как в `DlaczegoLemonShine.tsx` (текст слева, новая картинка справа), сохранив декоративную волну снизу.
+Каждая страница сохраняет свою фотку (`sprzatanie-hero.jpg`, `pranie-tapicerki-hero.jpg`, `mycie-okien-hero.jpg`) и свой текст/кнопки. Меняется только раскладка и оверлей.
 
-Старые хиро-ассеты (`banner-sprzatanie.webp`) и `gleb-like-banner.webp` не удаляю — могут ещё использоваться; просто перестаю на них ссылаться в этих местах.
+## Раскладка hero
+
+```text
++---------------------------------------------------+
+|  [ Заголовок          ]        [                ] |
+|  [ Подзаголовок       ]        [   ФОТО СПРАВА  ] |
+|  [ CTA1 ] [ CTA2 ]             [   (человек)    ] |
++---------------------------------------------------+
+     ← градиент lemon→mint→прозрачный         фото →
+```
+
+- Фон секции: фотография страницы, `bg-cover bg-right` (чтобы человек оставался в кадре справа).
+- Поверх фото — линейный градиент слева направо: `from-lemon-200 via-mint-200/80 to-transparent` (жёлтый → мятный → прозрачный), как на скрине.
+- Контент (h1, p, кнопки) прижат влево в контейнере (`max-w-xl` / `max-w-2xl`), чтобы правая часть с фото не перекрывалась текстом.
+- Мобильная версия: градиент становится вертикальным (`from-lemon-200 via-mint-200/80 to-transparent`, `bg-gradient-to-b`) или плотнее слева, чтобы текст оставался читаемым поверх фото; фото не скрываем — оно уходит на задний план под градиент.
+- Высоты и падинги сохраняем как сейчас на каждой странице (не ломаем текущее вертикальное центрирование, особенно на Mycie Okien).
+
+## Технические детали
+
+- Убрать текущий полупрозрачный слой `bg-background/10` и заменить его на:
+  - desktop: `bg-gradient-to-r from-lemon-200 via-mint-200/80 to-transparent`
+  - mobile: тот же градиент, но `bg-gradient-to-b` или усиленная плотность слева (`from-lemon-200/95`), чтобы текст читался.
+- Фон-картинка: `bg-cover bg-right md:bg-right` (на мобиле допустимо `bg-center`), позиция подобрана, чтобы фигура человека попадала в правую часть.
+- Никакие тексты, кнопки, обработчики, номера телефона и ссылки не трогаем.
+- Никаких изменений в остальных секциях страниц и в бизнес-логике.
+
+## Проверка
+
+После правок открыть все три роута в preview и убедиться, что:
+1. Фото видно справа, человек не обрезан.
+2. Текст читается поверх градиента и на desktop, и на mobile.
+3. Кнопки и ссылки работают как раньше.

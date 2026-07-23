@@ -137,19 +137,19 @@ const Home = () => {
         {/* Hero Section */}
         <section className="relative min-h-[480px] md:min-h-[560px] flex items-center overflow-hidden">
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-right"
             style={{ backgroundImage: `url(${heroBgAsset.url})` }}
           />
-          <div className="absolute inset-0 bg-background/10" />
+          <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-lemon-200 via-mint-200/80 to-transparent" />
           <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
-            <div className="max-w-2xl mx-auto text-center">
+            <div className="max-w-xl">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-3">
                 Sprzątanie Wrocław
               </h1>
               <p className="text-base md:text-lg text-foreground/70 mb-8">
                 Robimy porządki w mieszkaniach i na dużych obiektach
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
                   className="bg-lemon-400 hover:bg-lemon-500 text-foreground font-bold text-base md:text-xl px-8 py-4 md:px-16 md:py-7 shadow-none border border-lemon-400 hover-lift font-[Poppins] h-auto"
@@ -172,6 +172,7 @@ const Home = () => {
             </div>
           </div>
         </section>
+
 
 
         <SprzataniaServices />
