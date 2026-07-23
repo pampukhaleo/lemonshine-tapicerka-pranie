@@ -135,12 +135,12 @@ const Home = () => {
 
       <main className="flex-1 pt-16">
         {/* Hero Section */}
-        <section className="relative min-h-[480px] md:min-h-[560px] flex items-center overflow-hidden bg-gradient-to-r from-lemon-200 via-mint-200 to-mint-100">
+        <section className="relative min-h-[480px] md:min-h-[560px] flex items-center overflow-hidden bg-gradient-to-r from-lemon-50 via-mint-50 to-mint-100">
           <div
             className="hidden md:block absolute right-0 top-0 h-full w-[70%] bg-cover bg-center"
             style={{ backgroundImage: `url(${heroBgAsset.url})` }}
           />
-          <div className="hidden md:block absolute inset-y-0 left-0 w-[75%] bg-gradient-to-r from-lemon-200 via-lemon-200/85 to-transparent pointer-events-none" />
+          <div className="hidden md:block absolute inset-y-0 left-0 w-[75%] bg-gradient-to-r from-lemon-50 via-lemon-50/85 to-transparent pointer-events-none" />
           <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
             <div className="max-w-xl">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-3">
