@@ -1,64 +1,34 @@
-## Что просят
+# Consent click audit logging
 
-В письме: настроить cookie consent и Google Consent Mode v2 — сейчас их нет, из-за этого некорректно работают Google Analytics и Google Ads/ремаркетинг.
+Отзыв на реализацию подтвердил: Consent Mode v2, категория `advertisement`, Clarity и dataLayer-события уже на месте. Остаётся один пункт — аудит-лог кликов по кнопкам cookie-баннера. У проекта нет PHP-бэкенда, поэтому пишем в Lovable Cloud (Supabase) через edge function.
 
-В PDF-инструкции предлагается использовать библиотеку **CookieConsent v3 by Orest Bida** (`cookieconsent@3.1.0`) — с конфигом категорий (necessary / analytics / advertisement), польскими переводами, интеграцией с `gtag('consent', ...)` и Microsoft Clarity.
+## Что делаем
 
-## Могу ли я это сделать на сайте?
+1. **Новая таблица `public.consent_logs`** (миграция):
+   - Поля: `action` (accept_all / accept_necessary / show_preferences / save_preferences / change), `categories` (jsonb со списком принятых категорий), `user_agent`, `page_url`, `referrer`, `ip` (nullable), `created_at`.
+   - GRANT `INSERT` для `anon` и `authenticated`, `ALL` для `service_role`.
+   - RLS: `INSERT` разрешён всем (для публичной записи), `SELECT/UPDATE/DELETE` — только `is_admin(auth.uid())`.
 
-Да, полностью. Стек (React + Vite + GTM в `index.html`) идеально подходит. Пример из PDF написан для Joomla (эндпоинт `/index.php?option=com_ajax...` для трекинга кликов) — эту часть адаптируем под наш GTM (`dataLayer.push`) вместо серверного beacon.
+2. **Edge function `log-consent`** (`supabase/functions/log-consent/index.ts`):
+   - Public (без JWT), CORS.
+   - Zod-валидация тела: `action`, опциональные `categories`, `page_url`, `referrer`.
+   - Достаёт `user-agent` и IP из заголовков, вставляет строку в `consent_logs` через `SUPABASE_SERVICE_ROLE_KEY`.
+   - Возвращает `{ok: true}`; ошибки логирует, но не блокирует UI.
 
-## План внедрения
-
-### 1. Добавить `Consent Mode` default в `index.html` (ДО GTM-скрипта)
-Перед существующим GTM-снипетом вставить дефолтные denied-состояния — это критично для Google Ads/EEA:
-
-```html
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
-    'analytics_storage': 'denied',
-    'wait_for_update': 500
-  });
-</script>
-```
-
-### 2. Установить библиотеку
-`bun add vanilla-cookieconsent` (пакет автора инструкции, v3).
-
-### 3. Создать `src/lib/cookieConsent.ts`
-Инициализация по конфигу из PDF:
-- Категории: `necessary` (readOnly), `analytics`, `advertisement`
-- Польские тексты из PDF (модалка + preferences + таблицы cookies `_ga`, `_gid`, `_gcl*`, `_clck`, `_clsk`)
-- Ссылка на политику приватности — наша `/polityka-prywatnosci/` (а не `rekinysukcesu.pl` из шаблона)
-- Хуки `onFirstConsent / onConsent / onChange` → `gtag('consent','update', {...})` в соответствии с выбранными категориями
-- Убираем Joomla-endpoint для трекинга кликов — заменяем на `dataLayer.push({event:'consent_...'})`, чтобы события были доступны в GTM
-- Импорт CSS: `import 'vanilla-cookieconsent/dist/cookieconsent.css'`
-
-### 4. Подключить в `src/App.tsx` (или `main.tsx`)
-`useEffect` при mount → `run(config)` + `CookieConsent.show()` через `setTimeout` (как в инструкции).
-
-### 5. Добавить кнопку «Ustawienia cookies» в `Footer.tsx`
-Открывает preferences-модалку: `CookieConsent.showPreferences()` — требование RODO (пользователь должен иметь возможность изменить решение).
-
-### 6. Обновить `PrivacyPolicy.tsx`
-Секция 6 (Cookies) — обновить список: добавить упоминание Google Consent Mode и что пользователь может управлять через кнопку в футере.
-
-### 7. Проверить сборку и preview
-Убедиться, что модалка появляется, `dataLayer` получает `consent update`, GTM видит события.
-
-## Что НЕ трогаем
-- Существующий GTM-контейнер `GTM-KCSB3GVG` и `send-lead-gleb`
-- Логику форм и трекинг конверсий (`trackConversion` уже пушит в dataLayer — начнёт работать корректно после consent update)
-- Внутри GTM должно быть настроено, что теги Google Ads/GA4 отправляются с учётом Consent Mode — это делается в UI GTM, не в коде (об этом стоит предупредить пользователя отдельно)
+3. **Клиентский трекер** в `src/lib/cookieConsent.ts`:
+   - Функция `trackConsentClick(action)` шлёт `navigator.sendBeacon` (fallback — `fetch keepalive`) на edge function.
+   - Хуки библиотеки: в `onFirstConsent` → определить `accept_all` vs `accept_necessary` по принятым категориям; в `onChange` → `save_preferences`.
+   - Дополнительно: делегированный listener на клики по `[data-cc="show-preferencesModal"]`, `[data-cc="accept-all"]`, `[data-cc="accept-necessary"]` внутри `.cm`/`.pm` контейнеров баннера для точного различения кнопок до срабатывания коллбеков.
+   - Никаких PII: не сохраняем имя/email, только техданные.
 
 ## Технические детали
-- Библиотека: `vanilla-cookieconsent` v3.x (~15 KB gzip), no deps, SSR-safe (используем в `useEffect`, только на клиенте — важно для SSG сборки через `vite-react-ssg`)
-- Стили не конфликтуют с Tailwind (изолированный CSS с префиксом `.cc-*`)
-- Cookie для хранения выбора: `cc_cookie` (управляется библиотекой)
 
-Подтверди — стартую реализацию.
+- Edge function URL берётся из `import.meta.env.VITE_SUPABASE_URL` + `/functions/v1/log-consent`, апикей — `VITE_SUPABASE_PUBLISHABLE_KEY` в заголовке `apikey`.
+- `sendBeacon` использует `Blob({type:'application/json'})`, поэтому CORS ответы должны разрешать `content-type` — стандартный `corsHeaders` из sdk это покрывает.
+- Failure-mode: любые ошибки трекинга проглатываются (`try/catch`), UX баннера не должен ломаться.
+- Никаких изменений UI/текстов баннера — только добавляется невидимый трекинг.
+
+## Что НЕ трогаем
+
+- Тексты, дизайн баннера, категории, Consent Mode defaults — всё уже соответствует инструкции.
+- Clarity, dataLayer-события `consent_advertisement_granted` / `consent_analytics_granted` уже есть.
