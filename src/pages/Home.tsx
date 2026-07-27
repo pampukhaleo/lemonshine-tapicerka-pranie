@@ -20,7 +20,7 @@ import JakPracujemy from '@/components/sprzatanie/JakPracujemy';
 import SprzatanieBiur from '@/components/sprzatanie/SprzatanieBiur';
 import NaszeOpinie from '@/components/shared/NaszeOpinie';
 import heroBgAsset from '@/assets/sprzatanie-hero.webp.asset.json';
-import heroBgMobileAsset from '@/assets/sprzatanie-hero-mobile.jpg.asset.json';
+import heroBgMobileAsset from '@/assets/sprzatanie-hero-mobile.webp.asset.json';
 import { trackPhoneClick } from '@/lib/analytics';
 
 const Home = () => {
