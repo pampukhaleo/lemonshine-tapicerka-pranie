@@ -45,6 +45,78 @@ function updateClarityConsent() {
   }, 1000);
 }
 
+type ConsentAction =
+  | 'accept_all'
+  | 'accept_necessary'
+  | 'show_preferences'
+  | 'save_preferences'
+  | 'change'
+  | 'first_consent';
+
+function trackConsentClick(action: ConsentAction) {
+  try {
+    const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/log-consent`;
+    const payload = JSON.stringify({
+      action,
+      categories: CookieConsent.getUserPreferences()?.acceptedCategories ?? [],
+      page_url: window.location.href,
+      referrer: document.referrer || undefined,
+    });
+
+    if (navigator.sendBeacon) {
+      const blob = new Blob([payload], { type: 'application/json' });
+      const ok = navigator.sendBeacon(url, blob);
+      if (ok) return;
+    }
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+      },
+      body: payload,
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    /* silent */
+  }
+}
+
+function attachConsentClickListeners() {
+  document.addEventListener(
+    'click',
+    (e) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      const btn = target.closest('[data-role]') as HTMLElement | null;
+      if (!btn) return;
+      const inBanner = btn.closest('#cc-main, .cm, .pm');
+      if (!inBanner) return;
+      const role = btn.getAttribute('data-role');
+      switch (role) {
+        case 'all':
+        case 'accept-all':
+          trackConsentClick('accept_all');
+          break;
+        case 'necessary':
+        case 'accept-necessary':
+          trackConsentClick('accept_necessary');
+          break;
+        case 'show':
+        case 'show-preferences':
+          trackConsentClick('show_preferences');
+          break;
+        case 'save':
+        case 'save-preferences':
+          trackConsentClick('save_preferences');
+          break;
+      }
+    },
+    true,
+  );
+}
+
 let initialized = false;
 
 export function initCookieConsent() {
@@ -57,6 +129,7 @@ export function initCookieConsent() {
     onFirstConsent: () => {
       updateGtagConsent();
       updateClarityConsent();
+      trackConsentClick('first_consent');
     },
     onConsent: () => {
       updateGtagConsent();
@@ -65,6 +138,7 @@ export function initCookieConsent() {
     onChange: () => {
       updateGtagConsent();
       updateClarityConsent();
+      trackConsentClick('change');
     },
 
     categories: {
@@ -189,6 +263,7 @@ export function initCookieConsent() {
       },
     },
   }).then(() => {
+    attachConsentClickListeners();
     setTimeout(() => CookieConsent.show(), 800);
   });
 }
