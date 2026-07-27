@@ -21,8 +21,8 @@ const Hero = () => {
         style={{ backgroundImage: `url(${heroBgMobileAsset.url})` }}
       />
       <div
-        className="absolute inset-0 bg-cover bg-right-top hidden md:block"
-        style={{ backgroundImage: `url(${heroBgAsset.url})` }}
+        className="absolute inset-0 bg-cover bg-no-repeat hidden md:block"
+        style={{ backgroundImage: `url(${heroBgAsset.url})`, backgroundPosition: 'right 80px' }}
       />
       <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-lemon-200/95 via-mint-200/50 to-transparent" />
 
