@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { trackPhoneClick } from '@/lib/analytics';
 import heroBgAsset from '@/assets/pranie-tapicerki-hero.webp.asset.json';
+import heroBgMobileAsset from '@/assets/pranie-tapicerki-hero-mobile.jpg.asset.json';
 
 const Hero = () => {
   const handleOrderClick = () => {
