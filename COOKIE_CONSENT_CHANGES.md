@@ -44,7 +44,7 @@ This document lists every code change made to implement cookie consent and Googl
 ### 4. Initialized the cookie consent banner
 
 - Updated `src/App.tsx` to import and call `initCookieConsent()` on application start.
-- The banner auto-shows after a short delay for new visitors and restores saved preferences for returning visitors.
+- The banner auto-shows after a 1 second delay for new visitors and restores saved preferences for returning visitors.
 
 ### 5. Updated the footer
 

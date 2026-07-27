@@ -1,34 +1,20 @@
-# Consent click audit logging
+## Мелкие правки под ТЗ
 
-Отзыв на реализацию подтвердил: Consent Mode v2, категория `advertisement`, Clarity и dataLayer-события уже на месте. Остаётся один пункт — аудит-лог кликов по кнопкам cookie-баннера. У проекта нет PHP-бэкенда, поэтому пишем в Lovable Cloud (Supabase) через edge function.
+### 1. Задержка автопоказа баннера
+В `src/lib/cookieConsent.ts` сейчас `setTimeout(() => CookieConsent.show(), 800)`. ТЗ требует `1000`. Меняем на 1000 мс — баннер по-прежнему автоматически показывается новым посетителям, ничего искать в футере не нужно.
 
-## Что делаем
+### 2. Тексты кнопок vs. трекинг кликов
+Проверил текущий код:
 
-1. **Новая таблица `public.consent_logs`** (миграция):
-   - Поля: `action` (accept_all / accept_necessary / show_preferences / save_preferences / change), `categories` (jsonb со списком принятых категорий), `user_agent`, `page_url`, `referrer`, `ip` (nullable), `created_at`.
-   - GRANT `INSERT` для `anon` и `authenticated`, `ALL` для `service_role`.
-   - RLS: `INSERT` разрешён всем (для публичной записи), `SELECT/UPDATE/DELETE` — только `is_admin(auth.uid())`.
+- consentModal: `Zgadzam się` / `Tylko niezbędne` / `Ustawienia` — совпадает с ТЗ.
+- preferencesModal: `Wyrażam zgodę` / `Nie wyrażam zgody` / `Zapisz ustawienia` — совпадает с ТЗ.
 
-2. **Edge function `log-consent`** (`supabase/functions/log-consent/index.ts`):
-   - Public (без JWT), CORS.
-   - Zod-валидация тела: `action`, опциональные `categories`, `page_url`, `referrer`.
-   - Достаёт `user-agent` и IP из заголовков, вставляет строку в `consent_logs` через `SUPABASE_SERVICE_ROLE_KEY`.
-   - Возвращает `{ok: true}`; ошибки логирует, но не блокирует UI.
+Тексты уже буква в букву как в спецификации, править не нужно.
 
-3. **Клиентский трекер** в `src/lib/cookieConsent.ts`:
-   - Функция `trackConsentClick(action)` шлёт `navigator.sendBeacon` (fallback — `fetch keepalive`) на edge function.
-   - Хуки библиотеки: в `onFirstConsent` → определить `accept_all` vs `accept_necessary` по принятым категориям; в `onChange` → `save_preferences`.
-   - Дополнительно: делегированный listener на клики по `[data-cc="show-preferencesModal"]`, `[data-cc="accept-all"]`, `[data-cc="accept-necessary"]` внутри `.cm`/`.pm` контейнеров баннера для точного различения кнопок до срабатывания коллбеков.
-   - Никаких PII: не сохраняем имя/email, только техданные.
+Дополнительно: наш слушатель кликов в `attachConsentClickListeners` привязан не к тексту кнопок, а к атрибуту `data-role`, который `vanilla-cookieconsent` ставит сам (`all`, `necessary`, `show`, `save`). Это надёжнее маппинга по тексту из ТЗ — не сломается при смене надписи или локализации. Оставляем как есть.
 
-## Технические детали
+### Итог изменений
+- `src/lib/cookieConsent.ts`: одна строка — задержка `800` → `1000`.
+- Больше ничего не трогаем: логика, категории, Consent Mode, Clarity, Supabase-логирование уже соответствуют ТЗ.
 
-- Edge function URL берётся из `import.meta.env.VITE_SUPABASE_URL` + `/functions/v1/log-consent`, апикей — `VITE_SUPABASE_PUBLISHABLE_KEY` в заголовке `apikey`.
-- `sendBeacon` использует `Blob({type:'application/json'})`, поэтому CORS ответы должны разрешать `content-type` — стандартный `corsHeaders` из sdk это покрывает.
-- Failure-mode: любые ошибки трекинга проглатываются (`try/catch`), UX баннера не должен ломаться.
-- Никаких изменений UI/текстов баннера — только добавляется невидимый трекинг.
-
-## Что НЕ трогаем
-
-- Тексты, дизайн баннера, категории, Consent Mode defaults — всё уже соответствует инструкции.
-- Clarity, dataLayer-события `consent_advertisement_granted` / `consent_analytics_granted` уже есть.
+После правки обновлю `COOKIE_CONSENT_CHANGES.md`, чтобы «short delay» звучало как «1 second delay».

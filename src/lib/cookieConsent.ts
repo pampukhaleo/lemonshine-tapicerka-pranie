@@ -264,7 +264,7 @@ export function initCookieConsent() {
     },
   }).then(() => {
     attachConsentClickListeners();
-    setTimeout(() => CookieConsent.show(), 800);
+    setTimeout(() => CookieConsent.show(), 1000);
   });
 }
 
