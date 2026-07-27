@@ -1,5 +1,5 @@
 import React from 'react';
-import dlaczegoImg from '@/assets/dlaczego-mycie-okien.jpg.asset.json';
+import dlaczegoImg from '@/assets/dlaczego-lemonshine-mycie-okien.webp.asset.json';
 
 const DlaczegoMycie = () => {
   return (
