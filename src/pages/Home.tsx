@@ -138,7 +138,11 @@ const Home = () => {
         {/* Hero Section */}
         <section className="relative min-h-[480px] md:min-h-[560px] flex items-center overflow-hidden">
           <div
-            className="absolute inset-0 bg-cover bg-right"
+            className="absolute inset-0 bg-cover bg-center md:hidden"
+            style={{ backgroundImage: `url(${heroBgMobileAsset.url})` }}
+          />
+          <div
+            className="absolute inset-0 bg-cover bg-right hidden md:block"
             style={{ backgroundImage: `url(${heroBgAsset.url})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-lemon-200 via-mint-200/80 to-transparent" />
