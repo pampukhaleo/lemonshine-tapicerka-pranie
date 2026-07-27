@@ -19,7 +19,7 @@ import DlaczegoLemonShine from '@/components/sprzatanie/DlaczegoLemonShine';
 import JakPracujemy from '@/components/sprzatanie/JakPracujemy';
 import SprzatanieBiur from '@/components/sprzatanie/SprzatanieBiur';
 import NaszeOpinie from '@/components/shared/NaszeOpinie';
-import heroBgAsset from '@/assets/sprzatanie-hero.jpg.asset.json';
+import heroBgAsset from '@/assets/sprzatanie-hero.webp.asset.json';
 import { trackPhoneClick } from '@/lib/analytics';
 
 const Home = () => {
