@@ -4,6 +4,7 @@ import { Separator } from '@/components/ui/separator';
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from 'lucide-react';
 import { Link } from "react-router-dom";
 import { trackPhoneClick } from '@/lib/analytics';
+import { showCookiePreferences } from '@/lib/cookieConsent';
 
 const Footer = () => {
   return (
@@ -105,7 +106,7 @@ const Footer = () => {
           </div>
           <div className="flex space-x-6">
             <Link to="/polityka-prywatnosci/" className="hover:text-lemon-400 transition-colors">Polityka prywatności</Link>
-            <a href="#" className="hover:text-lemon-400 transition-colors">Cookies</a>
+            <button type="button" onClick={showCookiePreferences} className="hover:text-lemon-400 transition-colors">Ustawienia cookies</button>
           </div>
         </div>
       </div>
