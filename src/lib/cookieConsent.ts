@@ -263,6 +263,7 @@ export function initCookieConsent() {
       },
     },
   }).then(() => {
+    attachConsentClickListeners();
     setTimeout(() => CookieConsent.show(), 800);
   });
 }
