@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { trackPhoneClick } from '@/lib/analytics';
 import heroBgAsset from '@/assets/pranie-tapicerki-hero.webp.asset.json';
+import heroBgMobileAsset from '@/assets/pranie-tapicerki-hero-mobile.jpg.asset.json';
 
 const Hero = () => {
   const handleOrderClick = () => {
@@ -16,7 +17,11 @@ const Hero = () => {
       className="pt-44 md:pt-56 pb-28 md:pb-36 relative overflow-hidden"
     >
       <div
-        className="absolute inset-0 bg-cover bg-right"
+        className="absolute inset-0 bg-cover bg-center md:hidden"
+        style={{ backgroundImage: `url(${heroBgMobileAsset.url})` }}
+      />
+      <div
+        className="absolute inset-0 bg-cover bg-right hidden md:block"
         style={{ backgroundImage: `url(${heroBgAsset.url})` }}
       />
       <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-lemon-200 via-mint-200/80 to-transparent" />
