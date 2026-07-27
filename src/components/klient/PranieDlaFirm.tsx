@@ -31,8 +31,8 @@ const PranieDlaFirm = () => {
           </div>
           <div className="order-1 lg:order-2 rounded-xl overflow-hidden shadow-md">
             <img
-              src={biuroImg.url}
-              alt="Pranie wykładziny w biurze"
+              src={firmImg.url}
+              alt="Pranie tapicerki dla firm"
               className="w-full h-full object-cover aspect-[4/3]"
               loading="lazy"
             />
