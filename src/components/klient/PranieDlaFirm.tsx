@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import biuroImg from '@/assets/zielone-biuro.webp.asset.json';
+import firmImg from '@/assets/pranie-tapicerki-dla-firm.webp.asset.json';
 
 const PranieDlaFirm = () => {
   const handleOrderClick = () => {
