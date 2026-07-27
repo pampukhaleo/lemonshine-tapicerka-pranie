@@ -1,20 +1,35 @@
-## Мелкие правки под ТЗ
+## Проверка соответствия документации vanilla-cookieconsent v3
 
-### 1. Задержка автопоказа баннера
-В `src/lib/cookieConsent.ts` сейчас `setTimeout(() => CookieConsent.show(), 800)`. ТЗ требует `1000`. Меняем на 1000 мс — баннер по-прежнему автоматически показывается новым посетителям, ничего искать в футере не нужно.
+Сверил наш `src/lib/cookieConsent.ts` + `index.html` с тремя страницами доков. Всё ключевое соответствует, кода менять не нужно.
 
-### 2. Тексты кнопок vs. трекинг кликов
-Проверил текущий код:
+### Что совпадает с документацией
 
-- consentModal: `Zgadzam się` / `Tylko niezbędne` / `Ustawienia` — совпадает с ТЗ.
-- preferencesModal: `Wyrażam zgodę` / `Nie wyrażam zgody` / `Zapisz ustawienia` — совпадает с ТЗ.
+| Требование из доков | У нас |
+|---|---|
+| Установка `vanilla-cookieconsent@3.1.0` через npm | ✅ 3.1.0 в package.json |
+| Импорт CSS `vanilla-cookieconsent/dist/cookieconsent.css` | ✅ в `cookieConsent.ts` |
+| `gtag('consent', 'default', {...: 'denied'})` **до** GTM | ✅ в `index.html` перед GTM-снипетом |
+| `dataLayer` инициализируется до gtag | ✅ |
+| `updateGtagConsent()` в `onFirstConsent`, `onConsent`, `onChange` | ✅ во всех трёх коллбэках |
+| Категория `necessary` с `enabled:true, readOnly:true` | ✅ |
+| `autoClear` для `_ga*`, `_gid`, `_gcl*` | ✅ + добавлены `_clck`/`_clsk` для Clarity |
+| Ссылка на политику приватности в описании | ✅ `/polityka-prywatnosci/` |
+| `cookieTable` в preferencesModal | ✅ |
 
-Тексты уже буква в букву как в спецификации, править не нужно.
+### Осознанные отличия от примера в доках (не ошибки)
 
-Дополнительно: наш слушатель кликов в `attachConsentClickListeners` привязан не к тексту кнопок, а к атрибуту `data-role`, который `vanilla-cookieconsent` ставит сам (`all`, `necessary`, `show`, `save`). Это надёжнее маппинга по тексту из ТЗ — не сломается при смене надписи или локализации. Оставляем как есть.
+1. **3 категории вместо 5.** Пример показывает `necessary/analytics/advertisement/functionality/security`. У нас только первые три — соответствует ТЗ клиента и покрывает GA + Google Ads. `functionality_storage`/`security_storage`/`personalization_storage` в дефолтах Consent Mode оставлены `denied` — этого достаточно, отдельная категория для них не требуется.
 
-### Итог изменений
-- `src/lib/cookieConsent.ts`: одна строка — задержка `800` → `1000`.
-- Больше ничего не трогаем: логика, категории, Consent Mode, Clarity, Supabase-логирование уже соответствуют ТЗ.
+2. **`acceptedCategory` вместо `acceptedService`.** В доках пример использует гранулярные services внутри категории. Мы не определяем services — тогда правильный API именно `acceptedCategory(cat)`, что и стоит в коде. Согласие на категорию автоматически покрывает все её сервисы.
 
-После правки обновлю `COOKIE_CONSENT_CHANGES.md`, чтобы «short delay» звучало как «1 second delay».
+3. **`wait_for_update: 500`** — добавлено в дефолтах Consent Mode (доки это допускают, GTM-рекомендация).
+
+4. **`autoShow: false` + ручной `CookieConsent.show()` через 1000 мс** — соответствует ТЗ и не противоречит докам (сами доки допускают отключение автопоказа).
+
+### Итог
+
+Реализация корректна по документации. Правок в коде не требуется. Если захотите — можно опционально:
+- Добавить `services` внутри категорий с человекочитаемыми лейблами (это только UX preferencesModal, поведение не меняется).
+- Расширить до 5 категорий, если появится нужда в functionality/security cookies.
+
+Обе доработки необязательные — дайте знать, если делать.
