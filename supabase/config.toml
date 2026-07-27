@@ -2,3 +2,6 @@ project_id = "cdqolplrdwwxdbnlgize"
 
 [functions.send-lead-gleb]
 verify_jwt = false
+
+[functions.log-consent]
+verify_jwt = false
