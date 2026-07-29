@@ -1,21 +1,39 @@
-## Задача
-На мобильной версии заменить фоновые картинки в hero-секциях трёх страниц на загруженные фото (десктоп остаётся без изменений).
+# Fix: GTM не получает consent 'update'
 
-## Маппинг файлов
-- `/` (Sprzątanie) → `user-uploads://sprzątanie.jpg`
-- `/pranie-tapicerki/` → `user-uploads://pranie_tapicerki.jpg`
-- `/mycie-okien/` → `user-uploads://mycie_okien.jpg`
+## Диагноз
+В `src/lib/cookieConsent.ts` наша обёртка `gtag` определена так:
 
-## Реализация
-1. Загрузить 3 файла через `lovable-assets create` из `/mnt/user-uploads/`, создать pointer-файлы:
-   - `src/assets/sprzatanie-hero-mobile.jpg.asset.json`
-   - `src/assets/pranie-tapicerki-hero-mobile.jpg.asset.json`
-   - `src/assets/mycie-okien-hero-mobile.jpg.asset.json`
-2. В каждом hero-компоненте (`src/pages/Home.tsx`, `src/components/Hero.tsx`, `src/components/window/WindowHero.tsx`) вместо одного `<div style={{backgroundImage: url(desktop)}}>` использовать два слоя:
-   - мобильный: `className="absolute inset-0 bg-cover bg-center md:hidden"` со стилем мобильной картинки
-   - десктопный: `className="absolute inset-0 bg-cover bg-right hidden md:block"` со стилем текущей десктопной картинки
-3. Градиент-оверлей и содержимое hero не трогаем.
+```ts
+const gtag = (...args: any[]) => {
+  window.dataLayer.push(args);   // push массива [...]
+};
+```
+
+GTM Consent API ждёт, чтобы в dataLayer лежал **объект `arguments`** (с числовыми ключами и `length`), как в стандартном сниппете Google:
+
+```js
+function gtag(){ dataLayer.push(arguments); }
+```
+
+Мы вместо `arguments` пушим обычный массив (`[...args]`), поэтому GTM не распознаёт запись как команду `consent update` — «default» приходит из `index.html` (там сниппет правильный), а «update» из нашего кода игнорируется. Это ровно та проблема, что описана в PDF.
+
+## Правка (один файл)
+
+**`src/lib/cookieConsent.ts`** — заменить стрелочную функцию на классическую, использующую `arguments`:
+
+```ts
+function gtag() {
+  window.dataLayer = window.dataLayer || [];
+  // eslint-disable-next-line prefer-rest-params
+  window.dataLayer.push(arguments);
+}
+```
+
+Вызовы `gtag('consent', 'update', {...})` остаются без изменений. После этой правки GTM Tag Assistant увидит событие `consent update` с корректными значениями `granted/denied` после клика по баннеру.
 
 ## Проверка
-- `bun run build`
-- Скриншот через Playwright на viewport 390×844 для трёх страниц, чтобы убедиться, что нужные фото видны.
+1. Открыть сайт в Tag Assistant, принять cookies → в списке событий появится `Consent` → `Update` с нужными сигналами.
+2. Отозвать согласие через «Ustawienia cookies» → снова прилетит `Consent Update` со значениями `denied`.
+3. Проверить, что `consent_analytics_granted` / `consent_advertisement_granted` по-прежнему появляются в dataLayer.
+
+Больше ничего трогать не нужно — `index.html` (default), категории, autoClear, логирование и Clarity уже корректны.
