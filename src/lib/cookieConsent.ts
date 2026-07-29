@@ -126,6 +126,7 @@ export function initCookieConsent() {
 
   CookieConsent.run({
     autoShow: false,
+    disablePageInteraction: true,
 
     onFirstConsent: () => {
       updateGtagConsent();
@@ -167,7 +168,7 @@ export function initCookieConsent() {
     guiOptions: {
       consentModal: {
         layout: 'box wide',
-        position: 'bottom center',
+        position: 'middle center',
         flipButtons: true,
         equalWeightButtons: true,
       },
@@ -187,7 +188,7 @@ export function initCookieConsent() {
             description:
               'Chcemy, aby korzystanie z naszej strony było dla Ciebie wygodne i bezproblemowe. Używamy plików cookies, które pomagają nam dostosować treści i reklamy do Twoich zainteresowań. Szczegóły znajdziesz w naszej <a href="/polityka-prywatnosci/">polityce prywatności</a>.',
             acceptAllBtn: 'Zgadzam się',
-            acceptNecessaryBtn: 'Tylko niezbędne',
+            
             showPreferencesBtn: 'Ustawienia',
           },
           preferencesModal: {
