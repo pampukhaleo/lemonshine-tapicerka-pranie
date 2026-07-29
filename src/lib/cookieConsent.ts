@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-function gtag() {
+function gtag(..._args: any[]) {
   window.dataLayer = window.dataLayer || [];
   // eslint-disable-next-line prefer-rest-params
   window.dataLayer.push(arguments);
