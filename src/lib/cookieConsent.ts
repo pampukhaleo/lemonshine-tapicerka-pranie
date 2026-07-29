@@ -129,6 +129,7 @@ export function initCookieConsent() {
   CookieConsent.run({
     autoShow: false,
     disablePageInteraction: true,
+    hideFromBots: false,
 
     onFirstConsent: () => {
       updateGtagConsent();
