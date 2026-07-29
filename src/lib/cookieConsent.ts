@@ -8,10 +8,11 @@ declare global {
   }
 }
 
-const gtag = (...args: any[]) => {
+function gtag(..._args: any[]) {
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(args);
-};
+  // eslint-disable-next-line prefer-rest-params
+  window.dataLayer.push(arguments);
+}
 
 const CAT_NECESSARY = 'necessary';
 const CAT_ANALYTICS = 'analytics';
