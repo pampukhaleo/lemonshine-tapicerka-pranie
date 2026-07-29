@@ -121,15 +121,12 @@ function attachConsentClickListeners() {
 let initialized = false;
 
 export function initCookieConsent() {
-  console.log('initCookieConsent called', initialized, typeof window);
   if (initialized || typeof window === 'undefined') return;
   initialized = true;
-  console.log('initCookieConsent running');
 
   CookieConsent.run({
     autoShow: false,
     disablePageInteraction: true,
-    hideFromBots: false,
 
     onFirstConsent: () => {
       updateGtagConsent();
@@ -268,14 +265,8 @@ export function initCookieConsent() {
       },
     },
   }).then(() => {
-    console.log('CookieConsent.run resolved');
     attachConsentClickListeners();
-    setTimeout(() => {
-      console.log('Calling CookieConsent.show');
-      CookieConsent.show();
-    }, 1000);
-  }).catch((err) => {
-    console.error('CookieConsent.run failed', err);
+    setTimeout(() => CookieConsent.show(), 1000);
   });
 }
 
