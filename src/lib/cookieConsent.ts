@@ -267,8 +267,14 @@ export function initCookieConsent() {
       },
     },
   }).then(() => {
+    console.log('CookieConsent.run resolved');
     attachConsentClickListeners();
-    setTimeout(() => CookieConsent.show(), 1000);
+    setTimeout(() => {
+      console.log('Calling CookieConsent.show');
+      CookieConsent.show();
+    }, 1000);
+  }).catch((err) => {
+    console.error('CookieConsent.run failed', err);
   });
 }
 
