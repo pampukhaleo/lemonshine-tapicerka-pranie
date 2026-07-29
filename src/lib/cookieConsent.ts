@@ -121,8 +121,10 @@ function attachConsentClickListeners() {
 let initialized = false;
 
 export function initCookieConsent() {
+  console.log('initCookieConsent called', initialized, typeof window);
   if (initialized || typeof window === 'undefined') return;
   initialized = true;
+  console.log('initCookieConsent running');
 
   CookieConsent.run({
     autoShow: false,
